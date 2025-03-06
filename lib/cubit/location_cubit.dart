@@ -10,7 +10,14 @@ class LocationCubit extends Cubit<UserLocation?> {
   LocationCubit(this.locationRepository) : super(null);
 
   Future<void> fetchLocation() async {
-    final location = await locationRepository.getUserLocation();
-    emit(location);
+    emit(null); // مسح القيمة السابقة
+    UserLocation? location = await locationRepository.getUserLocation();
+    if (location != null) {
+      print('Location Fetched: Lat=${location.latitude}, Lon=${location.longitude}');
+      emit(location);
+    } else {
+      print('Failed to get location');
+    }
+
   }
 }

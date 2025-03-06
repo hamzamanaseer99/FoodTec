@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/view/screens/location_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class IntroNavigationButtons extends StatelessWidget {
   final int currentPage;
@@ -13,14 +14,19 @@ class IntroNavigationButtons extends StatelessWidget {
     return Column(
       children: [
         ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             if (currentPage < 2) {
               pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.ease);
             } else {
+              // عندما يصل المستخدم إلى الصفحة الأخيرة، نقوم بتخزين قيمة hasSeenIntroPages
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              await prefs.setBool('hasSeenIntroPages', true);  // تخزين القيمة
+
               Navigator.push(context, MaterialPageRoute(builder: (context) => LocationScreen()));
             }
           },
           style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
             minimumSize: Size(double.infinity, 48),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25),
@@ -39,7 +45,7 @@ class IntroNavigationButtons extends StatelessWidget {
             child: Container(
               alignment: Alignment.center,
               padding: EdgeInsets.symmetric(vertical: 14),
-    child: Text(currentPage == 2 ? 'Get Started' : 'Next', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white)),
+    child: Text('Continue', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white)),
 
             ),
           ),
@@ -52,8 +58,7 @@ class IntroNavigationButtons extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () {
-                pageController.jumpToPage(2);
-              },
+                Navigator.push(context, MaterialPageRoute(builder: (context) => LocationScreen()));              },
               child: Text(
                 'Skip',
                 style: TextStyle(fontSize: 16, color: Colors.grey[700]),
@@ -62,7 +67,7 @@ class IntroNavigationButtons extends StatelessWidget {
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(4, (index) {
+              children: List.generate(3, (index) {
                 return AnimatedContainer(
                   duration: Duration(milliseconds: 300),
                   margin: EdgeInsets.symmetric(horizontal: 5),
@@ -78,7 +83,7 @@ class IntroNavigationButtons extends StatelessWidget {
               }),
             ),
 
-            if (currentPage < 3)
+            if (currentPage < 3 )
               IconButton(
                 onPressed: () {
                   pageController.nextPage(
