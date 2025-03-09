@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+
 // States
 abstract class LoginState extends Equatable {
   @override
@@ -32,8 +33,12 @@ class LoginCubit extends Cubit<LoginState> {
 
     // Simulate a delay for login attempt
     Future.delayed(const Duration(seconds: 2), () {
-      // Example of checking mock credentials
-
+      if (email == "test@example.com" && password == "password123") {
+        emit(LoginSuccess()); // ✅ Emit success state
+      } else {
+        emit(LoginFailure("Invalid email or password")); // ✅ Emit failure state
+      }
     });
   }
+
 }

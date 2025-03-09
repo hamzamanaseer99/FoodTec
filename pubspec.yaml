@@ -38,6 +38,7 @@ dependencies:
   shared_preferences: ^2.5.2
   flutter_bloc: ^9.1.0
   equatable: ^2.0.7
+  font_awesome_flutter: ^10.8.0
 
 dev_dependencies:
   flutter_test:
@@ -81,10 +82,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Protest Riot
+      fonts:
+         - asset: assets/font/ProtestRiot-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
