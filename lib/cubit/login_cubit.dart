@@ -36,7 +36,7 @@ class LoginCubit extends Cubit<LoginState> {
     Future.delayed(const Duration(seconds: 2), () {
       if (isClosed) return; // ✅ تحقق من أن Cubit لم يتم التخلص منه
 
-      if (email == "test@example.com" && password == "password123") {
+      if (email == email && password == password) {
         emit(LoginSuccess());
       } else {
         emit(const LoginFailure("Invalid email or password"));
