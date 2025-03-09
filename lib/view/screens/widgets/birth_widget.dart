@@ -36,7 +36,7 @@ class BirthWidget extends StatelessWidget {
           decoration: InputDecoration(
             labelText: 'Birth of date',
             hintText: "YYYY-MM-DD",
-
+            suffixIcon: Icon(Icons.calendar_month_rounded),
             fillColor: Colors.white, // ✅ Matches container color
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),

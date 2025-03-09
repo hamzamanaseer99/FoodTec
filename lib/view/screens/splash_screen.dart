@@ -145,7 +145,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   }
 
   Future<void> _navigateToNextScreen() async {
-    await Future.delayed(Duration(seconds: 5)); // مدة عرض شاشة الـ Splash
+    await Future.delayed(Duration(seconds: 3)); // مدة عرض شاشة الـ Splash
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool hasSeenIntro = prefs.getBool('hasSeenIntroPages') ?? false;
