@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodtek/cubit/login_cubit.dart';
-import 'package:foodtek/homescreen.dart';
 import 'package:foodtek/view/screens/signup_screen.dart';
 import 'package:foodtek/view/screens/widgets/email_widget.dart';
 import 'package:foodtek/view/screens/widgets/password_widget.dart';
 import 'package:foodtek/view/screens/widgets/social_loginbutton_widget.dart';
+
+import '../../cubit/login_cubit.dart';
+import '../../homescreen.dart';
 
 
 class LoginScreen extends StatefulWidget {
