@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Stack(
         children: [
           Image.asset(
-            'assets/image/Pattern.png',
+            'assets/images/Pattern.png',
             fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,
