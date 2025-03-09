@@ -4,10 +4,10 @@ import 'package:foodtek/view/screens/signup_screen.dart';
 import 'package:foodtek/view/screens/widgets/email_widget.dart';
 import 'package:foodtek/view/screens/widgets/password_widget.dart';
 import 'package:foodtek/view/screens/widgets/social_loginbutton_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../cubit/login_cubit.dart';
 import '../../homescreen.dart';
-
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -21,7 +21,39 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
   bool rememberMe = false;
 
-  void _handleLogin(BuildContext context) {
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedCredentials();
+  }
+
+  /// ✅ تحميل البريد وكلمة المرور إذا كان Remember Me مفعّلًا
+  Future<void> _loadSavedCredentials() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      rememberMe = prefs.getBool('rememberMe') ?? false;
+      if (rememberMe) {
+        emailController.text = prefs.getString('savedEmail') ?? "";
+        passwordController.text = prefs.getString('savedPassword') ?? "";
+      }
+    });
+  }
+
+  /// ✅ حفظ البريد وكلمة المرور إذا كان Remember Me مفعّلًا
+  Future<void> _saveCredentials(String email, String password) async {
+    final prefs = await SharedPreferences.getInstance();
+    if (rememberMe) {
+      await prefs.setString('savedEmail', email);
+      await prefs.setString('savedPassword', password);
+      await prefs.setBool('rememberMe', true);
+    } else {
+      await prefs.remove('savedEmail');
+      await prefs.remove('savedPassword');
+      await prefs.setBool('rememberMe', false);
+    }
+  }
+
+  void _handleLogin(BuildContext context) async {
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
 
@@ -39,6 +71,9 @@ class _LoginScreenState extends State<LoginScreen> {
       );
       return;
     }
+
+    /// ✅ حفظ البيانات بعد التحقق من صحة المدخلات
+    await _saveCredentials(email, password);
 
     context.read<LoginCubit>().login(email, password);
   }
