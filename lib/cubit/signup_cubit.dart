@@ -57,8 +57,8 @@ class SignupCubit extends Cubit<SignupState> {
     if (!phoneRegex.hasMatch(phoneNumber)) {
       return 'Invalid phone number. Must start with 077, 078, or 079 and be 10 digits long.';
     }
-    if (password.length < 6) {
-      return "Password must be at least 6 characters";
+    if (!RegExp(r"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{6,}$").hasMatch(password)) {
+      return "Password must contain at least:\n- One uppercase letter\n- One lowercase letter\n- One number\n- One special character";
     }
     if (password != confirmPassword) {
       return "Passwords do not match";
