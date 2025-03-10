@@ -49,7 +49,7 @@ class SignupCubit extends Cubit<SignupState> {
     if (!RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").hasMatch(email)) {
       return "Invalid email format";
     }
-    if (!RegExp(r"^\d{4}-\d{2}-\d{2}$").hasMatch(birthDate)) {
+    if (!RegExp(r"^\d{2}-\d{2}-\d{4}$").hasMatch(birthDate)) {
       return "Birth Date must be in YYY-DD-MM format";
     }
 
