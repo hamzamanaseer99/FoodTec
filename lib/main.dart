@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LocationCubit(LocationRepository()),),
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => SignupCubit()),
+
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
