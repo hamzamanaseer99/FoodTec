@@ -145,7 +145,7 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => const OtpScreen()),
+                                    MaterialPageRoute(builder: (context) => const OtpVerificationScreen()),
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
