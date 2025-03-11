@@ -49,16 +49,16 @@ class SignupCubit extends Cubit<SignupState> {
     if (!RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").hasMatch(email)) {
       return "Invalid email format";
     }
-    if (!RegExp(r"^\d{4}-\d{2}-\d{2}$").hasMatch(birthDate)) {
+    if (!RegExp(r"^\d{2}-\d{2}-\d{4}$").hasMatch(birthDate)) {
       return "Birth Date must be in YYY-DD-MM format";
     }
 
-    final RegExp phoneRegex = RegExp(r'^(077|078|079)\d{7}$');
+    final RegExp phoneRegex = RegExp(r'^(77|78|79)\d{7}$');
     if (!phoneRegex.hasMatch(phoneNumber)) {
       return 'Invalid phone number. Must start with 077, 078, or 079 and be 10 digits long.';
     }
-    if (password.length < 6) {
-      return "Password must be at least 6 characters";
+    if (!RegExp(r"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{6,}$").hasMatch(password)) {
+      return "Password must contain at least:\n- One uppercase letter\n- One lowercase letter\n- One number\n- One special character";
     }
     if (password != confirmPassword) {
       return "Passwords do not match";

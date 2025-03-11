@@ -100,7 +100,7 @@ class PhoneWidget extends StatelessWidget {
           ),
           decoration: InputDecoration(
             labelText: 'Phone Number',
-            hintText: "079/077/078",
+            hintText: "79/77/78",
             filled: true, // Ensure the background is filled
             fillColor: Colors.white, // ✅ Matches container color
             border: OutlineInputBorder(
