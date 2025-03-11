@@ -2,6 +2,7 @@ C/C++ Structured Logs
 q
 oC:\Users\DELL\Documents\GitHub\FoodTec\android\app\.cxx\Debug\2925526j\armeabi-v7a\additional_project_files.txtC
 A
+<<<<<<< Updated upstream
 ?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	¶¥ í×2 ªÖàÃ×2p
 n
 lC:\Users\DELL\Documents\GitHub\FoodTec\android\app\.cxx\Debug\2925526j\armeabi-v7a\android_gradle_build.json	¶¥ í×2È ²ÖàÃ×2u
@@ -26,3 +27,29 @@ l
 jC:\Users\DELL\Documents\GitHub\FoodTec\android\app\.cxx\Debug\2925526j\armeabi-v7a\symbol_folder_index.txt	¸¥ í×2a ñÖàÃ×2W
 U
 SC:\src\flutter\flutter\packages\flutter_tools\gradle\src\main\groovy\CMakeLists.txt	¸¥ í×2§ øÞ•±×2
+=======
+?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	ÕÁ”Ø2 ªÖàÃ×2p
+n
+lC:\Users\DELL\Documents\GitHub\FoodTec\android\app\.cxx\Debug\2925526j\armeabi-v7a\android_gradle_build.json	ÕÁ”Ø2È ²ÖàÃ×2u
+s
+qC:\Users\DELL\Documents\GitHub\FoodTec\android\app\.cxx\Debug\2925526j\armeabi-v7a\android_gradle_build_mini.json	ÕÁ”Ø2¥ ÐÖàÃ×2b
+`
+^C:\Users\DELL\Documents\GitHub\FoodTec\android\app\.cxx\Debug\2925526j\armeabi-v7a\build.ninja	ÕÁ”Ø2ŠÓ ñÓàÃ×2f
+d
+bC:\Users\DELL\Documents\GitHub\FoodTec\android\app\.cxx\Debug\2925526j\armeabi-v7a\build.ninja.txt	ÕÁ”Ø2k
+i
+gC:\Users\DELL\Documents\GitHub\FoodTec\android\app\.cxx\Debug\2925526j\armeabi-v7a\build_file_index.txt	ÕÁ”Ø2S òÖàÃ×2l
+j
+hC:\Users\DELL\Documents\GitHub\FoodTec\android\app\.cxx\Debug\2925526j\armeabi-v7a\compile_commands.json	ÕÁ”Ø2p
+n
+lC:\Users\DELL\Documents\GitHub\FoodTec\android\app\.cxx\Debug\2925526j\armeabi-v7a\compile_commands.json.bin	ÖÁ”Ø2	v
+t
+rC:\Users\DELL\Documents\GitHub\FoodTec\android\app\.cxx\Debug\2925526j\armeabi-v7a\metadata_generation_command.txt	ÖÁ”Ø2
+ã ×ÖàÃ×2i
+g
+eC:\Users\DELL\Documents\GitHub\FoodTec\android\app\.cxx\Debug\2925526j\armeabi-v7a\prefab_config.json	ÖÁ”Ø2( ðÖàÃ×2n
+l
+jC:\Users\DELL\Documents\GitHub\FoodTec\android\app\.cxx\Debug\2925526j\armeabi-v7a\symbol_folder_index.txt	ÖÁ”Ø2a ñÖàÃ×2W
+U
+SC:\src\flutter\flutter\packages\flutter_tools\gradle\src\main\groovy\CMakeLists.txt	ÖÁ”Ø2§ øÞ•±×2
+>>>>>>> Stashed changes

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodtek/view/screens/reset_password_screen.dart';
 import 'package:foodtek/view/screens/signup_screen.dart';
 import 'package:foodtek/view/screens/widgets/email_widget.dart';
 import 'package:foodtek/view/screens/widgets/password_widget.dart';
@@ -198,7 +199,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ),
                                   TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context)=>ResetPasswordScreen(),
+                                          ),
+                                      );
+                                    },
                                     child: const Text(
                                       'Forgot password',
                                       style: TextStyle(
