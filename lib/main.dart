@@ -22,6 +22,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/location_cubit.dart';
 import 'cubit/login_cubit.dart';
+import 'cubit/reset_password_cubit.dart';
 import 'cubit/signup_cubit.dart';
 import 'model/location_repository.dart';
 import 'view/screens/splash_screen.dart';
@@ -41,11 +42,12 @@ class MyApp extends StatelessWidget {
     );
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => LocationCubit(LocationRepository()),),
-        BlocProvider(create: (context) => LoginCubit()),
-        BlocProvider(create: (context) => SignupCubit()),
 
-      ],
+          BlocProvider(create: (context) => LocationCubit(LocationRepository())),
+          BlocProvider(create: (context) => LoginCubit()),
+          BlocProvider(create: (context) => SignupCubit()),
+        BlocProvider(create: (context) => ResetPasswordCubit()),
+        ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
 
