@@ -473,8 +473,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/services.dart';
+import 'package:foodtek/view/screens/rest_screen.dart';
 import '../../cubit/otp_cubit.dart';
- // Import the cubit
+
+// Import the cubit
 class OtpVerificationScreen extends StatefulWidget {
   const OtpVerificationScreen({super.key});
 
@@ -532,12 +534,16 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 ),
               ),
               BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5), // Apply blur effect
+                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                // Apply blur effect
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(24),
                     child: Container(
-                      width: MediaQuery.of(context).size.width * 0.9,
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width * 0.9,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(12),
@@ -598,11 +604,14 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                               children: [
                                 ElevatedButton(
                                   onPressed: () {
+                                    Navigator.push(context, MaterialPageRoute(
+                                        builder: (context) => ResetScreen()));
                                     // Verify code and proceed to the next step
                                   },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color(0xff25AE4B),
-                                    minimumSize: const Size(double.infinity, 50),
+                                    minimumSize: const Size(
+                                        double.infinity, 50),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
