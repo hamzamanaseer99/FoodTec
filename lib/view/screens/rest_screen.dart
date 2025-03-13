@@ -630,6 +630,9 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:foodtek/view/screens/widgets/confirm_password_widget.dart';
+import 'package:foodtek/view/screens/widgets/new_password_widget.dart';
+import 'package:foodtek/view/screens/widgets/password_widget.dart';
 import 'dart:ui';  // لإضافة تأثير الـ blur
 import '../../utils/password_validator.dart';
 import 'login_screen.dart';
@@ -712,6 +715,8 @@ class _ResetScreenState extends State<ResetScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.green,
       body: Stack(
@@ -729,11 +734,11 @@ class _ResetScreenState extends State<ResetScreen> {
             child: Column(
               children: [
                 const SizedBox(height: 74),
-                const Center(
+                Center(
                   child: Text(
                     'Foodtek',
                     style: TextStyle(
-                      fontSize: 80,
+                      fontSize: screenWidth * 0.12 < 72 ? screenWidth * 0.12 : 72,
                       color: Colors.white,
                       fontFamily: "Protest Riot",
                     ),
@@ -760,11 +765,14 @@ class _ResetScreenState extends State<ResetScreen> {
                             ],
                           ),
                           const SizedBox(height: 5),
-                          const Align(
+                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'Reset Password',
-                              style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
+                              style: TextStyle(
+                                  fontSize: screenWidth * 0.05 ,
+                                  fontWeight: FontWeight.w700
+                              ),
                             ),
                           ),
                           const SizedBox(height: 10),
@@ -773,11 +781,11 @@ class _ResetScreenState extends State<ResetScreen> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                const Text(
+                                 Text(
                                   "Want to try with my current password?",
                                   textAlign: TextAlign.start,
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: screenWidth * 0.02 ,
                                     color: Colors.grey,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -794,53 +802,37 @@ class _ResetScreenState extends State<ResetScreen> {
                                       MaterialPageRoute(builder: (context) => const LoginScreen()),
                                     );
                                   },
-                                  child: const Text(
+                                  child:  Text(
                                     " Login ",
                                     style: TextStyle(
                                       color: Color(0xff25AE4B),
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 12,
+                                      fontSize: screenWidth * 0.02 ,
                                     ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          SizedBox(height: 20),
-                          TextField(
-                            controller: passwordController,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              labelText: "New Password",
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          TextField(
-                            controller: confirmPasswordController,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              labelText: "Confirm Password",
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                          ),
+                          SizedBox(height: 24),
+                          NewPasswordWidget(passwordEditingController: passwordController),
+                          SizedBox(height: 16),
+                         ConfirmPasswordWidget(confirmPasswordEditingController: confirmPasswordController),
                           const SizedBox(height: 24),
                           ElevatedButton(
                             onPressed: updatePassword,
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.green,
+                              backgroundColor:  Color(0xff25AE4B),
                               minimumSize: const Size(double.infinity, 50),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            child: const Text(
+                            child:  Text(
                               "Update Password",
-                              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white),
+                              style: TextStyle(
+                                  fontSize: screenWidth * 0.033,
+                                  fontWeight: FontWeight.w500, color: Colors.white),
                             ),
                           ),
                         ],
