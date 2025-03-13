@@ -15,133 +15,178 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Colors.green,
       body: Stack(
         children: [
+          /// 🔹 **الخلفية**
           Image.asset(
             'assets/images/Pattern.png',
             fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,
           ),
+
+          /// 🔹 **تمرير عمودي مع `IntrinsicHeight` لحل المشكلة**
           SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 74),
-                const Center(
-                  child: Text(
-                    'Foodtek',
-                    style: TextStyle(
-                      fontSize: 80,
-                      color: Colors.white,
-                      fontFamily: "Protest Riot",
+            physics: const BouncingScrollPhysics(),
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min, // 🟢 يمنع التمدد غير الضروري
+                  children: [
+                    SizedBox(height: screenHeight * 0.08),
+
+                    /// 🔹 **اسم التطبيق "Foodtek"**
+                    Center(
+                      child: Text(
+                        'Foodtek',
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.1,
+                          color: Colors.white,
+                          fontFamily: "Protest Riot",
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width *
-                        0.9, // جعل الحجم متجاوب
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 24, horizontal: 24),
+
+                    SizedBox(height: screenHeight * 0.06),
+
+                    /// 🔹 **بطاقة الإدخال (Container) بدون `height` ثابت**
+                    Container(
+                      width: screenWidth * 0.9,
+                      padding: EdgeInsets.symmetric(
+                        vertical: screenHeight * 0.03,
+                        horizontal: screenWidth * 0.06,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min, // 🟢 مهم جدًا لحل مشكلة `overflow`
                         children: [
-                          /// 🔹 **Row لزر الرجوع**
+                          /// 🔹 **زر الرجوع**
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               IconButton(
                                 onPressed: () => Navigator.pop(context),
-                                icon: const Icon(Icons.arrow_back, size: 24),
+                                icon: const Icon(Icons.arrow_back, size: 20),
                               ),
                               const SizedBox(width: 4),
-                              const Text(
-                                "Back to",
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                  padding: EdgeInsets.zero,
-                                  minimumSize: Size(0, 0),
-                                  tapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                                ),
-                                onPressed: () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                        const LoginScreen()),
+
+                              /// 🔹 **حجم الخط الديناميكي**
+                              Builder(
+                                builder: (context) {
+                                  double fontSize = (screenWidth * 0.030).clamp(10, 10);
+
+                                  return Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        "Back to",
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: fontSize,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      TextButton(
+                                        style: TextButton.styleFrom(
+                                          padding: EdgeInsets.zero,
+                                          minimumSize: const Size(0, 0),
+                                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                        ),
+                                        onPressed: () {
+                                          Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => const LoginScreen()),
+                                          );
+                                        },
+                                        child: Text(
+                                          " Login ",
+                                          style: TextStyle(
+                                            color: const Color(0xff25AE4B),
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: fontSize,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        "page",
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: fontSize,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
                                   );
                                 },
-                                child: const Text(
-                                  " Login ",
-                                  style: TextStyle(
-                                    color: Color(0xff25AE4B),
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                              const Text(
-                                "page",
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
                               ),
                             ],
                           ),
-                          const SizedBox(height: 24),
+
+                          const SizedBox(height: 15),
 
                           /// 🔹 **عنوان الصفحة**
-                          const Center(
+                          Center(
                             child: Text(
-                              'Reset Password', // ✅ تم تصحيح الخطأ الإملائي
+                              'Reset Password',
                               style: TextStyle(
-                                fontSize: 32,
+                                fontSize: screenWidth * 0.06,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),
-                          const SizedBox(height: 12),
+                          const SizedBox(height: 8),
 
                           /// 🔹 **النص التوضيحي**
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 12),
-                            child: Center(
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
+                            child:  Center(
                               child: Text(
                                 "Enter your E-mail or phone and we'll send you a link to get back into your account",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: screenWidth * 0.04 ,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
                           ),
-                          const SizedBox(height: 24),
+                          const SizedBox(height: 20),
 
                           /// 🔹 **حقل إدخال البريد الإلكتروني**
-                          EmailWidget(emailEditingController: emailController),
-                          const SizedBox(height: 24),
-                          Column(
-                            children: [
-                              ElevatedButton(
+                          EmailWidget(
+                              emailEditingController: emailController
+                          ),
+                          const SizedBox(height: 20),
+
+                          /// 🔹 **زر "Send"**
+                          Center(
+                            child: Container(
+                              width: screenWidth * 0.8, // ✅ نفس عرض حقل الإدخال
+                              decoration: BoxDecoration(
+                                color: Colors.white, // ✅ خلفية بيضاء مثل الـ TextField
+                                borderRadius: BorderRadius.circular(12), // ✅ نفس حواف الإدخال
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.1), // ✅ ظل ناعم
+                                    blurRadius: 4,
+                                    spreadRadius: 1,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.push(
                                     context,
@@ -149,29 +194,35 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.green,
-                                  minimumSize: const Size(double.infinity, 50), // يجعل الزر يأخذ العرض بالكامل
+                                  backgroundColor: Color(0xff25AE4B), // ✅ جعل الزر أبيض
+                                  minimumSize: Size(screenWidth * 0.8, 50), // ✅ تناسب العرض والارتفاع
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(12), // ✅ نفس الزوايا الدائرية
+                                    side: const BorderSide(color: Color(0xffEDF1F3), width: 1), // ✅ إضافة حدود خفيفة
                                   ),
+                                  elevation: 0, // ✅ إلغاء تأثير الرفع الأساسي للاعتماد على الظل المخصص
                                 ),
-                                child: const Text(
-                                  "Send", // ✅ تغيير النص إلى "Send"
+                                child: Text(
+                                  "Send",
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: screenWidth * 0.03, // ✅ خط متجاوب
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.white,
+                                    color: Colors.white, // ✅ لون النص أسود ليكون متناسقًا مع التصميم
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          )
+
                         ],
                       ),
                     ),
-                  ),
-                )
-              ],
+
+                    /// 🔹 **إضافة تباعد لمنع الالتصاق بأسفل الشاشة**
+                    SizedBox(height: screenHeight * 0.05),
+                  ],
+                ),
+              ),
             ),
           ),
         ],

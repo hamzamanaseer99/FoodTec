@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodtek/view/screens/reset_password_screen.dart';
-import 'package:foodtek/view/screens/signup_screen.dart';
-import 'package:foodtek/view/screens/widgets/email_widget.dart';
-import 'package:foodtek/view/screens/widgets/password_widget.dart';
-import 'package:foodtek/view/screens/widgets/social_loginbutton_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../cubit/login_cubit.dart';
 import '../../homescreen.dart';
+import 'reset_password_screen.dart';
+import 'signup_screen.dart';
+import 'widgets/email_widget.dart';
+import 'widgets/password_widget.dart';
+import 'widgets/social_loginbutton_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -28,7 +27,6 @@ class _LoginScreenState extends State<LoginScreen> {
     _loadSavedCredentials();
   }
 
-  /// ✅ تحميل البريد وكلمة المرور إذا كان Remember Me مفعّلًا
   Future<void> _loadSavedCredentials() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -40,7 +38,6 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  /// ✅ حفظ البريد وكلمة المرور إذا كان Remember Me مفعّلًا
   Future<void> _saveCredentials(String email, String password) async {
     final prefs = await SharedPreferences.getInstance();
     if (rememberMe) {
@@ -73,9 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    /// ✅ حفظ البيانات بعد التحقق من صحة المدخلات
     await _saveCredentials(email, password);
-
     context.read<LoginCubit>().login(email, password);
   }
 
@@ -92,47 +87,49 @@ class _LoginScreenState extends State<LoginScreen> {
             height: double.infinity,
           ),
           SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 74),
-                const Center(
-                  child: Text(
-                    'Foodtek',
-                    style: TextStyle(
-                      fontSize: 80,
-                      color: Colors.white,
-                      fontFamily: "Protest Riot",
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                double screenWidth = constraints.maxWidth;
+                double containerWidth = screenWidth * 0.9;
+                if (screenWidth > 600) containerWidth = 500; // تثبيت العرض للشاشات الكبيرة
+
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 80),
+                    Center(
+                      child: Text(
+                        'Foodtek',
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.12 < 72 ? screenWidth * 0.12 : 72,
+                          color: Colors.white,
+                          fontFamily: "Protest Riot",
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                const SizedBox(height: 42),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Container(
-                    width: 363,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: BlocConsumer<LoginCubit, LoginState>(
-                      listener: (context, state) {
-                        if (state is LoginSuccess) {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Homescreen()),
-                          );
-                        } else if (state is LoginFailure) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(state.error)),
-                          );
-                        }
-                      },
-                      builder: (context, state) {
-                        return Padding(
-                          padding: const EdgeInsets.all(24.0),
-                          child: Column(
+                    const SizedBox(height: 42),
+                    Container(
+                      width: containerWidth,
+                      padding: const EdgeInsets.all(24),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: BlocConsumer<LoginCubit, LoginState>(
+                        listener: (context, state) {
+                          if (state is LoginSuccess) {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => Homescreen()),
+                            );
+                          } else if (state is LoginFailure) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(state.error)),
+                            );
+                          }
+                        },
+                        builder: (context, state) {
+                          return Column(
                             children: [
                               const Text(
                                 'Login',
@@ -143,29 +140,48 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               const SizedBox(height: 12),
+                              _SignUpText(screenWidth: screenWidth),
+                              EmailWidget(emailEditingController: emailController),
+                              const SizedBox(height: 16),
+                              PasswordWidget(passwordEditingController: passwordController),
+                              const SizedBox(height: 12),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment:MainAxisAlignment.spaceAround ,
                                 children: [
-                                  const Text(
-                                    "Don’t have an account?",
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.grey,
-                                        fontWeight: FontWeight.w700),
+                                  Row(
+                                    children: [
+                                      Checkbox(
+                                        value: rememberMe,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            rememberMe = value ?? false;
+                                          });
+                                        },
+                                        activeColor: Colors.green,
+                                      ),
+                                      Text(
+                                        "Remember Me",
+                                        style: TextStyle(
+                                          fontSize: screenWidth < 350 ? 10 : 12, // تصغير الخط للشاشات الصغيرة
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                   TextButton(
                                     onPressed: () {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                            const SignupScreen()),
+                                          builder: (context) => ResetPasswordScreen(),
+                                        ),
                                       );
                                     },
-                                    child: const Text(
-                                      "Sign Up",
+                                    child: Text(
+                                      'Forgot password?',
                                       style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: screenWidth < 350 ? 10 : 12, // ضبط الحجم حسب الشاشة
                                         fontWeight: FontWeight.w600,
                                         color: Colors.green,
                                       ),
@@ -173,106 +189,133 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ],
                               ),
-                              EmailWidget(emailEditingController: emailController),
-                              const SizedBox(height: 16),
-                              PasswordWidget(passwordEditingController: passwordController),
-                              const SizedBox(height: 12),
+
+
+                              const SizedBox(height: 20),
+                              state is LoginLoading
+                                  ? const Center(
+                                child: SizedBox(
+                                  width: 30,
+                                  height: 30,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 3,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                              )
+                                  : SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  onPressed: state is LoginLoading ? null : () => _handleLogin(context),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.green,
+                                    padding: const EdgeInsets.symmetric(vertical: 14),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    elevation: 3,
+                                  ),
+                                  child: Text(
+                                    "Login",
+                                    style: TextStyle(
+                                      fontSize: MediaQuery.of(context).size.width < 350 ? 16 : 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              const SizedBox(height: 20), // تباعد قبل الخط الفاصل
+
+// 🔹 خط فاصل مع "OR"
                               Row(
                                 children: [
                                   Expanded(
-                                    child: CheckboxListTile(
-                                      title: const Text(
-                                        "Remember Me",
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w700,
-                                            color: Colors.grey),
-                                      ),
-                                      value: rememberMe,
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          rememberMe = value ?? false;
-                                        });
-                                      },
-                                      controlAffinity: ListTileControlAffinity.leading,
-                                      activeColor: Colors.green,
+                                    child: Divider(
+                                      thickness: 1,
+                                      color: Colors.grey.shade400, // لون أفتح لمظهر أنيق
                                     ),
                                   ),
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context)=>ResetPasswordScreen(),
-                                          ),
-                                      );
-                                    },
-                                    child: const Text(
-                                      'Forgot password',
-                                      style: TextStyle(
-                                        fontSize: 14,
-
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.green,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 20),
-                              state is LoginLoading
-                                  ? const CircularProgressIndicator()
-                                  : ElevatedButton(
-                                onPressed: () => _handleLogin(context),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.green,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 120, vertical: 12),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                                child: const Text(
-                                  "Login",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 24),
-                              Row(
-                                children: const [
-                                  Expanded(child: Divider(thickness: 1)),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 16),
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 12), // تصغير المسافة قليلاً
                                     child: Text(
                                       "OR",
                                       style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey),
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey,
+                                      ),
                                     ),
                                   ),
-                                  Expanded(child: Divider(thickness: 1)),
+                                  Expanded(
+                                    child: Divider(
+                                      thickness: 1,
+                                      color: Colors.grey.shade400,
+                                    ),
+                                  ),
                                 ],
                               ),
                               const SizedBox(height: 24),
                               SocialLoginButtons(),
                             ],
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
+
                     ),
-                  ),
-                ),
-                const SizedBox(height: 70),
-              ],
+
+                    const SizedBox(height: 70),
+                  ],
+                );
+              },
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class _SignUpText extends StatelessWidget {
+  final double screenWidth;
+
+  const _SignUpText({required this.screenWidth});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Flexible(
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              "Don’t have an account?",
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: screenWidth < 350 ? 12 : 14,
+              ),
+            ),
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SignupScreen()),
+            );
+          },
+          child: Text(
+            "Sign Up",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              color: Colors.green,
+              fontSize: screenWidth < 350 ? 12 : 14,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
