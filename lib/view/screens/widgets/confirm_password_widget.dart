@@ -17,6 +17,7 @@ class _PasswordWidgetState extends State<ConfirmPasswordWidget> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Container(
@@ -38,10 +39,14 @@ class _PasswordWidgetState extends State<ConfirmPasswordWidget> {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
-            fontSize: 14,
+            fontSize: screenWidth * 0.03, // ✅ جعل الخط متجاوبًا
           ),
           decoration: InputDecoration(
-            labelText: 'Password',
+            contentPadding: EdgeInsets.symmetric(
+              vertical: screenWidth * 0.04, // ✅ نفس التناسب مع الشاشة
+              horizontal: screenWidth * 0.04,
+            ),
+            labelText: 'Confirm Password',
             hintText: "Enter your Password",
             suffixIcon: IconButton(
               onPressed: () {
@@ -51,6 +56,7 @@ class _PasswordWidgetState extends State<ConfirmPasswordWidget> {
               },
               icon: Icon(
                 obscureText ? Icons.visibility_off : Icons.visibility,
+                  color: Colors.grey
               ),
             ),
             fillColor: Colors.white, // ✅ Matches container color

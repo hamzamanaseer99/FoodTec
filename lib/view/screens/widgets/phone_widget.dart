@@ -75,6 +75,7 @@ class PhoneWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Container(
@@ -93,16 +94,20 @@ class PhoneWidget extends StatelessWidget {
         child: IntlPhoneField(
           controller: phoneEditingController,
          // validator: validator, // Validation logic passed from parent widget
-          style: const TextStyle(
+          style:  TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
-            fontSize: 14,
+            fontSize: screenWidth * 0.03,
           ),
           decoration: InputDecoration(
             labelText: 'Phone Number',
             hintText: "79/77/78",
             filled: true, // Ensure the background is filled
             fillColor: Colors.white, // ✅ Matches container color
+            contentPadding: EdgeInsets.symmetric(
+              vertical: screenWidth * 0.04, // ✅ نفس التناسب مع الشاشة
+              horizontal: screenWidth * 0.04,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none, // ✅ No border (shadow does the job)

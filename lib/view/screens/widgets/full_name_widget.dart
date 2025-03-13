@@ -11,6 +11,7 @@ class FullNameWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Container(
@@ -31,13 +32,16 @@ class FullNameWidget extends StatelessWidget {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
-            fontSize: 14,
+            fontSize: screenWidth * 0.03,
           ),
           decoration: InputDecoration(
             labelText: 'Full Name',
             hintText: "Enter your Name",
-
             fillColor: Colors.white, // ✅ Matches container color
+            contentPadding: EdgeInsets.symmetric(
+              vertical: screenWidth * 0.04, // ✅ نفس التناسب مع الشاشة
+              horizontal: screenWidth * 0.04,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none, // ✅ No border (shadow does the job)

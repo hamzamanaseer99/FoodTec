@@ -38,7 +38,7 @@ class EmailWidget extends StatelessWidget {
           hintText: "Enter your email",
           fillColor: Colors.white,
           contentPadding: EdgeInsets.symmetric(
-            vertical: screenWidth * 0.035, // ✅ التناسب مع الشاشة
+            vertical: screenWidth * 0.04, // ✅ التناسب مع الشاشة
             horizontal: screenWidth * 0.04,
           ),
           border: OutlineInputBorder(

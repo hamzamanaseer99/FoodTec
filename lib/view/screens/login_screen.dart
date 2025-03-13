@@ -162,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       Text(
                                         "Remember Me",
                                         style: TextStyle(
-                                          fontSize: screenWidth < 350 ? 12 : 8, // تصغير الخط للشاشات الصغيرة
+                                          fontSize: screenWidth < 350 ? 10 : 12, // تصغير الخط للشاشات الصغيرة
                                           fontWeight: FontWeight.w600,
                                           color: Colors.grey,
                                         ),
@@ -181,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Text(
                                       'Forgot password?',
                                       style: TextStyle(
-                                        fontSize: screenWidth < 350 ? 12 : 10, // ضبط الحجم حسب الشاشة
+                                        fontSize: screenWidth < 350 ? 10 : 12, // ضبط الحجم حسب الشاشة
                                         fontWeight: FontWeight.w600,
                                         color: Colors.green,
                                       ),

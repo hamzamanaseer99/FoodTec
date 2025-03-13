@@ -46,7 +46,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
           hintText: "Enter your password",
           fillColor: Colors.white,
           contentPadding: EdgeInsets.symmetric(
-            vertical: screenWidth * 0.035, // ✅ نفس التناسب مع الشاشة
+            vertical: screenWidth * 0.04, // ✅ نفس التناسب مع الشاشة
             horizontal: screenWidth * 0.04,
           ),
           border: OutlineInputBorder(

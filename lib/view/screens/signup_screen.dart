@@ -126,7 +126,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
                                 /// ✅ تحسين عرض جملة "Already have an account? Login"
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Flexible(
                                       child: FittedBox(
