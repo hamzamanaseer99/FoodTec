@@ -155,7 +155,7 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                                 "Enter your E-mail or phone and we'll send you a link to get back into your account",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: screenWidth * 0.03 ,
+                                  fontSize: screenWidth * 0.04 ,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.w500,
                                 ),
