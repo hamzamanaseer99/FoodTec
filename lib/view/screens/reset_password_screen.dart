@@ -16,7 +16,7 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
+      double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Colors.green,
@@ -155,7 +155,7 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                                 "Enter your E-mail or phone and we'll send you a link to get back into your account",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: screenWidth * 0.04 ,
+                                  fontSize: screenWidth * 0.03 ,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.w500,
                                 ),

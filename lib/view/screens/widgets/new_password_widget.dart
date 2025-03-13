@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class PasswordWidget extends StatefulWidget {
+class NewPasswordWidget extends StatefulWidget {
   final TextEditingController passwordEditingController;
 
-  const PasswordWidget({
+  const NewPasswordWidget({
     super.key,
     required this.passwordEditingController,
   });
 
   @override
-  State<PasswordWidget> createState() => _PasswordWidgetState();
+  State<NewPasswordWidget> createState() => _PasswordWidgetState();
 }
 
-class _PasswordWidgetState extends State<PasswordWidget> {
+class _PasswordWidgetState extends State<NewPasswordWidget> {
   bool obscureText = true;
 
   @override
@@ -42,16 +42,12 @@ class _PasswordWidgetState extends State<PasswordWidget> {
           fontSize: screenWidth * 0.03, // ✅ جعل الخط متجاوبًا
         ),
         decoration: InputDecoration(
-          labelText: 'Password',
-          labelStyle: TextStyle(
-            fontSize: screenWidth * 0.025,
-
-          ),
-          hintText: "Enter your password",
-          hintStyle: TextStyle(
-            fontSize: screenWidth * 0.025,
-
-          ),
+          labelText: 'New Password', labelStyle: TextStyle(
+          fontSize: screenWidth * 0.025,
+        ),
+          hintText: "Enter new password",hintStyle: TextStyle(
+          fontSize: screenWidth * 0.025,
+        ),
           fillColor: Colors.white,
           contentPadding: EdgeInsets.symmetric(
             vertical: screenWidth * 0.04, // ✅ نفس التناسب مع الشاشة

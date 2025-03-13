@@ -46,8 +46,12 @@ class _PasswordWidgetState extends State<ConfirmPasswordWidget> {
               vertical: screenWidth * 0.04, // ✅ نفس التناسب مع الشاشة
               horizontal: screenWidth * 0.04,
             ),
-            labelText: 'Confirm Password',
-            hintText: "Enter your Password",
+            labelText: 'Confirm Password',labelStyle: TextStyle(
+            fontSize: screenWidth * 0.025,
+          ),
+            hintText: "Enter your Password",hintStyle: TextStyle(
+            fontSize: screenWidth * 0.025,
+          ),
             suffixIcon: IconButton(
               onPressed: () {
                 setState(() {

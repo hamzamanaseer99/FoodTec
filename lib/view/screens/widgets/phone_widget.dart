@@ -101,7 +101,14 @@ class PhoneWidget extends StatelessWidget {
           ),
           decoration: InputDecoration(
             labelText: 'Phone Number',
-            hintText: "79/77/78",
+            labelStyle: TextStyle(
+              fontSize: screenWidth * 0.025,
+
+            ),
+            hintText: "79/77/78",hintStyle: TextStyle(
+            fontSize: screenWidth * 0.025,
+
+          ),
             filled: true, // Ensure the background is filled
             fillColor: Colors.white, // ✅ Matches container color
             contentPadding: EdgeInsets.symmetric(

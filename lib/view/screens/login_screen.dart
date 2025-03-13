@@ -141,10 +141,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               const SizedBox(height: 12),
                               _SignUpText(screenWidth: screenWidth),
+                              const SizedBox(height: 24),
                               EmailWidget(emailEditingController: emailController),
                               const SizedBox(height: 16),
                               PasswordWidget(passwordEditingController: passwordController),
-                              const SizedBox(height: 12),
+                              const SizedBox(height: 16),
                               Row(
                               mainAxisAlignment:MainAxisAlignment.spaceAround ,
                                 children: [
@@ -157,12 +158,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                             rememberMe = value ?? false;
                                           });
                                         },
-                                        activeColor: Colors.green,
+                                        activeColor:  Color(0xff25AE4B),
                                       ),
                                       Text(
                                         "Remember Me",
                                         style: TextStyle(
-                                          fontSize: screenWidth < 350 ? 10 : 12, // تصغير الخط للشاشات الصغيرة
+                                          fontSize: screenWidth * 0.020, // تصغير الخط للشاشات الصغيرة
                                           fontWeight: FontWeight.w600,
                                           color: Colors.grey,
                                         ),
@@ -181,9 +182,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Text(
                                       'Forgot password?',
                                       style: TextStyle(
-                                        fontSize: screenWidth < 350 ? 10 : 12, // ضبط الحجم حسب الشاشة
+                                        fontSize: screenWidth * 0.025, // ضبط الحجم حسب الشاشة
                                         fontWeight: FontWeight.w600,
-                                        color: Colors.green,
+                                        color: Color(0xff25AE4B),
                                       ),
                                     ),
                                   ),
@@ -191,7 +192,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
 
 
-                              const SizedBox(height: 20),
+                              const SizedBox(height: 24),
                               state is LoginLoading
                                   ? const Center(
                                 child: SizedBox(
@@ -199,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   height: 30,
                                   child: CircularProgressIndicator(
                                     strokeWidth: 3,
-                                    color: Colors.green,
+                                    color: Color(0xff25AE4B),
                                   ),
                                 ),
                               )
@@ -208,7 +209,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: ElevatedButton(
                                   onPressed: state is LoginLoading ? null : () => _handleLogin(context),
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.green,
+                                    backgroundColor: Color(0xff25AE4B),
                                     padding: const EdgeInsets.symmetric(vertical: 14),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
@@ -218,7 +219,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: Text(
                                     "Login",
                                     style: TextStyle(
-                                      fontSize: MediaQuery.of(context).size.width < 350 ? 16 : 18,
+                                      fontSize: screenWidth * 0.035,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                     ),
@@ -226,9 +227,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
 
-                              const SizedBox(height: 20), // تباعد قبل الخط الفاصل
+                              const SizedBox(height: 24), // تباعد قبل الخط الفاصل
 
-// 🔹 خط فاصل مع "OR"
                               Row(
                                 children: [
                                   Expanded(
@@ -237,12 +237,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                       color: Colors.grey.shade400, // لون أفتح لمظهر أنيق
                                     ),
                                   ),
-                                  const Padding(
+                                   Padding(
                                     padding: EdgeInsets.symmetric(horizontal: 12), // تصغير المسافة قليلاً
                                     child: Text(
                                       "OR",
                                       style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: screenWidth * 0.025,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.grey,
                                       ),
@@ -294,7 +294,8 @@ class _SignUpText extends StatelessWidget {
               "Don’t have an account?",
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: screenWidth < 350 ? 12 : 14,
+                fontSize: screenWidth * 0.035,
+
               ),
             ),
           ),
@@ -311,7 +312,8 @@ class _SignUpText extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.w600,
               color: Colors.green,
-              fontSize: screenWidth < 350 ? 12 : 14,
+              fontSize: screenWidth * 0.03,
+
             ),
           ),
         ),

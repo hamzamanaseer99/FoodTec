@@ -35,8 +35,15 @@ class FullNameWidget extends StatelessWidget {
             fontSize: screenWidth * 0.03,
           ),
           decoration: InputDecoration(
-            labelText: 'Full Name',
+            labelText: 'Full Name',labelStyle: TextStyle(
+            fontSize: screenWidth * 0.025,
+
+          ),
             hintText: "Enter your Name",
+            hintStyle:TextStyle(
+            fontSize: screenWidth * 0.025,
+
+          ),
             fillColor: Colors.white, // ✅ Matches container color
             contentPadding: EdgeInsets.symmetric(
               vertical: screenWidth * 0.04, // ✅ نفس التناسب مع الشاشة

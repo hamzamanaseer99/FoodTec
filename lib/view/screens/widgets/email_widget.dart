@@ -35,7 +35,15 @@ class EmailWidget extends StatelessWidget {
         ),
         decoration: InputDecoration(
           labelText: 'Email',
+          labelStyle: TextStyle(
+            fontSize: screenWidth * 0.025,
+
+          ),
           hintText: "Enter your email",
+          hintStyle: TextStyle(
+            fontSize: screenWidth * 0.025,
+
+          ),
           fillColor: Colors.white,
           contentPadding: EdgeInsets.symmetric(
             vertical: screenWidth * 0.04, // ✅ التناسب مع الشاشة

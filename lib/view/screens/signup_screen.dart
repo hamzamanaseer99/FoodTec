@@ -118,7 +118,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 Text(
                                   'Sign up',
                                   style: TextStyle(
-                                    fontSize: screenWidth * 0.08,
+                                    fontSize: screenWidth * 0.07,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
@@ -135,7 +135,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                           "Already have an account?",
                                           style: TextStyle(
                                             color: Colors.grey,
-                                            fontSize: screenWidth < 350 ? 12 : 14, // تصغير الخط للشاشات الصغيرة
+                                            fontSize: screenWidth < 350 ? 12 : 13, // تصغير الخط للشاشات الصغيرة
                                           ),
                                         ),
                                       ),
@@ -152,7 +152,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                         style: TextStyle(
                                           color: Color(0xff25AE4B),
                                           fontWeight: FontWeight.w600,
-                                          fontSize: screenWidth < 350 ? 12 : 14,
+                                            fontSize: screenWidth * 0.03,
                                         ),
                                       ),
                                     ),
@@ -191,7 +191,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   child: ElevatedButton(
                                     onPressed: () => _handleSignup(context),
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.green,
+                                      backgroundColor: Color(0xff25AE4B),
                                       padding: const EdgeInsets.symmetric(
                                         vertical: 12,
                                       ),
@@ -199,10 +199,10 @@ class _SignupScreenState extends State<SignupScreen> {
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                     ),
-                                    child: const Text(
+                                    child:  Text(
                                       "Register",
                                       style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: screenWidth * 0.035,
                                         color: Colors.white,
                                       ),
                                     ),
