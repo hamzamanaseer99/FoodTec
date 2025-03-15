@@ -32,10 +32,13 @@ class IntroNavigationButtons extends StatelessWidget {
               borderRadius: BorderRadius.circular(25),
             ),
             shadowColor: Colors.transparent,
+            elevation: 0,
           ),
           child: Ink(
+
             decoration: BoxDecoration(
               gradient: LinearGradient(
+
                 colors: [Color(0xFF25AE4B), Color(0xFF0F481F)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -43,15 +46,17 @@ class IntroNavigationButtons extends StatelessWidget {
               borderRadius: BorderRadius.circular(25),
             ),
             child: Container(
+
               alignment: Alignment.center,
               padding: EdgeInsets.symmetric(vertical: 14),
     child: Text('Continue', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white)),
 
             ),
           ),
+
         ),
 
-        SizedBox(height: 20),
+        SizedBox(height:  MediaQuery.of(context).size.height * 0.04),
 
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
