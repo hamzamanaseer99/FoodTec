@@ -180,7 +180,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 const SizedBox(height: 16),
                                 PasswordWidget(passwordEditingController: passwordController),
                                 const SizedBox(height: 16),
-                                ConfirmPasswordWidget(confirmPasswordEditingController: confirmPasswordController),
+                               // ConfirmPasswordWidget(confirmPasswordEditingController: confirmPasswordController),
                                 const SizedBox(height: 24),
 
                                 /// ✅ زر التسجيل
