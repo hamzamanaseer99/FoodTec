@@ -76,6 +76,9 @@ flutter:
     - assets/images/Group1.png
     - assets/images/Text.png
     - assets/images/Sandwich.png
+    - assets/menub.json
+    - assets/pizzas.json
+    - assets/sandwiches.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

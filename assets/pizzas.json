@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Margherita Pizza",
+    "description": "Classic pizza with mozzarella and tomato sauce.",
+    "price": 25.0,
+    "image": "assets/images/margarita-pizza-margherita-italian.png"
+  },
+  {
+    "name": "Pepperoni Pizza",
+    "description": "Loaded with pepperoni and melted cheese.",
+    "price": 27.5,
+    "image": "assets/images/image_17.png"
+  },
+  {
+    "name": "BBQ Chicken Pizza",
+    "description": "Barbecue sauce, grilled chicken, and onions.",
+    "price": 28.0,
+    "image": "assets/images/pizza10.png"
+  },
+  {
+    "name": "Mexican Green Wave",
+    "description": "Barbecue sauce, grilled chicken, and onions.",
+    "price": 28.0,
+    "image": "assets/images/margarita-pizza-margherita-italian.png"
+  }
+]
