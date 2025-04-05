@@ -25,8 +25,7 @@ A menu page was added to display all available categories like fast food, sandwi
 ### 5. Notifications Page
 A notifications page was created to show alerts to the user.
 
-### 6. Logos Button
-A button was added to the interface to display the logos for the app.
+
 
 ### 7. Favorite Meals Page
 A favorite meals page was added to display users' favorite meals with the ability to add and remove items from the favorites.
