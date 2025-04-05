@@ -23,3 +23,25 @@ class DotsNav extends StatelessWidget {
     );
   }
 }
+
+class DotsNav1 extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+
+    return Center(
+      child: SmoothPageIndicator(
+        controller: PageController(initialPage: 0), // لا يوجد تحكم حقيقي
+        count: 1, // عدد النقاط
+        effect: ExpandingDotsEffect(
+            activeDotColor: Colors.black12,
+            dotHeight: screenWidth * 0.015,
+            dotWidth: screenWidth * 0.040,
+            spacing: screenWidth * 0.01,
+            radius: 3
+        ),
+      ),
+    );
+  }
+}
