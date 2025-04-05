@@ -1,34 +1,112 @@
+// // import 'package:flutter/material.dart';
+// //
+// // class SandwichScreen extends StatelessWidget {
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return Scaffold(
+// //       appBar: AppBar(
+// //         title: Text("Sandwich"),
+// //         backgroundColor: Colors.green,
+// //       ),
+// //       body: Center(
+// //         child: Text(
+// //           "Welcome to the Sandwich Section!",
+// //           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+// //         ),
+// //       ),
+// //     );
+// //   }
+// // }
 // import 'package:flutter/material.dart';
 //
 // class SandwichScreen extends StatelessWidget {
+//
+//
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("Sandwich"),
-//         backgroundColor: Colors.green,
-//       ),
-//       body: Center(
-//         child: Text(
-//           "Welcome to the Sandwich Section!",
-//           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+//
+//         body: Center(
+//           child: Text("SandwichScreen Content Here"),
 //         ),
-//       ),
 //     );
 //   }
 // }
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodtek/model/product.dart';
+import 'package:foodtek/view/screens/favorite_screen.dart';
+import 'package:foodtek/view/screens/product_details_screen.dart';
 
-class SandwichScreen extends StatelessWidget {
+import '../../cubit/favorite_products_cubit.dart';
+import '../../model/productcard.dart';
 
+class SandwichScreen extends StatefulWidget {
+  @override
+  _SandwichScreenState createState() => _SandwichScreenState();
+}class _SandwichScreenState extends State<SandwichScreen> {
+  List<Product> products = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadMenu();
+  }
+
+  Future<void> loadMenu() async {
+    final String response = await rootBundle.loadString("assets/sandwiches.json");
+    final List<dynamic> data = jsonDecode(response);
+    setState(() {
+      products = data.map((json) => Product.fromJson(json)).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
-        body: Center(
-          child: Text("SandwichScreen Content Here"),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: products.isEmpty
+            ? Center(child: CircularProgressIndicator())
+            : GridView.builder(
+
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 5,
+            crossAxisSpacing: 5,
+            childAspectRatio: 0.7,
+          ),
+          itemCount: products.length,
+          itemBuilder: (context, index) {
+            final item = products[index];
+            return ProductCard(
+              item: item,
+
+              onFavoriteToggle: () {
+                if (item.isFavorite) {
+                  context.read<FavoriteProductsCubit>().removeFromFavorites(item);
+                } else {
+                  context.read<FavoriteProductsCubit>().addToFavorites(item);
+                }
+                setState(() {
+                  item.isFavorite = !item.isFavorite;
+                });
+              },
+              onOrderNow: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => ProductDetailsScreen(product: item),
+                  ),
+                );
+              },
+            );
+          },
         ),
+      ),
     );
   }
 }
