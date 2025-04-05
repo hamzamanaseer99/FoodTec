@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodtek/view/screens/presonal_screen.dart';
+import 'package:foodtek/view/screens/update_information_screen.dart';
 import 'package:foodtek/view/screens/widgets/custom_container_profile.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -54,7 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     _buildListTile('Personal information', Icons.person,onTap: () => Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => PersonalScreen()),
+                      MaterialPageRoute(builder: (context) => UpdateInformationScreen()),
                     ),
                     ),
                     _buildListTile('Language', Icons.language,
