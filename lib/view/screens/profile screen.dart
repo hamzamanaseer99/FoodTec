@@ -9,8 +9,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  bool _pushNotifications = false;
-  bool _promotionalNotifications = false;
+  bool pushNotifications = false;
+  bool promotionalNotifications = false;
 
   @override
   Widget build(BuildContext context) {
@@ -53,15 +53,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   title: 'Notifications',
                   children: [
                     _buildSwitchTile('Push Notifications', Icons.notifications,
-                        _pushNotifications, (value) {
+                        pushNotifications, (value) {
                           setState(() {
-                            _pushNotifications = value;
+                            pushNotifications = value;
                           });
                         }),
                     _buildSwitchTile('Promotional Notifications',
-                        Icons.notifications, _promotionalNotifications, (value) {
+                        Icons.notifications, promotionalNotifications, (value) {
                           setState(() {
-                            _promotionalNotifications = value;
+                            promotionalNotifications = value;
                           });
                         }),
                   ],

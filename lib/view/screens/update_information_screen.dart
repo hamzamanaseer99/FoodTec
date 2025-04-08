@@ -41,7 +41,7 @@ class _UpdateInformationScreenState extends State<UpdateInformationScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text('Update Profile'),
+        title: const Text('Profile'),
         elevation: 0,
       ),
       body: SafeArea(
@@ -107,11 +107,15 @@ class _UpdateInformationScreenState extends State<UpdateInformationScreen> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          width: 1,
+          color: Color(0xffF5F5F5),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            blurRadius: 12,
-            spreadRadius: 4,
+            color: Colors.grey.withOpacity(0.3),
+            blurRadius: 15,
+            offset: Offset(0, 0),
           ),
         ],
       ),
