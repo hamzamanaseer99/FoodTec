@@ -10,6 +10,7 @@ class AllScreen extends StatelessWidget {
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           OfferWidget(),
           SizedBox(height: 6),

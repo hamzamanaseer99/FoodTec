@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodtek/view/screens/update_information_screen.dart';
+import 'package:foodtek/view/screens/widgets/avatar_widget.dart';
 import 'package:foodtek/view/screens/widgets/custom_container_profile.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -14,7 +15,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
           title: Text('Profile'),
       ),
       body: SafeArea(
@@ -23,27 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // My Account Section
-              Center(
-                child: CircleAvatar(
-                  radius: 40, // حجم الدائرة
-                  backgroundImage: NetworkImage(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZFs01SPDw0Brlpl7_bbZadld5oZ6kVmgFWvpQI4xg3m98yz4c',
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Text(
-                'Ahmad Daboor',
-                style: TextStyle(
-                    color: Color(0xff1B1B1B), fontWeight: FontWeight.w500),
-              ),
-              Text(
-                'ahmad1709@gmail.com',
-                style: TextStyle(
-                    color: Color(0xff838383), fontWeight: FontWeight.w400),
-              ),
+              AvatarWidget(),
               SizedBox(
                 height: 24,
               ),
@@ -114,8 +97,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
                   color: Color(0xff1B1B1B),
                 ),
               ),
@@ -142,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Text(
                 text,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.w500,
                   color: textColor ?? Colors.black,
                 ),
