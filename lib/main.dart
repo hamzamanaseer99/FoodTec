@@ -22,6 +22,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/botten_nav_cubit.dart';
 import 'package:foodtek/cubit/home_cubit.dart';
+import 'package:foodtek/cubit/update_information_profile_cubit.dart';
 import 'cubit/favorite_products_cubit.dart';
 import 'cubit/location_cubit.dart';
 import 'cubit/login_cubit.dart';
@@ -52,11 +53,12 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => BottomNavCubit()),
           BlocProvider(create: (context) => HomeCubit()),
           BlocProvider(create: (context) => ResetPasswordCubit()),
-        BlocProvider(create: (_) => FavoriteProductsCubit()),        ],
+          BlocProvider(create: (_) => FavoriteProductsCubit()),
+          BlocProvider(create: (_) => UpdateInformationProfileCubit()),    ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
 
-        home: SplashScreen(), // اجعل شاشة البداية أول شاشة تظهر
+        home: SplashScreen(),
       ),
     );
   }

@@ -272,6 +272,7 @@ class TopRatedProducts extends StatelessWidget {
     return SizedBox(
       width: 170,
       child: Card(
+        color: Color(0xffFFFFFF),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
           side: BorderSide(color: Color(0xffDBF4D1)),
