@@ -34,7 +34,11 @@ class MainScreen extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SearchWidget(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+
+              child: SearchWidget(),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
               child: BlocBuilder<HomeCubit, HomeState>(
