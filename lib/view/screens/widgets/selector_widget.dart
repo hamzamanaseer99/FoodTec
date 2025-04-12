@@ -1,76 +1,78 @@
 import 'package:flutter/material.dart';
+import 'package:foodtek/responsive.dart';
 
-class QuantitySelector extends StatefulWidget {
+class QuantitySelector extends StatelessWidget {
+  final int quantity;
+  final ValueChanged<int> onIncrease;
+  final ValueChanged<int> onDecrease;
+
+  const QuantitySelector({
+    super.key,
+    required this.quantity,
+    required this.onIncrease,
+    required this.onDecrease,
+  });
+
   @override
-  _QuantitySelectorState createState() => _QuantitySelectorState();
-}
-
-class _QuantitySelectorState extends State<QuantitySelector> {
-  int _quantity = 1;
-
-  void _increaseQuantity() {
-    setState(() {
-      _quantity++;
-    });
-  }
-
-  void _decreaseQuantity() {
-    if (_quantity > 1) {
-      setState(() {
-        _quantity--;
-      });
-    }
-  }
-
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        // Decrease button
         Container(
-          height: 32,
-          width: 32,
+          height: responsiveHeight(context, 40),
+          width: responsiveWidth(context, 40),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: Color(0xff009944),
+              width: 1,
             ),
+
           ),
           child: IconButton(
-            icon: Icon(Icons.remove,
-              color: Color(0xff009944),),
-            onPressed: _decreaseQuantity,
-            iconSize: 18, // Adjust the icon size to fit inside the container
+            icon: Icon(
+              Icons.remove,
+              color: Color(0xff009944),
+              size: responsiveWidth(context, 22),
+            ),
+            onPressed: () => onDecrease(quantity - 1),
           ),
         ),
-        SizedBox(
-          width: 20,
-        ),
+        SizedBox(width: 20), // Spacer between buttons and quantity text
+
+        // Quantity text
         Text(
-          '$_quantity',
-          style: TextStyle(fontSize: 18),
+          '$quantity',
+          style: TextStyle(
+            fontSize: responsiveWidth(context, 22),
+            fontWeight: FontWeight.bold, // Make the quantity text bold
+            color: Colors.black,
+          ),
         ),
+
         SizedBox(
-          width: 20,
-        ),
+            width: responsiveWidth(context, 20)), // Spacer between buttons and quantity text
+
+        // Increase button
         Container(
-          height: 32,
-          width: 32,
+          height: responsiveHeight(context, 40),
+          width: responsiveWidth(context, 40),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             color: Color(0xff009944),
+
           ),
           child: IconButton(
             icon: Icon(
               Icons.add,
               color: Colors.white,
+              size: responsiveWidth(context, 22),
             ),
-            onPressed: _increaseQuantity,
-            iconSize: 18, // Adjust the icon size to fit inside the container
+            onPressed: () => onIncrease(quantity + 1),
           ),
         ),
       ],
     );
   }
-
 }
-

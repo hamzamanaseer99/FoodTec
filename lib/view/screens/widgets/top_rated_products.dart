@@ -281,7 +281,8 @@ class TopRatedProducts extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 14, top: 10),
+              padding: const EdgeInsets.only(
+                  left: 14, top: 10),
               child: Row(
                 children: [
                   Icon(Icons.star, color: Colors.orange, size: 18),

@@ -1,26 +1,9 @@
-// import 'package:flutter/material.dart';
-// import 'splash_screen.dart';
-//
-// void main() {
-//   runApp(MyApp());
-// }
-//
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Foodtek',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       home: SplashScreen(),
-//     );
-//   }
-// }
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foodtek/cubit/botten_nav_cubit.dart';
+import 'package:foodtek/cubit/cart_cubit.dart';
 import 'package:foodtek/cubit/home_cubit.dart';
 import 'package:foodtek/cubit/update_information_profile_cubit.dart';
 import 'cubit/favorite_products_cubit.dart';
@@ -44,21 +27,29 @@ class MyApp extends StatelessWidget {
         statusBarIconBrightness: Brightness.dark,
       ),
     );
+
     return MultiBlocProvider(
       providers: [
-
-          BlocProvider(create: (context) => LocationCubit(LocationRepository())),
-          BlocProvider(create: (context) => LoginCubit()),
-          BlocProvider(create: (context) => SignupCubit()),
-          BlocProvider(create: (context) => BottomNavCubit()),
-          BlocProvider(create: (context) => HomeCubit()),
-          BlocProvider(create: (context) => ResetPasswordCubit()),
-          BlocProvider(create: (_) => FavoriteProductsCubit()),
-          BlocProvider(create: (_) => UpdateInformationProfileCubit()),    ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-
-        home: SplashScreen(),
+        BlocProvider(create: (context) => LocationCubit(LocationRepository())),
+        BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => SignupCubit()),
+        BlocProvider(create: (context) => BottomNavCubit()),
+        BlocProvider(create: (context) => HomeCubit()),
+        BlocProvider(create: (context) => ResetPasswordCubit()),
+        BlocProvider(create: (_) => FavoriteProductsCubit()),
+        BlocProvider(create: (_) => UpdateInformationProfileCubit()),
+        BlocProvider(create: (context) => CartCubit())
+      ],
+      child: ScreenUtilInit(
+        designSize: Size(375, 812), // التصميم الأصلي (iPhone X كمثال)
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: SplashScreen(),
+          );
+        },
       ),
     );
   }

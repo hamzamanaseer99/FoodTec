@@ -1,24 +1,29 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:foodtek/responsive.dart';
 
-Widget minMaxContainer(String text) {
+Widget minMaxContainer(BuildContext context, String text) {
   return Container(
-    height: 40,
-    width: 170,
+    height: responsiveHeight(context, 40), // تعديل الارتفاع باستخدام responsiveHeight
+    width: responsiveWidth(context, 160),  // تعديل العرض باستخدام responsiveWidth
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(5),
+      borderRadius: BorderRadius.circular(responsiveWidth(context, 5)), // تعديل نصف القطر باستخدام responsiveWidth
       border: Border.all(
-        color: Color(0xffEAFAEB),
+        color: const Color(0xffEAFAEB),
         width: 1,
       ),
     ),
     child: Padding(
-      padding: const EdgeInsets.only(left: 10, top: 9, bottom: 9),
+      padding: EdgeInsets.only(
+        left: responsiveWidth(context, 10),  // تعديل الهوامش باستخدام responsiveWidth
+        top: responsiveHeight(context, 9),   // تعديل الهوامش باستخدام responsiveHeight
+        bottom: responsiveHeight(context, 9),// تعديل الهوامش باستخدام responsiveHeight
+      ),
       child: Text(
         text,
         style: TextStyle(
           fontWeight: FontWeight.w500,
-          fontSize: 16,
-          color: Color(0xff4B4B4B),
+          fontSize: responsiveWidth(context, 16), // تعديل حجم الخط باستخدام responsiveWidth
+          color: const Color(0xff4B4B4B),
         ),
       ),
     ),

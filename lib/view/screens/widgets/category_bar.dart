@@ -240,6 +240,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/home_cubit.dart';
+import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/burger_screen.dart';
 import 'package:foodtek/view/screens/pizza_screen.dart';
 import 'package:foodtek/view/screens/sandwich_screen.dart';
@@ -289,13 +290,15 @@ class CategoryBar extends StatelessWidget {
                       children: [
                         if (category["image"] != null)
                           Padding(
-                            padding: const EdgeInsets.only(right: 8),
+                            padding: const EdgeInsets.only(
+                                right: 8
+                            ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Image.asset(
                                 category["image"]!,
-                                width: 20,
-                                height: 20,
+                                width: responsiveWidth(context, 20),
+                                height: responsiveHeight(context, 20),
                                 fit: BoxFit.cover,
                                 errorBuilder: (_, __, ___) => SizedBox.shrink(),
                               ),
