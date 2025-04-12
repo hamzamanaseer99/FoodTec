@@ -39,11 +39,7 @@ class _UpdateInformationScreenState extends State<UpdateInformationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text('Profile'),
-        elevation: 0,
-      ),
+
       body: SafeArea(
         child: BlocConsumer<UpdateInformationProfileCubit, UpdateInformationProfileState>(
           listener: (context, state) {
@@ -78,6 +74,17 @@ class _UpdateInformationScreenState extends State<UpdateInformationScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        Row(
+                          children: [
+                            BackButton(),
+                            Text('Profile',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600
+                              ),
+                            ),
+                          ],
+                        ),
                         const AvatarWidget(),
                         SizedBox(height: 24),
                         _buildProfileForm(),

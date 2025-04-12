@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/home_cubit.dart';
+import 'package:foodtek/view/screens/filter_screen.dart';
 
 class SearchWidget extends StatelessWidget {
   @override
@@ -38,7 +39,10 @@ class SearchWidget extends StatelessWidget {
                   size: screenWidth * 0.06,
                 ),
                 onPressed: () {
-                  // يمكن فتح نافذة تصفية لاحقًا
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>FilterScreen(),
+                      )
+                  );
                 },
               ),
                 border: InputBorder.none
