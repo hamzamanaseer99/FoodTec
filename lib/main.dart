@@ -40,16 +40,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => UpdateInformationProfileCubit()),
         BlocProvider(create: (context) => CartCubit())
       ],
-      child: ScreenUtilInit(
-        designSize: Size(375, 812), // التصميم الأصلي (iPhone X كمثال)
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            home: SplashScreen(),
-          );
-        },
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
       ),
     );
   }
