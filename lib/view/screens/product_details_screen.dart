@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/cart_cubit.dart';
+import 'package:foodtek/homescreen.dart';
 import 'package:foodtek/model/product.dart';
 import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/cart_screen.dart';
@@ -125,6 +126,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ],
                   ),
                    SizedBox(height: responsiveHeight(context, 24)),
+
                 ],
               ),
             ),
@@ -137,29 +139,54 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 vertical: responsiveHeight(context, 16)),
             child: ElevatedButton(
               onPressed: () {
-                // Save to CartCubit
-                context.read<CartCubit>().addToCart(product, spicyLevel, quantity);
-
-                // Navigate to CartScreen
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CartScreen()),
+                // 1. إضافة المنتج إلى السلة
+                context.read<CartCubit>().addToCart(
+                  product: product,      // المنتج
+                  spicyLevel: spicyLevel,   // مستوى البهارات
+                  quantity: quantity,     // الكمية
                 );
 
-                // Show confirmation
+                // 2. عرض تأكيد للمستخدم
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("تمت إضافة ${product.name} إلى السلة")),
+                  SnackBar(
+                    content: Text("تمت إضافة ${product.name} إلى السلة"),
+                    duration: Duration(seconds: 2),
+                    action: SnackBarAction(
+                      label: 'عرض السلة',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                        );
+                      },
+                    ),
+                  ),
+                );
+
+                // 3. الانتقال إلى الشاشة الرئيسية
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                      (route) => false,
                 );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
-                minimumSize: const Size(double.infinity, 50),
+                minimumSize: Size(double.infinity, 50),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
-              child:  Text(
-                "Add To cart",
-                style: TextStyle(color: Colors.white, fontSize: responsiveWidth(context, 16)),
+              child: Text(
+                "أضف إلى السلة",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
+
           ),
         ],
       ),

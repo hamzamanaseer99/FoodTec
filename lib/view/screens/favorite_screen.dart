@@ -421,7 +421,7 @@ import '../../model/productcard.dart';
 import 'product_details_screen.dart';
 
 class FavoriteScreen extends StatelessWidget {
-  const FavoriteScreen({Key? key}) : super(key: key);
+  const FavoriteScreen({super.key, required List<Product> favoriteProducts});
 
   @override
   Widget build(BuildContext context) {
