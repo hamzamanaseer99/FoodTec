@@ -413,6 +413,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodtek/view/screens/widgets/notification_icon.dart';
+import 'package:foodtek/view/screens/widgets/search_widget.dart';
 import '../../cubit/favorite_products_cubit.dart';
 import '../../model/product.dart';
 import '../../model/productcard.dart';
@@ -424,84 +426,131 @@ class FavoriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Favorites"),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: _buildLocationIcon(),
+        title: _buildLocationTitle(),
+        actions: [NotificationIcon()],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: BlocBuilder<FavoriteProductsCubit, List<Product>>(
-          builder: (context, favoriteProducts) {
-            print("Rebuilding FavoriteScreen with: $favoriteProducts");
+        padding: const EdgeInsets.only(left: 30, right: 30, top: 22),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SearchWidget(),
+            SizedBox(
+                height: 30),
+            Text(
+              'favorites',
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.black,
+              fontWeight: FontWeight.w600,
+            ),
+            ),
+            SizedBox(
+              height: 6,
+            ),
+            Expanded(
+              child: BlocBuilder<FavoriteProductsCubit, List<Product>>(
+                builder: (context, favoriteProducts) {
+                  print("Rebuilding FavoriteScreen with: $favoriteProducts");
 
-            if (favoriteProducts.isEmpty) {
-              return Center(child: Text("No Favorite Products"));
-            }
+                  if (favoriteProducts.isEmpty) {
+                    return Center(child: Text("No Favorite Products"));
+                  }
 
-            return GridView.builder(
-              itemCount: favoriteProducts.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 5,
-                childAspectRatio: 0.7,
-              ),
-              itemBuilder: (context, index) {
-                final item = favoriteProducts[index];
-                return ProductCard(
-                  item: item,
-                  onFavoriteToggle: () {
-                    showDialog(
-                      context: context,
-                      builder: (_) => AlertDialog(
-                        title: Text("Remove from Favorites"),
-                        content: Text("Are you sure?"),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              context.read<FavoriteProductsCubit>().removeFromFavorites(item);
-                              Navigator.of(context).pop();
-                            },
-                            child: Container(
-                              width: MediaQuery.of(context).size.width * 0.8, // 80% من عرض الشاشة
-                              height: 48, // نفس الارتفاع
-                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 24),
-                              decoration: BoxDecoration(
-                                color: Colors.green,
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Colors.black12, width: 1),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "Yes",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
+                  return GridView.builder(
+                    itemCount: favoriteProducts.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 5,
+                      childAspectRatio: 0.7,
+                    ),
+                    itemBuilder: (context, index) {
+                      final item = favoriteProducts[index];
+                      return ProductCard(
+                        item: item,
+                        onFavoriteToggle: () {
+                          showDialog(
+                            context: context,
+                            builder: (_) => AlertDialog(
+                              title: Text("Remove from Favorites"),
+                              content: Text("Are you sure?"),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    context.read<FavoriteProductsCubit>().removeFromFavorites(item);
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width * 0.8,
+                                    height: 48,
+                                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+                                    decoration: BoxDecoration(
+                                      color: Colors.green,
+
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(color: Colors.black12, width: 1),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "Yes",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ),
-
-                        ],
-                      ),
-                    );
-                  },
-                  onOrderNow: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => ProductDetailsScreen(product: item),
-                      ),
-                    );
-                  },
-                );
-              },
-            );
-          },
+                          );
+                        },
+                        onOrderNow: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ProductDetailsScreen(product: item),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
         ),
-
       ),
     );
   }
+}
+
+Widget _buildLocationIcon() {
+  return Container(
+    margin: EdgeInsets.only(left: 15, top: 8, bottom: 8),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(4),
+      color: Color(0xff4FAF5A).withOpacity(0.1),
+    ),
+    child: Icon(Icons.location_on, color: Color(0xff4FAF5A)),
+  );
+}
+
+Widget _buildLocationTitle() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text("Current location", style: TextStyle(fontSize: 12, color: Color(0xff606060))),
+      SizedBox(height: 4),
+      Text("Jl. Soekarno Hatta 15A...", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+    ],
+  );
 }

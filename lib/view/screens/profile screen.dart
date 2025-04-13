@@ -16,16 +16,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-          title: Text('Profile'),
-      ),
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // My Account Section
+              Row(
+                children: [
+                BackButton(),
+                  Text('Profile',
+                    style: TextStyle(
+                        fontSize: 20,
+                      fontWeight: FontWeight.w600
+                    ),
+                  ),
+                ],
+              ),
               AvatarWidget(),
               SizedBox(
                 height: 24,

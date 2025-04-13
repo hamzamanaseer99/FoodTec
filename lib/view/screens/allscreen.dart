@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/widgets/dot_widget.dart';
 import 'package:foodtek/view/screens/widgets/offer_widget.dart';
 import 'package:foodtek/view/screens/widgets/recommended_products.dart';
@@ -13,17 +14,18 @@ class AllScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           OfferWidget(),
-          SizedBox(height: 6),
+          SizedBox(height:responsiveHeight(context, 6)),
           DotsNav(),
-          SizedBox(height: 6),
+          SizedBox(height:responsiveHeight(context, 6)),
           Text(
             'Top Rated',
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
           ),
-          SizedBox(height: 12),
+          SizedBox(height:responsiveHeight(context, 12)),
           TopRatedProducts(),
-          SizedBox(height: 15),
+          SizedBox(height:responsiveHeight(context, 15)),
           RecommendedProducts(),
+          SizedBox(height:responsiveHeight(context, 32)),
         ],
       ),
     );
