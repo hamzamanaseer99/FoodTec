@@ -21,9 +21,9 @@ class BottomNavCubit extends Cubit<int> {
       case 0:
         return HomeScreen();
       case 1:
-        return FavoriteScreen();
+        return FavoriteScreen(favoriteProducts: [],);
       case 2:
-        return HistoryScreen();
+        return HistoryTab();
       case 3:
         return ProfileScreen();
       case 4:
