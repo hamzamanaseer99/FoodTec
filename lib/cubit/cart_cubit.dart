@@ -14,7 +14,7 @@ class CartItem {
 
   CartItem copyWith({int? quantity, double? spicyLevel}) {
     return CartItem(
-      product: product,
+      product: product ?? this.product,
       spicyLevel: spicyLevel ?? this.spicyLevel,
       quantity: quantity ?? this.quantity,
     );
@@ -25,7 +25,10 @@ class CartCubit extends Cubit<List<CartItem>> {
   CartCubit() : super([]);
 
   /// Add product to the cart or update quantity if it already exists
-  void addToCart(Product product, double spicyLevel, int quantity) {
+  // في ملف cart_cubit.dart
+  void addToCart({required Product product, required int quantity, required double spicyLevel}) {
+    // تنفيذ الإضافة
+
     final index = state.indexWhere((item) =>
     item.product.name == product.name &&
         item.spicyLevel == spicyLevel);

@@ -7,6 +7,7 @@ import 'package:foodtek/cubit/cart_cubit.dart';
 import 'package:foodtek/cubit/home_cubit.dart';
 import 'package:foodtek/cubit/update_information_profile_cubit.dart';
 import 'cubit/favorite_products_cubit.dart';
+import 'cubit/history_cubit.dart';
 import 'cubit/location_cubit.dart';
 import 'cubit/login_cubit.dart';
 import 'cubit/reset_password_cubit.dart';
@@ -38,7 +39,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => ResetPasswordCubit()),
         BlocProvider(create: (_) => FavoriteProductsCubit()),
         BlocProvider(create: (_) => UpdateInformationProfileCubit()),
-        BlocProvider(create: (context) => CartCubit())
+        BlocProvider(create: (context) => CartCubit()),
+        BlocProvider(create: (_) => CartCubit()),
+        BlocProvider(create: (_) => HistoryCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
