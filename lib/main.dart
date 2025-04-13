@@ -41,7 +41,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => ResetPasswordCubit()),
         BlocProvider(create: (_) => FavoriteProductsCubit()),
         BlocProvider(create: (_) => UpdateInformationProfileCubit()),
-        BlocProvider(create: (context) => CartCubit())
+        BlocProvider(create: (context) => CartCubit()),
+        BlocProvider(create: (context)=>HistoryCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

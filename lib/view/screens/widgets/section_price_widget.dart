@@ -92,7 +92,10 @@
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
 
-Widget buildCheckoutSection(BuildContext context, double subTotal, double deliveryCharge, double discount, {required Null Function() onPlaceOrderTap}) {
+Widget buildCheckoutSection(BuildContext context,
+    double subTotal,
+    double deliveryCharge,
+    double discount, {required VoidCallback onPlaceOrderTap}) {
   double total = subTotal + deliveryCharge - discount;
 
   return Container(
@@ -122,9 +125,7 @@ Widget buildCheckoutSection(BuildContext context, double subTotal, double delive
         _buildPriceRow("Total:", total, isTotal: true),
         SizedBox(height: responsiveHeight(context, 16)),
         GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(context, '/checkout');
-          },
+          onTap:onPlaceOrderTap,
           child: Container(
             height: responsiveHeight(context, 56),
             decoration: BoxDecoration(
