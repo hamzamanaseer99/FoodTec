@@ -57,14 +57,14 @@ class CartCubit extends Cubit<List<CartItem>> {
 
   /// Update the quantity of a specific item
   void updateQuantity(CartItem item, int newQuantity) {
-    final index = state.indexOf(item);
-    if (index != -1 && newQuantity > 0) {
-      final updatedItem = item.copyWith(quantity: newQuantity);
-      final updatedList = List<CartItem>.from(state);
-      updatedList[index] = updatedItem;
-      emit(updatedList);
-    }
+    if (newQuantity < 1) return;
+    final updatedItem = item.copyWith(quantity: newQuantity);
+    final updatedCart = state.map((i) {
+      return i.product == item.product ? updatedItem : i;
+    }).toList();
+    emit(updatedCart);
   }
+
 
   /// Get total cost
   double get total {
