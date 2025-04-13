@@ -189,7 +189,9 @@ class _CartScreenState extends State<CartScreen> {
                       },
                     ),
                   ),
-                  buildCheckoutSection(context, subTotal, deliveryCharge, discount),
+                  buildCheckoutSection(context, subTotal, deliveryCharge, discount,  onPlaceOrderTap: () {
+                    Navigator.pushNamed(context, '/checkout');
+                  },),
                 ],
               ),
             ),

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
 
-Widget buildCheckoutSection(BuildContext context, double subTotal, double deliveryCharge, double discount) {
+Widget buildCheckoutSection(
+    BuildContext context,
+    double subTotal,
+    double deliveryCharge,
+    double discount, {
+      required VoidCallback onPlaceOrderTap,
+    }) {
   double total = subTotal + deliveryCharge - discount;
 
   return Container(
@@ -15,7 +21,7 @@ Widget buildCheckoutSection(BuildContext context, double subTotal, double delive
       color: Color(0xff4FAF5A),
       borderRadius: BorderRadius.circular(24),
       image: DecorationImage(
-        image: AssetImage('assets/images/Pattern.png'), // Add your green pattern here
+        image: AssetImage('assets/images/Pattern.png'),
         fit: BoxFit.cover,
       ),
     ),
@@ -31,9 +37,7 @@ Widget buildCheckoutSection(BuildContext context, double subTotal, double delive
         _buildPriceRow("Total:", total, isTotal: true),
         SizedBox(height: responsiveHeight(context, 16)),
         GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(context, '/checkout');
-          },
+          onTap: onPlaceOrderTap,
           child: Container(
             height: responsiveHeight(context, 56),
             decoration: BoxDecoration(
@@ -52,7 +56,6 @@ Widget buildCheckoutSection(BuildContext context, double subTotal, double delive
             ),
           ),
         )
-
       ],
     ),
   );
