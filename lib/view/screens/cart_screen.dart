@@ -50,6 +50,9 @@ class _CartScreenState extends State<CartScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  Image.asset('assets/images/cart empty.jpg'),
+                  SizedBox(height: responsiveHeight(context, 51)),
+
                   Text(
                     'Cart Empty',
                     style: TextStyle(
@@ -58,6 +61,7 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ),
                   SizedBox(height: responsiveHeight(context, 16)),
+
                   Text(
                     'You don’t have add any foods in cart at this time',
                     style: TextStyle(
@@ -241,6 +245,8 @@ class _CartScreenState extends State<CartScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  Image.asset('assets/images/cart empty.jpg'),
+                  SizedBox(height: responsiveHeight(context, 51)),
                   Text(
                     'History Empty',
                     style: TextStyle(
