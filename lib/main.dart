@@ -6,6 +6,9 @@ import 'package:foodtek/cubit/botten_nav_cubit.dart';
 import 'package:foodtek/cubit/cart_cubit.dart';
 import 'package:foodtek/cubit/home_cubit.dart';
 import 'package:foodtek/cubit/update_information_profile_cubit.dart';
+import 'package:foodtek/view/screens/cart_screen.dart';
+import 'package:foodtek/view/screens/checkout_screen.dart';
+import 'package:foodtek/view/screens/payment_screen.dart';
 import 'cubit/favorite_products_cubit.dart';
 import 'cubit/location_cubit.dart';
 import 'cubit/login_cubit.dart';
@@ -42,7 +45,12 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => SplashScreen(),
+          '/checkout': (context) => CheckoutScreen(),
+          '/payment': (context) => PaymentScreen(),
+        },
       ),
     );
   }

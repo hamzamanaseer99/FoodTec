@@ -4,6 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:foodtek/cubit/cart_cubit.dart';
 import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/widgets/notification_icon.dart';
+import 'package:foodtek/view/screens/widgets/section_price_widget.dart';
 import 'package:foodtek/view/screens/widgets/selector_widget.dart';
 
 class CartScreen extends StatefulWidget {
@@ -18,7 +19,10 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     final cartItems = context.watch<CartCubit>().state;
-    final total = context.read<CartCubit>().total;
+    //final total = context.read<CartCubit>().total;
+    final subTotal = cartItems.fold(0.0, (sum, item) => sum + (item.product.price * item.quantity));
+    final deliveryCharge = 3.0; // Example value, you can customize
+    final discount = 2.0;
 
 
 
@@ -185,58 +189,7 @@ class _CartScreenState extends State<CartScreen> {
                       },
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[100],
-                      boxShadow: [BoxShadow(blurRadius: 4, color: Colors.black12)],
-                    ),
-                    child: SafeArea(
-                      top: false,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Text(
-                            "الإجمالي: \$${total.toStringAsFixed(2)}",
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.end,
-                          ),
-                          const SizedBox(height: 10),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.red,
-                                  ),
-                                  onPressed: () => context.read<CartCubit>().clearCart(),
-                                  child: const Text('إفراغ السلة'),
-                                ),
-                              ),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.green,
-                                  ),
-                                  onPressed: () {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(content: Text("تم تقديم الطلب")),
-                                    );
-                                  },
-                                  child: const Text('اطلب الآن'),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  buildCheckoutSection(context, subTotal, deliveryCharge, discount),
                 ],
               ),
             ),
@@ -292,3 +245,4 @@ Widget _buildLocationTitle() {
     ],
   );
 }
+

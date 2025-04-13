@@ -19,16 +19,28 @@ class CartItem {
       quantity: quantity ?? this.quantity,
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is CartItem &&
+              runtimeType == other.runtimeType &&
+              product.name == other.product.name &&
+              spicyLevel == other.spicyLevel;
+
+  @override
+  int get hashCode => product.name.hashCode ^ spicyLevel.hashCode;
 }
 
 class CartCubit extends Cubit<List<CartItem>> {
   CartCubit() : super([]);
 
-  /// Add product to the cart or update quantity if it already exists
   void addToCart(Product product, double spicyLevel, int quantity) {
-    final index = state.indexWhere((item) =>
-    item.product.name == product.name &&
-        item.spicyLevel == spicyLevel);
+    final index = state.indexWhere(
+          (item) =>
+      item.product.name == product.name &&
+          item.spicyLevel == spicyLevel,
+    );
 
     if (index != -1) {
       final updatedItem = state[index].copyWith(
@@ -45,32 +57,37 @@ class CartCubit extends Cubit<List<CartItem>> {
     }
   }
 
-  /// Remove a specific item from cart
   void removeFromCart(CartItem itemToRemove) {
     emit(state.where((item) => item != itemToRemove).toList());
   }
 
-  /// Clear the entire cart
   void clearCart() {
     emit([]);
   }
 
-  /// Update the quantity of a specific item
   void updateQuantity(CartItem item, int newQuantity) {
     if (newQuantity < 1) return;
+
     final updatedItem = item.copyWith(quantity: newQuantity);
     final updatedCart = state.map((i) {
-      return i.product == item.product ? updatedItem : i;
+      return (i.product.name == item.product.name &&
+          i.spicyLevel == item.spicyLevel)
+          ? updatedItem
+          : i;
     }).toList();
     emit(updatedCart);
   }
 
-
-  /// Get total cost
-  double get total {
+  /// Total without delivery or discount
+  double get subTotal {
     return state.fold(
       0.0,
           (sum, item) => sum + (item.product.price * item.quantity),
     );
+  }
+
+  /// Total after delivery & discount
+  double totalWithCharges({double deliveryCharge = 3.0, double discount = 2.0}) {
+    return subTotal + deliveryCharge - discount;
   }
 }
