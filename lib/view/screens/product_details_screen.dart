@@ -178,7 +178,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 ),
               ),
               child: Text(
-                "أضف إلى السلة",
+                "Add To Cart",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
