@@ -182,7 +182,7 @@ class _HistoryTabState extends State<HistoryTab> {
           Image.asset('assets/images/cart empty.jpg'),
           SizedBox(height: responsiveHeight(context, 51)),
           Text(
-            'لا توجد طلبات سابقة',
+            'History Empty',
             style: TextStyle(
               fontSize: responsiveWidth(context, 32),
               color: const Color(0xff111827),
@@ -190,7 +190,7 @@ class _HistoryTabState extends State<HistoryTab> {
           ),
           SizedBox(height: responsiveHeight(context, 16)),
           Text(
-            'لم تقم بأي طلبات سابقة',
+            'You don’t have order any foods before',
             style: TextStyle(
               fontSize: responsiveWidth(context, 16),
               color: const Color(0xff111827),
