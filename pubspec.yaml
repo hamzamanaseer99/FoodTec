@@ -44,6 +44,8 @@ dependencies:
   bloc: ^9.0.0
   flutter_slidable: ^4.0.0
   flutter_screenutil: ^5.9.3
+  google_maps_flutter: ^2.12.1
+  geocoding: ^3.0.0
 
 dev_dependencies:
   flutter_test:

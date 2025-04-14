@@ -68,7 +68,7 @@ class SuccessOrder extends StatelessWidget {
                     Center(
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>TrackScreen()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>OrderDetailsScreen()));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
