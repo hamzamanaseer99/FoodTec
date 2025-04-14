@@ -451,6 +451,7 @@ class HomeScreen extends StatelessWidget {
         return ProfileScreen();
       case 4:
         return CartScreen(); // تمت إضافة حالة لشاشة السلة
+
       default:
         return MainScreen();
     }

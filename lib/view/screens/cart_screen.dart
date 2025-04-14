@@ -1491,7 +1491,7 @@ class _CartScreenState extends State<CartScreen> {
                       , deliveryCharge,
                       discount,
                       onPlaceOrderTap: () {
-                        Navigator.pushNamed(context, '/checkout');
+                        Navigator.pushNamed(context, '/SetLocationScreen');
                       }),
                 ],
               ),

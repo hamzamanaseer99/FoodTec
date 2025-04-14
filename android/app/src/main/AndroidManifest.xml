@@ -8,6 +8,9 @@
         android:label="foodtek"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDwvTsnSVReBfz78flmO9jlkqRZ5Dm7_ro"/>
 
         <activity
             android:name=".MainActivity"

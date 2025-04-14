@@ -5,9 +5,13 @@ import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/widgets/notification_icon.dart';
 import 'package:foodtek/view/screens/widgets/radio_widget.dart';
 import 'package:foodtek/view/screens/widgets/section_price_widget.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:geocoding/geocoding.dart';
 
 class CheckoutScreen extends StatefulWidget {
-  const CheckoutScreen({super.key});
+  final LatLng? userLocation;
+
+  const CheckoutScreen({super.key, required this.userLocation});
 
   @override
   State<CheckoutScreen> createState() => _CheckoutScreenState();
@@ -27,6 +31,33 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   ];
 
   int? selectedPaymentOption = 0; // For radio buttons
+  String selectedAddressTitle = "No location selected";
+
+  @override
+  void initState() {
+    super.initState();
+    // تحويل إحداثيات الموقع إلى عنوان نصي
+    _convertCoordinatesToAddress(widget.userLocation);
+  }
+
+  // دالة لتحويل الإحداثيات إلى عنوان نصي
+  Future<void> _convertCoordinatesToAddress(LatLng? location) async {
+    if (location != null) {
+      try {
+        // استخدم مكتبة geocoding لتحويل الإحداثيات إلى عنوان
+        List<Placemark> placemarks = await placemarkFromCoordinates(location.latitude, location.longitude);
+        if (placemarks.isNotEmpty) {
+          // اختر أول عنوان
+          final placemark = placemarks.first;
+          setState(() {
+            selectedAddressTitle = "${placemark.street}, ${placemark.locality}, ${placemark.country}";
+          });
+        }
+      } catch (e) {
+        print("Error getting address: $e");
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,50 +89,36 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   Text('Checkout', style: TextStyle(fontSize: responsiveWidth(context, 20), fontWeight: FontWeight.w600)),
                   SizedBox(height: responsiveHeight(context, 18)),
                   Text('Pay With:', style: TextStyle(fontSize: responsiveWidth(context, 18), fontWeight: FontWeight.w600)),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: addresses.length,
-                    itemBuilder: (context, index) {
-                      final address = addresses[index];
-                      return Padding(
-                        padding: EdgeInsets.symmetric(vertical: responsiveHeight(context, 6)),
-                        child: ListTile(
-                          leading: Icon(Icons.location_on, color: Color(0xff4FAF5A)),
-                          title: Text(
-                            address["title"]!,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          subtitle: Text(
-                            address["subtitle"]!,
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                        ),
-                      );
-                    },
+
+                  // عرض الموقع المحدد باستخدام العنوان النصي
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: responsiveHeight(context, 6)),
+                    child: ListTile(
+                      leading: Icon(Icons.location_on, color: Color(0xff4FAF5A)),
+                      title: Text(
+                        selectedAddressTitle,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                   SizedBox(height: responsiveHeight(context, 24)),
+
+                  // باقي العناصر في الـ UI (مثل إدخال كود الخصم، خيارات الدفع)
                   Text('Promo Code?', style: TextStyle(fontSize: responsiveWidth(context, 18), fontWeight: FontWeight.w600)),
                   SizedBox(height: responsiveHeight(context, 16)),
                   Row(
                     children: [
                       Expanded(
                         child: Container(
-                          height: responsiveHeight(context, 48), // Match the height of TextField and Button
+                          height: responsiveHeight(context, 48),
                           child: TextField(
                             controller: promoController,
                             style: TextStyle(fontSize: responsiveHeight(context, 14)),
                             decoration: InputDecoration(
                               hintText: 'Enter Your Promo',
-                              hintStyle: TextStyle(
-                                color: Color(0xff878787),
-                                fontSize: responsiveWidth(context, 14),
-                              ),
+                              hintStyle: TextStyle(color: Color(0xff878787), fontSize: responsiveWidth(context, 14)),
                               fillColor: Colors.white,
-                              contentPadding: EdgeInsets.symmetric(
-                                vertical: responsiveHeight(context, 12),
-                                horizontal: responsiveWidth(context, 12),
-                              ),
+                              contentPadding: EdgeInsets.symmetric(vertical: responsiveHeight(context, 12), horizontal: responsiveWidth(context, 12)),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(10),
@@ -128,7 +145,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         ),
                       ),
                       Container(
-                        height: responsiveHeight(context, 48), // Match the height of TextField
+                        height: responsiveHeight(context, 48),
                         child: TextButton(
                           onPressed: () {
                             // Handle promo code addition
@@ -145,11 +162,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           ),
                           child: Text(
                             'Add',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: responsiveWidth(context, 12),
-                              fontWeight: FontWeight.w400,
-                            ),
+                            style: TextStyle(color: Colors.white, fontSize: responsiveWidth(context, 12), fontWeight: FontWeight.w400),
                           ),
                         ),
                       ),
@@ -158,9 +171,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   SizedBox(height: responsiveHeight(context, 24)),
                   Text('Pay with:', style: TextStyle(fontSize: responsiveWidth(context, 18), fontWeight: FontWeight.w600)),
                   RadioWidget(),
-                  // SizedBox(height: responsiveHeight(context, 24)),
-                  // Text('Card Type:', style: TextStyle(fontSize: responsiveWidth(context, 18), fontWeight: FontWeight.w600)),
-
                 ],
               ),
             ),
