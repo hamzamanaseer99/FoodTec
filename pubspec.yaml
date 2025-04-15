@@ -42,8 +42,6 @@ dependencies:
   intl_phone_field: ^3.2.0
   smooth_page_indicator: ^1.2.1
   bloc: ^9.0.0
-  flutter_slidable: ^4.0.0
-  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:
