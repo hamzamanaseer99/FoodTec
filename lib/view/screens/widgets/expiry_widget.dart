@@ -22,7 +22,7 @@ class _ExpiryWidgetState extends State<ExpiryWidget> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Container(
-        width: 170,
+        width: responsiveWidth(context, 184),
         decoration: BoxDecoration(
           color: Colors.white, // Background color
           borderRadius: BorderRadius.circular(12), // Rounded corners

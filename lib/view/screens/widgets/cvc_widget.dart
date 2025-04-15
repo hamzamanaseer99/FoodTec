@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:foodtek/responsive.dart';
 
 class CvcWidget extends StatefulWidget {
   CvcWidget({
@@ -21,7 +22,7 @@ class _CvcWidgetState extends State<CvcWidget> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Container(
-        width: 170,
+        width: responsiveWidth(context, 184),
         decoration: BoxDecoration(
           color: Colors.white, // Background color
           borderRadius: BorderRadius.circular(12), // Rounded corners
