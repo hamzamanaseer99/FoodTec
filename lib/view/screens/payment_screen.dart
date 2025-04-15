@@ -59,9 +59,11 @@ class PaymentScreen extends StatelessWidget {
                     height: responsiveHeight(context, 20),
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ExpiryWidget(ExpiryEditingController: expiryEditingController)    ,
+                      ExpiryWidget(ExpiryEditingController: expiryEditingController),
+                      SizedBox(
+                        width: responsiveWidth(context, 16),
+                      ),
                       CvcWidget(cvcEditingController: cvcEditingController),
                     ],
                   ),

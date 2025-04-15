@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
-import 'package:foodtek/view/screens/track_screen.dart';
+import 'package:foodtek/view/screens/live_track_screen.dart';
+import 'package:foodtek/view/screens/order_details_screen.dart';
 import 'package:foodtek/view/screens/widgets/notification_icon.dart';
 
 class SuccessOrder extends StatelessWidget {
@@ -68,7 +69,7 @@ class SuccessOrder extends StatelessWidget {
                     Center(
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>OrderDetailsScreen()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>LiveTrackScreen()));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
