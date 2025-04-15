@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
+import 'package:foodtek/view/screens/chat%20screen.dart';
+import 'package:foodtek/view/screens/live_track_screen.dart';
 
 class OrderDetailsScreen extends StatefulWidget {
   const OrderDetailsScreen({Key? key}) : super(key: key);
@@ -268,7 +270,9 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                   color: Color(0xffF5F5F5),
                 ),
               child: Icon(Icons.call,
-                  color: Colors.green),),
+                  color: Colors.green,
+              size: responsiveWidth(context, 22),),
+              ),
             ]
           ),
           SizedBox(width: responsiveWidth(context, 12),),
@@ -281,7 +285,14 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                     borderRadius: BorderRadius.circular(40),
                     color: Color(0xffF5F5F5),
                   ),
-                  child: Icon(Icons.chat, color: Color(0xffF2AB58),),
+                  child: IconButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ChatScreen())
+                    );
+                  },
+                      icon: Icon(Icons.chat,color: Color(0xffF2AB58),
+                        size: responsiveWidth(context, 22),
+                      )
+                  )
 
                 ),
               ]
@@ -331,7 +342,9 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
 
   Widget _buildLiveTrackButton() {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>LiveTrackScreen()));
+      },
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.green,
         minimumSize: Size(double.infinity, 56),
