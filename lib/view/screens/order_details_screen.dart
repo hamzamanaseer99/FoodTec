@@ -16,6 +16,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: SafeArea(
         child: SingleChildScrollView( // This will ensure the content is scrollable
           child: Padding(
@@ -57,38 +58,38 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() => _currentNavIndex = 2);
-        },
-        backgroundColor: Colors.green,
-        child: Icon(Icons.location_on, color: Colors.white),
-        elevation: 2.0,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: _buildBottomAppBar(context, _currentNavIndex),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     setState(() => _currentNavIndex = 2);
+      //   },
+      //   backgroundColor: Colors.green,
+      //   child: Icon(Icons.location_on, color: Colors.white),
+      //   elevation: 2.0,
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // bottomNavigationBar: _buildBottomAppBar(context, _currentNavIndex),
     );
   }
 
-  Widget _buildBottomAppBar(BuildContext context, int currentIndex) {
-    return BottomAppBar(
-      shape: const CircularNotchedRectangle(),
-      notchMargin: 4.0,
-      color: Colors.green[100],
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _buildNavItem(context, Icons.home_outlined, "Home", 0, currentIndex),
-          _buildNavItem(
-              context, Icons.favorite_outline, "Favorites", 1, currentIndex),
-          const SizedBox(width: 48),
-          _buildNavItem(context, Icons.history, "History", 2, currentIndex),
-          _buildNavItem(
-              context, Icons.person_outline_outlined, "Profile", 3, currentIndex),
-        ],
-      ),
-    );
-  }
+  // Widget _buildBottomAppBar(BuildContext context, int currentIndex) {
+  //   return BottomAppBar(
+  //     shape: const CircularNotchedRectangle(),
+  //     notchMargin: 4.0,
+  //     color: Colors.green[100],
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //       children: [
+  //         _buildNavItem(context, Icons.home_outlined, "Home", 0, currentIndex),
+  //         _buildNavItem(
+  //             context, Icons.favorite_outline, "Favorites", 1, currentIndex),
+  //         const SizedBox(width: 48),
+  //         _buildNavItem(context, Icons.history, "History", 2, currentIndex),
+  //         _buildNavItem(
+  //             context, Icons.person_outline_outlined, "Profile", 3, currentIndex),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   Widget _buildNavItem(
       BuildContext context, IconData icon, String label, int index, int currentIndex) {

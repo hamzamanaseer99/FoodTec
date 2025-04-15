@@ -27,14 +27,14 @@ class TopRatedCubit extends Cubit<TopRatedState> {
       "rating": 4.8,
       "price": 18.0,
       "category": "Pizza",
-      "image": "assets/images/Chese burger.png"
+      "image": "assets/images/pizza10.png"
     },
     {
       "name": "Sandwich",
       "rating": 3.2,
       "price": 12.0,
       "category": "Sandwich",
-      "image": "assets/images/Chese burger.png"
+      "image": "assets/images/img_1.png"
     },
   ];
 
