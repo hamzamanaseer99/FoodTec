@@ -89,6 +89,7 @@
 //     ],
 //   );
 // }
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
 
@@ -116,16 +117,25 @@ Widget buildCheckoutSection(BuildContext context,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildPriceRow("Sub-Total", subTotal),
+        // Sub-Total Row
+        _buildPriceRow("Sub-Total".tr(), subTotal),
         SizedBox(height: responsiveHeight(context, 10)),
-        _buildPriceRow("Delivery Charge", deliveryCharge),
+
+        // Delivery Charge Row
+        _buildPriceRow("Delivery Charge".tr(), deliveryCharge),
         SizedBox(height: responsiveHeight(context, 10)),
-        _buildPriceRow("Discount", discount, isDiscount: true),
+
+        // Discount Row
+        _buildPriceRow("Discount".tr(), discount, isDiscount: true),
         SizedBox(height: responsiveHeight(context, 16)),
-        _buildPriceRow("Total:", total, isTotal: true),
+
+        // Total Row
+        _buildPriceRow("Total:".tr(), total, isTotal: true),
         SizedBox(height: responsiveHeight(context, 16)),
+
+        // Place My Order Button
         GestureDetector(
-          onTap:onPlaceOrderTap,
+          onTap: onPlaceOrderTap,
           child: Container(
             height: responsiveHeight(context, 56),
             decoration: BoxDecoration(
@@ -134,7 +144,7 @@ Widget buildCheckoutSection(BuildContext context,
             ),
             child: Center(
               child: Text(
-                "Place My Order",
+                "Place My Order".tr(),
                 style: TextStyle(
                   color: Color(0xff4FAF5A),
                   fontWeight: FontWeight.bold,
@@ -143,8 +153,7 @@ Widget buildCheckoutSection(BuildContext context,
               ),
             ),
           ),
-        )
-
+        ),
       ],
     ),
   );

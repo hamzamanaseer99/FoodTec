@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class OfferWidget extends StatelessWidget {
@@ -32,7 +33,7 @@ class OfferWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Experience our\ndelicious new dish",
+                    "Experience our delicious new dish".tr(),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: screenWidth * 0.035,
@@ -41,7 +42,7 @@ class OfferWidget extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    "30% OFF",
+                    "30% OFF".tr(),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: screenWidth * 0.055,

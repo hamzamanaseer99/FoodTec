@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 import 'package:foodtek/cubit/botten_nav_cubit.dart';
 import 'package:foodtek/cubit/cart_cubit.dart';
 import 'package:foodtek/cubit/home_cubit.dart';
@@ -18,15 +20,26 @@ import 'cubit/signup_cubit.dart';
 import 'model/location_repository.dart';
 import 'view/screens/splash_screen.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale('en'), Locale('ar')],
+      path: 'assets/translation',
+      saveLocale: true,
+      fallbackLocale: const Locale('en'),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
       ),
@@ -43,24 +56,24 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => FavoriteProductsCubit()),
         BlocProvider(create: (_) => UpdateInformationProfileCubit()),
         BlocProvider(create: (context) => CartCubit()),
-        BlocProvider(create: (context)=>HistoryCubit()),
-
+        BlocProvider(create: (context) => HistoryCubit()),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        routes: {
-          '/': (context) => SplashScreen(),
-          '/checkout': (context) => CheckoutScreen(userLocation: null,),
-          '/payment': (context) => PaymentScreen(),
-          '/SetLocationScreen': (context) => SetLocationScreen(),
-        },
-
-
-
-
-
-    ),
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        builder: (_, __) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          initialRoute: '/',
+          routes: {
+            '/': (context) => SplashScreen(),
+            '/checkout': (context) => CheckoutScreen(userLocation: null),
+            '/payment': (context) => PaymentScreen(),
+            '/SetLocationScreen': (context) => SetLocationScreen(),
+          },
+        ),
+      ),
     );
   }
 }

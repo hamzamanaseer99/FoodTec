@@ -92,6 +92,7 @@
 //   }
 // }
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/view/screens/checkout_screen.dart';
 import 'package:foodtek/view/screens/payment_screen.dart';
@@ -185,7 +186,7 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
             currentLocation = LatLng(location.latitude, location.longitude);
             markers.clear(); // إخفاء أي علامات سابقة
             markers.add(Marker(
-              markerId: MarkerId('searchedLocation'),
+              markerId: MarkerId('searchedLocation'.tr()),
               position: currentLocation!,
             ));
           });
@@ -214,7 +215,7 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Set Your Location')),
+      appBar: AppBar(),
       body: Stack(
         children: [
           // خريطة جوجل
@@ -239,7 +240,7 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
             child: TextField(
               controller: searchController,
               decoration: InputDecoration(
-                hintText: "Search for a place",
+                hintText: "Find your location".tr(),
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
               ),
@@ -296,7 +297,7 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
                     backgroundColor: Colors.green,
                   ),
                   child: Text(
-                    'Confirm Location',
+                    'Confirm Location'.tr(),
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                 ),

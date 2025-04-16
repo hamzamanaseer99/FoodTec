@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodtek/view/screens/update_information_screen.dart';
 import 'package:foodtek/view/screens/widgets/avatar_widget.dart';
 import 'package:foodtek/view/screens/widgets/custom_container_profile.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -16,7 +17,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -24,53 +24,97 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               Row(
                 children: [
-                BackButton(),
-                  Text('Profile',
+                  BackButton(),
+                  Text(
+                    'Profile'.tr(),
                     style: TextStyle(
-                        fontSize: 20,
-                      fontWeight: FontWeight.w600
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
               ),
               AvatarWidget(),
-              SizedBox(
-                height: 24,
-              ),
+              SizedBox(height: 24),
 
               customContainer(
                 _buildSection(
-                  title: 'My Account',
+                  title: 'My Account'.tr(),
                   children: [
-                    _buildListTile('Personal information', Icons.person,onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => UpdateInformationScreen()),
+                    _buildListTile(
+                      'Personal information'.tr(),
+                      Icons.person,
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UpdateInformationScreen(),
+                        ),
+                      ),
                     ),
+
+                    /// Language switch button
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 12.0),
+                      child: Row(
+                        children: [
+                          Icon(Icons.language),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Text(
+                              'Language'.tr(),
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Locale newLocale = context.locale.languageCode == 'en'
+                                  ? const Locale('ar')
+                                  : const Locale('en');
+                              context.setLocale(newLocale);
+                            },
+                            child: Text(
+                              context.locale.languageCode == 'en' ? 'العربية' : 'English',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                    _buildListTile('Language', Icons.language,
-                        suffixIcon: Icons.arrow_forward_ios),
-                    _buildListTile('Privacy Policy', Icons.lock),
-                    _buildListTile('Setting', Icons.settings),
+
+                    _buildListTile('Privacy Policy'.tr(), Icons.lock),
+                    _buildListTile('Setting'.tr(), Icons.settings),
                   ],
                 ),
               ),
+
               // Notifications Section
               customContainer(
                 _buildSection(
-                  title: 'Notifications',
+                  title: 'Notifications'.tr(),
                   children: [
-                    _buildSwitchTile('Push Notifications', Icons.notifications,
-                        pushNotifications, (value) {
-                          setState(() {
-                            pushNotifications = value;
-                          });
-                        }),
-                    _buildSwitchTile('Promotional Notifications',
-                        Icons.notifications, promotionalNotifications, (value) {
-                          setState(() {
-                            promotionalNotifications = value;
-                          });
-                        }),
+                    _buildSwitchTile(
+                      'Push Notifications'.tr(),
+                      Icons.notifications,
+                      pushNotifications,
+                          (value) {
+                        setState(() {
+                          pushNotifications = value;
+                        });
+                      },
+                    ),
+                    _buildSwitchTile(
+                      'Promotional Notifications'.tr(),
+                      Icons.notifications,
+                      promotionalNotifications,
+                          (value) {
+                        setState(() {
+                          promotionalNotifications = value;
+                        });
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -78,11 +122,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               // More Section
               customContainer(
                 _buildSection(
-                  title: 'More',
+                  title: 'More'.tr(),
                   children: [
-                    _buildListTile('Help Center', Icons.help),
-                    _buildListTile('Log Out', Icons.logout,
-                        textColor: Colors.red),
+                    _buildListTile('Help Center'.tr(), Icons.help),
+                    _buildListTile(
+                      'Log Out'.tr(),
+                      Icons.logout,
+                      textColor: Colors.red,
+                    ),
                   ],
                 ),
               ),
@@ -99,17 +146,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xff1B1B1B),
-                ),
-              ),
-            ],
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: Color(0xff1B1B1B),
+            ),
           ),
           const SizedBox(height: 16),
           ...children,
@@ -122,7 +165,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       {Color? textColor, IconData? suffixIcon, VoidCallback? onTap}) {
     return InkWell(
       onTap: onTap,
-       child: Padding(
+      child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12.0),
         child: Row(
           children: [
@@ -146,7 +189,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // Create a switch tile widget
   Widget _buildSwitchTile(String title, IconData icon, bool value, Function(bool) onChanged) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -166,21 +208,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Switch(
             value: value,
             onChanged: onChanged,
-            activeColor: Color(0xff09CA67),  // Color when switch is ON
-            inactiveTrackColor: Color(0xffAFAFAF),  // Color of the track when switch is OFF
-            inactiveThumbColor: Colors.white,  // Color of the thumb when switch is OFF
-            thumbColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-              if (states.contains(MaterialState.selected)) {
-                return Colors.white; // Thumb color when switch is ON
-              }
-              return Colors.white; // Thumb color when switch is OFF
-            }),
-          )
-
+            activeColor: Color(0xff09CA67),
+            inactiveTrackColor: Color(0xffAFAFAF),
+            inactiveThumbColor: Colors.white,
+            thumbColor: MaterialStateProperty.resolveWith<Color>(
+                  (Set<MaterialState> states) {
+                return Colors.white;
+              },
+            ),
+          ),
         ],
       ),
     );
   }
 }
-
-

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/success_order.dart';
@@ -39,7 +40,7 @@ class PaymentScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Add to cart',
+                    'Add to card'.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 20),
                       fontWeight: FontWeight.w600,

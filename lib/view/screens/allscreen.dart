@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/widgets/dot_widget.dart';
@@ -18,7 +19,7 @@ class AllScreen extends StatelessWidget {
           DotsNav(),
           SizedBox(height:responsiveHeight(context, 6)),
           Text(
-            'Top Rated',
+            'Top Rated'.tr(),
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
           ),
           SizedBox(height:responsiveHeight(context, 12)),
