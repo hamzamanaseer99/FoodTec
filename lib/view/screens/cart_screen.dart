@@ -1296,6 +1296,7 @@
 // }
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -1356,7 +1357,7 @@ class _CartScreenState extends State<CartScreen> {
                   SizedBox(height: responsiveHeight(context, 51)),
 
                   Text(
-                    'Cart Empty',
+                    'Cart Empty'.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 32),
                       color: const Color(0xff111827),
@@ -1365,7 +1366,7 @@ class _CartScreenState extends State<CartScreen> {
                   SizedBox(height: responsiveHeight(context, 16)),
 
                   Text(
-                    'You don’t have add any foods in cart at this time',
+                    'You don’t have add any foods in cart at this time'.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 16),
                       color: const Color(0xff111827),
@@ -1504,7 +1505,7 @@ class _CartScreenState extends State<CartScreen> {
                   Image.asset('assets/images/cart empty.jpg'),
                   SizedBox(height: responsiveHeight(context, 51)),
                   Text(
-                    'History Empty',
+                    'History Empty'.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 32),
                       color: const Color(0xff111827),

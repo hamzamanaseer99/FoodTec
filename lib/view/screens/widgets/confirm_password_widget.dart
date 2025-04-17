@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmPasswordWidget extends StatefulWidget {
@@ -46,10 +47,11 @@ class _PasswordWidgetState extends State<ConfirmPasswordWidget> {
               vertical: screenWidth * 0.04, // ✅ نفس التناسب مع الشاشة
               horizontal: screenWidth * 0.04,
             ),
-            labelText: 'Confirm Password',labelStyle: TextStyle(
+            labelText: 'Confirm Password'.tr(),
+            labelStyle: TextStyle(
             fontSize: screenWidth * 0.025,
           ),
-            hintText: "Enter your Password",hintStyle: TextStyle(
+            hintText: "Enter your Password".tr(),hintStyle: TextStyle(
             fontSize: screenWidth * 0.025,
           ),
             suffixIcon: IconButton(

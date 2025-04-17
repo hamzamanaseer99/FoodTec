@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class FullNameWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0),
+      padding:  EdgeInsets.symmetric(horizontal: 0),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white, // Background color
@@ -35,11 +36,11 @@ class FullNameWidget extends StatelessWidget {
             fontSize: screenWidth * 0.03,
           ),
           decoration: InputDecoration(
-            labelText: 'Full Name',labelStyle: TextStyle(
+            labelText: 'Full Name'.tr(),labelStyle: TextStyle(
             fontSize: screenWidth * 0.025,
 
           ),
-            hintText: "Enter your Name",
+            hintText: "Enter your Name".tr(),
             hintStyle:TextStyle(
             fontSize: screenWidth * 0.025,
 

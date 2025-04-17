@@ -139,6 +139,7 @@
 //   }
 // }
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/location_cubit.dart';
@@ -183,7 +184,7 @@ class LocationScreen extends StatelessWidget {
                     height: screenWidth * 0.5,
                   ),
                   Text(
-                    'Turn On Your Location',
+                    'Turn On Your Location'.tr(),
                     style: TextStyle(
                         fontSize: screenWidth * 0.08,
                         fontWeight: FontWeight.w500,
@@ -194,7 +195,7 @@ class LocationScreen extends StatelessWidget {
                   SizedBox(
                     width: screenWidth * 0.8,
                     child: Text(
-                      'To Continues, Let Your Device Turn On Location, Which Uses Google’s Location Service',
+                      'To Continues, Let Your Device Turn On Location, Which Uses Google’s Location Service'.tr(),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: screenWidth * 0.045,
@@ -242,7 +243,7 @@ class LocationScreen extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.center,
                         padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Text('Yes, Turn It On',
+                        child: Text('Yes, Turn It On'.tr(),
                             style: TextStyle(
                                 fontSize: screenWidth * 0.04,
                                 fontWeight: FontWeight.w600,
@@ -268,7 +269,7 @@ class LocationScreen extends StatelessWidget {
                       ),
                       shadowColor: Colors.transparent,
                     ),
-                    child: Text('Cancel',
+                    child: Text('Cancel'.tr(),
                         style: TextStyle(
                             fontSize: screenWidth * 0.04,
                             fontWeight: FontWeight.w600,

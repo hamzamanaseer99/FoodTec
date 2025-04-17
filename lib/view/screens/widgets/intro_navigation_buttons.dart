@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/view/screens/location_screen.dart';
@@ -49,7 +50,7 @@ class IntroNavigationButtons extends StatelessWidget {
 
               alignment: Alignment.center,
               padding: EdgeInsets.symmetric(vertical: 14),
-    child: Text('Continue', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white)),
+    child: Text('Continue'.tr(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white)),
 
             ),
           ),
@@ -65,7 +66,7 @@ class IntroNavigationButtons extends StatelessWidget {
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => LocationScreen()));              },
               child: Text(
-                'Skip',
+                'Skip'.tr(),
                 style: TextStyle(fontSize: 16, color: Colors.grey[700]),
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class EmailWidget extends StatelessWidget {
@@ -34,12 +35,12 @@ class EmailWidget extends StatelessWidget {
           fontSize: screenWidth * 0.03, // ✅ حجم خط متجاوب
         ),
         decoration: InputDecoration(
-          labelText: 'Email',
+          labelText: 'Email'.tr(),
           labelStyle: TextStyle(
             fontSize: screenWidth * 0.025,
 
           ),
-          hintText: "Enter your email",
+          hintText: "Enter your email".tr(),
           hintStyle: TextStyle(
             fontSize: screenWidth * 0.025,
 

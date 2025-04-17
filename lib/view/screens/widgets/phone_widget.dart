@@ -61,6 +61,7 @@
 //
 //
 //
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 class PhoneWidget extends StatelessWidget {
@@ -100,7 +101,7 @@ class PhoneWidget extends StatelessWidget {
             fontSize: screenWidth * 0.03,
           ),
           decoration: InputDecoration(
-            labelText: 'Phone Number',
+            labelText: 'Phone Number'.tr(),
             labelStyle: TextStyle(
               fontSize: screenWidth * 0.025,
 

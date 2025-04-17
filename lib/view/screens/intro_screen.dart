@@ -65,6 +65,7 @@
 //     );
 //   }
 // }
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/intro_cubit.dart';
@@ -79,24 +80,24 @@ class IntroScreen extends StatelessWidget {
   final List<Map<String, dynamic>> pages = [
     {
       'imagePath': 'assets/images/Orderfood1.png',
-      'title': 'Welcome To Sahlah',
-      'subtitle': 'Enjoy A Fast And Smooth Food Delivery At Your Doorstep',
+      'title': 'Welcome To Sahlah'.tr(),
+      'subtitle': 'Enjoy A Fast And Smooth Food Delivery At Your Doorstep'.tr(),
       'imageWidth': 328.0,
       'imageHeight': 328.0,
     },
     {
       'imagePath': 'assets/images/TakeAway.png',
-      'title': 'Get Delivery On Time',
+      'title': 'Get Delivery On Time'.tr(),
       'subtitle':
-      'Order Your Favorite Food Within The Palm Of Your Hand And The Zone Of Your Comfort',
+      'Order Your Favorite Food Within The Palm Of Your Hand And The Zone Of Your Comfort'.tr(),
       'imageWidth': 328.0,
       'imageHeight': 219.0,
     },
     {
       'imagePath': 'assets/images/TakeAway2.png',
-      'title': 'Choose Your Food',
+      'title': 'Choose Your Food'.tr(),
       'subtitle':
-      'Order Your Favorite Food Within The Palm Of Your Hand And The Zone Of Your Comfort',
+      'Order Your Favorite Food Within The Palm Of Your Hand And The Zone Of Your Comfort'.tr(),
       'imageWidth': 328.0,
       'imageHeight': 219.0,
     },
@@ -130,8 +131,8 @@ class IntroScreen extends StatelessWidget {
                     return _buildPage(
                       context,
                       page['imagePath'],
-                      page['title'],
-                      page['subtitle'],
+                      page['title'.tr()],
+                      page['subtitle'.tr()],
                       page['imageWidth'],
                       page['imageHeight'],
                     );

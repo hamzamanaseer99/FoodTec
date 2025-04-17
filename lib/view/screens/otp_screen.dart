@@ -470,9 +470,11 @@
 // }
 import 'dart:ui';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/services.dart';
+import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/rest_screen.dart';
 import '../../cubit/otp_cubit.dart';
 
@@ -561,10 +563,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                               padding: EdgeInsets.symmetric(horizontal: 12),
                               child: Center(
                                 child: Text(
-                                  "A 4-digit code has been sent to your email. Please enter it to verify.",
+                                  "A 4-digit code has been sent to your email. Please enter it to verify.".tr(),
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontSize: screenWidth * 0.02 ,
+                                    fontSize: responsiveWidth(context, 12) ,
                                     color: Colors.grey,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -616,7 +618,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                                     ),
                                   ),
                                   child:  Text(
-                                    "Verify",
+                                    "Verify".tr(),
                                     style: TextStyle(
                                       fontSize: screenWidth * 0.03,                                      fontWeight: FontWeight.bold,
                                       color: Colors.white,

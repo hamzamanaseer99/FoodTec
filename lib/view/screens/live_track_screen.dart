@@ -432,7 +432,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
   Widget _buildBottomSheet(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        height: responsiveHeight(context, 400),
+        height: responsiveHeight(context, 450),
         padding: EdgeInsets.symmetric(
           horizontal: responsiveWidth(context, 24),
           vertical: responsiveHeight(context, 16),

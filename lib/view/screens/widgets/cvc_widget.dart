@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
@@ -43,11 +44,11 @@ class _CvcWidgetState extends State<CvcWidget> {
             fontSize: screenWidth * 0.03,
           ),
           decoration: InputDecoration(
-            labelText: 'Card Number',
+            labelText: 'CVC'.tr(),
             labelStyle: TextStyle(
               fontSize: screenWidth * 0.025,
             ),
-            hintText: "6578 8756 4238 92764",
+            hintText: "875",
             hintStyle: TextStyle(
               fontSize: screenWidth * 0.025,
             ),

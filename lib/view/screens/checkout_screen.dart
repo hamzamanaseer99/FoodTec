@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/cart_cubit.dart';
@@ -86,9 +87,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Checkout', style: TextStyle(fontSize: responsiveWidth(context, 20), fontWeight: FontWeight.w600)),
+                  Text('Checkout'.tr(), style: TextStyle(fontSize: responsiveWidth(context, 20), fontWeight: FontWeight.w600)),
                   SizedBox(height: responsiveHeight(context, 18)),
-                  Text('Pay With:', style: TextStyle(fontSize: responsiveWidth(context, 18), fontWeight: FontWeight.w600)),
+                  Text('Pay With:'.tr(), style: TextStyle(fontSize: responsiveWidth(context, 18), fontWeight: FontWeight.w600)),
 
                   // عرض الموقع المحدد باستخدام العنوان النصي
                   Padding(
@@ -104,7 +105,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   SizedBox(height: responsiveHeight(context, 24)),
 
                   // باقي العناصر في الـ UI (مثل إدخال كود الخصم، خيارات الدفع)
-                  Text('Promo Code?', style: TextStyle(fontSize: responsiveWidth(context, 18), fontWeight: FontWeight.w600)),
+                  Text('Promo Code?'.tr(), style: TextStyle(fontSize: responsiveWidth(context, 18), fontWeight: FontWeight.w600)),
                   SizedBox(height: responsiveHeight(context, 16)),
                   Row(
                     children: [
@@ -115,7 +116,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             controller: promoController,
                             style: TextStyle(fontSize: responsiveHeight(context, 14)),
                             decoration: InputDecoration(
-                              hintText: 'Enter Your Promo',
+                              hintText: 'Enter Your Promo'.tr(),
                               hintStyle: TextStyle(color: Color(0xff878787), fontSize: responsiveWidth(context, 14)),
                               fillColor: Colors.white,
                               contentPadding: EdgeInsets.symmetric(vertical: responsiveHeight(context, 12), horizontal: responsiveWidth(context, 12)),
@@ -161,7 +162,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             ),
                           ),
                           child: Text(
-                            'Add',
+                            'Add'.tr(),
                             style: TextStyle(color: Colors.white, fontSize: responsiveWidth(context, 12), fontWeight: FontWeight.w400),
                           ),
                         ),
@@ -169,7 +170,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     ],
                   ),
                   SizedBox(height: responsiveHeight(context, 24)),
-                  Text('Pay with:', style: TextStyle(fontSize: responsiveWidth(context, 18), fontWeight: FontWeight.w600)),
+                  Text('Pay with:'.tr(), style: TextStyle(fontSize: responsiveWidth(context, 18), fontWeight: FontWeight.w600)),
                   RadioWidget(),
                 ],
               ),
