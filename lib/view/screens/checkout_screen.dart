@@ -296,14 +296,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     ),
                   ),
                   SizedBox(height: responsiveHeight(context, 18)),
+
                   Text(
-                    'Pay With:'.tr(),
+                    'Address:'.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 18),
                       fontWeight: FontWeight.w600,
                       color: isDarkMode ? Colors.white : Colors.black, // تغيير اللون
                     ),
                   ),
+
 
                   // عرض الموقع المحدد باستخدام العنوان النصي
                   Padding(

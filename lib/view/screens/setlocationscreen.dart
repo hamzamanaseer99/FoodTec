@@ -94,6 +94,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/checkout_screen.dart';
 import 'package:foodtek/view/screens/payment_screen.dart';
 import 'package:geolocator/geolocator.dart';
@@ -112,7 +113,7 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
   LatLng? currentLocation;
   TextEditingController searchController = TextEditingController();
   Set<Marker> markers = {}; // لتخزين العلامات على الخريطة
-  String selectedAddressTitle = 'Loading...'; // متغير لتخزين العنوان المختار
+  String selectedAddressTitle = 'Loading...'.tr(); // متغير لتخزين العنوان المختار
 
   @override
   void initState() {
@@ -147,7 +148,7 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
       currentLocation = LatLng(position.latitude, position.longitude);
       markers.clear();
       markers.add(Marker(
-        markerId: MarkerId('currentLocation'),
+        markerId: MarkerId('currentLocation'.tr()),
         position: currentLocation!,
       ));
     });
@@ -215,96 +216,117 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Stack(
-        children: [
-          // خريطة جوجل
-          GoogleMap(
-            initialCameraPosition: CameraPosition(
-              target: LatLng(31.963158, 35.930359), // عمان كموقع مبدئي
-              zoom: 12,
-            ),
-            onMapCreated: (controller) {
-              mapController = controller;
-            },
-            myLocationEnabled: true,
-            onTap: _onMapTapped, // تحديد الموقع عند النقر على الخريطة
-            markers: markers,
-          ),
-
-          // خانة البحث
-          Positioned(
-            top: 70, // تغيير الموضع ليكون أسفل قليلاً
-            left: 20,
-            right: 20,
-            child: TextField(
-              controller: searchController,
-              decoration: InputDecoration(
-                hintText: "Find your location".tr(),
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+    
+      body: SafeArea(
+        child: Stack(
+          children: [
+            // خريطة جوجل
+            GoogleMap(
+              initialCameraPosition: CameraPosition(
+                target: LatLng(31.963158, 35.930359), // عمان كموقع مبدئي
+                zoom: 12,
               ),
-              onSubmitted: (_) => _searchAddress(),
+              onMapCreated: (controller) {
+                mapController = controller;
+              },
+              myLocationEnabled: true,
+              onTap: _onMapTapped, // تحديد الموقع عند النقر على الخريطة
+              markers: markers,
             ),
-          ),
-
-          // عرض العنوان في Card
-          Positioned(
-            bottom: 100,
-            left: 20,
-            right: 20,
-            child: Column(
-              children: [
-                // الجدول (Card) الذي يعرض العنوان المختار
-                Card(
-                  elevation: 4,
-                  margin: EdgeInsets.only(bottom: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Text(
-                      selectedAddressTitle, // عرض العنوان المختار هنا
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+        
+            // خانة البحث
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: responsiveWidth(context, 30),
+                vertical: responsiveHeight(context, 60),
+              ),
+              child: Row(
+                children: [
+                  BackButton(),
+                  Expanded(
+                    child: Material(
+                      elevation: 4,
+                      borderRadius: BorderRadius.circular(40),
+                      child: TextField(
+                        controller: searchController,
+                        decoration: InputDecoration(
+                          hintText: "Find your location".tr(),
+                          prefixIcon: Icon(Icons.search, color: Color(0xff25AE4B)),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40),
+                            borderSide: const BorderSide(color: Color(0xffD6D6D6)),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: EdgeInsets.symmetric(vertical: 0),
+                        ),
+                        onSubmitted: (_) => _searchAddress(),
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
-                ),
-
-                // زر تأكيد الموقع مع تحسين التصميم
-                ElevatedButton(
-                  onPressed: currentLocation == null
-                      ? null
-                      : () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CheckoutScreen(
-                          userLocation: currentLocation!,
-                        ),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 50), // عرض كامل وارتفاع 50
+                ],
+              ),
+            ),
+        
+        
+            // عرض العنوان في Card
+            Positioned(
+              bottom: 100,
+              left: 20,
+              right: 20,
+              child: Column(
+                children: [
+                  // الجدول (Card) الذي يعرض العنوان المختار
+                  Card(
+                    elevation: 4,
+                    margin: EdgeInsets.only(bottom: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    backgroundColor: Colors.green,
+                    child: Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Text(
+                        selectedAddressTitle, // عرض العنوان المختار هنا
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   ),
-                  child: Text(
-                    'Confirm Location'.tr(),
-                    style: TextStyle(fontSize: 18, color: Colors.white),
+        
+                  // زر تأكيد الموقع مع تحسين التصميم
+                  ElevatedButton(
+                    onPressed: currentLocation == null
+                        ? null
+                        : () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CheckoutScreen(
+                            userLocation: currentLocation!,
+                          ),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.infinity, 50), // عرض كامل وارتفاع 50
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      backgroundColor: Colors.green,
+                    ),
+                    child: Text(
+                      'Confirm Location'.tr(),
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

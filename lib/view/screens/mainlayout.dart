@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,11 +31,11 @@ class MainLayout extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _buildNavItem(context, Icons.home_outlined, "Home", 0),
-            _buildNavItem(context, Icons.favorite_outline, "Favorites", 1),
+            _buildNavItem(context, Icons.home_outlined, "Home".tr(), 0),
+            _buildNavItem(context, Icons.favorite_outline, "Favorites".tr(), 1),
             SizedBox(width: 48),
-            _buildNavItem(context, Icons.history, "History", 2),
-            _buildNavItem(context, Icons.person_outline_outlined, "Profile", 3),
+            _buildNavItem(context, Icons.history, "History".tr(), 2),
+            _buildNavItem(context, Icons.person_outline_outlined, "Profile".tr(), 3),
           ],
         ),
       ),

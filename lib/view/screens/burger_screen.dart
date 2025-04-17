@@ -198,7 +198,7 @@ class _BurgerScreenState extends State<BurgerScreen> {
     return Scaffold(
       backgroundColor: theme.colorScheme.background, // ✅ خلفية ديناميكية
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding:  EdgeInsets.all(8.0),
         child: products.isEmpty
             ? Center(
           child: CircularProgressIndicator(
