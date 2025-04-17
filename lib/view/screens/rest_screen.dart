@@ -629,6 +629,7 @@
 //   }
 // }
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/view/screens/widgets/confirm_password_widget.dart';
 import 'package:foodtek/view/screens/widgets/new_password_widget.dart';
@@ -656,8 +657,8 @@ class _ResetScreenState extends State<ResetScreen> {
 
     if (newPassword != confirmPassword) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Passwords do not match!"),
+         SnackBar(
+          content: Text("Passwords do not match!".tr()),
           backgroundColor: Colors.red,
         ),
       );
@@ -666,8 +667,8 @@ class _ResetScreenState extends State<ResetScreen> {
 
     if (!PasswordValidator.isValid(newPassword)) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Password must contain uppercase, lowercase, number, special character, and be at least 8 characters long."),
+         SnackBar(
+          content: Text("Password must contain uppercase, lowercase, number, special character, and be at least 8 characters long.".tr()),
           backgroundColor: Colors.red,
         ),
       );
@@ -691,8 +692,8 @@ class _ResetScreenState extends State<ResetScreen> {
 
     // عرض رسالة نجاح
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("Password reset successful!"),
+       SnackBar(
+        content: Text("Password reset successful!".tr()),
         backgroundColor: Colors.green,
       ),
     );
@@ -768,7 +769,7 @@ class _ResetScreenState extends State<ResetScreen> {
                            Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'Reset Password',
+                              'Reset Password'.tr(),
                               style: TextStyle(
                                   fontSize: screenWidth * 0.05 ,
                                   fontWeight: FontWeight.w700
@@ -782,7 +783,7 @@ class _ResetScreenState extends State<ResetScreen> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                  Text(
-                                  "Want to try with my current password?",
+                                  "Want to try with my current password?".tr(),
                                   textAlign: TextAlign.start,
                                   style: TextStyle(
                                     fontSize: screenWidth * 0.02 ,
@@ -803,7 +804,7 @@ class _ResetScreenState extends State<ResetScreen> {
                                     );
                                   },
                                   child:  Text(
-                                    " Login ",
+                                    "Login".tr(),
                                     style: TextStyle(
                                       color: Color(0xff25AE4B),
                                       fontWeight: FontWeight.w600,
@@ -829,7 +830,7 @@ class _ResetScreenState extends State<ResetScreen> {
                               ),
                             ),
                             child:  Text(
-                              "Update Password",
+                              "Update Password".tr(),
                               style: TextStyle(
                                   fontSize: screenWidth * 0.033,
                                   fontWeight: FontWeight.w500, color: Colors.white),

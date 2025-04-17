@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -19,7 +20,7 @@ class SocialLoginButtons extends StatelessWidget {
       children: [
         _buildSocialButton(
           icon: FontAwesomeIcons.google,
-          text: "Continue with Google",
+          text: "Continue with Google".tr(),
           iconColor: Colors.red,
           fontSize: fontSize,
           iconSize: iconSize,
@@ -27,7 +28,7 @@ class SocialLoginButtons extends StatelessWidget {
         const SizedBox(height: 12),
         _buildSocialButton(
           icon: FontAwesomeIcons.facebook,
-          text: "Continue with Facebook",
+          text: "Continue with Facebook".tr(),
           iconColor: const Color(0xff1877F2),
           fontSize: fontSize,
           iconSize: iconSize,
@@ -35,7 +36,7 @@ class SocialLoginButtons extends StatelessWidget {
         const SizedBox(height: 12),
         _buildSocialButton(
           icon: FontAwesomeIcons.apple,
-          text: "Continue with Apple",
+          text: "Continue with Apple".tr(),
           iconColor: Colors.black,
           fontSize: fontSize,
           iconSize: iconSize,
@@ -84,7 +85,7 @@ class SocialLoginButtons extends StatelessWidget {
             const SizedBox(width: 12),
             Expanded(
               child: Text(
-                text,
+                text.tr(),
                 style: TextStyle(
                   color: const Color(0xff1A1C1E),
                   fontSize: fontSize,

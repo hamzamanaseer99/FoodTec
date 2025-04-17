@@ -435,6 +435,7 @@
 //     );
 //   }
 // }
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/homescreen.dart';
 import 'package:geolocator/geolocator.dart';
@@ -497,16 +498,17 @@ class _IntroScreenState extends State<IntroScreen> {
               });
             },
             children: [
-              _buildPage('assets/images/Orderfood1.png', 'Welcome To Sahlah',
-                  'Enjoy A Fast And Smooth Food Delivery At Your Doorstep'),
+              _buildPage('assets/images/Orderfood1.png',
+                  'Welcome To Sahlah'.tr(),
+                  'Enjoy A Fast And Smooth Food Delivery At Your Doorstep'.tr()),
               _buildPage(
                   'assets/images/TakeAway.png',
-                  'Get Delivery On Time',
-                  'Order Your Favorite Food Within The Palm Of Your Hand And The Zone Of Your Comfort'),
+                  'Get Delivery On Time'.tr(),
+                  'Order Your Favorite Food Within The Palm Of Your Hand And The Zone Of Your Comfort'.tr()),
               _buildPage(
                   'assets/images/TakeAway2.png',
-                  'Choose Your Food',
-                  'Order Your Favorite Food Within The Palm Of Your Hand And The Zone Of Your Comfort'),
+                  'Choose Your Food'.tr(),
+                  'Order Your Favorite Food Within The Palm Of Your Hand And The Zone Of Your Comfort'.tr()),
                 _buildLocationPermissionPage(),
             ],
           ),
@@ -555,10 +557,10 @@ class _IntroScreenState extends State<IntroScreen> {
                       padding: EdgeInsets.symmetric(vertical: 14),
                       child: Text(
                         _currentPage == 2
-                            ? 'Continue'
+                            ? 'Continue'.tr()
                             : _currentPage == 3
-                            ? 'Continue'
-                            : 'Next',
+                            ? 'Continue'.tr()
+                            : 'Next'.tr(),
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
                       ),
                     ),
@@ -575,7 +577,7 @@ class _IntroScreenState extends State<IntroScreen> {
                         _pageController.jumpToPage(3);
                       },
                       child: Text(
-                        'Skip',
+                        'Skip'.tr(),
                         style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                       ),
                     ),
@@ -629,7 +631,7 @@ class _IntroScreenState extends State<IntroScreen> {
         ),
         SizedBox(height: 20),
         Text(
-          title,
+          title.tr(),
           style: TextStyle(
               fontSize: 32, fontWeight: FontWeight.w500, color: Color(0xFF455A64)),
           textAlign: TextAlign.center,
@@ -668,7 +670,7 @@ class _IntroScreenState extends State<IntroScreen> {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'Enable Location',
+                  'Enable Location'.tr(),
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500, color: Color(0xFF455A64)),
                   textAlign: TextAlign.center,
                 ),
@@ -676,7 +678,7 @@ class _IntroScreenState extends State<IntroScreen> {
                 SizedBox(
                   width: 335,
                   child: Text(
-                    'To provide better service, we need access to your location. Please enable location services.',
+                    'To provide better service, we need access to your location. Please enable location services.'.tr(),
                     style: TextStyle(fontSize: 16, color: Color(0xFF455A64)),
                     textAlign: TextAlign.center,
                   ),
@@ -696,7 +698,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     ),
                   ),
                   child: Text(
-                    'Enable Location',
+                    'Enable Location'.tr(),
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                 ),
@@ -709,7 +711,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     Navigator.pushReplacementNamed(context, '/home');
                   },
                   child: Text(
-                    'Cancel',
+                    'Cancel'.tr(),
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,

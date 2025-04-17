@@ -524,6 +524,7 @@
 //   }
 // }
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/favorite_products_cubit.dart';
@@ -589,7 +590,8 @@ class HomeScreen extends StatelessWidget {
         context.read<BottomNavCubit>().changeTab(4); // الانتقال إلى صفحة السلة
       },
       backgroundColor: Colors.green,
-      child: const Icon(Icons.shopping_cart_rounded, color: Colors.white, size: 30),
+      child: const Icon(Icons.shopping_cart_rounded,
+          color: Colors.white, size: 30),
       shape: const CircleBorder(),
     );
   }
@@ -603,11 +605,12 @@ class HomeScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildNavItem(context, Icons.home_outlined, "Home", 0, currentIndex),
-          _buildNavItem(context, Icons.favorite_outline, "Favorites", 1, currentIndex),
+          _buildNavItem(context, Icons.home_outlined,
+              "Home".tr(), 0, currentIndex),
+          _buildNavItem(context, Icons.favorite_outline, "Favorites".tr(), 1, currentIndex),
           const SizedBox(width: 48), // مساحة للزر العائم
-          _buildNavItem(context, Icons.history, "History", 2, currentIndex),
-          _buildNavItem(context, Icons.person_outline_outlined, "Profile", 3, currentIndex),
+          _buildNavItem(context, Icons.history, "History".tr(), 2, currentIndex),
+          _buildNavItem(context, Icons.person_outline_outlined, "Profile".tr(), 3, currentIndex),
         ],
       ),
     );
@@ -626,7 +629,7 @@ class HomeScreen extends StatelessWidget {
             size: 28,
           ),
           Text(
-            label,
+            label.tr(),
             style: TextStyle(
               color: currentIndex == index ? Colors.green : Colors.black54,
               fontSize: 12,

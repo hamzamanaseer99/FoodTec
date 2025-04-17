@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -35,12 +36,12 @@ class BirthWidget extends StatelessWidget {
               fontSize: screenWidth * 0.03
           ),
           decoration: InputDecoration(
-            labelText: 'Birth of date',
+            labelText: 'Birth of date'.tr(),
             labelStyle: TextStyle(
               fontSize: screenWidth * 0.025,
 
             ),
-            hintText: "YYYY-MM-DD",
+            hintText: "YYYY-MM-DD".tr(),
             hintStyle: TextStyle(
               fontSize: screenWidth * 0.025,
 

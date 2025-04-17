@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/view/screens/widgets/email_widget.dart';
 import 'login_screen.dart';
@@ -30,7 +31,6 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
             height: double.infinity,
           ),
 
-          /// 🔹 **تمرير عمودي مع `IntrinsicHeight` لحل المشكلة**
           SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Center(
@@ -42,7 +42,7 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                   children: [
                     SizedBox(height: screenHeight * 0.08),
 
-                    /// 🔹 **اسم التطبيق "Foodtek"**
+
                     Center(
                       child: Text(
                         'Foodtek',
@@ -56,7 +56,6 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
 
                     SizedBox(height: screenHeight * 0.06),
 
-                    /// 🔹 **بطاقة الإدخال (Container) بدون `height` ثابت**
                     Container(
                       width: screenWidth * 0.9,
                       padding: EdgeInsets.symmetric(
@@ -71,7 +70,6 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min, // 🟢 مهم جدًا لحل مشكلة `overflow`
                         children: [
-                          /// 🔹 **زر الرجوع**
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -90,7 +88,7 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Text(
-                                        "Back to",
+                                        "Back to".tr(),
                                         style: TextStyle(
                                           color: Colors.grey,
                                           fontSize: fontSize,
@@ -110,7 +108,7 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                                           );
                                         },
                                         child: Text(
-                                          " Login ",
+                                          "Login".tr(),
                                           style: TextStyle(
                                             color: const Color(0xff25AE4B),
                                             fontWeight: FontWeight.w600,
@@ -119,7 +117,7 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                                         ),
                                       ),
                                       Text(
-                                        "page",
+                                        "page".tr(),
                                         style: TextStyle(
                                           color: Colors.grey,
                                           fontSize: fontSize,
@@ -138,7 +136,7 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                           /// 🔹 **عنوان الصفحة**
                           Center(
                             child: Text(
-                              'Reset Password',
+                              'Reset Password'.tr(),
                               style: TextStyle(
                                 fontSize: screenWidth * 0.06,
                                 fontWeight: FontWeight.w700,
@@ -152,7 +150,7 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                             padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
                             child:  Center(
                               child: Text(
-                                "Enter your E-mail or phone and we'll send you a link to get back into your account",
+                                "Enter your E-mail or phone and we'll send you a link to get back into your account".tr(),
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: screenWidth * 0.03 ,
@@ -203,7 +201,7 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                                   elevation: 0, // ✅ إلغاء تأثير الرفع الأساسي للاعتماد على الظل المخصص
                                 ),
                                 child: Text(
-                                  "Send",
+                                  "Send".tr(),
                                   style: TextStyle(
                                     fontSize: screenWidth * 0.03, // ✅ خط متجاوب
                                     fontWeight: FontWeight.bold,
