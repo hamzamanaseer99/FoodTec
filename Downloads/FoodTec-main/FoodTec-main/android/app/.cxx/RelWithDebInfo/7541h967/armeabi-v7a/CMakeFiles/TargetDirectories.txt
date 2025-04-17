@@ -1,0 +1,2 @@
+C:/Users/Zaid Ghassan/Downloads/FoodTec-main/FoodTec-main/android/app/.cxx/RelWithDebInfo/7541h967/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Zaid Ghassan/Downloads/FoodTec-main/FoodTec-main/android/app/.cxx/RelWithDebInfo/7541h967/armeabi-v7a/CMakeFiles/rebuild_cache.dir
