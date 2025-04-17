@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/cart_cubit.dart';
@@ -60,14 +61,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ),
                   SizedBox(height: responsiveHeight(context, 24)),
                   // Product name and rating
-                  Text(product.name, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                  Text(product.name.tr(), style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                   SizedBox(height: responsiveHeight(context, 8)),
                   Row(
                     children: [
                       ...List.generate(4, (_) =>  Icon(Icons.star, color: Colors.amber, size: responsiveWidth(context, 16))),
                        Icon(Icons.star_half, color: Colors.amber, size: responsiveWidth(context, 16)),
                       SizedBox(width: responsiveWidth(context, 8)),
-                      Text('4.5 (89 reviews)', style: TextStyle(fontSize: responsiveWidth(context, 14), color: Colors.grey[600])),
+                      Text('4.5 (89 reviews)'.tr(), style: TextStyle(fontSize: responsiveWidth(context, 14), color: Colors.grey[600])),
                     ],
                   ),
                    SizedBox(height: responsiveHeight(context, 8)),
@@ -82,13 +83,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ),
                   SizedBox(height: responsiveHeight(context, 12)),
 
-                  Text(product.description, style:  TextStyle(fontSize: responsiveWidth(context, 16))),
+                  Text(product.description.tr(), style:  TextStyle(fontSize: responsiveWidth(context, 16))),
                    SizedBox(height: responsiveHeight(context, 24)),
                    Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Spicy', style: TextStyle(fontSize: responsiveWidth(context, 16), color: Color(0xff838383), fontWeight: FontWeight.w500)),
-                      Text('Quantity', style: TextStyle(fontSize: responsiveWidth(context, 16), color: Color(0xff838383), fontWeight: FontWeight.w500)),
+                      Text('Spicy'.tr(), style: TextStyle(fontSize: responsiveWidth(context, 16), color: Color(0xff838383), fontWeight: FontWeight.w500)),
+                      Text('Quantity'.tr(), style: TextStyle(fontSize: responsiveWidth(context, 16), color: Color(0xff838383), fontWeight: FontWeight.w500)),
                     ],
                   ),
                   SizedBox(height: responsiveHeight(context, 12)),
@@ -149,7 +150,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 // 2. عرض تأكيد للمستخدم
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text("تمت إضافة ${product.name} إلى السلة"),
+                    content: Text("تمت إضافة ${product.name.tr()} إلى السلة"),
                     duration: Duration(seconds: 2),
                     action: SnackBarAction(
                       label: 'عرض السلة',
@@ -178,7 +179,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 ),
               ),
               child: Text(
-                "Add To Cart",
+                "Add To Cart".tr(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -208,7 +209,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Current location", style: TextStyle(fontSize: 12, color: Color(0xff606060))),
+        Text("Current location".tr(), style: TextStyle(fontSize: 12, color: Color(0xff606060))),
         SizedBox(height: 4),
         Text("Jl. Soekarno Hatta 15A...", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ],

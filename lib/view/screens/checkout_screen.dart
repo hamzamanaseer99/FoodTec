@@ -89,7 +89,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 children: [
                   Text('Checkout'.tr(), style: TextStyle(fontSize: responsiveWidth(context, 20), fontWeight: FontWeight.w600)),
                   SizedBox(height: responsiveHeight(context, 18)),
-                  Text('Pay With:'.tr(), style: TextStyle(fontSize: responsiveWidth(context, 18), fontWeight: FontWeight.w600)),
+                  Text('Address:'.tr(), style: TextStyle(fontSize: responsiveWidth(context, 18), fontWeight: FontWeight.w600)),
 
                   // عرض الموقع المحدد باستخدام العنوان النصي
                   Padding(

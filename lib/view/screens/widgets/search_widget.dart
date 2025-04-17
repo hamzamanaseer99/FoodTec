@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/home_cubit.dart';
@@ -30,7 +31,7 @@ class SearchWidget extends StatelessWidget {
               contentPadding: EdgeInsets.symmetric(
                 vertical: responsiveHeight(context, 12),
               ),
-              hintText: "Search menu, restaurant or etc",
+              hintText: "Search menu, restaurant or etc".tr(),
               hintStyle: TextStyle(
                 color: const Color(0xff878787),
                 fontSize: responsiveWidth(context, 14),

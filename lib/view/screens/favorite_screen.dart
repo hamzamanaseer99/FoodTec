@@ -411,6 +411,7 @@
 // }
 //
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/view/screens/widgets/notification_icon.dart';
@@ -478,8 +479,8 @@ class FavoriteScreen extends StatelessWidget {
                           showDialog(
                             context: context,
                             builder: (_) => AlertDialog(
-                              title: Text("Remove from Favorites"),
-                              content: Text("Are you sure?"),
+                              title: Text("Remove from Favorites".tr()),
+                              content: Text("Are you sure?".tr()),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -498,7 +499,7 @@ class FavoriteScreen extends StatelessWidget {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        "Yes",
+                                        "Yes".tr(),
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 16,
@@ -548,7 +549,7 @@ Widget _buildLocationTitle() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text("Current location", style: TextStyle(fontSize: 12, color: Color(0xff606060))),
+      Text("Current location".tr(), style: TextStyle(fontSize: 12, color: Color(0xff606060))),
       SizedBox(height: 4),
       Text("Jl. Soekarno Hatta 15A...", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
     ],

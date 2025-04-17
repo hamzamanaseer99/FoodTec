@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
 
@@ -107,7 +108,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         fontWeight: FontWeight.w500,
                       ),
                       decoration:  InputDecoration(
-                        hintText: "Write your message",
+                        hintText: "Write your message".tr(),
                         hintStyle: TextStyle(
                           color: Color(0xff6E6E6E),
                           fontWeight: FontWeight.bold,

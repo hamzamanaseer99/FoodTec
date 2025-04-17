@@ -126,7 +126,7 @@ class BurgerScreen extends StatefulWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding:  EdgeInsets.all(8.0),
         child: products.isEmpty
             ? Center(child: CircularProgressIndicator())
             : GridView.builder(

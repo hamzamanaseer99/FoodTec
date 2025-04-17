@@ -234,6 +234,7 @@
 //   }
 // }
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/top_rated_cubit.dart';
@@ -313,13 +314,14 @@ class TopRatedProducts extends StatelessWidget {
 
   Widget _buildProductDetails(double screenWidth, Map<String, dynamic> product) {
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding:  EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(product["name"], style: TextStyle(fontWeight: FontWeight.bold, fontSize: screenWidth * 0.040)),
+      Text((product["name"] as String).tr(),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: screenWidth * 0.040)),
           Text(
-            '100 gr chicken + tomato + cheese Lettuce',
+            '100 gr chicken + tomato + cheese Lettuce'.tr(),
             style: TextStyle(fontSize: screenWidth * 0.030, color: Color(0xff3B3B3B)),
           ),
           SizedBox(height: 6),
