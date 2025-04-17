@@ -48,14 +48,19 @@ class PizzaScreen extends StatefulWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: theme.colorScheme.background, // ✅ خلفية ديناميكية
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: products.isEmpty
-            ? Center(child: CircularProgressIndicator())
+            ? Center(
+          child: CircularProgressIndicator(
+            color: theme.primaryColor, // ✅ لون المؤشر من الثيم
+          ),
+        )
             : GridView.builder(
-
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 5,
@@ -67,7 +72,6 @@ class PizzaScreen extends StatefulWidget {
             final item = products[index];
             return ProductCard(
               item: item,
-
               onFavoriteToggle: () {
                 if (item.isFavorite) {
                   context.read<FavoriteProductsCubit>().removeFromFavorites(item);

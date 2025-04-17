@@ -143,6 +143,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/location_cubit.dart';
+import 'package:foodtek/homescreen.dart';
 import 'package:foodtek/view/screens/login_screen.dart';
 import '../../model/location_repository.dart';
 import '../../model/user_location.dart';
@@ -207,18 +208,30 @@ class LocationScreen extends StatelessWidget {
                   SizedBox(height: screenHeight * 0.05),
                   ElevatedButton(
                     onPressed: () async {
-                      await context.read<LocationCubit>().getCurrentLocation();
-                      if (locationState is LocationLoaded) {
-                        // Pass the location to the next screen
-                        Navigator.push(
-                          context,
+                      final locationCubit = context.read<LocationCubit>();
+                      await locationCubit.getCurrentLocation();
+                      final currentState = locationCubit.state;
+
+                      if (currentState is LocationLoaded) {
+                        // طباعة الإحداثيات للتأكد
+                        print('الإحداثيات المرسلة:');
+                        print('Lat: ${currentState.location.latitude}');
+                        print('Lng: ${currentState.location.longitude}');
+
+                        // الانتقال للصفحة الرئيسية مع إرسال الإحداثيات
+                        Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => LoginScreen(),
+                            builder: (context) => HomeScreen(
+                            ),
                           ),
                         );
-                      } else {
-                        // Handle loading or error states
-                        print("Location could not be fetched");
+                      } else if (currentState is LocationError) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('فشل في الحصول على الموقع. يرجى التأكد من تفعيل GPS'),
+                            duration: Duration(seconds: 3),
+                          ),
+                        );
                       }
                     },
                     style: ElevatedButton.styleFrom(
@@ -243,15 +256,18 @@ class LocationScreen extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.center,
                         padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Text('Yes, Turn It On'.tr(),
-                            style: TextStyle(
-                                fontSize: screenWidth * 0.04,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white)),
+                        child: Text(
+                          'Yes, Turn It On'.tr(),
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.04,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: screenHeight * 0.02),
+                  )
+                  ,SizedBox(height: screenHeight * 0.02),
                   ElevatedButton(
                     onPressed: () async {
                       Navigator.push(

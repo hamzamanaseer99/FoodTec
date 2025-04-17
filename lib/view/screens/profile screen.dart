@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/view/screens/update_information_screen.dart';
 import 'package:foodtek/view/screens/widgets/avatar_widget.dart';
 import 'package:foodtek/view/screens/widgets/custom_container_profile.dart';
 import 'package:easy_localization/easy_localization.dart';
+
+import '../../cubit/theme_cubit.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -15,8 +18,147 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
+    return
+        //   Scaffold (
+        //   backgroundColor: Colors.white,
+        //   body: SafeArea(
+        //     child: SingleChildScrollView(
+        //       child: Column(
+        //         crossAxisAlignment: CrossAxisAlignment.center,
+        //         children: [
+        //           Row(
+        //             children: [
+        //               BackButton(),
+        //               Text(
+        //                 'Profile'.tr(),
+        //                 style: TextStyle(
+        //                   fontSize: 20,
+        //                   fontWeight: FontWeight.w600,
+        //                 ),
+        //               ),
+        //             ],
+        //           ),
+        //           AvatarWidget(),
+        //           SizedBox(height: 24),
+        //
+        //           customContainer(
+        //             _buildSection(
+        //               title: 'My Account'.tr(),
+        //               children: [
+        //                 _buildListTile(
+        //                   'Personal information'.tr(),
+        //                   Icons.person,
+        //                   onTap: () => Navigator.push(
+        //                     context,
+        //                     MaterialPageRoute(
+        //                       builder: (context) => UpdateInformationScreen(),
+        //                     ),
+        //                   ),
+        //                 ),
+        //
+        //                 /// Language switch button
+        //                 Padding(
+        //                   padding: const EdgeInsets.symmetric(vertical: 12.0),
+        //                   child: Row(
+        //                     children: [
+        //                       Icon(Icons.language),
+        //                       const SizedBox(width: 10),
+        //                       Expanded(
+        //                         child: Text(
+        //                           'Language'.tr(),
+        //                           style: TextStyle(
+        //                             fontSize: 14,
+        //                             fontWeight: FontWeight.w500,
+        //                           ),
+        //                         ),
+        //                       ),
+        //                       TextButton(
+        //                         onPressed: () {
+        //                           Locale newLocale = context.locale.languageCode == 'en'
+        //                               ? const Locale('ar')
+        //                               : const Locale('en');
+        //                           context.setLocale(newLocale);
+        //                         },
+        //                         child: Text(
+        //                           context.locale.languageCode == 'en' ? 'العربية' : 'English',
+        //                           style: TextStyle(fontWeight: FontWeight.w600),
+        //                         ),
+        //                       )
+        //                     ],
+        //                   ),
+        //                 ),
+        //
+        //                 _buildListTile('Privacy Policy'.tr(), Icons.lock),
+        //                 _buildListTile('Setting'.tr(), Icons.settings),
+        //               ],
+        //             ),
+        //           ),
+        //
+        //           // Notifications Section
+        //           customContainer(
+        //             _buildSection(
+        //               title: 'Notifications'.tr(),
+        //               children: [
+        //                 _buildSwitchTile(
+        //                   'Push Notifications'.tr(),
+        //                   Icons.notifications,
+        //                   pushNotifications,
+        //                       (value) {
+        //                     setState(() {
+        //                       pushNotifications = value;
+        //                     });
+        //                   },
+        //                 ),
+        //                 _buildSwitchTile(
+        //                   'Promotional Notifications'.tr(),
+        //                   Icons.notifications,
+        //                   promotionalNotifications,
+        //                       (value) {
+        //                     setState(() {
+        //                       promotionalNotifications = value;
+        //                     });
+        //                   },
+        //                 ),
+        //               ],
+        //             ),
+        //
+        //           ),
+        //           customContainer(
+        //             _buildSection(
+        //               title: 'المظهر',
+        //               children: [
+        //                 SwitchListTile(
+        //                   title: Text('الوضع الليلي'),
+        //                   value: Theme.of(context).brightness == Brightness.dark,
+        //                   onChanged: (bool value) {
+        //                     context.read<ThemeCubit>().toggleTheme(value);
+        //                   },
+        //                 ),
+        //               ],
+        //             ),
+        //           ),
+        //
+        //           // More Section
+        //           customContainer(
+        //             _buildSection(
+        //               title: 'More'.tr(),
+        //               children: [
+        //                 _buildListTile('Help Center'.tr(), Icons.help),
+        //                 _buildListTile(
+        //                   'Log Out'.tr(),
+        //                   Icons.logout,
+        //                   textColor: Colors.red,
+        //                 ),
+        //               ],
+        //             ),
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // );
+        Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -24,20 +166,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               Row(
                 children: [
-                  BackButton(),
+                  BackButton(color: Theme.of(context).iconTheme.color),
                   Text(
                     'Profile'.tr(),
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge
+                        ?.copyWith(fontSize: 20),
                   ),
                 ],
               ),
               AvatarWidget(),
               SizedBox(height: 24),
-
               customContainer(
+                context,
                 _buildSection(
                   title: 'My Account'.tr(),
                   children: [
@@ -51,47 +193,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                     ),
-
-                    /// Language switch button
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 12.0),
                       child: Row(
                         children: [
-                          Icon(Icons.language),
+                          Icon(Icons.language,
+                              color: Theme.of(context).iconTheme.color),
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(
                               'Language'.tr(),
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                              ),
+                              style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ),
                           TextButton(
                             onPressed: () {
-                              Locale newLocale = context.locale.languageCode == 'en'
-                                  ? const Locale('ar')
-                                  : const Locale('en');
+                              Locale newLocale =
+                                  context.locale.languageCode == 'en'
+                                      ? const Locale('ar')
+                                      : const Locale('en');
                               context.setLocale(newLocale);
                             },
                             child: Text(
-                              context.locale.languageCode == 'en' ? 'العربية' : 'English',
-                              style: TextStyle(fontWeight: FontWeight.w600),
+                              context.locale.languageCode == 'en'
+                                  ? 'العربية'
+                                  : 'English',
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.w600),
                             ),
                           )
                         ],
                       ),
                     ),
-
                     _buildListTile('Privacy Policy'.tr(), Icons.lock),
                     _buildListTile('Setting'.tr(), Icons.settings),
                   ],
                 ),
               ),
-
-              // Notifications Section
               customContainer(
+                context,
                 _buildSection(
                   title: 'Notifications'.tr(),
                   children: [
@@ -99,7 +239,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       'Push Notifications'.tr(),
                       Icons.notifications,
                       pushNotifications,
-                          (value) {
+                      (value) {
                         setState(() {
                           pushNotifications = value;
                         });
@@ -109,7 +249,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       'Promotional Notifications'.tr(),
                       Icons.notifications,
                       promotionalNotifications,
-                          (value) {
+                      (value) {
                         setState(() {
                           promotionalNotifications = value;
                         });
@@ -118,9 +258,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
               ),
-
-              // More Section
               customContainer(
+                context,
+                _buildSection(
+                  title: 'المظهر',
+                  children: [
+                    SwitchListTile(
+                      title: Text('Dark Mode',
+                          style: Theme.of(context).textTheme.bodyMedium),
+                      value: Theme.of(context).brightness == Brightness.dark,
+                      onChanged: (bool value) {
+                        context.read<ThemeCubit>().toggleTheme(value);
+                      },
+                      secondary: Icon(Icons.dark_mode,
+                          color: Theme.of(context).iconTheme.color),
+                    ),
+                  ],
+                ),
+              ),
+              customContainer(
+                context,
                 _buildSection(
                   title: 'More'.tr(),
                   children: [
@@ -140,7 +297,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget _buildSection({required String title, required List<Widget> children}) {
+  Widget _buildSection(
+      {required String title, required List<Widget> children}) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -149,10 +307,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Text(
             title,
             style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              color: Color(0xff1B1B1B),
-            ),
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context).textTheme.bodyLarge?.color ??
+                    Colors.white),
           ),
           const SizedBox(height: 16),
           ...children,
@@ -169,7 +327,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         padding: const EdgeInsets.symmetric(vertical: 12.0),
         child: Row(
           children: [
-            Icon(icon),
+            Icon(
+              icon,
+              color: Theme.of(context).iconTheme.color,
+            ),
             const SizedBox(width: 10),
             Expanded(
               child: Text(
@@ -177,44 +338,77 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: textColor ?? Colors.black,
+                    color: Theme.of(context).iconTheme.color
                 ),
               ),
             ),
             if (suffixIcon != null)
-              Icon(suffixIcon, size: 16, color: Colors.grey),
+              Icon(suffixIcon,
+                  size: 16, color: Theme.of(context).iconTheme.color),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildSwitchTile(String title, IconData icon, bool value, Function(bool) onChanged) {
+  // Widget _buildSwitchTile(String title, IconData icon, bool value, Function(bool) onChanged) {
+  //   return Padding(
+  //     padding: const EdgeInsets.symmetric(vertical: 12.0),
+  //     child: Row(
+  //       children: [
+  //         Icon(icon),
+  //         const SizedBox(width: 10),
+  //         Expanded(
+  //           child: Text(
+  //             title,
+  //             style: TextStyle(
+  //               fontSize: 16,
+  //               fontWeight: FontWeight.w500,
+  //             ),
+  //           ),
+  //         ),
+  //         Switch(
+  //           value: value,
+  //           onChanged: onChanged,
+  //           activeColor: Color(0xff09CA67),
+  //           inactiveTrackColor: Color(0xffAFAFAF),
+  //           inactiveThumbColor: Colors.white,
+  //           thumbColor: MaterialStateProperty.resolveWith<Color>(
+  //                 (Set<MaterialState> states) {
+  //               return Colors.white;
+  //             },
+  //           ),
+  //         ),
+  //
+  //       ],
+  //     ),
+  //   );
+  // }
+  Widget _buildSwitchTile(
+      String title, IconData icon, bool value, Function(bool) onChanged) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Row(
         children: [
-          Icon(icon),
+          Icon(icon, color: Theme.of(context).iconTheme.color),
           const SizedBox(width: 10),
           Expanded(
             child: Text(
               title,
               style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Theme.of(context).iconTheme.color),
             ),
           ),
           Switch(
             value: value,
             onChanged: onChanged,
-            activeColor: Color(0xff09CA67),
-            inactiveTrackColor: Color(0xffAFAFAF),
+            activeColor: const Color(0xff09CA67),
+            inactiveTrackColor: const Color(0xffAFAFAF),
             inactiveThumbColor: Colors.white,
             thumbColor: MaterialStateProperty.resolveWith<Color>(
-                  (Set<MaterialState> states) {
-                return Colors.white;
-              },
+              (Set<MaterialState> states) => Colors.white,
             ),
           ),
         ],
