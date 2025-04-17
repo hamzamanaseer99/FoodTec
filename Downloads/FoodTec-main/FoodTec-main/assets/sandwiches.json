@@ -1,0 +1,25 @@
+[
+  {
+    "name": "Grilled Chicken Sandwich",
+    "description": "Grilled chicken breast with lettuce, tomato, and mayo.",
+    "price": 19.0,
+    "image": "assets/images/img_1.png"
+  },
+  {
+    "name": "Tuna Sandwich",
+    "description": "Tuna mixed with mayo, celery, and a touch of lemon.",
+    "price": 17.5,
+    "image": "assets/images/img_1.png"
+  },
+  {
+    "name": "Club Sandwich",
+    "description": "Triple-layered sandwich with turkey, bacon, and lettuce.",
+    "price": 21.0,
+    "image": "assets/images/img_1.png"
+  }, {
+    "name": "Club Sandwich",
+    "description": "Triple-layered sandwich with turkey, bacon, and lettuce.",
+    "price": 21.0,
+    "image": "assets/images/img_1.png"
+  }
+]
