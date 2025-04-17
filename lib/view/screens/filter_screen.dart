@@ -1,3 +1,6 @@
+// Imports remain the same
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/widgets/min_max_container_widget.dart';
@@ -5,9 +8,10 @@ import 'package:foodtek/view/screens/widgets/notification_icon.dart';
 import 'package:foodtek/view/screens/widgets/select_table_card_widget.dart';
 import 'package:foodtek/view/screens/widgets/slider_discount_widget.dart';
 import 'package:foodtek/view/screens/widgets/slider_price_widget.dart';
+
 import 'package:foodtek/view/screens/widgets/spicy_widget.dart';
 
-//
+
 class FilterScreen extends StatefulWidget {
   const FilterScreen({super.key});
 
@@ -357,12 +361,13 @@ class _FilterScreenState extends State<FilterScreen> {
         actions: [NotificationIcon()],
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(left: 22, top: responsiveHeight(context, 22)),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 22),
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
                 Text(
                   'Filter',
                   style: TextStyle(
@@ -372,13 +377,13 @@ class _FilterScreenState extends State<FilterScreen> {
                   ),
                 ),
                 SizedBox(height: responsiveHeight(context, 8)),
-                _buildSectionTitle(context, 'Price range'),
+                _buildSectionTitle(context, 'Price range.tr()'),
                 SizedBox(height: responsiveHeight(context, 24)),
                 Row(
                   children: [
-                    minMaxContainer(context, 'Min'),
+                    minMaxContainer(context, 'Min'.tr()),
                     SizedBox(width: responsiveWidth(context, 16)),
-                    minMaxContainer(context, 'Max')
+                    minMaxContainer(context, 'Max'.tr())
                   ],
                 ),
                 SizedBox(height: responsiveHeight(context, 24)),
@@ -391,9 +396,9 @@ class _FilterScreenState extends State<FilterScreen> {
                 SizedBox(height: responsiveHeight(context, 24)),
                 Row(
                   children: [
-                    minMaxContainer(context, 'Min'),
+                    minMaxContainer(context, 'Min'.tr()),
                     SizedBox(width: responsiveWidth(context, 16)),
-                    minMaxContainer(context, 'Max')
+                    minMaxContainer(context, 'Max'.tr())
                   ],
                 ),
                 SizedBox(height: responsiveHeight(context, 24)),
@@ -430,12 +435,16 @@ class _FilterScreenState extends State<FilterScreen> {
         fontWeight: FontWeight.w600,
         color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
       ),
+
     );
   }
 
   Widget _buildLocationIcon() {
     return Container(
+
+
       margin: const EdgeInsets.only(left: 15, top: 8, bottom: 8),
+ 
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
         color: const Color(0xff4FAF5A).withOpacity(0.1),
@@ -448,8 +457,9 @@ class _FilterScreenState extends State<FilterScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
         Text(
-          "Current location",
+        " Current location".tr(),
           style: TextStyle(
             fontSize: 12,
             color: Theme.of(context).textTheme.bodySmall?.color?.withOpacity(0.6),
@@ -464,6 +474,7 @@ class _FilterScreenState extends State<FilterScreen> {
             color: Theme.of(context).textTheme.bodyLarge?.color,
           ),
         ),
+
       ],
     );
   }

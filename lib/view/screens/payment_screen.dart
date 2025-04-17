@@ -183,8 +183,8 @@ class PaymentScreen extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  'We will send you an order details to your \n email after the successfull payment',
+
+                   Text('We will send you an order details to your \n email after the successfull payment'.tr(),
                   style: TextStyle(
                     fontSize: responsiveWidth(context, 12),
                     color: isDarkMode ? Colors.white70 : Color(0xff929DA9), // تغيير اللون بناءً على الوضع

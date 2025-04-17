@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/home_cubit.dart';
@@ -150,7 +151,7 @@ class MainScreen extends StatelessWidget {
                 builder: (context, state) {
                   final selectedCategory = state is HomeCategorySelected
                       ? state.category
-                      : "All";
+                      : "All".tr();
 
                   return CategoryBar(
                     categories: categories,
@@ -167,7 +168,7 @@ class MainScreen extends StatelessWidget {
                 builder: (context, state) {
                   final selectedCategory = state is HomeCategorySelected
                       ? state.category
-                      : "All";
+                      : "All".tr();
 
                   return _buildCategoryContent(selectedCategory);
                 },
@@ -208,6 +209,7 @@ class MainScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
         Text(
           "Current location",
           style: TextStyle(
@@ -215,6 +217,7 @@ class MainScreen extends StatelessWidget {
             color: theme.textTheme.bodySmall!.color,
           ),
         ),
+
         SizedBox(height: 4),
         Text(
           "Jl. Soekarno Hatta 15A...",

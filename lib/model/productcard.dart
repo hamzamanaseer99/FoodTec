@@ -91,6 +91,7 @@
 //
 // }
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/model/product.dart';
 
@@ -159,7 +160,7 @@ class ProductCard extends StatelessWidget {
                 SizedBox(height: isSmallScreen ? 4 : 6),
                 Flexible(
                   child: Text(
-                    item.name ?? "No Name",
+                    item.name.tr() ?? "No Name",
                     style: TextStyle(
                       fontSize: isSmallScreen ? 14 : 16,
                       fontWeight: FontWeight.bold,
@@ -172,7 +173,7 @@ class ProductCard extends StatelessWidget {
                 SizedBox(height: isSmallScreen ? 2 : 4),
                 Flexible(
                   child: Text(
-                    item.description ?? "No Description",
+                    item.description.tr() ?? "No Description",
                     style: TextStyle(
                       fontSize: isSmallScreen ? 10 : 12,
                       color: Colors.grey[700],
@@ -205,7 +206,7 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      "Order Now",
+                      "Order Now".tr(),
                       style: TextStyle(
                         fontSize: isSmallScreen ? 12 : 14,
                       ),

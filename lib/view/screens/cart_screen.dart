@@ -1339,13 +1339,15 @@ class _CartScreenState extends State<CartScreen> {
           leading: _buildLocationIcon(),
           title: _buildLocationTitle(context),
           actions:  [NotificationIcon()],
+
           bottom: const TabBar(
             labelColor: Colors.white,
+ 
             unselectedLabelColor: Colors.grey,
             indicatorColor: Color(0xff4FAF5A),
             tabs: [
-              Tab(text: 'Cart'),
-              Tab(text: 'History'),
+              Tab(text: 'Cart'.tr()),
+              Tab(text: 'History'.tr()),
             ],
           ),
         ),
@@ -1394,7 +1396,7 @@ class _CartScreenState extends State<CartScreen> {
                             bottom: index == cartItems.length - 1 ? 0 : responsiveHeight(context, 20),
                           ),
                           child: Slidable(
-                            key: ValueKey(item.product.name),
+                            key: ValueKey(item.product.name.tr()),
                             endActionPane: ActionPane(
                               motion: const BehindMotion(),
                               children: [
@@ -1414,7 +1416,7 @@ class _CartScreenState extends State<CartScreen> {
                                 horizontal: responsiveWidth(context, 16),
                               ),
                               width: responsiveWidth(context, 378),
-                              height: responsiveHeight(context, 120),
+                              height: responsiveHeight(context, 130),
                               decoration: BoxDecoration(
                                   color: Theme.of(context).cardColor,
                                   borderRadius: BorderRadius.circular(7),
@@ -1446,7 +1448,7 @@ class _CartScreenState extends State<CartScreen> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            item.product.name,
+                                            item.product.name.tr(),
                                             style: TextStyle(
                                               fontSize: responsiveWidth(context, 15),
                                               fontWeight: FontWeight.bold,
@@ -1545,7 +1547,9 @@ Widget _buildLocationTitle(context) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text("Current location", style: TextStyle(fontSize: 12,color: Theme.of(context).textTheme.bodyLarge?.color,)),
+
+
+      Text("Current location".tr(), style: TextStyle(fontSize: 12,color: Theme.of(context).textTheme.bodyLarge?.color,)),
       SizedBox(height: 4),
       Text("Jl. Soekarno Hatta 15A...", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
     ],

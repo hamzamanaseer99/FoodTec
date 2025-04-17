@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+
 // import 'package:flutter/material.dart';
 // import 'package:foodtek/responsive.dart';
 //
@@ -253,8 +255,10 @@ class _ChatScreenState extends State<ChatScreen> {
                         color: isDarkMode ? Colors.white : Colors.black87,
                         fontWeight: FontWeight.w500,
                       ),
-                      decoration: InputDecoration(
-                        hintText: "Write your message",
+
+                      decoration:  InputDecoration(
+                        hintText: "Write your message".tr(),
+
                         hintStyle: TextStyle(
                           color: isDarkMode ? Color(0xffB0B0B0) : Color(0xff6E6E6E),
                           fontWeight: FontWeight.bold,

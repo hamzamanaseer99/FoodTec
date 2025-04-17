@@ -1,3 +1,4 @@
+
 // import 'package:flutter/material.dart';
 // import 'package:foodtek/responsive.dart';
 // import 'package:foodtek/view/screens/chat%20screen.dart';
@@ -379,6 +380,8 @@ import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/chat%20screen.dart';
 import 'package:foodtek/view/screens/live_track_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 
 class OrderDetailsScreen extends StatefulWidget {
   const OrderDetailsScreen({Key? key}) : super(key: key);
@@ -411,7 +414,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                       color: isDarkMode ? Colors.white : Colors.black,
                     ),
                     Text(
-                      'Order Details',
+                      'Order Details'.tr(),
                       style: TextStyle(
                         color: isDarkMode ? Colors.white : Colors.black,
                         fontWeight: FontWeight.w600,
@@ -421,7 +424,9 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                   ],
                 ),
                 SizedBox(height: responsiveHeight(context, 35)),
-                _buildOrderInfoRow('Order ID', '#6579-6432', '25m', isDarkMode),
+
+                _buildOrderInfoRow('Order ID'.tr(), '#6579-6432', '25m', isDarkMode),
+
                 SizedBox(height: responsiveHeight(context, 20)),
                 _buildTrackingProgress(isDarkMode),
                 SizedBox(height: responsiveHeight(context, 24)),
@@ -478,14 +483,12 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
 
   Widget _buildTrackingProgress(bool isDarkMode) {
     final steps = [
-      {"label": "Order received", "icon": Icons.check, "done": true},
-      {"label": "Cooking your order", "icon": Icons.home_filled, "done": true},
-      {
-        "label": "Courier is picking up order",
-        "icon": Icons.person,
-        "done": true
-      },
-      {"label": "Order delivered", "icon": Icons.home, "done": false},
+
+        {"label": "Order received".tr(), "icon": Icons.check, "done": true},
+      {"label": "Cooking your order".tr(), "icon": Icons.home_filled, "done": true},
+      {"label": "Courier is picking up order".tr(), "icon": Icons.person, "done": true},
+      {"label": "Order delivered".tr(), "icon": Icons.home, "done": false},
+
     ];
 
     return Padding(
@@ -569,9 +572,11 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Your Delivery Hero',
+
+                Text('Your Delivery Hero'.tr(),
                     style: TextStyle(
                         fontSize: responsiveWidth(context, 12),
+
                         fontWeight: FontWeight.bold,
                         color: isDarkMode ? Colors.white : Color(0xff878787))),
                 SizedBox(height: 4),
@@ -641,11 +646,12 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: responsiveWidth(context, 24)),
       child: Column(
+
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Text('your location',
+          Text('your location'.tr(),
                   style: TextStyle(
                       fontSize: responsiveWidth(context, 12),
                       color: isDarkMode ? Colors.white : Color(0xff878787),
@@ -657,7 +663,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
             children: [
               Icon(Icons.location_on, color: Colors.green, size: 20),
               SizedBox(width: responsiveWidth(context, 12)),
-              Text('123 Al-Madina Street, Abdali, Amman, Jordan',
+             '123 Al-Madina Street, Abdali, Amman, Jordan'.tr(),
                   style: TextStyle(
                       fontSize: responsiveWidth(context, 12),
                       color: isDarkMode ? Colors.white : Color(0xff6C7278))),
@@ -687,7 +693,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
         children: [
           SizedBox(width: 8),
           Text(
-            'Live Track ',
+            'Live Track'.tr(),
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,

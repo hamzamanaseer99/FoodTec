@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/view/screens/widgets/recomended_widget.dart';
 
@@ -14,12 +15,12 @@ class RecommendedProducts extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Recommended', style: TextStyle(fontSize: screenWidth * 0.045, fontWeight: FontWeight.w600)),
+            Text('Recommended'.tr(), style: TextStyle(fontSize: screenWidth * 0.045, fontWeight: FontWeight.w600)),
             Row(
               children: [
                 TextButton(
                   onPressed: () {},
-                  child: Text('View All', style: TextStyle(color: Color(0xff25AE4B), fontSize: screenWidth * 0.035)),
+                  child: Text('View All'.tr(), style: TextStyle(color: Color(0xff25AE4B), fontSize: screenWidth * 0.035)),
                 ),
                 Icon(Icons.arrow_forward_ios, size: 16, color: Color(0xff25AE4B)),
               ],

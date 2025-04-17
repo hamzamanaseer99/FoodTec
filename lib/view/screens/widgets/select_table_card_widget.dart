@@ -21,8 +21,8 @@ class SelectableCard extends StatelessWidget {
       child: Container(
 
         padding: EdgeInsets.symmetric(
-          horizontal: responsiveWidth(context, 16), // تعديل العرض باستخدام responsiveWidth
-          vertical: responsiveHeight(context, 16),  // تعديل الارتفاع باستخدام responsiveHeight
+          horizontal: responsiveWidth(context, 12), // تعديل العرض باستخدام responsiveWidth
+          vertical: responsiveHeight(context, 12),  // تعديل الارتفاع باستخدام responsiveHeight
         ),
         decoration: BoxDecoration(
           color: isSelected ? Color(0xff25AE4B) : Colors.grey[200],
