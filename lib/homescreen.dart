@@ -729,14 +729,17 @@ class HomeScreen extends StatelessWidget {
   // زر السلة العائم
   Widget _buildCartButton(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final iconColor = Colors.white; // اللون الأبيض للأيقونة
+    final buttonColor = Color(0xFF25AE4B); // اللون الأخضر للزر العائم
+
     return FloatingActionButton(
       onPressed: () {
         context.read<BottomNavCubit>().changeTab(4);
       },
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: buttonColor, // الخلفية تكون خضراء
       child: Icon(
         Icons.shopping_cart_outlined,
-        color: Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black,
+        color: iconColor, // الأيقونة تكون باللون الأبيض
         size: 30,
       ),
       shape: const CircleBorder(),
