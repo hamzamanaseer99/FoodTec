@@ -17,6 +17,7 @@ import 'cubit/location_cubit.dart';
 import 'cubit/login_cubit.dart';
 import 'cubit/reset_password_cubit.dart';
 import 'cubit/signup_cubit.dart';
+import 'cubit/theme_cubit.dart';
 import 'model/location_repository.dart';
 import 'view/screens/splash_screen.dart';
 
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (_) => ThemeCubit()),
         BlocProvider(create: (context) => LocationCubit(LocationRepository())),
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => SignupCubit()),
@@ -57,23 +59,111 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => UpdateInformationProfileCubit()),
         BlocProvider(create: (context) => CartCubit()),
         BlocProvider(create: (context) => HistoryCubit()),
+
+
       ],
-      child: ScreenUtilInit(
-        designSize: const Size(375, 812),
-        builder: (_, __) => MaterialApp(
-          debugShowCheckedModeBanner: false,
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          initialRoute: '/',
-          routes: {
-            '/': (context) => SplashScreen(),
-            '/checkout': (context) => CheckoutScreen(userLocation: null),
-            '/payment': (context) => PaymentScreen(),
-            '/SetLocationScreen': (context) => SetLocationScreen(),
-          },
-        ),
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
+        builder: (context, themeMode) {
+          return ScreenUtilInit(
+
+            designSize: const Size(375, 812),
+            builder: (_, __) => MaterialApp(
+              debugShowCheckedModeBanner: false,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+              themeMode: themeMode,
+
+              // 🌞 Light Theme
+              theme: ThemeData(
+
+                brightness: Brightness.light,
+                primaryColor: Colors.green,
+                scaffoldBackgroundColor: Colors.white,
+
+                appBarTheme: const AppBarTheme(
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
+                  elevation: 0,
+                ),
+                textTheme: TextTheme(
+                  bodyLarge: TextStyle(color: Colors.black),
+                  bodyMedium: TextStyle(color: Colors.black87),
+                ),
+                iconTheme: IconThemeData(color: Colors.black87),
+                switchTheme: SwitchThemeData(
+                  thumbColor: MaterialStateProperty.all(Colors.deepOrange),
+                  trackColor: MaterialStateProperty.all(Colors.green),
+                ),
+                tabBarTheme: const TabBarTheme(
+                  labelColor: Colors.black,
+                  unselectedLabelColor: Colors.grey,
+                  indicatorColor: Colors.deepOrange,
+                ),
+
+              ),
+
+              // 🌙 Dark Theme
+              darkTheme: ThemeData(
+                brightness: Brightness.dark,
+                scaffoldBackgroundColor: const Color(0xFF000000),
+                primaryColor: Colors.green,
+                colorScheme: const ColorScheme.dark(
+                  primary: Colors.green,
+                  secondary: Colors.deepOrangeAccent,
+                  background: Color(0xFF000000),
+                  surface: Color(0xFF121212),
+                  onPrimary: Colors.white,
+                  onSecondary: Colors.white70,
+                  onBackground: Colors.white,
+                  onSurface: Colors.white70,
+                ),
+                appBarTheme: const AppBarTheme(
+                  backgroundColor: Color(0xFF000000),
+                  foregroundColor: Colors.white,
+                  elevation: 0,
+                ),
+                iconTheme: const IconThemeData(
+                  color: Colors.white70,
+                ),
+                textTheme: const TextTheme(
+                  bodyLarge: TextStyle(color: Colors.white),
+                  bodyMedium: TextStyle(color: Colors.white70),
+                  titleLarge: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+                cardColor: const Color(0xFF1C1C1C),
+                dividerColor: Colors.grey.shade800,
+                switchTheme: SwitchThemeData(
+                  thumbColor: MaterialStateProperty.all(Colors.deepOrange),
+                  trackColor: MaterialStateProperty.all(Colors.deepOrangeAccent.withOpacity(0.5)),
+                ),
+                bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+                  backgroundColor: Color(0xFF000000),
+                  selectedItemColor: Colors.deepOrange,
+                  unselectedItemColor: Colors.white70,
+                ),
+                tabBarTheme: const TabBarTheme(
+                  labelColor: Colors.white,
+                  unselectedLabelColor: Colors.grey,
+                  indicatorColor: Colors.deepOrangeAccent,
+                ),
+
+              ),
+
+
+              // routes & screens
+              initialRoute: '/',
+              routes: {
+                '/': (context) => SplashScreen(),
+                '/checkout': (context) => CheckoutScreen(userLocation: null),
+                '/payment': (context) => PaymentScreen(),
+                '/SetLocationScreen': (context) => SetLocationScreen(),
+              },
+            ),
+          );
+        },
       ),
+
     );
   }
 }

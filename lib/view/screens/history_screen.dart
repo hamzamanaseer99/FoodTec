@@ -15,7 +15,9 @@ class HistoryTab extends StatefulWidget {
 class _HistoryTabState extends State<HistoryTab> {
   @override
   Widget build(BuildContext context) {
-    final historyItems = context.watch<HistoryCubit>().state;
+    final historyItems = context
+        .watch<HistoryCubit>()
+        .state;
 
     if (historyItems.isEmpty) {
       return Column(
@@ -29,7 +31,10 @@ class _HistoryTabState extends State<HistoryTab> {
 
     return ListView.builder(
       padding: EdgeInsets.only(
-        top: MediaQuery.of(context).size.height * 0.3,
+        top: MediaQuery
+            .of(context)
+            .size
+            .height * 0.3,
         bottom: responsiveHeight(context, 16),
         left: responsiveWidth(context, 16),
         right: responsiveWidth(context, 16),
@@ -80,37 +85,40 @@ class _HistoryTabState extends State<HistoryTab> {
               ],
             ),
             SizedBox(height: responsiveHeight(context, 8)),
-            ...order.items.map((item) => Padding(
-              padding: EdgeInsets.only(bottom: responsiveHeight(context, 8)),
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      item.product.image,
-                      width: responsiveWidth(context, 40),
-                      height: responsiveWidth(context, 40),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  SizedBox(width: responsiveWidth(context, 8)),
-                  Expanded(
-                    child: Text(
-                      "${item.quantity}x ${item.product.name}",
-                      style: TextStyle(
-                        fontSize: responsiveWidth(context, 14),
+            ...order.items.map((item) =>
+                Padding(
+                  padding: EdgeInsets.only(
+                      bottom: responsiveHeight(context, 8)),
+                  child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          item.product.image,
+                          width: responsiveWidth(context, 40),
+                          height: responsiveWidth(context, 40),
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
+                      SizedBox(width: responsiveWidth(context, 8)),
+                      Expanded(
+                        child: Text(
+                          "${item.quantity}x ${item.product.name}",
+                          style: TextStyle(
+                            fontSize: responsiveWidth(context, 14),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "\$${(item.product.price * item.quantity)
+                            .toStringAsFixed(2)}",
+                        style: TextStyle(
+                          fontSize: responsiveWidth(context, 14),
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    "\$${(item.product.price * item.quantity).toStringAsFixed(2)}",
-                    style: TextStyle(
-                      fontSize: responsiveWidth(context, 14),
-                    ),
-                  ),
-                ],
-              ),
-            )).toList(),
+                )).toList(),
             const Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -175,8 +183,13 @@ class _HistoryTabState extends State<HistoryTab> {
   }
 
   Widget _buildEmptyHistory(BuildContext context) {
+    final isDarkMode = Theme
+        .of(context)
+        .brightness == Brightness.dark;
+
     return Center(
       child: Column(
+
         mainAxisSize: MainAxisSize.min,
         children: [
           Image.asset('assets/images/cart empty.jpg'),
@@ -185,7 +198,7 @@ class _HistoryTabState extends State<HistoryTab> {
             'History Empty',
             style: TextStyle(
               fontSize: responsiveWidth(context, 32),
-              color: const Color(0xff111827),
+              color: Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black,
             ),
           ),
           SizedBox(height: responsiveHeight(context, 16)),
@@ -193,7 +206,7 @@ class _HistoryTabState extends State<HistoryTab> {
             'You don’t have order any foods before',
             style: TextStyle(
               fontSize: responsiveWidth(context, 16),
-              color: const Color(0xff111827),
+              color: Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black,
             ),
           ),
         ],

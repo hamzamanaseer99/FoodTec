@@ -286,7 +286,8 @@
 // //   return Column(
 // //     crossAxisAlignment: CrossAxisAlignment.start,
 // //     children: [
-// //       Text("Current location", style: TextStyle(fontSize: 12, color: Color(0xff606060))),
+// //       Text("Current location", style: TextStyle(fontSize: 12,     color: Theme.of(context).textTheme.bodyLarge?.color,
+//)),
 // //       SizedBox(height: 4),
 // //       Text("Jl. Soekarno Hatta 15A...", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
 // //     ],
@@ -882,7 +883,8 @@
 //     return Column(
 //       crossAxisAlignment: CrossAxisAlignment.start,
 //       children: [
-//         Text("الموقع الحالي", style: TextStyle(fontSize: 12, color: Color(0xff606060))),
+//         Text("الموقع الحالي", style: TextStyle(fontSize: 12,     color: Theme.of(context).textTheme.bodyLarge?.color,
+//)),
 //         SizedBox(height: 4),
 //         Text("شارع سوكارنو هاتا 15أ...", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
 //       ],
@@ -1287,7 +1289,8 @@
 //     return Column(
 //       crossAxisAlignment: CrossAxisAlignment.start,
 //       children: [
-//         Text("الموقع الحالي", style: TextStyle(fontSize: 12, color: Color(0xff606060))),
+//         Text("الموقع الحالي", style: TextStyle(fontSize: 12,     color: Theme.of(context).textTheme.bodyLarge?.color,
+//)),
 //         SizedBox(height: 4),
 //         Text("شارع سوكارنو هاتا 15أ...", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
 //       ],
@@ -1329,15 +1332,15 @@ class _CartScreenState extends State<CartScreen> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
           elevation: 0,
           leading: _buildLocationIcon(),
-          title: _buildLocationTitle(),
+          title: _buildLocationTitle(context),
           actions:  [NotificationIcon()],
           bottom: const TabBar(
-            labelColor: Colors.black,
+            labelColor: Colors.white,
             unselectedLabelColor: Colors.grey,
             indicatorColor: Color(0xff4FAF5A),
             tabs: [
@@ -1360,7 +1363,7 @@ class _CartScreenState extends State<CartScreen> {
                     'Cart Empty'.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 32),
-                      color: const Color(0xff111827),
+                      color: Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black,
                     ),
                   ),
                   SizedBox(height: responsiveHeight(context, 16)),
@@ -1369,8 +1372,7 @@ class _CartScreenState extends State<CartScreen> {
                     'You don’t have add any foods in cart at this time'.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 16),
-                      color: const Color(0xff111827),
-                    ),
+                      color: Theme.of(context).textTheme.bodyLarge?.color,                    ),
                   ),
                 ],
               ),
@@ -1414,12 +1416,12 @@ class _CartScreenState extends State<CartScreen> {
                               width: responsiveWidth(context, 378),
                               height: responsiveHeight(context, 120),
                               decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: Theme.of(context).cardColor,
                                   borderRadius: BorderRadius.circular(7),
 
                                   border: Border.all(
                                       width: 1,
-                                      color: Color(0xffDBF4D1)
+                                    color: Theme.of(context).dividerColor,
                                   )
                               ),
                               child: Row(
@@ -1539,11 +1541,11 @@ Widget _buildLocationIcon() {
   );
 }
 
-Widget _buildLocationTitle() {
+Widget _buildLocationTitle(context) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text("Current location", style: TextStyle(fontSize: 12, color: Color(0xff606060))),
+      Text("Current location", style: TextStyle(fontSize: 12,color: Theme.of(context).textTheme.bodyLarge?.color,)),
       SizedBox(height: 4),
       Text("Jl. Soekarno Hatta 15A...", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
     ],
