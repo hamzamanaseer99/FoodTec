@@ -4,10 +4,76 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/home_cubit.dart';
 import 'package:foodtek/view/screens/filter_screen.dart';
 import 'package:foodtek/responsive.dart';
-
+//
+// class SearchWidget extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocBuilder<HomeCubit, HomeState>(
+//       builder: (context, state) {
+//         return Container(
+//           padding: EdgeInsets.symmetric(
+//             horizontal: responsiveWidth(context, 16),
+//             vertical: responsiveHeight(context, 4),
+//           ),
+//           decoration: BoxDecoration(
+//             color: Colors.white,
+//             borderRadius: BorderRadius.circular(responsiveWidth(context, 40)),
+//             border: Border.all(
+//               color: Colors.grey,
+//               width: 1,
+//             ),
+//           ),
+//           child: TextField(
+//             style: TextStyle(
+//               fontSize: responsiveWidth(context, 14),
+//             ),
+//             decoration: InputDecoration(
+//               contentPadding: EdgeInsets.symmetric(
+//                 vertical: responsiveHeight(context, 12),
+//               ),
+//               hintText: "Search menu, restaurant or etc",
+//               hintStyle: TextStyle(
+//                 color: const Color(0xff878787),
+//                 fontSize: responsiveWidth(context, 14),
+//               ),
+//               prefixIcon: Icon(
+//                 Icons.search,
+//                 color: const Color(0xff878787),
+//                 size: responsiveWidth(context, 24),
+//               ),
+//               suffixIcon: IconButton(
+//                 icon: Icon(
+//                   Icons.tune_rounded,
+//                   color: const Color(0xff878787),
+//                   size: responsiveWidth(context, 22),
+//                 ),
+//                 onPressed: () {
+//                   Navigator.push(
+//                     context,
+//                     MaterialPageRoute(
+//                       builder: (context) => FilterScreen(),
+//                     ),
+//                   );
+//                 },
+//               ),
+//               border: InputBorder.none,
+//             ),
+//             onChanged: (query) {
+//               context.read<HomeCubit>().searchProducts(query);
+//             },
+//           ),
+//         );
+//
+//       },
+//     );
+//   }
+// }
 class SearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         return Container(
@@ -16,16 +82,17 @@ class SearchWidget extends StatelessWidget {
             vertical: responsiveHeight(context, 4),
           ),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: theme.colorScheme.surface, // خلفية متوافقة مع الثيم
             borderRadius: BorderRadius.circular(responsiveWidth(context, 40)),
             border: Border.all(
-              color: Colors.grey,
+              color: theme.dividerColor, // لون الحدود من الثيم
               width: 1,
             ),
           ),
           child: TextField(
             style: TextStyle(
               fontSize: responsiveWidth(context, 14),
+              color: theme.textTheme.bodyMedium?.color, // لون النص ديناميكي
             ),
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(
@@ -33,18 +100,18 @@ class SearchWidget extends StatelessWidget {
               ),
               hintText: "Search menu, restaurant or etc".tr(),
               hintStyle: TextStyle(
-                color: const Color(0xff878787),
+                color: theme.hintColor, // لون التلميح من الثيم
                 fontSize: responsiveWidth(context, 14),
               ),
               prefixIcon: Icon(
                 Icons.search,
-                color: const Color(0xff878787),
+                color: theme.iconTheme.color, // لون الأيقونة من الثيم
                 size: responsiveWidth(context, 24),
               ),
               suffixIcon: IconButton(
                 icon: Icon(
                   Icons.tune_rounded,
-                  color: const Color(0xff878787),
+                  color: theme.iconTheme.color,
                   size: responsiveWidth(context, 22),
                 ),
                 onPressed: () {
@@ -63,7 +130,6 @@ class SearchWidget extends StatelessWidget {
             },
           ),
         );
-
       },
     );
   }

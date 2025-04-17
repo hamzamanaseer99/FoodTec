@@ -245,21 +245,106 @@ import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/burger_screen.dart';
 import 'package:foodtek/view/screens/pizza_screen.dart';
 import 'package:foodtek/view/screens/sandwich_screen.dart';
+// class CategoryBar extends StatelessWidget {
+//   final List<Map<String, String>> categories;
+//   final ValueChanged<String> onCategorySelected;
+//
+//   CategoryBar({required this.categories, required this.onCategorySelected, required String selectedCategory});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final screenWidth = MediaQuery.of(context).size.width;
+//
+//     return BlocBuilder<HomeCubit, HomeState>(
+//       builder: (context, state) {
+//         final selectedCategory = state is HomeCategorySelected
+//             ? state.category
+//             : "All"; // الخيار الافتراضي هو "All"
+//
+//         return SizedBox(
+//           height: 50,
+//           child: ListView.builder(
+//             scrollDirection: Axis.horizontal,
+//             itemCount: categories.length,
+//             itemBuilder: (context, index) {
+//               final category = categories[index];
+//               final isSelected = category["name"] == selectedCategory;
+//
+//               return Padding(
+//                 padding: const EdgeInsets.only(right: 15),
+//                 child: GestureDetector(
+//                   onTap: () {
+//                     debugPrint('Selected Category: ${category["name"]}'); // إضافة للتتبع
+//                     onCategorySelected(category["name"]!); // إرسال الفئة المختارة
+//                   },
+//                   child: Container(
+//                     decoration: BoxDecoration(
+//                       borderRadius: BorderRadius.circular(10),
+//                       color: isSelected ? Color(0xff4FAF5A) : Colors.white,
+//                       border: Border.all(
+//                         color: isSelected ? Color(0xff4FAF5A) : Colors.grey[300]!,
+//                         width: 1,
+//                       ),
+//                     ),
+//                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+//                     child: Row(
+//                       children: [
+//                         if (category["image"] != null)
+//                           Padding(
+//                             padding: const EdgeInsets.only(
+//                                 right: 8
+//                             ),
+//                             child: ClipRRect(
+//                               borderRadius: BorderRadius.circular(10),
+//                               child: Image.asset(
+//                                 category["image"]!,
+//                                 width: responsiveWidth(context, 20),
+//                                 height: responsiveHeight(context, 20),
+//                                 fit: BoxFit.cover,
+//                                 errorBuilder: (_, __, ___) => SizedBox.shrink(),
+//                               ),
+//                             ),
+//                           ),
+//                         Text(
+//                           category["name"]!,
+//                           style: TextStyle(
+//                             fontSize: screenWidth * 0.035,
+//                             fontWeight: FontWeight.w600,
+//                             color: isSelected ? Colors.white : Colors.black,
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                 ),
+//               );
+//             },
+//           ),
+//         );
+//       },
+//     );
+//   }
+// }
 class CategoryBar extends StatelessWidget {
   final List<Map<String, String>> categories;
   final ValueChanged<String> onCategorySelected;
 
-  CategoryBar({required this.categories, required this.onCategorySelected, required String selectedCategory});
+  CategoryBar({
+    required this.categories,
+    required this.onCategorySelected,
+    required String selectedCategory,
+  });
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final theme = Theme.of(context);
 
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         final selectedCategory = state is HomeCategorySelected
             ? state.category
-            : "All"; // الخيار الافتراضي هو "All"
+            : "All";
 
         return SizedBox(
           height: 50,
@@ -274,15 +359,19 @@ class CategoryBar extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 15),
                 child: GestureDetector(
                   onTap: () {
-                    debugPrint('Selected Category: ${category["name"]}'); // إضافة للتتبع
-                    onCategorySelected(category["name"]!); // إرسال الفئة المختارة
+                    debugPrint('Selected Category: ${category["name"]}');
+                    onCategorySelected(category["name"]!);
                   },
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: isSelected ? Color(0xff4FAF5A) : Colors.white,
+                      color: isSelected
+                          ? theme.primaryColor
+                          : theme.colorScheme.surface,
                       border: Border.all(
-                        color: isSelected ? Color(0xff4FAF5A) : Colors.grey[300]!,
+                        color: isSelected
+                            ? theme.colorScheme.primary
+                            : theme.dividerColor,
                         width: 1,
                       ),
                     ),
@@ -291,9 +380,7 @@ class CategoryBar extends StatelessWidget {
                       children: [
                         if (category["image"] != null)
                           Padding(
-                            padding: const EdgeInsets.only(
-                                right: 8
-                            ),
+                            padding: const EdgeInsets.only(right: 8),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Image.asset(
@@ -310,7 +397,9 @@ class CategoryBar extends StatelessWidget {
                           style: TextStyle(
                             fontSize: screenWidth * 0.035,
                             fontWeight: FontWeight.w600,
-                            color: isSelected ? Colors.white : Colors.black,
+                            color: isSelected
+                                ? theme.colorScheme.onPrimary
+                                : theme.textTheme.bodyMedium?.color,
                           ),
                         ),
                       ],
