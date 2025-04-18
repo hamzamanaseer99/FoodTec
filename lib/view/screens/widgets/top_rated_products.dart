@@ -351,6 +351,7 @@
 // }
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/top_rated_cubit.dart';
@@ -451,7 +452,9 @@ class TopRatedProducts extends StatelessWidget {
             ),
           ),
           Text(
-            '100 gr chicken + tomato + cheese Lettuce',
+            product["description"],
+            maxLines: 2, // أو أي عدد أسطر تبغاه
+            overflow: TextOverflow.ellipsis, // يحط نقاط (...) في النهاية
             style: TextStyle(
               fontSize: screenWidth * 0.030,
               color: isDark ? Colors.grey[400] : const Color(0xff3B3B3B),

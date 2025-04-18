@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
 
@@ -33,21 +34,25 @@ class QuantitySelector extends StatelessWidget {
           child: IconButton(
             icon: Icon(
               Icons.remove,
-              color: Color(0xff009944),
+              color: const Color(0xff009944),
               size: responsiveWidth(context, 22),
             ),
-            onPressed: () => onDecrease(quantity - 1),
+            onPressed: quantity > 0
+                ? () => onDecrease(quantity - 1)
+                : null, // تعطيل الزر لو العدد صفر
           ),
         ),
         SizedBox(width: 20), // Spacer between buttons and quantity text
 
         // Quantity text
         Text(
-          '$quantity',
+          '$quantity'.tr(),
           style: TextStyle(
             fontSize: responsiveWidth(context, 22),
             fontWeight: FontWeight.bold, // Make the quantity text bold
-            color: Colors.black,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.white
+                : Colors.black,
           ),
         ),
 
@@ -66,7 +71,9 @@ class QuantitySelector extends StatelessWidget {
           child: IconButton(
             icon: Icon(
               Icons.add,
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white
+                  : Colors.black,
               size: responsiveWidth(context, 22),
             ),
             onPressed: () => onIncrease(quantity + 1),

@@ -24,7 +24,7 @@ class _CardNumberWidgetState extends State<CardNumberWidget> {
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white, // Background color
+          color: Colors.grey, // Background color
           borderRadius: BorderRadius.circular(12), // Rounded corners
           boxShadow: [
             BoxShadow(

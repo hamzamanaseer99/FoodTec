@@ -365,7 +365,7 @@ class CategoryBar extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: isSelected
-                          ? theme.primaryColor
+                          ? Colors.green
                           : theme.colorScheme.surface,
                       border: Border.all(
                         color: isSelected

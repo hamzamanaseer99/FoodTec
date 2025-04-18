@@ -319,12 +319,14 @@
 //     );
 //   }
 // }
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/chat%20screen.dart';
 import 'package:foodtek/view/screens/order_details_screen.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../homescreen.dart';
+
 //
 // class LiveTrackScreen extends StatefulWidget {
 //   const LiveTrackScreen({super.key});
@@ -748,10 +750,12 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark; // التحقق من الوضع الداكن
+    final isDarkMode = Theme.of(context).brightness ==
+        Brightness.dark; // التحقق من الوضع الداكن
 
     return Scaffold(
-      backgroundColor: isDarkMode ? Colors.black : Colors.white, // تغيير الخلفية حسب الوضع
+      backgroundColor: isDarkMode ? Colors.black : Colors.white,
+      // تغيير الخلفية حسب الوضع
       body: Stack(
         children: [
           GoogleMap(
@@ -774,7 +778,8 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: isDarkMode ? Colors.grey[800] : Colors.white, // تغيير اللون حسب الوضع
+                    color: isDarkMode ? Colors.grey[800] : Colors.white,
+                    // تغيير اللون حسب الوضع
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
                       BoxShadow(
@@ -794,18 +799,24 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Your order is",
+                      "Your order is".tr(),
                       style: TextStyle(
                         fontSize: responsiveWidth(context, 16),
-                        color: isDarkMode ? Colors.white : Colors.grey[600], // تغيير اللون حسب الوضع
+                        color: isDarkMode ? Colors.white : Colors.grey[600],
+                        // تغيير اللون حسب الوضع
+                        backgroundColor:
+                            isDarkMode ? Colors.black38 : Colors.white,
                       ),
                     ),
                     Text(
-                      "On the way!",
+                      "On the way".tr() + "!",
                       style: TextStyle(
                         fontSize: responsiveWidth(context, 22),
                         fontWeight: FontWeight.bold,
-                        color: isDarkMode ? Colors.white : Colors.black, // تغيير اللون حسب الوضع
+                        color: isDarkMode ? Colors.white : Colors.black,
+                        // تغيير اللون حسب الوضع
+                        backgroundColor:
+                            isDarkMode ? Colors.black38 : Colors.white,
                       ),
                     ),
                   ],
@@ -833,7 +844,8 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
           vertical: responsiveHeight(context, 16),
         ),
         decoration: BoxDecoration(
-          color: isDarkMode ? Colors.grey[850] : Colors.white, // تغيير اللون حسب الوضع
+          color: isDarkMode ? Colors.grey[850] : Colors.white,
+          // تغيير اللون حسب الوضع
           borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
           boxShadow: [
             BoxShadow(
@@ -851,20 +863,23 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "On the way!",
+                  "On the way".tr() + "!",
                   style: TextStyle(
                     fontSize: responsiveWidth(context, 22),
                     fontWeight: FontWeight.w600,
-                    color: isDarkMode ? Colors.white : Colors.black, // تغيير اللون حسب الوضع
+                    color: isDarkMode
+                        ? Colors.white
+                        : Colors.black, // تغيير اللون حسب الوضع
                   ),
                 ),
                 TextButton(
                   onPressed: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const OrderDetailsScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => const OrderDetailsScreen()),
                   ),
                   child: Text(
-                    'All details',
+                    'All details'.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 16),
                       fontWeight: FontWeight.bold,
@@ -878,9 +893,18 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildStatusStep(context, label: 'Order Placed', isActive: _currentStep >= 0, isCompleted: true),
-                _buildStatusStep(context, label: 'On The Way', isActive: _currentStep >= 1, isCompleted: false),
-                _buildStatusStep(context, label: 'Delivered', isActive: _currentStep >= 2, isCompleted: false),
+                _buildStatusStep(context,
+                    label: 'Order Placed'.tr(),
+                    isActive: _currentStep >= 0,
+                    isCompleted: true),
+                _buildStatusStep(context,
+                    label: 'On The Way'.tr(),
+                    isActive: _currentStep >= 1,
+                    isCompleted: false),
+                _buildStatusStep(context,
+                    label: 'Delivered'.tr(),
+                    isActive: _currentStep >= 2,
+                    isCompleted: false),
               ],
             ),
             SizedBox(height: responsiveHeight(context, 12)),
@@ -892,7 +916,9 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
                   Container(width: double.infinity, color: Colors.grey[300]),
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
-                    width: MediaQuery.of(context).size.width * (_currentStep + 1) / 3,
+                    width: MediaQuery.of(context).size.width *
+                        (_currentStep + 1) /
+                        3,
                     color: const Color(0xff25AE4B),
                   ),
                 ],
@@ -900,7 +926,9 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
             ),
             Padding(
               padding: EdgeInsets.only(top: responsiveHeight(context, 12)),
-              child: Row(children: [Expanded(child: _buildDeliveryPersonInfo(isDarkMode))]), // تمرير الوضع الداكن
+              child: Row(children: [
+                Expanded(child: _buildDeliveryPersonInfo(isDarkMode))
+              ]), // تمرير الوضع الداكن
             ),
             const Divider(thickness: 0.5),
             _buildLocationSection(isDarkMode), // تمرير الوضع الداكن
@@ -921,7 +949,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
                 },
                 child: Center(
                   child: Text(
-                    "Confirm Receipt",
+                    "Confirm Receipt".tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 20),
                       color: Colors.white,
@@ -936,7 +964,9 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
       ),
     );
   }
-  Widget _buildStatusStep(BuildContext context, {
+
+  Widget _buildStatusStep(
+    BuildContext context, {
     required String label,
     required bool isActive,
     required bool isCompleted,
@@ -947,15 +977,20 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
           width: responsiveWidth(context, 24),
           height: responsiveWidth(context, 24),
           decoration: BoxDecoration(
-            color: isCompleted ? const Color(0xff25AE4B)
-                : isActive ? Colors.white : Colors.grey[300],
+            color: isCompleted
+                ? const Color(0xff25AE4B)
+                : isActive
+                    ? Colors.white
+                    : Colors.grey[300],
             borderRadius: BorderRadius.circular(30),
             border: Border.all(
               color: isActive ? const Color(0xff25AE4B) : Colors.transparent,
               width: 2,
             ),
           ),
-          child: isCompleted ? const Icon(Icons.check, size: 16, color: Colors.white) : null,
+          child: isCompleted
+              ? const Icon(Icons.check, size: 16, color: Colors.white)
+              : null,
         ),
         SizedBox(height: responsiveHeight(context, 4)),
         Text(
@@ -963,7 +998,9 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
           style: TextStyle(
             fontSize: responsiveWidth(context, 12),
             fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
-            color: isActive ? Colors.black : Colors.grey[600],
+            color: isActive
+                ? Theme.of(context).colorScheme.onBackground
+                : Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
           ),
         ),
       ],
@@ -992,18 +1029,25 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Your Delivery Hero',
-                    style: TextStyle(fontSize: responsiveWidth(context, 12),
-                        fontWeight: FontWeight.bold, color: Color(0xff878787))),
+                Text('Your Delivery Hero'.tr(),
+                    style: TextStyle(
+                        fontSize: responsiveWidth(context, 12),
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff878787))),
                 const SizedBox(height: 4),
                 Row(
                   children: [
-                    const Text('Aleksandr V.', style: TextStyle(fontSize: 14, color: Color(0xff2F2E36))),
+                    const Text('Aleksandr V.',
+                        style:
+                            TextStyle(fontSize: 14, color: Color(0xff2F2E36))),
                     SizedBox(width: responsiveWidth(context, 8)),
                     const Icon(Icons.star, color: Colors.amber, size: 16),
                     SizedBox(width: responsiveWidth(context, 4)),
-                    Text('4.9', style: TextStyle(fontSize: responsiveWidth(context, 12),
-                        color: const Color(0xffB8B8B8), fontWeight: FontWeight.w400)),
+                    Text('4.9',
+                        style: TextStyle(
+                            fontSize: responsiveWidth(context, 12),
+                            color: const Color(0xffB8B8B8),
+                            fontWeight: FontWeight.w400)),
                   ],
                 ),
               ],
@@ -1027,7 +1071,8 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
       ),
       child: IconButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ChatScreen()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => ChatScreen()));
         },
         icon: Icon(icon, color: color, size: responsiveWidth(context, 22)),
       ),
@@ -1040,9 +1085,11 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('your location',
-              style: TextStyle(fontSize: responsiveWidth(context, 12),
-                  color: const Color(0xff878787), fontWeight: FontWeight.w500)),
+          Text('your location'.tr(),
+              style: TextStyle(
+                  fontSize: responsiveWidth(context, 12),
+                  color: const Color(0xff878787),
+                  fontWeight: FontWeight.w500)),
           SizedBox(height: responsiveHeight(context, 12)),
           Row(
             children: [
@@ -1050,7 +1097,8 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
               SizedBox(width: responsiveWidth(context, 12)),
               Expanded(
                 child: Text('123 Al-Madina Street, Abdali, Amman, Jordan',
-                    style: TextStyle(fontSize: responsiveWidth(context, 12),
+                    style: TextStyle(
+                        fontSize: responsiveWidth(context, 12),
                         color: const Color(0xff6C7278))),
               ),
             ],
@@ -1069,10 +1117,10 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
             borderRadius: BorderRadius.circular(16),
           ),
           title: Text(
-            "Confirm Receipt",
+            "Confirm Receipt".tr(),
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          content: Text("Are you sure you received your order?"),
+          content: Text("Are you sure you received your order?".tr()),
           actions: [
             // زر التأكيد - أخضر بخط أبيض
             TextButton(
@@ -1088,12 +1136,13 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => HomeScreen()),
-                      (route) => false,
+                  (route) => false,
                 );
               },
               child: Text(
-                "Yes, I received it!",
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                "received_confirmation".tr(),
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
 
@@ -1103,7 +1152,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
                 Navigator.pop(context);
               },
               child: Text(
-                "Cancel",
+                "Cancel".tr(),
                 style: TextStyle(color: Colors.black),
               ),
             ),
@@ -1112,5 +1161,4 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
       },
     );
   }
-
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/home_cubit.dart';
@@ -116,10 +117,10 @@ import 'sandwich_screen.dart';
 // }
 class MainScreen extends StatelessWidget {
   final List<Map<String, String>> categories = [
-    {"name": "All"},
-    {"name": "Burger", "image": "assets/images/b.png"},
-    {"name": "Pizza", "image": "assets/images/p.png"},
-    {"name": "Sandwich", "image": "assets/images/s.png"},
+    {"name": "All".tr()},
+    {"name": "Burger".tr(), "image": "assets/images/b.png"},
+    {"name": "Pizza".tr(), "image": "assets/images/p.png"},
+    {"name": "Sandwich".tr(), "image": "assets/images/s.png"},
   ];
 
   @override
@@ -167,7 +168,7 @@ class MainScreen extends StatelessWidget {
                 builder: (context, state) {
                   final selectedCategory = state is HomeCategorySelected
                       ? state.category
-                      : "All";
+                      : "All".tr();
 
                   return _buildCategoryContent(selectedCategory);
                 },
@@ -182,10 +183,13 @@ class MainScreen extends StatelessWidget {
   Widget _buildCategoryContent(String category) {
     switch (category) {
       case "Burger":
+      case "برجر":
         return BurgerScreen();
       case "Pizza":
+      case "بيتزا":
         return PizzaScreen();
       case "Sandwich":
+      case "سادويتش":
         return SandwichScreen();
       case "All":
       default:

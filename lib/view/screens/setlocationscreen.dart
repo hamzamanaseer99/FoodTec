@@ -208,8 +208,10 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
         markerId: MarkerId('selectedLocation'),
         position: currentLocation!,
       ));
+
     });
     _getAddressFromCoordinates(tappedLocation.latitude, tappedLocation.longitude); // تحويل الإحداثيات للعنوان
+
   }
 
   @override
@@ -217,19 +219,22 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
     return Scaffold(
       appBar: AppBar(),
       body: Stack(
+
         children: [
           // خريطة جوجل
-          GoogleMap(
-            initialCameraPosition: CameraPosition(
-              target: LatLng(31.963158, 35.930359), // عمان كموقع مبدئي
-              zoom: 12,
+          SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: GoogleMap(
+              initialCameraPosition: CameraPosition(
+                target: currentLocation ?? LatLng(31.963158, 35.930359), // الموقع أو عمان
+                zoom: 14,
+              ),
+              onMapCreated: (controller) => mapController = controller,
+              myLocationEnabled: true,
+              onTap: _onMapTapped,
+              markers: markers,
             ),
-            onMapCreated: (controller) {
-              mapController = controller;
-            },
-            myLocationEnabled: true,
-            onTap: _onMapTapped, // تحديد الموقع عند النقر على الخريطة
-            markers: markers,
           ),
 
           // خانة البحث
@@ -239,13 +244,39 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
             right: 20,
             child: TextField(
               controller: searchController,
+              style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color),
               decoration: InputDecoration(
                 hintText: "Find your location".tr(),
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                hintStyle: TextStyle(color: Theme.of(context).hintColor),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                filled: true,
+                fillColor: Theme.of(context).cardColor, // لون الخلفية حسب الثيم
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).dividerColor, // لون الإطار حسب الثيم
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).dividerColor,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.primary,
+                    width: 2,
+                  ),
+                ),
               ),
               onSubmitted: (_) => _searchAddress(),
             ),
+
           ),
 
           // عرض العنوان في Card

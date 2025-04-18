@@ -1339,13 +1339,17 @@ class _CartScreenState extends State<CartScreen> {
           leading: _buildLocationIcon(),
           title: _buildLocationTitle(context),
           actions:  [NotificationIcon()],
-          bottom: const TabBar(
-            labelColor: Colors.white,
-            unselectedLabelColor: Colors.grey,
-            indicatorColor: Color(0xff4FAF5A),
+          bottom:  TabBar(
+            labelColor: Theme.of(context).brightness == Brightness.dark
+                ? Colors.white
+                : Colors.black,
+            unselectedLabelColor: Theme.of(context).brightness == Brightness.dark
+                ? Colors.grey[400]
+                : Colors.grey,
+            indicatorColor: const Color(0xff4FAF5A),
             tabs: [
-              Tab(text: 'Cart'),
-              Tab(text: 'History'),
+              Tab(text: 'Cart'.tr()),
+              Tab(text: 'History'.tr()),
             ],
           ),
         ),
@@ -1446,7 +1450,7 @@ class _CartScreenState extends State<CartScreen> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            item.product.name,
+                                            item.product.name.tr(),
                                             style: TextStyle(
                                               fontSize: responsiveWidth(context, 15),
                                               fontWeight: FontWeight.bold,
@@ -1463,10 +1467,11 @@ class _CartScreenState extends State<CartScreen> {
                                                 onDecrease: (newQuantity) {
                                                   context.read<CartCubit>().updateQuantity(item, newQuantity);
                                                 },
-                                              ),
+                                                 )
+
                                             ],
                                           ),
-                                          SizedBox(height: responsiveHeight(context, 4)),
+                                          SizedBox(height: responsiveHeight(context, 1)),
                                           Text(
                                             "\$${(item.product.price * item.quantity).toStringAsFixed(2)}",
                                             style: TextStyle(
@@ -1490,12 +1495,14 @@ class _CartScreenState extends State<CartScreen> {
                       },
                     ),
                   ),
-                  buildCheckoutSection(context, subTotal
-                      , deliveryCharge,
-                      discount,
-                      onPlaceOrderTap: () {
-                        Navigator.pushNamed(context, '/SetLocationScreen');
-                      }),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 25),                    child: buildCheckoutSection(context, subTotal
+                        , deliveryCharge,
+                        discount,
+                        onPlaceOrderTap: () {
+                          Navigator.pushNamed(context, '/SetLocationScreen');
+                        }),
+                  ),
                 ],
               ),
             ),
@@ -1515,7 +1522,7 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                   SizedBox(height: responsiveHeight(context, 16)),
                   Text(
-                    'You don’t have order any foods before',
+                    'You don’t have order any foods before'.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 16),
                       color: const Color(0xff111827),

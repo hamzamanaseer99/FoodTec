@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/cart_cubit.dart';
@@ -233,7 +234,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   SizedBox(height: responsiveHeight(context, 24)),
 
                   Text(
-                    product.name,
+                    product.name.tr(),
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -248,7 +249,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Icon(Icons.star_half, color: Colors.amber, size: responsiveWidth(context, 16)),
                       SizedBox(width: responsiveWidth(context, 8)),
                       Text(
-                        '4.5 (89 reviews)',
+                        '4.5 (89 reviews).'.tr(),
                         style: TextStyle(
                           fontSize: responsiveWidth(context, 14),
                           color: isDark ? Colors.grey[400] : Colors.grey[600],
@@ -262,7 +263,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   Row(
                     children: [
                       Text(
-                        "\$${product.price.toStringAsFixed(2)}",
+                        "\$${product.price.toStringAsFixed(2)}".tr(),
                         style: TextStyle(
                           fontSize: responsiveWidth(context, 20),
                           fontWeight: FontWeight.bold,
@@ -284,7 +285,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   SizedBox(height: responsiveHeight(context, 12)),
 
                   Text(
-                    product.description,
+                    product.description.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 16),
                       color: isDark ? Colors.white70 : Colors.black87,
@@ -297,7 +298,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Spicy',
+                        'Spicy'.tr(),
                         style: TextStyle(
                           fontSize: responsiveWidth(context, 16),
                           color: isDark ? Colors.grey[300] : const Color(0xff838383),
@@ -305,7 +306,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         ),
                       ),
                       Text(
-                        'Quantity',
+                        'Quantity'.tr(),
                         style: TextStyle(
                           fontSize: responsiveWidth(context, 16),
                           color: isDark ? Colors.grey[300] : const Color(0xff838383),
@@ -367,7 +368,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text("تمت إضافة ${product.name} إلى السلة"),
+                    content: Text("تمت إضافة ${product.name.tr()} إلى السلة"),
                     duration: Duration(seconds: 2),
                     action: SnackBarAction(
                       label: 'عرض السلة',
@@ -394,8 +395,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              child: const Text(
-                "Add To Cart",
+              child:  Text(
+                "Add To Cart".tr(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,

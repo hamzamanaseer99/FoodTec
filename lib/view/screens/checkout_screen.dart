@@ -270,10 +270,21 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     return Scaffold(
       backgroundColor: isDarkMode ? Colors.black : Colors.white, // تغيير الخلفية بناءً على الوضع
       appBar: AppBar(
-        backgroundColor: isDarkMode ? Colors.black : Colors.white, // تغيير خلفية الـ AppBar
+        backgroundColor: isDarkMode ? Colors.black26 : Colors.white,
         elevation: 0,
-        actions: [NotificationIcon()],
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false, // نوقف الزر التلقائي
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: isDarkMode ? Colors.white : Colors.black,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop(); // العودة للشاشة السابقة
+          },
+        ),
+        actions: [
+          NotificationIcon(),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -334,72 +345,83 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   Row(
                     children: [
                       Expanded(
+                        flex: 3,
                         child: Container(
                           height: responsiveHeight(context, 48),
+                          decoration: BoxDecoration(
+                            color: isDarkMode ? Colors.grey[850] : Colors.white,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              bottomLeft: Radius.circular(10),
+                            ),
+                            border: Border.all(
+                              color: isDarkMode ? Colors.white54 : Color(0xffD6D6D6),
+                            ),
+                          ),
                           child: TextField(
                             controller: promoController,
-                            style: TextStyle(fontSize: responsiveHeight(context, 14), color: isDarkMode ? Colors.white : Colors.black),
+                            style: TextStyle(
+                              fontSize: responsiveHeight(context, 14),
+                              color: isDarkMode ? Colors.white : Colors.black,
+                            ),
                             decoration: InputDecoration(
                               hintText: 'Enter Your Promo'.tr(),
                               hintStyle: TextStyle(
                                 color: isDarkMode ? Colors.white54 : Color(0xff878787),
                                 fontSize: responsiveWidth(context, 14),
                               ),
-                              fillColor: isDarkMode ? Colors.grey[850] : Colors.white,
-                              contentPadding: EdgeInsets.symmetric(vertical: responsiveHeight(context, 12), horizontal: responsiveWidth(context, 12)),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(10),
-                                  bottomLeft: Radius.circular(10),
-                                ),
-                                borderSide: BorderSide.none,
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: responsiveHeight(context, 12),
+                                horizontal: responsiveWidth(context, 12),
                               ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(10),
-                                  bottomLeft: Radius.circular(10),
-                                ),
-                                borderSide: BorderSide(color: isDarkMode ? Colors.white54 : Color(0xffD6D6D6), width: 1),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(10),
-                                  bottomLeft: Radius.circular(10),
-                                ),
-                                borderSide: BorderSide(color: isDarkMode ? Colors.white54 : Color(0xffD6D6D6), width: 1),
-                              ),
+                              border: InputBorder.none,
                             ),
                           ),
                         ),
                       ),
-                      Container(
-                        height: responsiveHeight(context, 48),
-                        child: TextButton(
-                          onPressed: () {
-                            // Handle promo code addition
-                          },
-                          style: TextButton.styleFrom(
-                            side: BorderSide(color: isDarkMode ? Colors.greenAccent : Color(0xff4FAF5A)),
-                            backgroundColor: isDarkMode ? Colors.greenAccent : Color(0xff4FAF5A),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(10),
-                                bottomRight: Radius.circular(10),
+                      SizedBox(width: 8), // مسافة بسيطة بين الحقل والزر
+                      Expanded(
+                        flex: 2,
+                        child: SizedBox(
+                          height: responsiveHeight(context, 48),
+                          child: TextButton(
+                            onPressed: () {
+                              // Handle promo code addition
+                            },
+                            style: TextButton.styleFrom(
+                              backgroundColor: isDarkMode
+                                  ? Colors.green.withOpacity(0.2)
+                                  : const Color(0xff4FAF5A).withOpacity(0.1),
+                              foregroundColor:
+                              isDarkMode ? Colors.greenAccent : const Color(0xff4FAF5A),
+                              padding: const EdgeInsets.symmetric(horizontal: 12),
+                              shape: RoundedRectangleBorder(
+
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+
+
+                                ),
+                                side: BorderSide(
+                                  color: isDarkMode ? Colors.greenAccent : const Color(0xff4FAF5A),
+                                  width: 1,
+                                ),
                               ),
                             ),
-                          ),
-                          child: Text(
-                            'Add'.tr(),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: responsiveWidth(context, 12),
-                              fontWeight: FontWeight.w400,
+                            child: Text(
+                              'Add'.tr(),
+                              style: TextStyle(
+                                color: isDarkMode ? Colors.greenAccent : const Color(0xff4FAF5A),
+                                fontSize: responsiveWidth(context, 14),
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ],
                   ),
+
                   SizedBox(height: responsiveHeight(context, 24)),
                   Text(
                     'Pay with:'.tr(),

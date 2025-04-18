@@ -28,17 +28,22 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        multiDexEnabled true
     }
 
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.debug
+            shrinkResources false
+            minifyEnabled false // أوقف R8 هنا
+            signingConfig signingConfigs.release
         }
     }
 }
-
+dependencies {
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+}
 flutter {
     source = "../.."
 }

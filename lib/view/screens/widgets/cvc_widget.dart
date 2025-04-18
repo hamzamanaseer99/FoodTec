@@ -25,7 +25,7 @@ class _CvcWidgetState extends State<CvcWidget> {
       child: Container(
         width: responsiveWidth(context, 184),
         decoration: BoxDecoration(
-          color: Colors.white, // Background color
+          color: Colors.grey, // Background color
           borderRadius: BorderRadius.circular(12), // Rounded corners
           boxShadow: [
             BoxShadow(

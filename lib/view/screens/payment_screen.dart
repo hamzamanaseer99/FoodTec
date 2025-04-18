@@ -126,12 +126,23 @@ class PaymentScreen extends StatelessWidget {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark; // التحقق من الوضع الداكن
 
     return Scaffold(
-      backgroundColor: isDarkMode ? Colors.black : Colors.white, // تغيير الخلفية بناءً على الوضع
+      backgroundColor: isDarkMode ? Colors.black38 : Colors.white, // تغيير الخلفية بناءً على الوضع
       appBar: AppBar(
-        backgroundColor: isDarkMode ? Colors.black : Colors.white, // تغيير خلفية الـ AppBar
+        backgroundColor: isDarkMode ? Colors.black26 : Colors.white,
         elevation: 0,
-        actions: [NotificationIcon()],
         automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: isDarkMode ? Colors.white : Colors.black,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        actions: [
+          NotificationIcon(),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

@@ -25,7 +25,7 @@ class _ExpiryWidgetState extends State<ExpiryWidget> {
       child: Container(
         width: responsiveWidth(context, 184),
         decoration: BoxDecoration(
-          color: Colors.white, // Background color
+          color: Colors.grey, // Background color
           borderRadius: BorderRadius.circular(12), // Rounded corners
           boxShadow: [
             BoxShadow(
@@ -52,7 +52,7 @@ class _ExpiryWidgetState extends State<ExpiryWidget> {
             hintStyle: TextStyle(
               fontSize: screenWidth * 0.025,
             ),
-            fillColor: Colors.white,
+            fillColor: Colors.black38,
             contentPadding: EdgeInsets.symmetric(
               vertical: screenWidth * 0.04,
               horizontal: screenWidth * 0.04,
