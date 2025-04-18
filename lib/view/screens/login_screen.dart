@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -51,13 +52,14 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+
   void _handleLogin(BuildContext context) async {
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
 
     if (email.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Fields cannot be empty")),
+         SnackBar(content: Text("Fields cannot be empty".tr())),
       );
       return;
     }
@@ -65,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (!RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
         .hasMatch(email)) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Invalid email format")),
+         SnackBar(content: Text("Invalid email format".tr())),
       );
       return;
     }
@@ -131,8 +133,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         builder: (context, state) {
                           return Column(
                             children: [
-                              const Text(
-                                'Login',
+                               Text(
+                                'Login'.tr(),
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 32,
@@ -161,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         activeColor:  Color(0xff25AE4B),
                                       ),
                                       Text(
-                                        "Remember Me",
+                                        "Remember Me".tr(),
                                         style: TextStyle(
                                           fontSize: screenWidth * 0.020, // تصغير الخط للشاشات الصغيرة
                                           fontWeight: FontWeight.w600,
@@ -180,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       );
                                     },
                                     child: Text(
-                                      'Forgot password?',
+                                      'Forgot password?'.tr(),
                                       style: TextStyle(
                                         fontSize: screenWidth * 0.025, // ضبط الحجم حسب الشاشة
                                         fontWeight: FontWeight.w600,
@@ -194,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                               const SizedBox(height: 24),
                               state is LoginLoading
-                                  ? const Center(
+                                  ?  Center(
                                 child: SizedBox(
                                   width: 30,
                                   height: 30,
@@ -217,7 +219,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     elevation: 3,
                                   ),
                                   child: Text(
-                                    "Login",
+                                    "Login".tr(),
                                     style: TextStyle(
                                       fontSize: screenWidth * 0.035,
                                       fontWeight: FontWeight.bold,
@@ -240,7 +242,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                    Padding(
                                     padding: EdgeInsets.symmetric(horizontal: 12), // تصغير المسافة قليلاً
                                     child: Text(
-                                      "OR",
+                                      "OR".tr(),
                                       style: TextStyle(
                                         fontSize: screenWidth * 0.025,
                                         fontWeight: FontWeight.bold,
@@ -291,7 +293,7 @@ class _SignUpText extends StatelessWidget {
           child: FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
-              "Don’t have an account?",
+              "Don’t have an account?".tr(),
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: screenWidth * 0.035,
@@ -308,7 +310,7 @@ class _SignUpText extends StatelessWidget {
             );
           },
           child: Text(
-            "Sign Up",
+            "Sign Up".tr(),
             style: TextStyle(
               fontWeight: FontWeight.w600,
               color: Colors.green,

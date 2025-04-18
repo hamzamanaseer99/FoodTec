@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class NewPasswordWidget extends StatefulWidget {
@@ -42,10 +43,12 @@ class _PasswordWidgetState extends State<NewPasswordWidget> {
           fontSize: screenWidth * 0.03, // ✅ جعل الخط متجاوبًا
         ),
         decoration: InputDecoration(
-          labelText: 'New Password', labelStyle: TextStyle(
+          labelText: 'New Password'.tr(),
+          labelStyle: TextStyle(
           fontSize: screenWidth * 0.025,
         ),
-          hintText: "Enter new password",hintStyle: TextStyle(
+          hintText: "Enter new password".tr(),
+          hintStyle: TextStyle(
           fontSize: screenWidth * 0.025,
         ),
           fillColor: Colors.white,

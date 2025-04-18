@@ -43,6 +43,15 @@ dependencies:
   smooth_page_indicator: ^1.2.1
   bloc: ^9.0.0
 
+  flutter_slidable: ^4.0.0
+  flutter_screenutil: ^5.9.3
+  google_maps_flutter: ^2.12.1
+  geocoding: ^3.0.0
+  easy_localization: ^3.0.7+1
+  flutter_osm_plugin: ^1.3.7
+  flutter_map: ^8.1.1
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -80,6 +89,10 @@ flutter:
     - assets/menub.json
     - assets/pizzas.json
     - assets/sandwiches.json
+    - assets/images/visa.png
+    - assets/images/mastercard.png
+    - assets/translation/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

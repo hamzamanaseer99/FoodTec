@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/view/screens/widgets/birth_widget.dart';
@@ -34,12 +35,12 @@ class _SignupScreenState extends State<SignupScreen> {
     final confirmPassword = confirmPasswordController.text.trim();
 
     context.read<SignupCubit>().signup(
-      fullName,
-      email,
-      birthDate,
-      phoneNumber,
-      password,
-      confirmPassword,
+      fullName.tr(),
+      email.tr(),
+      birthDate.tr(),
+      phoneNumber.tr(),
+      password.tr(),
+      confirmPassword.tr(),
     );
   }
 
@@ -92,11 +93,11 @@ class _SignupScreenState extends State<SignupScreen> {
                           listener: (context, state) {
                             if (state is SignupSuccess) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text("Signup Successful!")),
+                                 SnackBar(content: Text("Signup Successful!".tr())),
                               );
                               Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(builder: (context) => const LoginScreen()),
+                                MaterialPageRoute(builder: (context) =>  LoginScreen()),
                               );
                             } else if (state is SignupFailure) {
                               ScaffoldMessenger.of(context).showSnackBar(
@@ -116,7 +117,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 ),
                                 const SizedBox(height: 16),
                                 Text(
-                                  'Sign up',
+                                  'Sign Up'.tr(),
                                   style: TextStyle(
                                     fontSize: screenWidth * 0.07,
                                     fontWeight: FontWeight.w700,
@@ -132,7 +133,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                       child: FittedBox(
                                         fit: BoxFit.scaleDown,
                                         child: Text(
-                                          "Already have an account?",
+                                          "Already have an account?".tr(),
                                           style: TextStyle(
                                             color: Colors.grey,
                                             fontSize: screenWidth < 350 ? 12 : 13, // تصغير الخط للشاشات الصغيرة
@@ -148,7 +149,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                         );
                                       },
                                       child: Text(
-                                        "Login",
+                                        "Login".tr(),
                                         style: TextStyle(
                                           color: Color(0xff25AE4B),
                                           fontWeight: FontWeight.w600,
@@ -200,7 +201,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                       ),
                                     ),
                                     child:  Text(
-                                      "Register",
+                                      "Register".tr(),
                                       style: TextStyle(
                                         fontSize: screenWidth * 0.035,
                                         color: Colors.white,

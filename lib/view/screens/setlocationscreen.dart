@@ -92,6 +92,7 @@
 //   }
 // }
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/view/screens/checkout_screen.dart';
 import 'package:foodtek/view/screens/payment_screen.dart';
@@ -185,7 +186,7 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
             currentLocation = LatLng(location.latitude, location.longitude);
             markers.clear(); // إخفاء أي علامات سابقة
             markers.add(Marker(
-              markerId: MarkerId('searchedLocation'),
+              markerId: MarkerId('searchedLocation'.tr()),
               position: currentLocation!,
             ));
           });
@@ -207,28 +208,33 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
         markerId: MarkerId('selectedLocation'),
         position: currentLocation!,
       ));
+
     });
     _getAddressFromCoordinates(tappedLocation.latitude, tappedLocation.longitude); // تحويل الإحداثيات للعنوان
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Set Your Location')),
+      appBar: AppBar(),
       body: Stack(
+
         children: [
           // خريطة جوجل
-          GoogleMap(
-            initialCameraPosition: CameraPosition(
-              target: LatLng(31.963158, 35.930359), // عمان كموقع مبدئي
-              zoom: 12,
+          SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: GoogleMap(
+              initialCameraPosition: CameraPosition(
+                target: currentLocation ?? LatLng(31.963158, 35.930359), // الموقع أو عمان
+                zoom: 14,
+              ),
+              onMapCreated: (controller) => mapController = controller,
+              myLocationEnabled: true,
+              onTap: _onMapTapped,
+              markers: markers,
             ),
-            onMapCreated: (controller) {
-              mapController = controller;
-            },
-            myLocationEnabled: true,
-            onTap: _onMapTapped, // تحديد الموقع عند النقر على الخريطة
-            markers: markers,
           ),
 
           // خانة البحث
@@ -238,13 +244,39 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
             right: 20,
             child: TextField(
               controller: searchController,
+              style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color),
               decoration: InputDecoration(
-                hintText: "Search for a place",
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                hintText: "Find your location".tr(),
+                hintStyle: TextStyle(color: Theme.of(context).hintColor),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                filled: true,
+                fillColor: Theme.of(context).cardColor, // لون الخلفية حسب الثيم
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).dividerColor, // لون الإطار حسب الثيم
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).dividerColor,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.primary,
+                    width: 2,
+                  ),
+                ),
               ),
               onSubmitted: (_) => _searchAddress(),
             ),
+
           ),
 
           // عرض العنوان في Card
@@ -296,7 +328,7 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
                     backgroundColor: Colors.green,
                   ),
                   child: Text(
-                    'Confirm Location',
+                    'Confirm Location'.tr(),
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                 ),

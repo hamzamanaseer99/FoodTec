@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
 
@@ -37,16 +38,16 @@ class _RadioWidgetState extends State<RadioWidget> {
         SizedBox(height: responsiveHeight(context, 8)),
         Row(
           children: [
-            _buildPaymentOption(value: 0, label: 'Card'),
+            _buildPaymentOption(value: 0, label: 'Card'.tr()),
             SizedBox(width: responsiveWidth(context, 24)),
-            _buildPaymentOption(value: 1, label: 'Cash'),
+            _buildPaymentOption(value: 1, label: 'Cash'.tr()),
           ],
         ),
 
         // Card Details Section
         if (selectedPaymentOption == 0) ...[
           SizedBox(height: responsiveHeight(context, 24)),
-          _buildSectionTitle('Card Type:'),
+          _buildSectionTitle('Card Type:'.tr()),
           SizedBox(height: responsiveHeight(context, 12)),
           Wrap(
             spacing: responsiveWidth(context, 24),

@@ -286,7 +286,8 @@
 // //   return Column(
 // //     crossAxisAlignment: CrossAxisAlignment.start,
 // //     children: [
-// //       Text("Current location", style: TextStyle(fontSize: 12, color: Color(0xff606060))),
+// //       Text("Current location", style: TextStyle(fontSize: 12,     color: Theme.of(context).textTheme.bodyLarge?.color,
+//)),
 // //       SizedBox(height: 4),
 // //       Text("Jl. Soekarno Hatta 15A...", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
 // //     ],
@@ -882,7 +883,8 @@
 //     return Column(
 //       crossAxisAlignment: CrossAxisAlignment.start,
 //       children: [
-//         Text("الموقع الحالي", style: TextStyle(fontSize: 12, color: Color(0xff606060))),
+//         Text("الموقع الحالي", style: TextStyle(fontSize: 12,     color: Theme.of(context).textTheme.bodyLarge?.color,
+//)),
 //         SizedBox(height: 4),
 //         Text("شارع سوكارنو هاتا 15أ...", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
 //       ],
@@ -1287,7 +1289,8 @@
 //     return Column(
 //       crossAxisAlignment: CrossAxisAlignment.start,
 //       children: [
-//         Text("الموقع الحالي", style: TextStyle(fontSize: 12, color: Color(0xff606060))),
+//         Text("الموقع الحالي", style: TextStyle(fontSize: 12,     color: Theme.of(context).textTheme.bodyLarge?.color,
+//)),
 //         SizedBox(height: 4),
 //         Text("شارع سوكارنو هاتا 15أ...", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
 //       ],
@@ -1296,6 +1299,7 @@
 // }
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -1328,20 +1332,24 @@ class _CartScreenState extends State<CartScreen> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
           elevation: 0,
           leading: _buildLocationIcon(),
-          title: _buildLocationTitle(),
+          title: _buildLocationTitle(context),
           actions:  [NotificationIcon()],
-          bottom: const TabBar(
-            labelColor: Colors.black,
-            unselectedLabelColor: Colors.grey,
-            indicatorColor: Color(0xff4FAF5A),
+          bottom:  TabBar(
+            labelColor: Theme.of(context).brightness == Brightness.dark
+                ? Colors.white
+                : Colors.black,
+            unselectedLabelColor: Theme.of(context).brightness == Brightness.dark
+                ? Colors.grey[400]
+                : Colors.grey,
+            indicatorColor: const Color(0xff4FAF5A),
             tabs: [
-              Tab(text: 'Cart'),
-              Tab(text: 'History'),
+              Tab(text: 'Cart'.tr()),
+              Tab(text: 'History'.tr()),
             ],
           ),
         ),
@@ -1356,20 +1364,19 @@ class _CartScreenState extends State<CartScreen> {
                   SizedBox(height: responsiveHeight(context, 51)),
 
                   Text(
-                    'Cart Empty',
+                    'Cart Empty'.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 32),
-                      color: const Color(0xff111827),
+                      color: Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black,
                     ),
                   ),
                   SizedBox(height: responsiveHeight(context, 16)),
 
                   Text(
-                    'You don’t have add any foods in cart at this time',
+                    'You don’t have add any foods in cart at this time'.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 16),
-                      color: const Color(0xff111827),
-                    ),
+                      color: Theme.of(context).textTheme.bodyLarge?.color,                    ),
                   ),
                 ],
               ),
@@ -1413,12 +1420,12 @@ class _CartScreenState extends State<CartScreen> {
                               width: responsiveWidth(context, 378),
                               height: responsiveHeight(context, 120),
                               decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: Theme.of(context).cardColor,
                                   borderRadius: BorderRadius.circular(7),
 
                                   border: Border.all(
                                       width: 1,
-                                      color: Color(0xffDBF4D1)
+                                    color: Theme.of(context).dividerColor,
                                   )
                               ),
                               child: Row(
@@ -1443,7 +1450,7 @@ class _CartScreenState extends State<CartScreen> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            item.product.name,
+                                            item.product.name.tr(),
                                             style: TextStyle(
                                               fontSize: responsiveWidth(context, 15),
                                               fontWeight: FontWeight.bold,
@@ -1460,10 +1467,11 @@ class _CartScreenState extends State<CartScreen> {
                                                 onDecrease: (newQuantity) {
                                                   context.read<CartCubit>().updateQuantity(item, newQuantity);
                                                 },
-                                              ),
+                                                 )
+
                                             ],
                                           ),
-                                          SizedBox(height: responsiveHeight(context, 4)),
+                                          SizedBox(height: responsiveHeight(context, 1)),
                                           Text(
                                             "\$${(item.product.price * item.quantity).toStringAsFixed(2)}",
                                             style: TextStyle(
@@ -1487,12 +1495,14 @@ class _CartScreenState extends State<CartScreen> {
                       },
                     ),
                   ),
-                  buildCheckoutSection(context, subTotal
-                      , deliveryCharge,
-                      discount,
-                      onPlaceOrderTap: () {
-                        Navigator.pushNamed(context, '/SetLocationScreen');
-                      }),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 25),                    child: buildCheckoutSection(context, subTotal
+                        , deliveryCharge,
+                        discount,
+                        onPlaceOrderTap: () {
+                          Navigator.pushNamed(context, '/SetLocationScreen');
+                        }),
+                  ),
                 ],
               ),
             ),
@@ -1504,7 +1514,7 @@ class _CartScreenState extends State<CartScreen> {
                   Image.asset('assets/images/cart empty.jpg'),
                   SizedBox(height: responsiveHeight(context, 51)),
                   Text(
-                    'History Empty',
+                    'History Empty'.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 32),
                       color: const Color(0xff111827),
@@ -1512,7 +1522,7 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                   SizedBox(height: responsiveHeight(context, 16)),
                   Text(
-                    'You don’t have order any foods before',
+                    'You don’t have order any foods before'.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 16),
                       color: const Color(0xff111827),
@@ -1538,11 +1548,11 @@ Widget _buildLocationIcon() {
   );
 }
 
-Widget _buildLocationTitle() {
+Widget _buildLocationTitle(context) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text("Current location", style: TextStyle(fontSize: 12, color: Color(0xff606060))),
+      Text("Current location", style: TextStyle(fontSize: 12,color: Theme.of(context).textTheme.bodyLarge?.color,)),
       SizedBox(height: 4),
       Text("Jl. Soekarno Hatta 15A...", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
     ],

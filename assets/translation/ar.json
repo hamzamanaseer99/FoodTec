@@ -1,0 +1,223 @@
+{
+
+  "Welcome To Sahlah": "مرحبًا بك في سهلة",
+  "Enjoy A Fast And Smooth Food Delivery At Your Doorstep": "استمتع بتوصيل طعام سريع وسلس إلى باب منزلك",
+  "Get Delivery On Time": "احصل على التوصيل في الوقت المحدد",
+  "Order Your Favorite Food Within The Palm Of Your Hand And The Zone Of Your Comfort": "اطلب طعامك المفضل بسهولة ومن مكانك المريح",
+  "Choose Your Food": "اختر طعامك",
+  "Continue": "متابعة",
+  "Next": "التالي",
+  "Skip": "تخطي",
+  "Enable Location": "تمكين الموقع",
+  "To provide better service, we need access to your location. Please enable location services.": "لتقديم خدمة أفضل، نحتاج إلى الوصول إلى موقعك. يرجى تمكين خدمات الموقع.",
+  "Cancel": "إلغاء",
+
+  "Home": "الرئيسية",
+  "Favorites": "المفضلة",
+  "Profile": "الملف الشخصي",
+  "Turn On Your Location": "قم بتشغيل موقعك",
+  "To Continues, Let Your Device Turn On Location, Which Uses Google’s Location Service": "للمتابعة، اسمح لجهازك بتشغيل الموقع، الذي يستخدم خدمة الموقع من Google",
+  "Yes, Turn It On": "نعم، قم بتشغيله",
+
+  "Remember Me": "تذكرني",
+  "Fields cannot be empty": "لا يمكن أن تكون الحقول فارغة",
+  "Invalid email format":"تنسيق البريد الإلكتروني غير صالح",
+  "Login": "تسجيل الدخول",
+  "Forgot password?": "هل نسيت كلمة السر؟",
+  "OR": "او",
+  "Don’t have an account?": "ليس لديك حساب؟",
+  "Sign Up": "انشاء حساب",
+  "Email": "البريد إلكتروني",
+  "Enter your email": "أدخل بريدك الإلكتروني",
+  "Password": "كلمة المرور",
+  "Enter your password": "أدخل كلمة المرور الخاصة بك",
+  "Continue with Google": "التسجيل عبر جوجل",
+  "Continue with Facebook": "الستجيل عبر فيسبوك",
+  "Continue with Apple": "التسجيل عبر ابل",
+
+  "Signup Successful!":"تم السجيل بنجاح",
+  "Already have an account?": "هل لديك حساب بالفعل؟",
+  "Register": "تسجيل",
+
+  "Birth of date": "تاريخ الميلاد",
+  "YYYY-MM-DD": "السنة-الشهر-اليوم",
+
+  "Phone Number": "رقم الهاتف",
+
+  "Back to": "الرجوع الى",
+  "page": "صفحة",
+  "Reset Password": "إعادة تعيين كلمة المرور",
+  "Enter your E-mail or phone and we'll send you a link to get back into your account": "أدخل بريدك الإلكتروني أو هاتفك وسنرسل لك رابطًا للعودة إلى حسابك",
+  "Send": "ارسال",
+  "A 4-digit code has been sent to your email. Please enter it to verify.": "تم إرسال رمز مكون من 4 أرقام إلى بريدك الإلكتروني. الرجاء إدخاله للتحقق.",
+  "Verify": "تحقق",
+  "Passwords do not match!": "كلمات المرور غير متطابقة!",
+  "Password must contain uppercase, lowercase, number, special character, and be at least 8 characters long.": "يجب أن تحتوي كلمة المرور على أحرف كبيرة وصغيرة ورقم وحرف خاص وأن لا يقل طولها عن 8 أحرف.",
+  "Want to try with my current password?": "هل تريد المحاولة باستخدام كلمة المرور الحالية؟",
+  "New Password": "كلمة المرور الجديدة",
+  "Enter new password": "أدخل كلمة المرور الجديدة",
+  "Confirm Password": "تأكيد كلمة المرور",
+  "Enter your Password": "أدخل كلمة المرور الخاصة بك",
+  "Update Password": "تحديث كلمة المرور",
+
+  "Recommended": "موصى به",
+  "View All": "عرض الكل",
+  "100 gr chicken + tomato + cheese Lettuce": "100 جرام دجاج + طماطم + خس جبن",
+
+
+  "Order Now": "اطلب الآن",
+  "product.classic_beef_burger": "برجر لحم كلاسيكي",
+  "product.classic_beef_burger_desc": "شريحة لحم مشوية مع خس، طماطم، وجبن",
+  "product.chicken_burger": "برجر دجاج",
+  "product.chicken_burger_desc": "فيليه دجاج مقرمش مع مايونيز ومخلل",
+  "product.veggie_burger": "برجر نباتي",
+  "product.veggie_burger_desc": "شريحة نباتية طازجة مع خس وصلصة",
+  "Cheese Burger": "برجر بالجبنة",
+
+  "Margherita Pizza": "بيتزا مارجريتا",
+  "Classic pizza with mozzarella and tomato sauce.": "بيتزا كلاسيكية مع جبنة الموزاريلا وصلصة الطماطم.",
+
+  "Pepperoni Pizza": "بيتزا بيبروني",
+  "BBQ Chicken Pizza": "بيتزا دجاج باربكيو",
+  "Mexican Green Wave": "الموجة المكسيكية الخضراء",
+
+  "Loaded with pepperoni and melted cheese.": "محشوة بالبيبروني والجبنة الذائبة.",
+  "Barbecue sauce, grilled chicken, and onions.": "صلصة الباربكيو، دجاج مشوي، وبصل.",
+
+  "Grilled Chicken Sandwich": "ساندويتش دجاج مشوي",
+  "Tuna Sandwich": "ساندويتش تونة",
+  "Club Sandwich": "ساندويتش كلوب",
+  "Sandwich1": "ساندويتش ",
+
+  "Grilled chicken breast with lettuce, tomato, and mayo.": "صدر دجاج مشوي مع خس، طماطم، ومايونيز.",
+  "Tuna mixed with mayo, celery, and a touch of lemon.": "تونة ممزوجة مع مايونيز، كرفس، ولمسة ليمون.",
+  "Triple-layered sandwich with turkey, bacon, and lettuce.": "ساندويتش ثلاثي الطبقات مع ديك رومي، لحم مقدد، وخس.",
+
+  "Remove from Favorites": "إزالة من المفضلة",
+  "Are you sure?": "متاكد؟",
+  "Yes": "نعم",
+  "Filter": "فلترة",
+  "Price range": "النطاق السعري",
+  "Category": "الفئات",
+  "Fast Food": "الوجبات  السريع",
+  "Sea Food": "المأكولات البحرية",
+  "Dessert": "حَلوَى",
+  "Location": "الموقع",
+  "1 KM": "1 كم",
+  "5 KM": "5 كم",
+  "10 KM": "10 كم",
+  "Dish": "الاطباق",
+  "Seafood Paella": "بايلا المأكولات البحرية",
+  "Tuna Tartare": "تونة تارتار",
+  "Spicy Crab Cakes": "كعك السلطعون الحار",
+  "Clam Chowder": "تشوودير البطلينوس",
+  "Miso-Glazed Cod": "سمك القد المزجج ميسو",
+  "Lobster Thermidor": "جراد البحر ثيرميدور",
+  "Min": "اقل",
+  "Max": "اكثر",
+  "Apply": "تنفيذ",
+  "Reset": "إعادة ضبط",
+  "All": "الكل",
+  "Burger": "برجر",
+  "Pizza": "بيتزا",
+  "Sandwich": "سادويتش",
+  "Current location": "موقعك الحالي",
+  "Spicy": "حار",
+  "Quantity": "الكمية",
+  "Mild": "خفيف",
+  "Hot": "حار",
+  "Add To Cart": "اضف الى السلة",
+  "4.5 (89 reviews)":"4.5 (89 تقييم)",
+  "Search menu, restaurant or etc": "قائمة البحث، مطعم أو الخ",
+  "currentLocation": "الموقع الحالي",
+  "Address:": "العنوان",
+  "Your Order Done Successfully": "تم طلبك بنجاح",
+  "You will get your order within 12min. Thanks for using our services.": "سوف تحصل على طلبك في غضون 12 دقيقة. شكرا لاستخدام خدماتنا.",
+  "Track Your Order": "تتبع طلبك",
+  "On the way": "على الطريق",
+  "All details": "كل التفاصيل",
+  "Order Placed": "تم تقديم الطلب",
+  "Delivered": "تم التوصيل",
+  "Confirm Receipt": "تأكيد الاستلام",
+  "Your Delivery Hero": "كابتن التسليم",
+  "123 Al-Madina Street, Abdali, Amman, Jordan": "123 شارع المدينة، العبدلي، عمان، الأردن",
+  "Are you sure you received your order?": "هل أنت متأكد أنك تلقيت طلبك؟",
+  "received_confirmation": "نعم، لقد تلقيت الطلب",
+  "On The Way": "على الطريق",
+  "your location": "موقعك",
+  "Your order is": "الطلب الخاص بك",
+  "My Account": "حسابي",
+  "Personal information": "المعلومات الشخصية",
+  "Language": "اللغة",
+  "Privacy Policy": "سياسة الخصوصية",
+  "Setting": "الاعدادات",
+  "Notifications": "الاشعارات",
+  "Push Notifications": "تشغيل الاشعارات",
+  "Promotional Notifications": "الاشعارات الترويجية",
+  "More": "المزيد",
+  "Help Center": "مركز المساعدة",
+  "logout": "الخروج",
+  "Write your message": "اكتب رسالتك",
+
+
+  "Order Details": "تفاصيل الطلب",
+  "Order ID": "رقم الطلب",
+  "Order received": "تم استلام الطلب",
+  "Cooking your order": "طلبك قيد التجهيز",
+  "Courier is picking up order": "الكابتن يستلم الطلب",
+  "Order delivered": "تم تسليم الطلب",
+  "Live Track": "المسار المباشر",
+  "Loading...": "جار البحث",
+
+  "Cart": "السلة",
+  "History": "السجل",
+  "Cart Empty": "السلة فارغة",
+  "You don’t have add any foods in cart at this time": "ليس لديك إضافة أي أطعمة إلى سلة التسوق في هذا الوقت",
+  "History Empty": "السجل فارغ",
+  "You don’t have order any foods before": "ليس لديك طلب أي أطعمة من قبل",
+  "Classic Beef Burger": "برجر لحم بقري كلاسيكي",
+  "Grilled beef patty with lettuce, tomato, and cheese": "شريحة لحم بقري مشوي مع الخس، الطماطم، والجبن",
+  "Chicken Burger": "برجر دجاج",
+  "Crispy chicken fillet with mayo and pickles": "فيليه دجاج مقرمش مع المايونيز والمخلل",
+  "Veggie Burger": "برجر نباتي",
+  "Fresh veggie patty with lettuce and sauce": "شريحة نباتية مع الخضار الطازجة والصلصة",
+  "Sub-Total": "المجموع الفرعي",
+  "Delivery Charge": "رسوم التوصيل",
+  "Discount": "الخصم",
+  "Total:": "المجموع",
+  "Place My Order": "تأكيد الطلب",
+  "Top Rated": "الأعلى تقييمًا",
+  "30% OFF": "خصم 30%",
+  "Experience our delicious new dish": "جرب طبقنا الجديد اللذيذ",
+  "Find your location": "ابحث عن موقعك",
+  "Confirm Location": "تاكيد المكان",
+  "Checkout": "إتمام الطلب",
+  "Pay With:": "ادفع باستخدام:",
+  "Promo Code?": "رمز الخصم؟",
+  "Enter Your Promo": "أدخل رمز الخصم",
+  "Add": "إضافة",
+  "Pay with:": "ادفع بواسطة:",
+  "Card Type:": "نوع البطاقة:",
+  "Card": "بطاقة",
+  "Cash": "نقدي",
+  "Add to card": "أضف البطاقة",
+  "Full Name": "الاسم الكامل",
+  "Enter your Name": "أدخل اسمك",
+  "Card Number": "رقم البطاقة",
+  "Expiry": "انتهاء الصلاحية",
+  "CVC": "رمز التحقق من البطاقة",
+  "We will send you an order details to your email after the successfull payment": "سوف نرسل لك تفاصيل الطلب إلى بريدك الإلكتروني بعد الدفع بنجاح",
+  "Pay for the order": "ادفع ثمن الطلب",
+  "Delayed Order": "طلب متأخر",
+  "We're sorry! Your order is running late. New ETA: 10:30 PM. Thanks for your patience!": "نعتذر! طلبك سيتأخر قليلاً. الوقت المتوقع الجديد: 10:30 مساءً. شكراً لصبرك!",
+  "Last Wednesday at 9:42 AM": "الأربعاء الماضي الساعة 9:42 صباحاً",
+  "Promotional Offer": "عرض ترويجي",
+  "Craving something delicious? 😊 Get 20% off on your next order. Use code: YUMMY20.": "تشعر بالجوع؟ 😊 احصل على خصم 20٪ على طلبك القادم. استخدم الكود: YUMMY20.",
+  "Out for Delivery": "قيد التوصيل",
+  "Your order is on the way! 🚚 Estimated arrival: 15 mins. Stay hungry!": "طلبك في الطريق! 🚚 الوصول المتوقع: 15 دقيقة. استعد للأكل!",
+  "Order Confirmation": "تم تأكيد الطلب",
+  "Your order has been placed! 😊 We're preparing it now. Track your order live!": "تم إرسال طلبك! 😊 نقوم بتحضيره الآن. تابع حالة الطلب مباشرة!",
+
+  "Unread": "غير مقروء",
+  "Read": "مقروء"
+}

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class TopRatedState {}
@@ -16,25 +17,25 @@ class TopRatedCubit extends Cubit<TopRatedState> {
 
   final List<Map<String, dynamic>> topProducts = [
     {
-      "name": "Cheese Burger",
+      "name": "Cheese Burger".tr(),
       "rating": 4.5,
       "price": 15.0,
-      "category": "Burger",
+      "description": "Grilled beef patty with lettuce, tomato, and cheese.".tr(),
       "image": "assets/images/Chese burger.png"
     },
     {
-      "name": "Pizza",
+      "name": "Pepperoni Pizza".tr(),
       "rating": 4.8,
       "price": 18.0,
-      "category": "Pizza",
-      "image": "assets/images/Chese burger.png"
+      "description": "Loaded with pepperoni and melted cheese.".tr(),
+      "image": "assets/images/pizza10.png"
     },
     {
-      "name": "Sandwich",
+      "name": "Sandwich1".tr(),
       "rating": 3.2,
       "price": 12.0,
-      "category": "Sandwich",
-      "image": "assets/images/Chese burger.png"
+      "description": "Grilled chicken breast with lettuce, tomato, and mayo".tr(),
+      "image": "assets/images/img_1.png"
     },
   ];
 

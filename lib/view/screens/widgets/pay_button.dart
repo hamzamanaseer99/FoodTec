@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
 
@@ -27,7 +28,7 @@ class PayButton extends StatelessWidget {
           onPressed: onPressed,
           icon: Icon(Icons.lock, color: Colors.white, size: responsiveWidth(context, 18)),
           label: Text(
-            'Pay for the order',
+            'Pay for the order'.tr(),
             style: TextStyle(
               color: Colors.white,
               fontSize: responsiveWidth(context, 15),

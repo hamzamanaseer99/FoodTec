@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
@@ -23,7 +24,7 @@ class _CardNumberWidgetState extends State<CardNumberWidget> {
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white, // Background color
+          color: Colors.grey, // Background color
           borderRadius: BorderRadius.circular(12), // Rounded corners
           boxShadow: [
             BoxShadow(
@@ -42,7 +43,7 @@ class _CardNumberWidgetState extends State<CardNumberWidget> {
             fontSize: screenWidth * 0.03,
           ),
           decoration: InputDecoration(
-            labelText: 'Card Number',
+            labelText: 'Card Number'.tr(),
             labelStyle: TextStyle(
               fontSize: screenWidth * 0.025,
             ),

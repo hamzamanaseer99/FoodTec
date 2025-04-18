@@ -100,11 +100,81 @@ import 'package:flutter/services.dart';
 import 'package:foodtek/model/product.dart';
 import 'package:foodtek/view/screens/favorite_screen.dart';
 import 'package:foodtek/view/screens/product_details_screen.dart';
+//
+// class BurgerScreen extends StatefulWidget {
+//   @override
+//   _BurgerScreenState createState() => _BurgerScreenState();
+// }class _BurgerScreenState extends State<BurgerScreen> {
+//   List<Product> products = [];
+//
+//   @override
+//   void initState() {
+//     super.initState();
+//     loadMenu();
+//   }
+//
+//   Future<void> loadMenu() async {
+//     final String response = await rootBundle.loadString("assets/menub.json");
+//     final List<dynamic> data = jsonDecode(response);
+//     setState(() {
+//       products = data.map((json) => Product.fromJson(json)).toList();
+//     });
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Colors.white,
+//       body: Padding(
+//         padding: const EdgeInsets.all(8.0),
+//         child: products.isEmpty
+//             ? Center(child: CircularProgressIndicator())
+//             : GridView.builder(
+//
+//           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//             crossAxisCount: 2,
+//             mainAxisSpacing: 5,
+//             crossAxisSpacing: 5,
+//             childAspectRatio: 0.7,
+//           ),
+//           itemCount: products.length,
+//           itemBuilder: (context, index) {
+//             final item = products[index];
+//             return ProductCard(
+//               item: item,
+//
+//               onFavoriteToggle: () {
+//                 if (item.isFavorite) {
+//                   context.read<FavoriteProductsCubit>().removeFromFavorites(item);
+//                 } else {
+//                   context.read<FavoriteProductsCubit>().addToFavorites(item);
+//                 }
+//                 setState(() {
+//                   item.isFavorite = !item.isFavorite;
+//                 });
+//               },
+//               onOrderNow: () {
+//                 Navigator.push(
+//                   context,
+//                   MaterialPageRoute(
+//                     builder: (_) => ProductDetailsScreen(product: item),
+//                   ),
+//                 );
+//               },
+//             );
+//           },
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class BurgerScreen extends StatefulWidget {
   @override
   _BurgerScreenState createState() => _BurgerScreenState();
-}class _BurgerScreenState extends State<BurgerScreen> {
+}
+
+class _BurgerScreenState extends State<BurgerScreen> {
   List<Product> products = [];
 
   @override
@@ -123,14 +193,19 @@ class BurgerScreen extends StatefulWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: theme.colorScheme.background, // ✅ خلفية ديناميكية
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: products.isEmpty
-            ? Center(child: CircularProgressIndicator())
+            ? Center(
+          child: CircularProgressIndicator(
+            color: theme.primaryColor, // ✅ لون المؤشر من الثيم
+          ),
+        )
             : GridView.builder(
-
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 5,
@@ -142,7 +217,6 @@ class BurgerScreen extends StatefulWidget {
             final item = products[index];
             return ProductCard(
               item: item,
-
               onFavoriteToggle: () {
                 if (item.isFavorite) {
                   context.read<FavoriteProductsCubit>().removeFromFavorites(item);
