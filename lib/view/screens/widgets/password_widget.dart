@@ -108,21 +108,17 @@ class _PasswordWidgetState extends State<PasswordWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final fillColor = Theme.of(context).colorScheme.surface;
-    final textColor = isDark ? Colors.white : Colors.black;
-    final hintColor = isDark ? Colors.grey[500] : Colors.grey[600];
-    final labelColor = isDark ? Colors.grey[300] : Colors.grey[700];
+
 
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
       decoration: BoxDecoration(
-        color: fillColor, // Background color
+        color: Colors.white, // Background color
         borderRadius: BorderRadius.circular(12), // Rounded corners
         boxShadow: [
           BoxShadow(
-            color: isDark ? Colors.black54 : Colors.black12, // Shadow color
+            color:Colors.white, // Shadow color
             blurRadius: 4, // Soft shadow
             spreadRadius: 1, // Shadow spread
             offset: const Offset(0, 2), // Shadow position
@@ -134,7 +130,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
         obscureText: obscureText,
         keyboardType: TextInputType.visiblePassword,
         style: TextStyle(
-          color: textColor,
+          color: Colors.black,
           fontWeight: FontWeight.w500,
           fontSize: screenWidth * 0.03,
         ),
@@ -142,14 +138,14 @@ class _PasswordWidgetState extends State<PasswordWidget> {
           labelText: 'Password'.tr(),
           labelStyle: TextStyle(
             fontSize: screenWidth * 0.035,
-            color: labelColor,
+            color: Colors.black,
           ),
           hintText: "Enter your password".tr(),
           hintStyle: TextStyle(
             fontSize: screenWidth * 0.035,
-            color: hintColor,
+            color: Colors.black,
           ),
-          fillColor: fillColor,
+          fillColor: Colors.black,
           contentPadding: EdgeInsets.symmetric(
             vertical: screenWidth * 0.04,
             horizontal: screenWidth * 0.04,
@@ -161,14 +157,14 @@ class _PasswordWidgetState extends State<PasswordWidget> {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(
-              color: isDark ? Colors.grey[700]! : const Color(0xffEDF1F3),
+              color: Colors.black,
               width: 1,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(
-              color: isDark ? Colors.greenAccent : const Color(0xff25AE4B),
+              color: Colors.black,
               width: 2,
             ),
           ),
@@ -180,7 +176,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
             },
             icon: Icon(
               obscureText ? Icons.visibility_off : Icons.visibility,
-              color: isDark ? Colors.white : Colors.grey,
+              color:Colors.black
             ),
           ),
         ),

@@ -82,21 +82,17 @@ class EmailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final fillColor = Theme.of(context).colorScheme.surface;
-    final textColor = isDark ? Colors.white : Colors.black;
-    final hintColor = isDark ? Colors.grey[500] : Colors.grey[600];
-    final labelColor = isDark ? Colors.grey[300] : Colors.grey[700];
+
 
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
       decoration: BoxDecoration(
-        color: fillColor,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: isDark ? Colors.black54 : Colors.black12,
+            color: Colors.white,
             blurRadius: 4,
             spreadRadius: 1,
             offset: const Offset(0, 2),
@@ -107,7 +103,7 @@ class EmailWidget extends StatelessWidget {
         controller: emailEditingController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
-          color: textColor,
+          color: Colors.black,
           fontWeight: FontWeight.w500,
           fontSize: screenWidth * 0.04,
         ),
@@ -115,15 +111,15 @@ class EmailWidget extends StatelessWidget {
           labelText: 'Email'.tr(),
           labelStyle: TextStyle(
             fontSize: screenWidth * 0.035,
-            color: labelColor,
+            color:Colors.black,
           ),
           hintText: "Enter your email".tr(),
           hintStyle: TextStyle(
             fontSize: screenWidth * 0.035,
-            color: hintColor,
+            color:Colors.white,
           ),
           filled: true,
-          fillColor: fillColor,
+          fillColor: Colors.white,
           contentPadding: EdgeInsets.symmetric(
             vertical: screenWidth * 0.045,
             horizontal: screenWidth * 0.04,
@@ -135,14 +131,14 @@ class EmailWidget extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(
-              color: isDark ? Colors.grey[700]! : const Color(0xffEDF1F3),
+              color: Colors.black,
               width: 1,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(
-              color: isDark ? Colors.greenAccent : const Color(0xff25AE4B),
+              color: Colors.black,
               width: 2,
             ),
           ),

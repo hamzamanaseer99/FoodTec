@@ -212,6 +212,7 @@ class LocationScreen extends StatelessWidget {
                       await locationCubit.getCurrentLocation();
                       final currentState = locationCubit.state;
 
+
                       if (currentState is LocationLoaded) {
                         // طباعة الإحداثيات للتأكد
                         print('الإحداثيات المرسلة:');
@@ -221,7 +222,7 @@ class LocationScreen extends StatelessWidget {
                         // الانتقال للصفحة الرئيسية مع إرسال الإحداثيات
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => HomeScreen(
+                            builder: (context) => LoginScreen(
                             ),
                           ),
                         );
