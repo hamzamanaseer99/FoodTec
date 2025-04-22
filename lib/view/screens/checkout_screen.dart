@@ -351,8 +351,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           decoration: BoxDecoration(
                             color: isDarkMode ? Colors.grey[850] : Colors.white,
                             borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              bottomLeft: Radius.circular(10),
+                              topRight: Radius.circular(10),
+                              bottomRight: Radius.circular(10)
                             ),
                             border: Border.all(
                               color: isDarkMode ? Colors.white54 : Color(0xffD6D6D6),
@@ -379,7 +379,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 8), // مسافة بسيطة بين الحقل والزر
                       Expanded(
                         flex: 2,
                         child: SizedBox(
@@ -391,19 +390,20 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             style: TextButton.styleFrom(
                               backgroundColor: isDarkMode
                                   ? Colors.green.withOpacity(0.2)
-                                  : const Color(0xff4FAF5A).withOpacity(0.1),
+                                  : const Color(0xff25AE4B).withOpacity(0.1),
                               foregroundColor:
-                              isDarkMode ? Colors.greenAccent : const Color(0xff4FAF5A),
+                              isDarkMode ? Colors.greenAccent : const Color(0xff25AE4B),
                               padding: const EdgeInsets.symmetric(horizontal: 12),
                               shape: RoundedRectangleBorder(
 
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  bottomLeft: Radius.circular(10)
 
 
                                 ),
                                 side: BorderSide(
-                                  color: isDarkMode ? Colors.greenAccent : const Color(0xff4FAF5A),
+                                  color: isDarkMode ? Colors.greenAccent : const Color(0xff25AE4B),
                                   width: 1,
                                 ),
                               ),

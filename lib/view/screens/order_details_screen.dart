@@ -660,7 +660,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
             children: [
               Icon(Icons.location_on, color: Colors.green, size: 20),
               SizedBox(width: responsiveWidth(context, 12)),
-              Text('123 Al-Madina Street, Abdali, Amman, Jordan',
+              Text('123 Al-Madina Street, Abdali, Amman, Jordan'.tr(),
                   style: TextStyle(
                       fontSize: responsiveWidth(context, 12),
                       color: isDarkMode ? Colors.white : Color(0xff6C7278))),

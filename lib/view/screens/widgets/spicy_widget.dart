@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart'; // Uncomment if using screenutil
@@ -43,7 +44,7 @@ class SpicySlider extends StatelessWidget {
           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Mild",
+              "Mild".tr(),
               style: TextStyle(
                 color: const Color(0xff1CC019),
                 fontSize: responsiveWidth(context, 12),
@@ -52,7 +53,7 @@ class SpicySlider extends StatelessWidget {
             ),
             SizedBox(width: responsiveWidth(context, 120)),
             Text(
-              "Hot",
+              "Hot".tr(),
               style: TextStyle(
                 color: const Color(0xffEF2A39),
                 fontSize: responsiveWidth(context, 12),

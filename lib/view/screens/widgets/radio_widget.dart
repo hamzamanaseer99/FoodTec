@@ -18,12 +18,10 @@ class _RadioWidgetState extends State<RadioWidget> {
     {
       'value': 0,
       'image': 'assets/images/mastercard.png',
-      'label': 'Visa',
     },
     {
       'value': 1,
       'image': 'assets/images/visa.png',
-      'label': 'MasterCard',
     },
   ];
 
@@ -56,7 +54,6 @@ class _RadioWidgetState extends State<RadioWidget> {
                 _buildCardTypeOption(
                   value: cardType['value'],
                   image: cardType['image'],
-                  label: cardType['label'],
                 ),
             ],
           ),
@@ -100,7 +97,6 @@ class _RadioWidgetState extends State<RadioWidget> {
   Widget _buildCardTypeOption({
     required int value,
     required String image,
-    required String label,
   }) {
     return Column(
       children: [
@@ -120,13 +116,7 @@ class _RadioWidgetState extends State<RadioWidget> {
             ),
           ],
         ),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: responsiveWidth(context, 12),
-            color: Colors.grey[600],
-          ),
-        ),
+
       ],
     );
   }

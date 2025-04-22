@@ -94,6 +94,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/checkout_screen.dart';
 import 'package:foodtek/view/screens/payment_screen.dart';
 import 'package:geolocator/geolocator.dart';
@@ -112,7 +113,7 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
   LatLng? currentLocation;
   TextEditingController searchController = TextEditingController();
   Set<Marker> markers = {}; // لتخزين العلامات على الخريطة
-  String selectedAddressTitle = 'Loading...'; // متغير لتخزين العنوان المختار
+  String selectedAddressTitle = 'Loading...'.tr(); // متغير لتخزين العنوان المختار
 
   @override
   void initState() {
@@ -215,11 +216,12 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
   }
 
   @override
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Stack(
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
+    return Scaffold(
+      body: Stack(
         children: [
           // خريطة جوجل
           SizedBox(
@@ -227,7 +229,7 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
             width: MediaQuery.of(context).size.width,
             child: GoogleMap(
               initialCameraPosition: CameraPosition(
-                target: currentLocation ?? LatLng(31.963158, 35.930359), // الموقع أو عمان
+                target: currentLocation ?? LatLng(31.963158, 35.930359),
                 zoom: 14,
               ),
               onMapCreated: (controller) => mapController = controller,
@@ -238,75 +240,72 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
           ),
 
           // خانة البحث
-          Positioned(
-            top: 70, // تغيير الموضع ليكون أسفل قليلاً
-            left: 20,
-            right: 20,
-            child: TextField(
-              controller: searchController,
-              style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color),
-              decoration: InputDecoration(
-                hintText: "Find your location".tr(),
-                hintStyle: TextStyle(color: Theme.of(context).hintColor),
-                prefixIcon: Icon(
-                  Icons.search,
-                  color: Theme.of(context).iconTheme.color,
-                ),
-                filled: true,
-                fillColor: Theme.of(context).cardColor, // لون الخلفية حسب الثيم
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).dividerColor, // لون الإطار حسب الثيم
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).dividerColor,
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.primary,
-                    width: 2,
-                  ),
-                ),
-              ),
-              onSubmitted: (_) => _searchAddress(),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: responsiveWidth(context, 30),
+              vertical: responsiveHeight(context, 60),
             ),
-
+            child: Row(
+              children: [
+                BackButton(color: isDark ? Colors.black : Colors.black),
+                Expanded(
+                  child: Material(
+                    elevation: 4,
+                    borderRadius: BorderRadius.circular(40),
+                    child: TextField(
+                      controller: searchController,
+                      decoration: InputDecoration(
+                        hintText: "Find your location".tr(),
+                        prefixIcon: Icon(Icons.search, color: Color(0xff25AE4B)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(40),
+                          borderSide: BorderSide(
+                            color: isDark ? Colors.white54 : Color(0xffD6D6D6),
+                          ),
+                        ),
+                        filled: true,
+                        fillColor: isDark ? Colors.grey[900] : Colors.white,
+                        contentPadding: EdgeInsets.symmetric(vertical: 0),
+                      ),
+                      style: TextStyle(color: isDark ? Colors.white : Colors.black),
+                      onSubmitted: (_) => _searchAddress(),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
 
-          // عرض العنوان في Card
+          // عرض العنوان + زر التأكيد
           Positioned(
             bottom: 100,
             left: 20,
             right: 20,
             child: Column(
               children: [
-                // الجدول (Card) الذي يعرض العنوان المختار
+                // عنوان الموقع
                 Card(
                   elevation: 4,
                   margin: EdgeInsets.only(bottom: 16),
+                  color: isDark ? Colors.grey[850] : Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
                     padding: EdgeInsets.all(16),
                     child: Text(
-                      selectedAddressTitle, // عرض العنوان المختار هنا
+                      selectedAddressTitle,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
+                        color: isDark ? Colors.white : Colors.black,
                       ),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
 
-                // زر تأكيد الموقع مع تحسين التصميم
+                // زر تأكيد
                 ElevatedButton(
                   onPressed: currentLocation == null
                       ? null
@@ -321,11 +320,11 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 50), // عرض كامل وارتفاع 50
+                    minimumSize: Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    backgroundColor: Colors.green,
+                    backgroundColor: Color(0xff25AE4B),
                   ),
                   child: Text(
                     'Confirm Location'.tr(),

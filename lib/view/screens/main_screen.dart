@@ -213,7 +213,7 @@ class MainScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Current location",
+          "Current location".tr(),
           style: TextStyle(
             fontSize: 12,
             color: theme.textTheme.bodySmall!.color,
