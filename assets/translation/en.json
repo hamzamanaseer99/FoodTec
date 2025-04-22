@@ -79,7 +79,7 @@
   "product.veggie_burger": "Vegetarian patty with fresh veggies and sauce.",
   "product.veggie_burger_description": "Fresh veggie patty with lettuce and sauce.",
 
-
+  "Vegetarian patty with fresh veggies and sauce.": "Vegetarian patty with fresh veggies and sauce.",
   "product.name.classic_burger": "Classic Burger",
   "Cheese Burger": "Cheese Burger",
 
@@ -96,7 +96,7 @@
   "Grilled Chicken Sandwich": "Grilled Chicken Sandwich",
   "Tuna Sandwich": "Tuna Sandwich",
   "Club Sandwich": "Club Sandwich",
-  "Sandwich1": "Sandwich",
+  "Sandwich1": "Sandwich1",
 
   "Grilled chicken breast with lettuce, tomato, and mayo.": "Grilled chicken breast with lettuce, tomato, and mayo.",
   "Tuna mixed with mayo, celery, and a touch of lemon.": "Tuna mixed with mayo, celery, and a touch of lemon.",
@@ -135,8 +135,11 @@
   "Mild": "Mild",
   "Hot": "Hot",
   "Add To Cart": "Add To Cart",
-  "4.5 (89 reviews)": "4.5 (89 reviews)",
+  "4.5 (89 reviews).": "4.5 (89 reviews).",
   "Search menu, restaurant or etc": "Search menu, restaurant or etc",
+
+  "order_success_message": "We will send you an order details to your \n email after the successful payment",
+"received confirmation": "received confirmation",
 
   "currentLocation": "currentLocation",
   "Address:": "Address:",
@@ -151,7 +154,8 @@
   "Your Delivery Hero": "Your Delivery Hero",
   "123 Al-Madina Street, Abdali, Amman, Jordan": "123 Al-Madina Street, Abdali, Amman, Jordan",
   "Are you sure you received your order?": "Are you sure you received your order?",
-  "received_confirmation": "Yes, I received it!",  "On The Way": "On The Way",
+  "Yes, I received it!": "Yes, I received it!",
+  "On The Way": "On The Way",
   "your location": "your location",
   "My Account": "My Account",
   "Personal information": "Personal information",
@@ -165,7 +169,7 @@
   "Help Center": "Help Center",
   "logout": "logout",
   "Write your message": "Write your message",
-   "Your order is": "Your order is",
+
   "Order Details": "Order Details",
   "Order ID": "Order ID",
   "Order received": "Order received",
@@ -225,5 +229,11 @@
   "Your order has been placed! 😊 We're preparing it now. Track your order live!": "Your order has been placed! 😊 We're preparing it now. Track your order live!",
   "All": "All",
   "Unread": "Unread",
-  "Read": "Read"
+  "Read": "Read",
+  "Log Out": "Log Out",
+  "Dark Mode": "Dark Mode",
+  "theme": "theme",
+  "favorites": "favorites",
+  "No Favorite Products": "No Favorite Products"
+
 }

@@ -19,144 +19,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return
-        //   Scaffold (
-        //   backgroundColor: Colors.white,
-        //   body: SafeArea(
-        //     child: SingleChildScrollView(
-        //       child: Column(
-        //         crossAxisAlignment: CrossAxisAlignment.center,
-        //         children: [
-        //           Row(
-        //             children: [
-        //               BackButton(),
-        //               Text(
-        //                 'Profile'.tr(),
-        //                 style: TextStyle(
-        //                   fontSize: 20,
-        //                   fontWeight: FontWeight.w600,
-        //                 ),
-        //               ),
-        //             ],
-        //           ),
-        //           AvatarWidget(),
-        //           SizedBox(height: 24),
-        //
-        //           customContainer(
-        //             _buildSection(
-        //               title: 'My Account'.tr(),
-        //               children: [
-        //                 _buildListTile(
-        //                   'Personal information'.tr(),
-        //                   Icons.person,
-        //                   onTap: () => Navigator.push(
-        //                     context,
-        //                     MaterialPageRoute(
-        //                       builder: (context) => UpdateInformationScreen(),
-        //                     ),
-        //                   ),
-        //                 ),
-        //
-        //                 /// Language switch button
-        //                 Padding(
-        //                   padding: const EdgeInsets.symmetric(vertical: 12.0),
-        //                   child: Row(
-        //                     children: [
-        //                       Icon(Icons.language),
-        //                       const SizedBox(width: 10),
-        //                       Expanded(
-        //                         child: Text(
-        //                           'Language'.tr(),
-        //                           style: TextStyle(
-        //                             fontSize: 14,
-        //                             fontWeight: FontWeight.w500,
-        //                           ),
-        //                         ),
-        //                       ),
-        //                       TextButton(
-        //                         onPressed: () {
-        //                           Locale newLocale = context.locale.languageCode == 'en'
-        //                               ? const Locale('ar')
-        //                               : const Locale('en');
-        //                           context.setLocale(newLocale);
-        //                         },
-        //                         child: Text(
-        //                           context.locale.languageCode == 'en' ? 'العربية' : 'English',
-        //                           style: TextStyle(fontWeight: FontWeight.w600),
-        //                         ),
-        //                       )
-        //                     ],
-        //                   ),
-        //                 ),
-        //
-        //                 _buildListTile('Privacy Policy'.tr(), Icons.lock),
-        //                 _buildListTile('Setting'.tr(), Icons.settings),
-        //               ],
-        //             ),
-        //           ),
-        //
-        //           // Notifications Section
-        //           customContainer(
-        //             _buildSection(
-        //               title: 'Notifications'.tr(),
-        //               children: [
-        //                 _buildSwitchTile(
-        //                   'Push Notifications'.tr(),
-        //                   Icons.notifications,
-        //                   pushNotifications,
-        //                       (value) {
-        //                     setState(() {
-        //                       pushNotifications = value;
-        //                     });
-        //                   },
-        //                 ),
-        //                 _buildSwitchTile(
-        //                   'Promotional Notifications'.tr(),
-        //                   Icons.notifications,
-        //                   promotionalNotifications,
-        //                       (value) {
-        //                     setState(() {
-        //                       promotionalNotifications = value;
-        //                     });
-        //                   },
-        //                 ),
-        //               ],
-        //             ),
-        //
-        //           ),
-        //           customContainer(
-        //             _buildSection(
-        //               title: 'المظهر',
-        //               children: [
-        //                 SwitchListTile(
-        //                   title: Text('الوضع الليلي'),
-        //                   value: Theme.of(context).brightness == Brightness.dark,
-        //                   onChanged: (bool value) {
-        //                     context.read<ThemeCubit>().toggleTheme(value);
-        //                   },
-        //                 ),
-        //               ],
-        //             ),
-        //           ),
-        //
-        //           // More Section
-        //           customContainer(
-        //             _buildSection(
-        //               title: 'More'.tr(),
-        //               children: [
-        //                 _buildListTile('Help Center'.tr(), Icons.help),
-        //                 _buildListTile(
-        //                   'Log Out'.tr(),
-        //                   Icons.logout,
-        //                   textColor: Colors.red,
-        //                 ),
-        //               ],
-        //             ),
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //   ),
-        // );
+
         Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -261,10 +124,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               customContainer(
                 context,
                 _buildSection(
-                  title: 'المظهر',
+                  title: 'theme'.tr(),
                   children: [
                     SwitchListTile(
-                      title: Text('Dark Mode',
+                      title: Text('Dark Mode'.tr(),
                           style: Theme.of(context).textTheme.bodyMedium),
                       value: Theme.of(context).brightness == Brightness.dark,
                       onChanged: (bool value) {

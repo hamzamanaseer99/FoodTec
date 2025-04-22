@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/live_track_screen.dart';
@@ -27,7 +28,7 @@ class SuccessOrder extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Checkout',
+                'Checkout'.tr(),
                 style: TextStyle(
                   fontSize: responsiveWidth(context, 20),
                   fontWeight: FontWeight.w600,
@@ -43,7 +44,7 @@ class SuccessOrder extends StatelessWidget {
                     ),
                     SizedBox(height: responsiveHeight(context, 24)),
                     Text(
-                      'Your Order Done Successfully',
+                      'Your Order Done Successfully'.tr(),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: responsiveWidth(context, 24),
@@ -56,7 +57,7 @@ class SuccessOrder extends StatelessWidget {
                         horizontal: responsiveWidth(context, 10),
                       ),
                       child: Text(
-                        'You will get your order within 12min. Thanks for using our services.',
+                        'You will get your order within 12min. Thanks for using our services.'.tr(),
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: responsiveWidth(context, 18),
@@ -82,7 +83,7 @@ class SuccessOrder extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'Track Your Order',
+                          'Track Your Order'.tr(),
                           style: TextStyle(
                             fontSize: responsiveWidth(context, 18),
                             fontWeight: FontWeight.w600,

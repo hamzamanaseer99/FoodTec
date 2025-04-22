@@ -1552,7 +1552,7 @@ Widget _buildLocationTitle(context) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text("Current location", style: TextStyle(fontSize: 12,color: Theme.of(context).textTheme.bodyLarge?.color,)),
+      Text("Current location".tr(), style: TextStyle(fontSize: 12,color: Theme.of(context).textTheme.bodyLarge?.color,)),
       SizedBox(height: 4),
       Text("Jl. Soekarno Hatta 15A...", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
     ],
