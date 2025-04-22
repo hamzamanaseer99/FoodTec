@@ -29,14 +29,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               Row(
                 children: [
-                  BackButton(color: Theme.of(context).iconTheme.color),
-                  Text(
-                    'Profile'.tr(),
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge
-                        ?.copyWith(fontSize: 20),
-                  ),
+                 // BackButton(color: Theme.of(context).iconTheme.color),
+
+                  // Text(
+                  //   'Profile'.tr(),
+                  //   style: Theme.of(context)
+                  //       .textTheme
+                  //       .titleLarge
+                  //       ?.copyWith(fontSize: 20),
+                  // ),
                 ],
               ),
               AvatarWidget(),

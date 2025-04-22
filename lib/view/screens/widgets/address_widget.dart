@@ -73,6 +73,7 @@ import 'package:flutter/material.dart';
 //     );
 //   }
 // }
+
 class AddressWidget extends StatefulWidget {
   AddressWidget({
     super.key,
@@ -96,15 +97,18 @@ class _AddressWidgetState extends State<AddressWidget> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Container(
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surface, // ✅ خلفية ديناميكية
+        decoration:
+        BoxDecoration(
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: theme.shadowColor.withOpacity(0.1), // ✅ ظل ناعم من الثيم
-              blurRadius: 2,
-              spreadRadius: 0,
-              offset: Offset(0, 1),
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.black26
+                  : Colors.grey.withOpacity(0.2),
+              blurRadius: 6,
+              spreadRadius: 1,
+              offset: Offset(0, 2),
             ),
           ],
         ),
@@ -118,35 +122,35 @@ class _AddressWidgetState extends State<AddressWidget> {
           decoration: InputDecoration(
             labelText: 'Address',
             labelStyle: TextStyle(
-              fontSize: screenWidth * 0.025,
-              color: theme.textTheme.bodyMedium?.color, // ✅ لون الليبل
+              fontSize: screenWidth * 0.035,
+              color: Theme.of(context).textTheme.bodyMedium?.color,
             ),
             hintText: "123 Al-Madina Street, Abdali,...",
             hintStyle: TextStyle(
-              fontSize: screenWidth * 0.025,
-              color: theme.hintColor, // ✅ لون التلميح ديناميكي
+              fontSize: screenWidth * 0.035,
+              color: Theme.of(context).hintColor,
             ),
-            fillColor: theme.colorScheme.surface,
             filled: true,
+            fillColor: Theme.of(context).colorScheme.surface,
             contentPadding: EdgeInsets.symmetric(
-              vertical: screenWidth * 0.04,
+              vertical: screenWidth * 0.045,
               horizontal: screenWidth * 0.04,
             ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide.none,
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: theme.dividerColor, // ✅ لون الحدود من الثيم
+                color: Theme.of(context).dividerColor,
                 width: 1,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: theme.primaryColor, // ✅ عند التركيز يكون بلون رئيسي
+                color: Theme.of(context).primaryColor,
                 width: 2,
               ),
             ),

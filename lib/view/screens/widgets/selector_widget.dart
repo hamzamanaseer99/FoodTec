@@ -37,7 +37,7 @@ class QuantitySelector extends StatelessWidget {
               color: const Color(0xff009944),
               size: responsiveWidth(context, 22),
             ),
-            onPressed: quantity > 0
+            onPressed: quantity > 1
                 ? () => onDecrease(quantity - 1)
                 : null, // تعطيل الزر لو العدد صفر
           ),

@@ -34,7 +34,7 @@ class TopRatedCubit extends Cubit<TopRatedState> {
       "name": "Sandwich1".tr(),
       "rating": 3.2,
       "price": 12.0,
-      "description": "Grilled chicken breast with lettuce, tomato, and mayo".tr(),
+      "description": "Grilled chicken breast with lettuce, tomato, and mayo.".tr(),
       "image": "assets/images/img_1.png"
     },
   ];

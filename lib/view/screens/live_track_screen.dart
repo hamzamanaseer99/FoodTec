@@ -101,7 +101,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
                 children: [
                   Row(
                     children: [
-                      BackButton(color: isDarkMode ? Colors.black : Colors.black),
+                      //BackButton(color: isDarkMode ? Colors.black : Colors.black),
                       Expanded(
                         child: Material(
                           elevation: 4,
@@ -408,7 +408,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
           ),
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text("Cancel".tr(), style: const TextStyle(color: Colors.black)),
+            child: Text("Cancel".tr(), style: const TextStyle(color: Colors.red)),
           ),
         ],
       ),

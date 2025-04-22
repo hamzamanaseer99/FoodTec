@@ -230,6 +230,94 @@
 //     );
 //   }
 // }
+// import 'package:easy_localization/easy_localization.dart';
+// import 'package:flutter/material.dart';
+// import 'package:intl_phone_field/intl_phone_field.dart';
+//
+// class PhoneWidget extends StatelessWidget {
+//   final TextEditingController phoneEditingController;
+//   final String? Function(String?)? validator;
+//
+//   const PhoneWidget({
+//     Key? key,
+//     required this.phoneEditingController,
+//     this.validator,
+//   }) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     double screenWidth = MediaQuery.of(context).size.width;
+//
+//     return Padding(
+//       padding: const EdgeInsets.symmetric(horizontal: 0),
+//       child: Container(
+//         decoration: BoxDecoration(
+//           color: Color(0xFFF5F5F5), // خلفية ناعمة
+//           borderRadius: BorderRadius.circular(12),
+//           boxShadow: [
+//             BoxShadow(
+//               color: Colors.grey.withOpacity(0.2),
+//               blurRadius: 6,
+//               spreadRadius: 1,
+//               offset: Offset(0, 2),
+//             ),
+//           ],
+//         ),
+//         child: IntlPhoneField(
+//           controller: phoneEditingController,
+//           style: TextStyle(
+//             color: Colors.black87,
+//             fontWeight: FontWeight.w600,
+//             fontSize: screenWidth * 0.04,
+//           ),
+//           decoration: InputDecoration(
+//             labelText: 'Phone Number'.tr(),
+//             labelStyle: TextStyle(
+//               fontSize: screenWidth * 0.035,
+//               color: Colors.grey[800],
+//             ),
+//             hintText: "79/77/78",
+//             hintStyle: TextStyle(
+//               fontSize: screenWidth * 0.035,
+//               color: Colors.grey[500],
+//             ),
+//             filled: true,
+//             fillColor: Colors.white, // خلفية الحقل
+//             contentPadding: EdgeInsets.symmetric(
+//               vertical: screenWidth * 0.045,
+//               horizontal: screenWidth * 0.04,
+//             ),
+//             border: OutlineInputBorder(
+//               borderRadius: BorderRadius.circular(12),
+//               borderSide: BorderSide.none,
+//             ),
+//             enabledBorder: OutlineInputBorder(
+//               borderRadius: BorderRadius.circular(12),
+//               borderSide: BorderSide(
+//                 color: Colors.grey.shade400,
+//                 width: 1,
+//               ),
+//             ),
+//             focusedBorder: OutlineInputBorder(
+//               borderRadius: BorderRadius.circular(12),
+//               borderSide: BorderSide(
+//                 color: Colors.blueAccent,
+//                 width: 2,
+//               ),
+//             ),
+//           ),
+//           initialCountryCode: 'JO',
+//           onChanged: (phone) {
+//             print(phone.completeNumber);
+//           },
+//           disableLengthCheck: true,
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -246,43 +334,49 @@ class PhoneWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final textColor = isDark ? Colors.white : Colors.black;
+    final labelColor = isDark ? Colors.grey[300] : Colors.grey[700];
+    final fillColor = Theme.of(context).colorScheme.surface;
+    final hintColor = isDark ? Colors.grey[500] : Colors.grey[600];
+
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Container(
         decoration: BoxDecoration(
-          color: Color(0xFFF5F5F5), // خلفية ناعمة
+          color: fillColor,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              blurRadius: 6,
+              color: isDark ? Colors.black54 : Colors.black12,
+              blurRadius: 4,
               spreadRadius: 1,
-              offset: Offset(0, 2),
+              offset: const Offset(0, 2),
             ),
           ],
         ),
         child: IntlPhoneField(
           controller: phoneEditingController,
           style: TextStyle(
-            color: Colors.black87,
-            fontWeight: FontWeight.w600,
-            fontSize: screenWidth * 0.04,
+            color: textColor,
+            fontWeight: FontWeight.bold,
+            fontSize: screenWidth * 0.045,
           ),
           decoration: InputDecoration(
             labelText: 'Phone Number'.tr(),
             labelStyle: TextStyle(
-              fontSize: screenWidth * 0.035,
-              color: Colors.grey[800],
+              fontSize: screenWidth * 0.04,
+              color: labelColor,
             ),
             hintText: "79/77/78",
             hintStyle: TextStyle(
               fontSize: screenWidth * 0.035,
-              color: Colors.grey[500],
+              color: hintColor,
             ),
             filled: true,
-            fillColor: Colors.white, // خلفية الحقل
+            fillColor: fillColor,
             contentPadding: EdgeInsets.symmetric(
               vertical: screenWidth * 0.045,
               horizontal: screenWidth * 0.04,
@@ -294,14 +388,14 @@ class PhoneWidget extends StatelessWidget {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: Colors.grey.shade400,
+                color: isDark ? Colors.grey[700]! : const Color(0xffEDF1F3),
                 width: 1,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: Colors.blueAccent,
+                color: isDark ? Colors.grey[500]! : const Color(0xffCED3DC),
                 width: 2,
               ),
             ),

@@ -71,8 +71,10 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
-class FullNameWidget extends StatelessWidget {
+class FullNameWidget extends StatefulWidget {
   final TextEditingController nameEditingController;
 
   const FullNameWidget({
@@ -81,28 +83,38 @@ class FullNameWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<FullNameWidget> createState() => _FullNameWidgetState();
+}
+
+class _FullNameWidgetState extends State<FullNameWidget> {
+  @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final textColor = isDark ? Colors.white : Colors.black;
+    final labelColor = isDark ? Colors.grey[300] : Colors.grey[700];
+    final fillColor = Theme.of(context).colorScheme.surface;
+
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Container(
         decoration: BoxDecoration(
-          color: Color(0xFFF5F5F5), // لون خلفية خفيف
+          color: fillColor,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.15),
-              blurRadius: 5,
+              color: isDark ? Colors.black54 : Colors.black12,
+              blurRadius: 4,
               spreadRadius: 1,
-              offset: Offset(0, 2),
+              offset: const Offset(0, 2),
             ),
           ],
         ),
         child: TextField(
-          controller: nameEditingController,
+          controller: widget.nameEditingController,
           style: TextStyle(
-            color: Colors.black87,
+            color: textColor,
             fontWeight: FontWeight.w500,
             fontSize: screenWidth * 0.04,
           ),
@@ -110,15 +122,15 @@ class FullNameWidget extends StatelessWidget {
             labelText: 'Full Name'.tr(),
             labelStyle: TextStyle(
               fontSize: screenWidth * 0.035,
-              color: Colors.grey[800],
+              color: labelColor,
             ),
             hintText: "Enter your Name".tr(),
             hintStyle: TextStyle(
               fontSize: screenWidth * 0.035,
-              color: Colors.grey[500],
+              color: isDark ? Colors.grey[500] : Colors.grey[600],
             ),
-            fillColor: Colors.white,
             filled: true,
+            fillColor: fillColor,
             contentPadding: EdgeInsets.symmetric(
               vertical: screenWidth * 0.045,
               horizontal: screenWidth * 0.04,
@@ -130,14 +142,14 @@ class FullNameWidget extends StatelessWidget {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: Colors.grey.shade300,
+                color: isDark ? Colors.grey[700]! : const Color(0xffEDF1F3),
                 width: 1,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: Colors.blueAccent,
+                color: isDark ? Colors.grey[500]! : const Color(0xffCED3DC),
                 width: 2,
               ),
             ),

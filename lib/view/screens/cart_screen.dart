@@ -1309,6 +1309,10 @@ import 'package:foodtek/view/screens/widgets/notification_icon.dart';
 import 'package:foodtek/view/screens/widgets/section_price_widget.dart';
 import 'package:foodtek/view/screens/widgets/selector_widget.dart';
 
+import '../../cubit/history_cubit.dart';
+import '../../model/orderhistory.dart';
+import 'history_screen.dart';
+
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
@@ -1353,8 +1357,10 @@ class _CartScreenState extends State<CartScreen> {
             ],
           ),
         ),
-        body: TabBarView(
+        body:
+        TabBarView(
           children: [
+            // تبويب السلة (Cart)
             cartItems.isEmpty
                 ? Center(
               child: Column(
@@ -1362,7 +1368,6 @@ class _CartScreenState extends State<CartScreen> {
                 children: [
                   Image.asset('assets/images/cart empty.jpg'),
                   SizedBox(height: responsiveHeight(context, 51)),
-
                   Text(
                     'Cart Empty'.tr(),
                     style: TextStyle(
@@ -1371,12 +1376,12 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ),
                   SizedBox(height: responsiveHeight(context, 16)),
-
                   Text(
                     'You don’t have add any foods in cart at this time'.tr(),
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 16),
-                      color: Theme.of(context).textTheme.bodyLarge?.color,                    ),
+                      color: Theme.of(context).textTheme.bodyLarge?.color,
+                    ),
                   ),
                 ],
               ),
@@ -1408,8 +1413,7 @@ class _CartScreenState extends State<CartScreen> {
                                   },
                                   backgroundColor: Color(0xffFDAC1D),
                                   foregroundColor: Colors.white,
-                                  icon: Icons.delete ,
-
+                                  icon: Icons.delete,
                                 ),
                               ],
                             ),
@@ -1420,13 +1424,12 @@ class _CartScreenState extends State<CartScreen> {
                               width: responsiveWidth(context, 378),
                               height: responsiveHeight(context, 120),
                               decoration: BoxDecoration(
-                                  color: Theme.of(context).cardColor,
-                                  borderRadius: BorderRadius.circular(7),
-
-                                  border: Border.all(
-                                      width: 1,
-                                    color: Theme.of(context).dividerColor,
-                                  )
+                                color: Theme.of(context).cardColor,
+                                borderRadius: BorderRadius.circular(7),
+                                border: Border.all(
+                                  width: 1,
+                                  color: Theme.of(context).dividerColor,
+                                ),
                               ),
                               child: Row(
                                 children: [
@@ -1467,8 +1470,7 @@ class _CartScreenState extends State<CartScreen> {
                                                 onDecrease: (newQuantity) {
                                                   context.read<CartCubit>().updateQuantity(item, newQuantity);
                                                 },
-                                                 )
-
+                                              ),
                                             ],
                                           ),
                                           SizedBox(height: responsiveHeight(context, 1)),
@@ -1480,15 +1482,12 @@ class _CartScreenState extends State<CartScreen> {
                                             ),
                                           ),
                                           SizedBox(height: responsiveHeight(context, 8)),
-
-
                                         ],
                                       ),
                                     ),
                                   ),
                                 ],
                               ),
-
                             ),
                           ),
                         );
@@ -1496,43 +1495,45 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 25),                    child: buildCheckoutSection(context, subTotal
-                        , deliveryCharge,
-                        discount,
-                        onPlaceOrderTap: () {
-                          Navigator.pushNamed(context, '/SetLocationScreen');
-                        }),
+                    padding: const EdgeInsets.only(bottom: 25),
+                    child: buildCheckoutSection(
+                      context,
+                      subTotal,
+                      deliveryCharge,
+                      discount,
+                      onPlaceOrderTap: () {
+                        final cartCubit = context.read<CartCubit>();
+                        final historyCubit = context.read<HistoryCubit>();
+
+                        if (cartCubit.state.isNotEmpty) {
+                          // إنشاء طلب جديد
+                          final order = OrderHistory(
+                            date: DateTime.now(),
+                            items: List.from(cartCubit.state), // نسخ العناصر من السلة
+                            total: cartCubit.totalWithCharges(),
+                            id: '', // يمكن إضافة ID إذا كان لديك آلية لإنشائه
+                            status: '', // يمكنك تحديد حالة الطلب
+                          );
+
+                          // إضافة الطلب إلى سجل الطلبات
+                          historyCubit.addOrder(order);
+
+                          // تفريغ السلة بعد إضافة الطلب
+                          cartCubit.clearCart();
+                        }
+
+                        // الانتقال إلى شاشة تحديد الموقع
+                        Navigator.pushNamed(context, '/SetLocationScreen');
+                      },
+                    ),
                   ),
                 ],
               ),
             ),
-
-            Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Image.asset('assets/images/cart empty.jpg'),
-                  SizedBox(height: responsiveHeight(context, 51)),
-                  Text(
-                    'History Empty'.tr(),
-                    style: TextStyle(
-                      fontSize: responsiveWidth(context, 32),
-                      color: const Color(0xff111827),
-                    ),
-                  ),
-                  SizedBox(height: responsiveHeight(context, 16)),
-                  Text(
-                    'You don’t have order any foods before'.tr(),
-                    style: TextStyle(
-                      fontSize: responsiveWidth(context, 16),
-                      color: const Color(0xff111827),
-                    ),
-                  ),
-                ],
-              ),
-            )
+            // تبويب الهيستوري (History)
+            HistoryTab(), // استدعاء الـ HistoryTab هنا
           ],
-        ),
+        )
       ),
     );
   }

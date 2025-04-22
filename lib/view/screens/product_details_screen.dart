@@ -33,34 +33,46 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
     return Scaffold(
       backgroundColor: isDark ? const Color(0xff1B1B1B) : Colors.white,
+
       appBar: AppBar(
+        automaticallyImplyLeading: true,
+
         backgroundColor: isDark ? const Color(0xff1B1B1B) : Colors.white,
         elevation: 0,
         leading: _buildLocationIcon(isDark),
         title: _buildLocationTitle(isDark),
         actions: [NotificationIcon()],
+
       ),
-      body: Column(
+      body:
+      Column(
         children: [
           Expanded(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.only(left: 30, right: 30, top: 22),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SearchWidget(),
-                  SizedBox(height: responsiveHeight(context, 30)),
+                  children: [
+              Row(
+              children: [
+              BackButton(color: isDark ? Colors.white : Colors.black),
+              SizedBox(width: 8),
+              Expanded(child: SearchWidget()),
+              ],
+            ),
+            SizedBox(height: responsiveHeight(context, 30)),
 
-                  Container(
-                    height: 203,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                        image: AssetImage(product.image),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    clipBehavior: Clip.antiAlias,
+            Container(
+              height: 203,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(
+                  image: AssetImage(product.image),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              clipBehavior: Clip.antiAlias,
+
                   ),
 
                   SizedBox(height: responsiveHeight(context, 24)),
