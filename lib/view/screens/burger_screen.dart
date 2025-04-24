@@ -208,9 +208,9 @@ class _BurgerScreenState extends State<BurgerScreen> {
             : GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisSpacing: 5,
+            mainAxisSpacing: 35,
             crossAxisSpacing: 5,
-            childAspectRatio: 0.7,
+            childAspectRatio: 177/200,
           ),
           itemCount: products.length,
           itemBuilder: (context, index) {
