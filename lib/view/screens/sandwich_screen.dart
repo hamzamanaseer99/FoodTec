@@ -80,9 +80,9 @@ class SandwichScreen extends StatefulWidget {
             : GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisSpacing: 5,
+            mainAxisSpacing: 35,
             crossAxisSpacing: 5,
-            childAspectRatio: 0.7,
+            childAspectRatio: 177/190,
           ),
           itemCount: products.length,
           itemBuilder: (context, index) {
