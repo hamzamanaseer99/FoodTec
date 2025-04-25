@@ -210,7 +210,7 @@ class _BurgerScreenState extends State<BurgerScreen> {
             crossAxisCount: 2,
             mainAxisSpacing: 35,
             crossAxisSpacing: 5,
-            childAspectRatio: 177/200,
+            childAspectRatio: 177/190,
           ),
           itemCount: products.length,
           itemBuilder: (context, index) {
