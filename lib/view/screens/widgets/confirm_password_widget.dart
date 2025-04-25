@@ -19,18 +19,32 @@ class _PasswordWidgetState extends State<ConfirmPasswordWidget> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
+    final Color backgroundColor = isDarkMode
+        ? Theme.of(context).colorScheme.surface
+        : Colors.white;
+    final Color textColor = isDarkMode
+        ? Theme.of(context).colorScheme.onSurface
+        : Colors.black;
+    final Color iconColor = isDarkMode ? Colors.grey[400]! : Colors.grey;
+    final Color enabledBorderColor =
+    isDarkMode ? Colors.grey[700]! : const Color(0xffEDF1F3);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white, // Background color
-          borderRadius: BorderRadius.circular(12), // Rounded corners
-          boxShadow: [
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: isDarkMode
+              ? []
+              : [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2), // Soft shadow color
-              blurRadius: 2, // How soft the shadow is
-              spreadRadius: 0, // How much the shadow spreads
-              offset: Offset(0, 1), // Moves shadow down (x: 0, y: 4)
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 2,
+              spreadRadius: 0,
+              offset: const Offset(0, 1),
             ),
           ],
         ),
@@ -38,22 +52,25 @@ class _PasswordWidgetState extends State<ConfirmPasswordWidget> {
           controller: widget.confirmPasswordEditingController,
           obscureText: obscureText,
           style: TextStyle(
-            color: Colors.black,
+            color: textColor,
             fontWeight: FontWeight.bold,
-            fontSize: screenWidth * 0.03, // ✅ جعل الخط متجاوبًا
+            fontSize: screenWidth * 0.03,
           ),
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
-              vertical: screenWidth * 0.04, // ✅ نفس التناسب مع الشاشة
+              vertical: screenWidth * 0.04,
               horizontal: screenWidth * 0.04,
             ),
             labelText: 'Confirm Password'.tr(),
             labelStyle: TextStyle(
-            fontSize: screenWidth * 0.025,
-          ),
-            hintText: "Enter your Password".tr(),hintStyle: TextStyle(
-            fontSize: screenWidth * 0.025,
-          ),
+              fontSize: screenWidth * 0.025,
+              color: textColor.withOpacity(0.7),
+            ),
+            hintText: "Enter your Password".tr(),
+            hintStyle: TextStyle(
+              fontSize: screenWidth * 0.025,
+              color: textColor.withOpacity(0.5),
+            ),
             suffixIcon: IconButton(
               onPressed: () {
                 setState(() {
@@ -62,21 +79,21 @@ class _PasswordWidgetState extends State<ConfirmPasswordWidget> {
               },
               icon: Icon(
                 obscureText ? Icons.visibility_off : Icons.visibility,
-                  color: Colors.grey
+                color: iconColor,
               ),
             ),
-            fillColor: Colors.white, // ✅ Matches container color
+            fillColor: backgroundColor,
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide.none, // ✅ No border (shadow does the job)
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide.none,
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Color(0xffEDF1F3), width: 1),
+              borderSide: BorderSide(color: enabledBorderColor, width: 1),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Color(0xffEDF1F3), width: 2),
+              borderSide: const BorderSide(color: Color(0xff25AE4B), width: 2),
             ),
           ),
         ),

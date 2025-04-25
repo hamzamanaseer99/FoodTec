@@ -214,64 +214,48 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
   }
 
   Widget _buildStepsIndicator(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _buildStatusStep(context, label: 'Order Placed'.tr(), isActive: _currentStep >= 0, isCompleted: true),
-            _buildStatusStep(context, label: 'On The Way'.tr(), isActive: _currentStep >= 1, isCompleted: false),
-            _buildStatusStep(context, label: 'Delivered'.tr(), isActive: _currentStep >= 2, isCompleted: false),
-          ],
-        ),
-        SizedBox(height: responsiveHeight(context, 8)),
-        Stack(
-          children: [
-            Container(height: 2, color: Colors.grey[300]),
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              height: 2,
-              width: MediaQuery.of(context).size.width * (_currentStep + 1) / 3,
-              color: const Color(0xff25AE4B),
-            ),
-          ],
-        ),
-      ],
+    List<String> steps = ['Order Placed'.tr(), 'On The Way'.tr(), 'Delivered'.tr()];
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: List.generate(steps.length, (index) {
+        final bool isCompleted = _currentStep > index;
+        final bool isActive = _currentStep == index;
+
+        Color textColor = isCompleted || isActive ? const Color(0xff25AE4B) : Colors.grey;
+        Gradient? barGradient = isCompleted
+            ? const LinearGradient(colors: [Color(0xff25AE4B), Color(0xff25AE4B)])
+            : isActive
+            ? const LinearGradient(colors: [Color(0xff25AE4B), Colors.grey])
+            : const LinearGradient(colors: [Colors.grey, Colors.grey]);
+
+        return Expanded(
+          child: Column(
+            children: [
+              Text(
+                steps[index],
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: responsiveWidth(context, 12),
+                  fontWeight: FontWeight.w600,
+                  color: textColor,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Container(
+                height: 6,
+                margin: const EdgeInsets.symmetric(horizontal: 8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4),
+                  gradient: barGradient,
+                ),
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 
-  Widget _buildStatusStep(BuildContext context, {required String label, required bool isActive, required bool isCompleted}) {
-    return Column(
-      children: [
-        Container(
-          width: responsiveWidth(context, 24),
-          height: responsiveWidth(context, 24),
-          decoration: BoxDecoration(
-            color: isCompleted ? const Color(0xff25AE4B) : isActive ? Colors.white : Colors.grey[300],
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: isActive ? const Color(0xff25AE4B) : Colors.transparent,
-              width: 2,
-            ),
-          ),
-          child: isCompleted
-              ? const Icon(Icons.check, size: 16, color: Colors.white)
-              : null,
-        ),
-        SizedBox(height: responsiveHeight(context, 4)),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: responsiveWidth(context, 12),
-            fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
-            color: isActive
-                ? Theme.of(context).colorScheme.onBackground
-                : Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
-          ),
-        ),
-      ],
-    );
-  }
 
   Widget _buildDeliveryPersonInfo(bool isDarkMode) {
     return Row(
@@ -301,15 +285,25 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
               const SizedBox(height: 4),
               Row(
                 children: [
-                  const Text('Aleksandr V.',
-                      style: TextStyle(fontSize: 14, color: Color(0xff2F2E36))),
+                  Text(
+                    'Aleksandr V.',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white70
+                          : Color(0xff878787),
+                    ),
+                  ),
                   SizedBox(width: responsiveWidth(context, 8)),
                   const Icon(Icons.star, color: Colors.amber, size: 16),
                   SizedBox(width: responsiveWidth(context, 4)),
                   Text('4.9',
                       style: TextStyle(
                           fontSize: responsiveWidth(context, 12),
-                          color: const Color(0xffB8B8B8))),
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white70
+                            : Color(0xff878787),
+                      )),
                 ],
               ),
             ],
@@ -351,7 +345,9 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
               '123 Al-Madina Street, Abdali, Amman, Jordan'.tr(),
               style: TextStyle(
                 fontSize: responsiveWidth(context, 12),
-                color: const Color(0xff6C7278),
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.white70
+                    : Color(0xff878787),
               ),
             ),
           ),

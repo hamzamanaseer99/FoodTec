@@ -1,89 +1,14 @@
-// import 'package:flutter/cupertino.dart';
-// import 'package:flutter/material.dart';
-//
-// class UsernameWidget extends StatefulWidget {
-//   UsernameWidget({
-//     super.key,
-//     required this.nameEditingController,
-//   });
-//   final TextEditingController nameEditingController;
-//
-//   @override
-//   State<UsernameWidget> createState() => _UsernameWidgetState();
-// }
-//
-// class _UsernameWidgetState extends State<UsernameWidget> {
-//   bool showErrorName = false;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     double screenWidth = MediaQuery.of(context).size.width;
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 0),
-//       child: Container(
-//         decoration: BoxDecoration(
-//           color: Theme.of(context).colorScheme.onPrimary,
-//           borderRadius: BorderRadius.circular(12), // Rounded corners
-//           boxShadow: [
-//             BoxShadow(
-//               color: Colors.black.withOpacity(0.2), // Soft shadow color
-//               blurRadius: 2, // How soft the shadow is
-//               spreadRadius: 0, // How much the shadow spreads
-//               offset: Offset(0, 1), // Moves shadow down (x: 0, y: 4)
-//             ),
-//           ],
-//         ),
-//         child: TextField(
-//           controller: widget.nameEditingController,
-//           style: TextStyle(
-//             color: Colors.black,
-//             fontWeight: FontWeight.bold,
-//             fontSize: screenWidth * 0.03,
-//           ),
-//           decoration: InputDecoration(
-//             labelText: 'Username',labelStyle: TextStyle(
-//             fontSize: screenWidth * 0.025,
-//
-//           ),
-//             hintText: "Enter your Name",
-//             hintStyle:TextStyle(
-//               fontSize: screenWidth * 0.025,
-//
-//             ),
-//             fillColor: Colors.white, // ✅ Matches container color
-//             contentPadding: EdgeInsets.symmetric(
-//               vertical: screenWidth * 0.04, // ✅ نفس التناسب مع الشاشة
-//               horizontal: screenWidth * 0.04,
-//             ),
-//             border: OutlineInputBorder(
-//               borderRadius: BorderRadius.circular(10),
-//               borderSide: BorderSide.none, // ✅ No border (shadow does the job)
-//             ),
-//             enabledBorder: OutlineInputBorder(
-//               borderRadius: BorderRadius.circular(12),
-//               borderSide: BorderSide(color: Color(0xffEDF1F3), width: 1),
-//             ),
-//             focusedBorder: OutlineInputBorder(
-//               borderRadius: BorderRadius.circular(12),
-//               borderSide: BorderSide(color: Color(0xffEDF1F3), width: 2),
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:foodtek/responsive.dart';
 
 class UsernameWidget extends StatefulWidget {
   const UsernameWidget({
     super.key,
-    required this.nameEditingController,
+    required this.usernameEditingController,
   });
 
-  final TextEditingController nameEditingController;
+  final TextEditingController usernameEditingController;
 
   @override
   State<UsernameWidget> createState() => _UsernameWidgetState();
@@ -95,9 +20,9 @@ class _UsernameWidgetState extends State<UsernameWidget> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final textColor = isDark ? Colors.white : Colors.black;
     final labelColor = isDark ? Colors.grey[300] : Colors.grey[700];
-    final fillColor = Theme.of(context).colorScheme.surface;
+    final hintColor = isDark ? Colors.grey[500] : Colors.grey[600];
+    final fillColor = isDark ? const Color(0xFF1E1E1E) : Colors.white;
 
-    double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Container(
@@ -114,28 +39,28 @@ class _UsernameWidgetState extends State<UsernameWidget> {
           ],
         ),
         child: TextField(
-          controller: widget.nameEditingController,
+          controller: widget.usernameEditingController,
           style: TextStyle(
             color: textColor,
-            fontWeight: FontWeight.bold,
-            fontSize: screenWidth * 0.045,
+            fontWeight: FontWeight.w500,
+            fontSize: responsiveWidth(context, 14),
           ),
           decoration: InputDecoration(
-            labelText: 'Username',
+            labelText: 'Username'.tr(),
             labelStyle: TextStyle(
-              fontSize: screenWidth * 0.04,
+              fontSize: responsiveWidth(context, 14),
               color: labelColor,
             ),
-            hintText: "Enter your Name",
+            hintText: "Enter your username".tr(),
             hintStyle: TextStyle(
-              fontSize: screenWidth * 0.035,
-              color: isDark ? Colors.grey[500] : Colors.grey[600],
+              fontSize: responsiveWidth(context, 14),
+              color: hintColor,
             ),
             filled: true,
             fillColor: fillColor,
             contentPadding: EdgeInsets.symmetric(
-              vertical: screenWidth * 0.045,
-              horizontal: screenWidth * 0.04,
+              vertical: responsiveHeight(context, 14),
+              horizontal: responsiveWidth(context, 14),
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),

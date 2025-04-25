@@ -47,9 +47,10 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: isDarkMode ? Colors.black : Colors.green,
       body: Stack(
         children: [
           Image.asset(
@@ -74,7 +75,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         'Foodtek',
                         style: TextStyle(
                           fontSize: screenWidth * 0.12, // تصغير الحجم بناءً على عرض الشاشة
-                          color: Colors.white,
+                          color: isDarkMode ? Colors.white : Colors.white,
                           fontFamily: "Protest Riot",
                         ),
                       ),
@@ -86,7 +87,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         width: containerWidth,
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: isDarkMode ? Colors.grey[900] : Colors.white,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: BlocConsumer<SignupCubit, SignupState>(
@@ -121,8 +122,12 @@ class _SignupScreenState extends State<SignupScreen> {
                                   style: TextStyle(
                                     fontSize: screenWidth * 0.07,
                                     fontWeight: FontWeight.w700,
+                                    color: Theme.of(context).brightness == Brightness.dark
+                                        ? Colors.white
+                                        : Colors.black,
                                   ),
                                 ),
+
                                 const SizedBox(height: 8),
 
                                 /// ✅ تحسين عرض جملة "Already have an account? Login"
@@ -135,8 +140,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                         child: Text(
                                           "Already have an account?".tr(),
                                           style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: screenWidth < 350 ? 12 : 13, // تصغير الخط للشاشات الصغيرة
+                                            color: Theme.of(context).brightness == Brightness.dark
+                                                ? Colors.white
+                                                : Colors.grey,                                               fontSize: screenWidth < 350 ? 12 : 13, // تصغير الخط للشاشات الصغيرة
                                           ),
                                         ),
                                       ),
@@ -167,7 +173,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 const SizedBox(height: 16),
                                 EmailWidget(emailEditingController: emailController),
                                 const SizedBox(height: 16),
-                                BirthWidget(BithEditingController: birthDateController),
+                                BirthWidget(birthEditingController: birthDateController),
                                 const SizedBox(height: 16),
                                 PhoneWidget(
                                   phoneEditingController: phoneNumberController,
