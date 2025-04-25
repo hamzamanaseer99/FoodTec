@@ -631,6 +631,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/widgets/confirm_password_widget.dart';
 import 'package:foodtek/view/screens/widgets/new_password_widget.dart';
 import 'package:foodtek/view/screens/widgets/password_widget.dart';
@@ -717,9 +718,10 @@ class _ResetScreenState extends State<ResetScreen> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: isDarkMode ? Colors.black : Colors.green,
       body: Stack(
         children: [
           // خلفية الصورة
@@ -749,7 +751,7 @@ class _ResetScreenState extends State<ResetScreen> {
                   padding: const EdgeInsets.all(24),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: isDarkMode ? Colors.grey[900] : Colors.white,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
@@ -772,7 +774,10 @@ class _ResetScreenState extends State<ResetScreen> {
                               'Reset Password'.tr(),
                               style: TextStyle(
                                   fontSize: screenWidth * 0.05 ,
-                                  fontWeight: FontWeight.w700
+                                  fontWeight: FontWeight.w700,
+                                  color: Theme.of(context).brightness == Brightness.dark
+                                  ? Colors.white
+                                  : Colors.black,
                               ),
                             ),
                           ),
@@ -786,10 +791,14 @@ class _ResetScreenState extends State<ResetScreen> {
                                   "Want to try with my current password?".tr(),
                                   textAlign: TextAlign.start,
                                   style: TextStyle(
-                                    fontSize: screenWidth * 0.02 ,
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: responsiveWidth(context, 12) ,
+                                    color: Theme.of(context).brightness == Brightness.dark
+                                        ? Colors.white
+                                        : Colors.grey,                                    fontWeight: FontWeight.w500,
                                   ),
+                                ),
+                                SizedBox(
+                                  width: responsiveWidth(context, 6),
                                 ),
                                 TextButton(
                                   style: TextButton.styleFrom(
@@ -808,7 +817,7 @@ class _ResetScreenState extends State<ResetScreen> {
                                     style: TextStyle(
                                       color: Color(0xff25AE4B),
                                       fontWeight: FontWeight.w600,
-                                      fontSize: screenWidth * 0.02 ,
+                                      fontSize: responsiveWidth(context, 12) ,
                                     ),
                                   ),
                                 ),
@@ -850,39 +859,41 @@ class _ResetScreenState extends State<ResetScreen> {
             Positioned.fill(
               child: Stack(
                 children: [
-                  // تأثير الـ blur على الشاشة الخلفية
+                  // Blur + لون خلفي شفاف حسب الثيم
                   BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
                     child: Container(
-                      color: Colors.black.withOpacity(0.5), // شفافية مظللة
+                      color: Theme.of(context).colorScheme.background.withOpacity(0.5),
                     ),
                   ),
-                  // صورة داخل الشاشة الفوقية
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Center(
-                        child: Image.asset(
-                          'assets/images/Group1.png', // مسار الصورة
-                          width: 430,
-                          height: 287,
-                        ),
 
+                  // الصور في المنتصف
+                  SafeArea(
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/images/Group1.png',
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            height: MediaQuery.of(context).size.height * 0.3,
+                            fit: BoxFit.contain,
+                          ),
+                          const SizedBox(height: 8),
+                          Image.asset(
+                            'assets/images/Text.png',
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            height: MediaQuery.of(context).size.height * 0.15,
+                            fit: BoxFit.contain,
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 5,),
-                      Center(
-                        child: Image.asset(
-                          'assets/images/Text.png', // مسار الصورة
-                          width: 430,
-                          height: 287,
-                        ),
-                      )
-                    ],
+                    ),
                   ),
                 ],
               ),
-            ),
+            )
+
         ],
       ),
     );

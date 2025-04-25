@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/widgets/email_widget.dart';
 import 'login_screen.dart';
 import 'otp_screen.dart';
@@ -18,9 +19,10 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
       double screenHeight = MediaQuery.of(context).size.height;
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: isDarkMode ? Colors.black : Colors.green,
       body: Stack(
         children: [
           /// 🔹 **الخلفية**
@@ -44,14 +46,14 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
 
 
                     Center(
-                      child: Text(
-                        'Foodtek',
-                        style: TextStyle(
-                          fontSize: screenWidth * 0.1,
-                          color: Colors.white,
-                          fontFamily: "Protest Riot",
-                        ),
+                      child:  Text(
+                      'Foodtek',
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.12, // تصغير الحجم بناءً على عرض الشاشة
+                        color: isDarkMode ? Colors.white : Colors.white,
+                        fontFamily: "Protest Riot",
                       ),
+                    ),
                     ),
 
                     SizedBox(height: screenHeight * 0.06),
@@ -63,7 +65,7 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                         horizontal: screenWidth * 0.06,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: isDarkMode ? Colors.grey[900] : Colors.white,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Column(
@@ -95,6 +97,9 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
+                                      SizedBox(
+                                        width: responsiveWidth(context, 6),
+                                      ),
                                       TextButton(
                                         style: TextButton.styleFrom(
                                           padding: EdgeInsets.zero,
@@ -115,6 +120,9 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                                             fontSize: fontSize,
                                           ),
                                         ),
+                                      ),
+                                      SizedBox(
+                                        width: responsiveWidth(context, 6),
                                       ),
                                       Text(
                                         "page".tr(),
@@ -140,6 +148,9 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                               style: TextStyle(
                                 fontSize: screenWidth * 0.06,
                                 fontWeight: FontWeight.w700,
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Colors.white
+                                    : Colors.black,
                               ),
                             ),
                           ),
@@ -155,7 +166,7 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                                 style: TextStyle(
                                   fontSize: screenWidth * 0.03 ,
                                   color: Colors.grey,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ),
@@ -196,7 +207,6 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                                   minimumSize: Size(screenWidth * 0.8, 50), // ✅ تناسب العرض والارتفاع
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12), // ✅ نفس الزوايا الدائرية
-                                    side: const BorderSide(color: Color(0xffEDF1F3), width: 1), // ✅ إضافة حدود خفيفة
                                   ),
                                   elevation: 0, // ✅ إلغاء تأثير الرفع الأساسي للاعتماد على الظل المخصص
                                 ),

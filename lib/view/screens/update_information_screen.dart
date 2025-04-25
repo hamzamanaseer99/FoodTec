@@ -502,7 +502,7 @@ class _UpdateInformationScreenState extends State<UpdateInformationScreen> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            UsernameWidget(nameEditingController: _nameController),
+            UsernameWidget(usernameEditingController: _nameController),
             const SizedBox(height: 16),
             EmailWidget(emailEditingController: _emailController),
             const SizedBox(height: 16),

@@ -78,8 +78,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: isDarkMode ? Colors.black : Colors.green,
       body: Stack(
         children: [
           Image.asset(
@@ -104,19 +106,21 @@ class _LoginScreenState extends State<LoginScreen> {
                         'Foodtek',
                         style: TextStyle(
                           fontSize: screenWidth * 0.12 < 72 ? screenWidth * 0.12 : 72,
-                          color: Colors.white,
+                          color: isDarkMode ? Colors.white : Colors.white,
                           fontFamily: "Protest Riot",
                         ),
                       ),
+
                     ),
                     const SizedBox(height: 42),
                     Container(
                       width: containerWidth,
                       padding: const EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: isDarkMode ? Colors.grey[900] : Colors.white,
                         borderRadius: BorderRadius.circular(12),
                       ),
+
                       child: BlocConsumer<LoginCubit, LoginState>(
                         listener: (context, state) {
                           if (state is LoginSuccess) {
@@ -133,14 +137,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         builder: (context, state) {
                           return Column(
                             children: [
-                               Text(
+                              Text(
                                 'Login'.tr(),
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: isDarkMode ? Colors.white : Colors.black,
                                   fontSize: 32,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
+
                               const SizedBox(height: 12),
                               _SignUpText(screenWidth: screenWidth),
                               const SizedBox(height: 24),
@@ -165,11 +170,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                       Text(
                                         "Remember Me".tr(),
                                         style: TextStyle(
-                                          fontSize: screenWidth * 0.020, // تصغير الخط للشاشات الصغيرة
+                                          fontSize: screenWidth * 0.020,
                                           fontWeight: FontWeight.w600,
-                                          color: Colors.grey,
+                                          color: isDarkMode ? Colors.grey[300] : Colors.grey,
                                         ),
                                       ),
+
                                     ],
                                   ),
                                   TextButton(
@@ -234,9 +240,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               Row(
                                 children: [
                                   Expanded(
-                                    child: Divider(
+                                    child:Divider(
                                       thickness: 1,
-                                      color: Colors.grey.shade400, // لون أفتح لمظهر أنيق
+                                      color: isDarkMode ? Colors.grey[700] : Colors.grey.shade400,
                                     ),
                                   ),
                                    Padding(
@@ -246,14 +252,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                       style: TextStyle(
                                         fontSize: screenWidth * 0.025,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.grey,
+                                        color: isDarkMode ? Colors.grey[300] : Colors.grey,
                                       ),
                                     ),
                                   ),
                                   Expanded(
                                     child: Divider(
                                       thickness: 1,
-                                      color: Colors.grey.shade400,
+                                      color: isDarkMode ? Colors.grey[700] : Colors.grey.shade400,
                                     ),
                                   ),
                                 ],
@@ -313,7 +319,7 @@ class _SignUpText extends StatelessWidget {
             "Sign Up".tr(),
             style: TextStyle(
               fontWeight: FontWeight.w600,
-              color: Colors.green,
+              color: Color(0xff25AE4B),
               fontSize: screenWidth * 0.03,
 
             ),

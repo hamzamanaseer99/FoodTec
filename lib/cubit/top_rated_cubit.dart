@@ -17,25 +17,32 @@ class TopRatedCubit extends Cubit<TopRatedState> {
 
   final List<Map<String, dynamic>> topProducts = [
     {
-      "name": "Cheese Burger".tr(),
+      "name": "Chicken burger".tr(),
+      "rating": 3.8,
+      "price": 20.00,
+      "description": "100 gr chicken + tomato + cheese  Lettuce".tr(),
+      "image": "assets/images/Chicken burger.png"
+    },
+    {
+      "name": "Chese burger".tr(),
       "rating": 4.5,
-      "price": 15.0,
-      "description": "Grilled beef patty with lettuce, tomato, and cheese.".tr(),
+      "price": 15.00,
+      "description": "100 gr meat + onion + tomato + Lettuce cheese".tr(),
       "image": "assets/images/Chese burger.png"
     },
     {
-      "name": "Pepperoni Pizza".tr(),
-      "rating": 4.8,
-      "price": 18.0,
-      "description": "Loaded with pepperoni and melted cheese.".tr(),
-      "image": "assets/images/pizza10.png"
+      "name": "Chicken burger".tr(),
+      "rating": 3.8,
+      "price": 20.00,
+      "description": "100 gr chicken + tomato + cheese  Lettuce".tr(),
+      "image": "assets/images/Chicken burger.png"
     },
     {
-      "name": "Sandwich1".tr(),
-      "rating": 3.2,
-      "price": 12.0,
-      "description": "Grilled chicken breast with lettuce, tomato, and mayo.".tr(),
-      "image": "assets/images/img_1.png"
+      "name": "Chese burger".tr(),
+      "rating": 4.5,
+      "price": 15.00,
+      "description": "100 gr meat + onion + tomato + Lettuce cheese".tr(),
+      "image": "assets/images/Chese burger.png"
     },
   ];
 

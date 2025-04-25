@@ -19,14 +19,27 @@ class _PasswordWidgetState extends State<NewPasswordWidget> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
+    final Color backgroundColor = isDarkMode
+        ? Theme.of(context).colorScheme.surface
+        : Colors.white;
+    final Color textColor = isDarkMode
+        ? Theme.of(context).colorScheme.onSurface
+        : Colors.black;
+    final Color iconColor = isDarkMode ? Colors.grey[400]! : Colors.grey;
+    final Color enabledBorderColor =
+    isDarkMode ? Colors.grey[700]! : const Color(0xffEDF1F3);
 
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white, // ✅ نفس لون EmailWidget
-        borderRadius: BorderRadius.circular(12), // ✅ نفس الزوايا المستديرة
-        boxShadow: [
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: isDarkMode
+            ? []
+            : [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2), // ✅ نفس الظل
+            color: Colors.black.withOpacity(0.2),
             blurRadius: 2,
             spreadRadius: 0,
             offset: const Offset(0, 1),
@@ -38,35 +51,37 @@ class _PasswordWidgetState extends State<NewPasswordWidget> {
         obscureText: obscureText,
         keyboardType: TextInputType.visiblePassword,
         style: TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.w500, // ✅ جعل الخط بنفس الوزن
-          fontSize: screenWidth * 0.03, // ✅ جعل الخط متجاوبًا
+          color: textColor,
+          fontWeight: FontWeight.w500,
+          fontSize: screenWidth * 0.03,
         ),
         decoration: InputDecoration(
           labelText: 'New Password'.tr(),
           labelStyle: TextStyle(
-          fontSize: screenWidth * 0.025,
-        ),
+            fontSize: screenWidth * 0.025,
+            color: textColor.withOpacity(0.7),
+          ),
           hintText: "Enter new password".tr(),
           hintStyle: TextStyle(
-          fontSize: screenWidth * 0.025,
-        ),
-          fillColor: Colors.white,
+            fontSize: screenWidth * 0.025,
+            color: textColor.withOpacity(0.5),
+          ),
+          fillColor: backgroundColor,
           contentPadding: EdgeInsets.symmetric(
-            vertical: screenWidth * 0.04, // ✅ نفس التناسب مع الشاشة
+            vertical: screenWidth * 0.04,
             horizontal: screenWidth * 0.04,
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none, // ✅ إزالة الإطار الافتراضي
+            borderSide: BorderSide.none,
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Color(0xffEDF1F3), width: 1),
+            borderSide: BorderSide(color: enabledBorderColor, width: 1),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Color(0xff25AE4B), width: 2), // ✅ لون أخضر عند التركيز
+            borderSide: const BorderSide(color: Color(0xff25AE4B), width: 2),
           ),
           suffixIcon: IconButton(
             onPressed: () {
@@ -76,7 +91,7 @@ class _PasswordWidgetState extends State<NewPasswordWidget> {
             },
             icon: Icon(
               obscureText ? Icons.visibility_off : Icons.visibility,
-              color: Colors.grey, // ✅ توحيد لون الأيقونة
+              color: iconColor,
             ),
           ),
         ),
