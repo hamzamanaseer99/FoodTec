@@ -751,7 +751,7 @@ class HomeScreen extends StatelessWidget {
     return BottomAppBar(
       shape: const CircularNotchedRectangle(),
       notchMargin: 4.0,
-      color: isDark ? Colors.grey[200] : Colors.green[100],
+      color: isDark ? Colors.green[100]?.withOpacity(0.5): Colors.green[100],
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
