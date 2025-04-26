@@ -1,18 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodtek/responsive.dart';
 
 class SocialLoginButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    double screenWidth = MediaQuery.of(context).size.width;
+    final bool isDarkMode = Theme
+        .of(context)
+        .brightness == Brightness.dark;
 
-    double fontSize = screenWidth * 0.025;
-    fontSize = fontSize.clamp(12, 16);
-
-    double iconSize = screenWidth * 0.04;
-    iconSize = iconSize.clamp(18, 24);
 
     return Column(
       children: [
@@ -21,8 +18,8 @@ class SocialLoginButtons extends StatelessWidget {
           icon: FontAwesomeIcons.google,
           text: "Continue with Google".tr(),
           iconColor: Colors.red,
-          fontSize: fontSize,
-          iconSize: iconSize,
+          fontSize: responsiveWidth(context, 14),
+          iconSize: responsiveWidth(context, 18),
           isDarkMode: isDarkMode,
         ),
         const SizedBox(height: 12),
@@ -31,8 +28,8 @@ class SocialLoginButtons extends StatelessWidget {
           icon: FontAwesomeIcons.facebook,
           text: "Continue with Facebook".tr(),
           iconColor: const Color(0xff1877F2),
-          fontSize: fontSize,
-          iconSize: iconSize,
+          fontSize: responsiveWidth(context, 14),
+          iconSize: responsiveWidth(context, 18),
           isDarkMode: isDarkMode,
         ),
         const SizedBox(height: 12),
@@ -41,8 +38,8 @@ class SocialLoginButtons extends StatelessWidget {
           icon: FontAwesomeIcons.apple,
           text: "Continue with Apple".tr(),
           iconColor: isDarkMode ? Colors.white : Colors.black,
-          fontSize: fontSize,
-          iconSize: iconSize,
+          fontSize: responsiveWidth(context, 14),
+          iconSize: responsiveWidth(context, 18),
           isDarkMode: isDarkMode,
         ),
       ],
@@ -87,21 +84,20 @@ class SocialLoginButtons extends StatelessWidget {
           ),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center, // <-- center the Row
+          mainAxisSize: MainAxisSize.min, // <-- center children tightly
           children: [
             FaIcon(icon, color: iconColor, size: iconSize),
             const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                text.tr(),
-                style: TextStyle(
-                  color: isDarkMode ? Colors.white : const Color(0xff1A1C1E),
-                  fontSize: fontSize,
-                  fontWeight: FontWeight.w500,
-                ),
-                maxLines: 1,
-                softWrap: false,
+            Text(
+              text.tr(),
+              style: TextStyle(
+                color: isDarkMode ? Colors.white : const Color(0xff1A1C1E),
+                fontSize: fontSize,
+                fontWeight: FontWeight.w500,
               ),
+              maxLines: 1,
+              softWrap: false,
             ),
           ],
         ),

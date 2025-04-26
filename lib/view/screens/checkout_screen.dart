@@ -403,7 +403,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
                                 ),
                                 side: BorderSide(
-                                  color: isDarkMode ? Colors.greenAccent : const Color(0xff25AE4B),
+                                  color: isDarkMode ? Color(0xff25AE4B) : const Color(0xff25AE4B),
                                   width: 1,
                                 ),
                               ),
@@ -411,7 +411,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             child: Text(
                               'Add'.tr(),
                               style: TextStyle(
-                                color: isDarkMode ? Colors.greenAccent : const Color(0xff4FAF5A),
+                                color: isDarkMode ?  Color(0xff25AE4B) : const Color(0xff4FAF5A),
                                 fontSize: responsiveWidth(context, 14),
                                 fontWeight: FontWeight.w600,
                               ),

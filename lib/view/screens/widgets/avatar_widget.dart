@@ -5,6 +5,8 @@ class AvatarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -26,19 +28,19 @@ class AvatarWidget extends StatelessWidget {
           ),
           const SizedBox(height: 8), // Spacing between avatar and text
           // Name
-          const Text(
+           Text(
             'Ahmad Daboor',
             style: TextStyle(
-              color: Color(0xff1B1B1B),
+              color: isDark ? Colors.white : Color(0xff1B1B1B),
               fontWeight: FontWeight.w500,
               fontSize: 18,
             ),
           ),
 
-          const Text(
+           Text(
             'ahmad1709@gmail.com',
             style: TextStyle(
-              color: Color(0xff838383),
+              color: isDark ? Colors.white : Color(0xff838383),
               fontWeight: FontWeight.w400,
               fontSize: 14,
             ),

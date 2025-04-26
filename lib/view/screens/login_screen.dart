@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodtek/responsive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../cubit/login_cubit.dart';
 import '../../homescreen.dart';
@@ -170,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       Text(
                                         "Remember Me".tr(),
                                         style: TextStyle(
-                                          fontSize: screenWidth * 0.020,
+                                          fontSize: responsiveWidth(context, 12), // ضبط الحجم حسب الشاشة
                                           fontWeight: FontWeight.w600,
                                           color: isDarkMode ? Colors.grey[300] : Colors.grey,
                                         ),
@@ -190,7 +191,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Text(
                                       'Forgot password?'.tr(),
                                       style: TextStyle(
-                                        fontSize: screenWidth * 0.025, // ضبط الحجم حسب الشاشة
+                                        fontSize: responsiveWidth(context, 12), // ضبط الحجم حسب الشاشة
                                         fontWeight: FontWeight.w600,
                                         color: Color(0xff25AE4B),
                                       ),
@@ -222,12 +223,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
+                                    
                                     elevation: 3,
                                   ),
                                   child: Text(
                                     "Login".tr(),
                                     style: TextStyle(
-                                      fontSize: screenWidth * 0.035,
+                                      fontSize: responsiveWidth(context, 16),
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                     ),
@@ -250,7 +252,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Text(
                                       "OR".tr(),
                                       style: TextStyle(
-                                        fontSize: screenWidth * 0.025,
+                                        fontSize: responsiveWidth(context, 12),
                                         fontWeight: FontWeight.bold,
                                         color: isDarkMode ? Colors.grey[300] : Colors.grey,
                                       ),
@@ -302,7 +304,8 @@ class _SignUpText extends StatelessWidget {
               "Don’t have an account?".tr(),
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: screenWidth * 0.035,
+                fontSize: responsiveWidth(context, 14),
+                fontWeight: FontWeight.w700
 
               ),
             ),
@@ -320,7 +323,7 @@ class _SignUpText extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.w600,
               color: Color(0xff25AE4B),
-              fontSize: screenWidth * 0.03,
+              fontSize: responsiveWidth(context, 12),
 
             ),
           ),

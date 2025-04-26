@@ -545,11 +545,7 @@ class _IntroScreenState extends State<IntroScreen> {
                   ),
                   child: Ink(
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Color(0xFF25AE4B), Color(0xFF0F481F)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
+                      color: Color(0xff25AE4B),
                       borderRadius: BorderRadius.circular(25),
                     ),
                     child: Container(
@@ -592,7 +588,7 @@ class _IntroScreenState extends State<IntroScreen> {
                           height: _currentPage == index ? 12 : 8,
                           decoration: BoxDecoration(
                             color: _currentPage == index
-                                ? Colors.green
+                                ? Color(0xff25AE4B)
                                 : Colors.grey.shade400,
                             shape: BoxShape.circle,
                           ),
@@ -607,7 +603,7 @@ class _IntroScreenState extends State<IntroScreen> {
                               duration: Duration(milliseconds: 500),
                               curve: Curves.ease);
                         },
-                        icon: Icon(Icons.arrow_forward, color: Colors.green),
+                        icon: Icon(Icons.arrow_forward, color: Color(0xff25AE4B)),
                         iconSize: 30,
                       ),
                   ],
@@ -690,7 +686,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     await _enableLocation();
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
+                    backgroundColor: Color(0xff25AE4B),
                     foregroundColor: Colors.white,
                     minimumSize: Size(307, 48),
                     shape: RoundedRectangleBorder(

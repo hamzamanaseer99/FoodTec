@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
 
@@ -75,7 +76,7 @@ class CreditCardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Card Holder name',
+                    'Card Holder name'.tr(),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: responsiveWidth(context, 10),
@@ -96,7 +97,7 @@ class CreditCardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    'Expiry Date',
+                    'Expiry Date'.tr(),
                     style: TextStyle(
                       color: Colors.white70,
                       fontSize: responsiveWidth(context, 10),

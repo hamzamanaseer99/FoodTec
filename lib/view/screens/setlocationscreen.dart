@@ -322,7 +322,7 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     backgroundColor: Color(0xff25AE4B),
                   ),

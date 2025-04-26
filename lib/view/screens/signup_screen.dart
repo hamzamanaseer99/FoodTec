@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/widgets/birth_widget.dart';
 import 'package:foodtek/view/screens/widgets/confirm_password_widget.dart';
 import 'package:foodtek/view/screens/widgets/email_widget.dart';
@@ -114,13 +115,15 @@ class _SignupScreenState extends State<SignupScreen> {
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  icon: const Icon(Icons.arrow_back, size: 24),
+                                  icon:  Icon(Icons.arrow_back,
+                                      size: responsiveWidth(context, 24)
+                                  ),
                                 ),
                                 const SizedBox(height: 16),
                                 Text(
                                   'Sign Up'.tr(),
                                   style: TextStyle(
-                                    fontSize: screenWidth * 0.07,
+                                    fontSize:responsiveWidth(context, 32),
                                     fontWeight: FontWeight.w700,
                                     color: Theme.of(context).brightness == Brightness.dark
                                         ? Colors.white
@@ -130,7 +133,6 @@ class _SignupScreenState extends State<SignupScreen> {
 
                                 const SizedBox(height: 8),
 
-                                /// ✅ تحسين عرض جملة "Already have an account? Login"
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
@@ -142,7 +144,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                           style: TextStyle(
                                             color: Theme.of(context).brightness == Brightness.dark
                                                 ? Colors.white
-                                                : Colors.grey,                                               fontSize: screenWidth < 350 ? 12 : 13, // تصغير الخط للشاشات الصغيرة
+                                                : Colors.grey,
+                                            fontSize: responsiveWidth(context, 12) // تصغير الخط للشاشات الصغيرة
                                           ),
                                         ),
                                       ),
@@ -159,7 +162,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                         style: TextStyle(
                                           color: Color(0xff25AE4B),
                                           fontWeight: FontWeight.w600,
-                                            fontSize: screenWidth * 0.03,
+                                            fontSize: responsiveWidth(context, 12)
                                         ),
                                       ),
                                     ),

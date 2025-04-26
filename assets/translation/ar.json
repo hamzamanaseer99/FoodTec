@@ -41,9 +41,12 @@
 
   "Birth of date": "تاريخ الميلاد",
   "YYYY-MM-DD": "السنة-الشهر-اليوم",
-
+"Card Holder name": "اسم حامل البطاقة",
   "Phone Number": "رقم الهاتف",
-
+  "Address": "العنوان",
+  "Enter your username": "أدخل اسم المستخدم الخاص بك",
+  "Username": "اسم المستخدم",
+"Expiry Date": "تاريخ انتهاء الصلاحية",
   "Back to": "الرجوع الى",
   "page": "صفحة",
   "Reset Password": "إعادة تعيين كلمة المرور",

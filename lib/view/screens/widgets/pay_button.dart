@@ -11,28 +11,30 @@ class PayButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: responsiveWidth(context, 30),
+        horizontal: responsiveWidth(context, 24), // تقلل شوي المسافة الجانبية
         vertical: responsiveHeight(context, 16),
       ),
-      child: SizedBox(
-        width: double.infinity,
-        height: responsiveHeight(context, 50),
-        child: ElevatedButton.icon(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFF25AE4B),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+      child: Center(
+        child: SizedBox(
+          width: responsiveWidth(context, 327), // خليت العرض responsive
+          height: responsiveHeight(context, 57), // والارتفاع برضو
+          child: ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF25AE4B),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              elevation: 2,
             ),
-            elevation: 2,
-          ),
-          onPressed: onPressed,
-          icon: Icon(Icons.lock, color: Colors.white, size: responsiveWidth(context, 18)),
-          label: Text(
-            'Pay for the order'.tr(),
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: responsiveWidth(context, 15),
-              fontWeight: FontWeight.w500,
+            onPressed: onPressed,
+            icon: Icon(Icons.lock, color: Colors.white, size: responsiveWidth(context, 18)),
+            label: Text(
+              'Pay for the order'.tr(),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: responsiveWidth(context, 15),
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         ),
