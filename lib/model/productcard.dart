@@ -20,7 +20,8 @@ class ProductCard extends StatelessWidget {
     final isSmallScreen = screenWidth < 400;
 
     return SizedBox(
-      height: isSmallScreen ? 240 : 270,
+      //   height: isSmallScreen ? 240 : 270,
+      height: 280,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -75,7 +76,7 @@ class ProductCard extends StatelessWidget {
             ),
           ),
 
-           Positioned(
+          Positioned(
             top: 0,
             left: 0,
             right: 0,
@@ -91,52 +92,48 @@ class ProductCard extends StatelessWidget {
             ),
           ),
 
-           Positioned(
-  top: 20,
-  right: 0, // على الحافة اليمنى
-  child: IconButton(
-    icon: Icon(
-      item.isFavorite ? Icons.favorite : Icons.favorite_border,
-      color: Colors.green,
-      size: isSmallScreen ? 20 : 24,
-    ),
-    onPressed: onFavoriteToggle,
-  ),
-),
+          Positioned(
+            top: 20,
+            right: 0, // على الحافة اليمنى
+            child: IconButton(
+              icon: Icon(
+                item.isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: Colors.green,
+                size: isSmallScreen ? 20 : 24,
+              ),
+              onPressed: onFavoriteToggle,
+            ),
+          ),
 
           // زر الطلب
           Positioned(
-  bottom: 0,
-  left: 0,
-  right: 0,
-  child: Align(
-    alignment: Alignment.bottomCenter,
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: SizedBox(
-        width: 105,
-        child: ElevatedButton(
-          onPressed: onOrderNow,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.green,
-            foregroundColor: Colors.white,
-            shape: const StadiumBorder(),
-            padding: EdgeInsets.symmetric(
-              vertical: isSmallScreen ? 8 : 12,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: SizedBox(
+                width: 105,
+                child: ElevatedButton(
+                  onPressed: onOrderNow,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    foregroundColor: Colors.white,
+                    shape: const StadiumBorder(),
+                    padding: EdgeInsets.symmetric(
+                      vertical: isSmallScreen ? 8 : 12,
+                    ),
+                  ),
+                  child: Text(
+                    "Order Now".tr(),
+                    style: TextStyle(
+                      fontSize: isSmallScreen ? 12 : 14,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
-          child: Text(
-            "Order Now".tr(),
-            style: TextStyle(
-              fontSize: isSmallScreen ? 12 : 14,
-            ),
-          ),
-        ),
-      ),
-    ),
-  ),
-),
-
         ],
       ),
     );
