@@ -215,7 +215,8 @@ class CartItem {
     Product? product,
     int? quantity,
     double? spicyLevel,
-  }) {
+  })
+  {
     return CartItem(
       product: product ?? this.product,
       quantity: quantity ?? this.quantity,
@@ -238,6 +239,31 @@ class CartItem {
 class CartCubit extends Cubit<List<CartItem>> {
   CartCubit() : super([]);
 
+  // Future<void> addToCart({
+  //   required Product product,
+  //   required double spicyLevel,
+  //   required int quantity,
+  // }) async {
+  //   final index = state.indexWhere(
+  //         (item) =>
+  //     item.product.name == product.name &&
+  //         item.spicyLevel == spicyLevel,
+  //   );
+  //
+  //   if (index != -1) {
+  //     final updatedItem = state[index].copyWith(
+  //       quantity: state[index].quantity + quantity,
+  //     );
+  //     final updatedList = List<CartItem>.from(state);
+  //     updatedList[index] = updatedItem;
+  //     emit(updatedList);
+  //   } else {
+  //     emit([
+  //       ...state,
+  //       CartItem(product: product, spicyLevel: spicyLevel, quantity: quantity),
+  //     ]);
+  //   }
+  // }
   Future<void> addToCart({
     required Product product,
     required double spicyLevel,
@@ -245,8 +271,7 @@ class CartCubit extends Cubit<List<CartItem>> {
   }) async {
     final index = state.indexWhere(
           (item) =>
-      item.product.name == product.name &&
-          item.spicyLevel == spicyLevel,
+      item.product.name == product.name && item.spicyLevel == spicyLevel,
     );
 
     if (index != -1) {
@@ -262,8 +287,10 @@ class CartCubit extends Cubit<List<CartItem>> {
         CartItem(product: product, spicyLevel: spicyLevel, quantity: quantity),
       ]);
     }
-  }
 
+    // Debugging line to check if the item was added
+    print("Cart items after add: ${state.length} items");
+  }
   void removeFromCart(CartItem itemToRemove) {
     emit(state.where((item) => item != itemToRemove).toList());
   }

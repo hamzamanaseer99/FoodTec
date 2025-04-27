@@ -1518,13 +1518,14 @@ class _CartScreenState extends State<CartScreen> {
                           // إضافة الطلب إلى سجل الطلبات
                           historyCubit.addOrder(order);
 
-                          // تفريغ السلة بعد إضافة الطلب
-                          cartCubit.clearCart();
+                          // تفريغ السلة بعد إضافة الطلب كان يصفر المجموع
+                          //cartCubit.clearCart();
                         }
 
                         // الانتقال إلى شاشة تحديد الموقع
-                        Navigator.pushNamed(context, '/SetLocationScreen');
-                      },
+                        Navigator.pushNamed(context, '/SetLocationScreen',);
+
+                        },
                     ),
                   ),
                 ],

@@ -1,10 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/chat%20screen.dart';
 import 'package:foodtek/view/screens/order_details_screen.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../../cubit/cart_cubit.dart';
 import '../../homescreen.dart';
 
 class LiveTrackScreen extends StatefulWidget {
@@ -356,6 +358,26 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
     );
   }
 
+  // Widget _buildConfirmButton(BuildContext context) {
+  //   return ElevatedButton(
+  //     style: ElevatedButton.styleFrom(
+  //       backgroundColor: const Color(0xff25AE4B),
+  //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+  //       padding: EdgeInsets.symmetric(vertical: responsiveHeight(context, 12)),
+  //     ),
+  //     onPressed: () => _showConfirmationDialog(context),
+  //     child: Center(
+  //       child: Text(
+  //         "Confirm Receipt".tr(),
+  //         style: TextStyle(
+  //           fontSize: responsiveWidth(context, 20),
+  //           color: Colors.white,
+  //           fontWeight: FontWeight.bold,
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
   Widget _buildConfirmButton(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
@@ -377,6 +399,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
     );
   }
 
+
   void _showConfirmationDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -392,6 +415,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             ),
             onPressed: () {
+              context.read<CartCubit>().clearCart();
               Navigator.pop(context);
               Navigator.pushAndRemoveUntil(
                 context,

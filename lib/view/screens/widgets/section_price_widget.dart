@@ -96,7 +96,10 @@ import 'package:foodtek/responsive.dart';
 Widget buildCheckoutSection(BuildContext context,
     double subTotal,
     double deliveryCharge,
-    double discount, {required VoidCallback onPlaceOrderTap}) {
+    double discount,
+    {required VoidCallback onPlaceOrderTap}) {
+
+
   double total = subTotal + deliveryCharge - discount;
 
   return Container(
