@@ -264,6 +264,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     final subTotal = cartItems.fold(0.0, (sum, item) => sum + (item.product.price * item.quantity));
     final deliveryCharge = 3.0;
     final discount = 2.0;
+    final total = context.watch<CartCubit>().totalWithCharges(deliveryCharge: deliveryCharge, discount: discount); // إجمالي السعر بعد الخصم والشحن
 
     final isDarkMode = Theme.of(context).brightness == Brightness.dark; // التحقق من الوضع الداكن
 
@@ -438,20 +439,27 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             SizedBox(height: responsiveHeight(context, 16)),
             Column(
               children: [
-                buildCheckoutSection(
-                  context,
-                  subTotal,
-                  deliveryCharge,
-                  discount,
-                  onPlaceOrderTap: () {
-                    Navigator.pushNamed(context, '/payment');
-                  },
-                ),
+    buildCheckoutSection(
+    context,
+    subTotal,
+    deliveryCharge,
+    discount,
+    onPlaceOrderTap: () {
+    Navigator.pushNamed(context, '/payment', arguments: {
+    'subTotal': subTotal,
+    'total': total,
+    'address': selectedAddressTitle,
+    'paymentOption': selectedPaymentOption,
+    });
+    },
+    ),
+    ],
+            ),
               ],
             ),
-          ],
+
         ),
-      ),
+
     );
   }
 }

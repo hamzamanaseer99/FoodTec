@@ -7,6 +7,7 @@ import 'package:foodtek/cubit/top_rated_cubit.dart';
 
 import '../../../cubit/cart_cubit.dart';
 import '../../../model/product.dart';
+
 class TopRatedProducts extends StatelessWidget {
   const TopRatedProducts({Key? key}) : super(key: key);
 
