@@ -108,7 +108,7 @@ Widget buildCheckoutSection(BuildContext context,
     ),
     decoration: BoxDecoration(
       color: Color(0xff4FAF5A),
-      borderRadius: BorderRadius.circular(24),
+      borderRadius: BorderRadius.circular(7),
       image: DecorationImage(
         image: AssetImage('assets/images/Pattern.png'), // Add your green pattern here
         fit: BoxFit.cover,
@@ -140,7 +140,7 @@ Widget buildCheckoutSection(BuildContext context,
             height: responsiveHeight(context, 56),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(7),
             ),
             child: Center(
               child: Text(

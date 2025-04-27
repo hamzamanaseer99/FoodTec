@@ -78,7 +78,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
 
                 brightness: Brightness.light,
-                primaryColor: Colors.green,
+                primaryColor: Color(0xff25AE4B),
                 scaffoldBackgroundColor: Colors.white,
 
                 appBarTheme: const AppBarTheme(
@@ -93,7 +93,7 @@ class MyApp extends StatelessWidget {
                 iconTheme: IconThemeData(color: Colors.black87),
                 switchTheme: SwitchThemeData(
                   thumbColor: MaterialStateProperty.all(Colors.deepOrange),
-                  trackColor: MaterialStateProperty.all(Colors.green),
+                  trackColor: MaterialStateProperty.all(Color(0xff25AE4B)),
                 ),
                 tabBarTheme: const TabBarTheme(
                   labelColor: Colors.black,
@@ -107,9 +107,9 @@ class MyApp extends StatelessWidget {
               darkTheme: ThemeData(
                 brightness: Brightness.dark,
                 scaffoldBackgroundColor: const Color(0xFF000000),
-                primaryColor: Colors.green,
+                primaryColor: Color(0xff25AE4B),
                 colorScheme: const ColorScheme.dark(
-                  primary: Colors.green,
+                  primary: Color(0xff25AE4B),
                   secondary: Colors.deepOrangeAccent,
                   background: Color(0xFF000000),
                   surface: Color(0xFF121212),

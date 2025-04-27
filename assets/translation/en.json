@@ -42,9 +42,12 @@
 
   "Birth of date": "Birth of date",
   "YYYY-MM-DD": "YYYY-MM-DD",
-
+"Address": "Address",
+  "Enter your username": "Enter your username",
+  "Username": "Username",
   "Phone Number": "Phone Number",
-
+"Card Holder name": "Card Holder name",
+  "Expiry Date": "Expiry Date",
   "Back to": "Back to",
   "page": "page",
   "Reset Password": "Reset Password",

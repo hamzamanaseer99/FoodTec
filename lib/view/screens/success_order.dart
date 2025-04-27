@@ -172,29 +172,29 @@ class SuccessOrder extends StatelessWidget {
                     ),
                     SizedBox(height: responsiveHeight(context, 32)),
                     Center(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => LiveTrackScreen()),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: responsiveWidth(context, 40),
-                            vertical: responsiveHeight(context, 16),
+                      child: SizedBox(
+                        width: responsiveWidth(context, 327), // ثابت
+                        height: responsiveWidth(context, 57), // ثابت
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => LiveTrackScreen()),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xff25AE4B),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
                           ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        child: Text(
-                          'Track Your Order'.tr(),
-                          style: TextStyle(
-                            fontSize: responsiveWidth(context, 18),
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
+                          child: Text(
+                            'Track Your Order'.tr(),
+                            style: TextStyle(
+                              fontSize: responsiveWidth(context, 18),
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),

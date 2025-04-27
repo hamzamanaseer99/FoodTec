@@ -367,6 +367,7 @@
 // }
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/update_information_profile_cubit.dart';
@@ -448,11 +449,12 @@ class _UpdateInformationScreenState extends State<UpdateInformationScreen> {
                           children: [
                             BackButton(color: textColor),
                             Text(
-                              'Profile',
+                              'Profile'.tr(),
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w600,
-                                color: Theme.of(context).colorScheme.onPrimary,
+                                color: isDark ? Colors.white : Colors.black,
+
                               ),
                             ),
                           ],

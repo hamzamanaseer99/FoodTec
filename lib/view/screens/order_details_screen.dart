@@ -678,7 +678,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
             MaterialPageRoute(builder: (context) => LiveTrackScreen()));
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.green,
+        backgroundColor: Color(0xff25AE4B),
         minimumSize: Size(double.infinity, 56),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),

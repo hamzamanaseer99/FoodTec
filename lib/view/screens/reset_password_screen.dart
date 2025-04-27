@@ -206,7 +206,7 @@ class _ResetPasswordState extends State<ResetPasswordScreen> {
                                   backgroundColor: Color(0xff25AE4B), // ✅ جعل الزر أبيض
                                   minimumSize: Size(screenWidth * 0.8, 50), // ✅ تناسب العرض والارتفاع
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12), // ✅ نفس الزوايا الدائرية
+                                    borderRadius: BorderRadius.circular(10), // ✅ نفس الزوايا الدائرية
                                   ),
                                   elevation: 0, // ✅ إلغاء تأثير الرفع الأساسي للاعتماد على الظل المخصص
                                 ),
