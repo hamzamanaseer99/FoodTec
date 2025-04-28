@@ -346,14 +346,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   Row(
                     children: [
                       Expanded(
-                        flex: 3,
+                        flex: 5,
                         child: Container(
                           height: responsiveHeight(context, 48),
                           decoration: BoxDecoration(
                             color: isDarkMode ? Colors.grey[850] : Colors.white,
                             borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(10),
-                              bottomRight: Radius.circular(10)
+                              topLeft: Radius.circular(10),
+                              bottomLeft: Radius.circular(10)
                             ),
                             border: Border.all(
                               color: isDarkMode ? Colors.white54 : Color(0xffD6D6D6),
@@ -391,15 +391,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             style: TextButton.styleFrom(
                               backgroundColor: isDarkMode
                                   ? Colors.green.withOpacity(0.2)
-                                  : const Color(0xff25AE4B).withOpacity(0.1),
+                                  :  Color(0xff25AE4B),
                               foregroundColor:
                               isDarkMode ? Colors.greenAccent : const Color(0xff25AE4B),
                               padding: const EdgeInsets.symmetric(horizontal: 12),
                               shape: RoundedRectangleBorder(
 
                                 borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(10),
-                                  bottomLeft: Radius.circular(10)
+                                  topRight: Radius.circular(10),
+                                  bottomRight: Radius.circular(10)
+
 
 
                                 ),
@@ -412,7 +413,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             child: Text(
                               'Add'.tr(),
                               style: TextStyle(
-                                color: isDarkMode ?  Color(0xff25AE4B) : const Color(0xff4FAF5A),
+                                color: isDarkMode ?  Colors.white:  Colors.white,
                                 fontSize: responsiveWidth(context, 14),
                                 fontWeight: FontWeight.w600,
                               ),
