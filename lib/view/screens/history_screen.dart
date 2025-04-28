@@ -35,10 +35,10 @@ class _HistoryTabState extends State<HistoryTab> {
     return ListView.builder(
 
       padding: EdgeInsets.only(
-        top: MediaQuery.of(context).size.height *0.0,
+        top:responsiveHeight(context, 32),
         bottom: responsiveHeight(context, 16),
-        left: responsiveWidth(context, 16),
-        right: responsiveWidth(context, 16),
+        left: responsiveWidth(context, 20),
+        right: responsiveWidth(context, 20),
       ),
       itemCount: historyItems.length,
       itemBuilder: (context, index) {
@@ -58,100 +58,104 @@ class _HistoryTabState extends State<HistoryTab> {
   }
 
   Widget _buildHistoryItem(BuildContext context, OrderHistory order, bool isDarkMode, String truncatedOrderId) {
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(
+    return Container(
+      decoration: BoxDecoration(
+        color: isDarkMode ? Colors.black : Colors.white,
+        border: Border.all(
+          color: const Color(0xffDBF4D1),
+          width: 1,
+        ),
         borderRadius: BorderRadius.circular(12),
       ),
-      color: isDarkMode ? Color(0xFF1E1E1E) : Colors.white, // Change background color
-      child: Padding(
-        padding: EdgeInsets.all(responsiveWidth(context, 16)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "طلب #$truncatedOrderId",
-                  style: TextStyle(
-                    fontSize: responsiveWidth(context, 16),
-                    fontWeight: FontWeight.bold,
-                    color: isDarkMode ? Colors.white : Colors.black, // Change text color
-                  ),
-                ),
-              ],
+      padding: EdgeInsets.all(responsiveWidth(context, 18)),
+      child: Row(
+        children: [
+          // Product Image
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.asset(
+              order.items.first.product.image,
+              width: responsiveWidth(context, 60),
+              height: responsiveWidth(context, 60),
+              fit: BoxFit.cover,
             ),
-            SizedBox(height: responsiveHeight(context, 8)),
-            ...order.items.map((item) => Padding(
-              padding: EdgeInsets.only(bottom: responsiveHeight(context, 8)),
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      item.product.image,
-                      width: responsiveWidth(context, 40),
-                      height: responsiveWidth(context, 40),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  SizedBox(width: responsiveWidth(context, 8)),
-                  Expanded(
-                    child: Text(
-                      "${item.quantity}x ${item.product.name}",
-                      style: TextStyle(
-                        fontSize: responsiveWidth(context, 14),
-                        color: isDarkMode ? Colors.white : Colors.black, // Change text color
-                      ),
-                    ),
-                  ),
-                  Text(
-                    "\$${(item.product.price * item.quantity).toStringAsFixed(2)}",
-                    style: TextStyle(
-                      fontSize: responsiveWidth(context, 14),
-                      color: isDarkMode ? Colors.white : Colors.black, // Change text color
-                    ),
-                  ),
-                ],
-              ),
-            )).toList(),
-            const Divider(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          ),
+          SizedBox(width: responsiveWidth(context, 12)),
+
+          // Product Info
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ElevatedButton(
-                  onPressed: () => _reorderItems(context, order.items),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: responsiveWidth(context, 16),
-                      vertical: responsiveHeight(context, 8),
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: Text(
-                    'إعادة الطلب',
-                    style: TextStyle(
-                      fontSize: responsiveWidth(context, 14),
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
                 Text(
-                  "طلب #$truncatedOrderId",
+                  order.items.first.product.name,
                   style: TextStyle(
                     fontSize: responsiveWidth(context, 16),
                     fontWeight: FontWeight.bold,
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
+
+                SizedBox(height: responsiveHeight(context, 8)),
+                Text(
+                  "\$${order.items.first.product.price.toStringAsFixed(2)}",
+                  style: TextStyle(
+                    fontSize: responsiveWidth(context, 18),
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green,
+                  ),
+                ),
               ],
             ),
-          ],
-        ),
+          ),
+
+          // Date and Reorder Button
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    Icons.access_time,
+                    color: Colors.green,
+                    size: responsiveWidth(context, 16),
+                  ),
+                  SizedBox(width: responsiveWidth(context, 4)),
+                  Text(
+                    DateFormat('d.M.y').format(order.date),
+                    style: TextStyle(
+                      fontSize: responsiveWidth(context, 14),
+                      fontWeight: FontWeight.bold,
+                      color: isDarkMode ? Colors.white : Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: responsiveHeight(context, 12)),
+              GestureDetector(
+                onTap: () => _reorderItems(context, order.items),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.refresh,
+                      color: Colors.green,
+                      size: responsiveWidth(context, 18),
+                    ),
+                    SizedBox(width: responsiveWidth(context, 4)),
+                    Text(
+                      "Reorder",
+                      style: TextStyle(
+                        fontSize: responsiveWidth(context, 14),
+                        fontWeight: FontWeight.bold,
+                        color: isDarkMode ? Colors.white : Colors.green,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
