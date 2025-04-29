@@ -5,6 +5,7 @@ import 'package:foodtek/responsive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../cubit/login_cubit.dart';
 import '../../homescreen.dart';
+import '../../model/user_location.dart';
 import 'reset_password_screen.dart';
 import 'signup_screen.dart';
 import 'widgets/email_widget.dart';
@@ -12,7 +13,9 @@ import 'widgets/password_widget.dart';
 import 'widgets/social_loginbutton_widget.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  final UserLocation? userLocation; // نضيف متغير لاستقبال اللوكيشن
+
+  const LoginScreen({super.key, this.userLocation});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();

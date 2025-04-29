@@ -790,7 +790,7 @@ class ProductCard extends StatelessWidget {
                   responsiveWidth(context, 4),
                   responsiveWidth(context, 12),
                   responsiveWidth(context, 4),
-                  responsiveWidth(context, 5),
+                  responsiveWidth(context, 10),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -876,7 +876,7 @@ class ProductCard extends StatelessWidget {
           Positioned(
             left: 0,
             right: 0,
-            bottom: isSmallScreen ? responsiveWidth(context, 15) : responsiveWidth(context, 10), // أسفل يستجيب
+            bottom: isSmallScreen ? responsiveWidth(context, 10) : responsiveWidth(context, 5),
             child: Align(
               alignment: Alignment.center,
               child: SizedBox(
