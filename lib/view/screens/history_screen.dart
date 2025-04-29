@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,8 +5,6 @@ import 'package:foodtek/cubit/cart_cubit.dart';
 import 'package:foodtek/cubit/history_cubit.dart';
 import 'package:foodtek/model/orderhistory.dart';
 import 'package:foodtek/responsive.dart';
-
-
 
 class HistoryTab extends StatefulWidget {
   const HistoryTab({super.key});
@@ -31,33 +28,49 @@ class _HistoryTabState extends State<HistoryTab> {
         ],
       );
     }
+return ListView.builder(
+  padding: EdgeInsets.only(
+    top: responsiveHeight(context, 32),
+    bottom: responsiveHeight(context, 16),
+    left: responsiveWidth(context, 20),
+    right: responsiveWidth(context, 20),
+  ),
+  itemCount: historyItems.length + 1, // زيادة العدد بواحد للزر
+  itemBuilder: (context, index) {
+    if (index < historyItems.length) {
+      final order = historyItems[index];
+      final truncatedOrderId =
+          order.id.length >= 8 ? order.id.substring(0, 8) : order.id;
 
-    return ListView.builder(
-
-      padding: EdgeInsets.only(
-        top:responsiveHeight(context, 32),
-        bottom: responsiveHeight(context, 16),
-        left: responsiveWidth(context, 20),
-        right: responsiveWidth(context, 20),
-      ),
-      itemCount: historyItems.length,
-      itemBuilder: (context, index) {
-        final order = historyItems[index];
-        final truncatedOrderId = order.id.length >= 8 ? order.id.substring(0, 8) : order.id;
-
-        return Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            constraints: const BoxConstraints(maxWidth: 600),
-            margin: EdgeInsets.only(bottom: responsiveHeight(context, 16)),
-            child: _buildHistoryItem(context, order, isDarkMode, truncatedOrderId),
+      return Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 600),
+          margin: EdgeInsets.only(bottom: responsiveHeight(context, 16)),
+          child: _buildHistoryItem(context, order, isDarkMode, truncatedOrderId),
+        ),
+      );
+    } else {
+      // الزر يظهر بعد العناصر كلها
+      return Center(
+        child: TextButton(
+          onPressed: () {
+            // هنا تضيف منطق تحميل المزيد (مثلاً استدعاء دالة في الـCubit)
+          },
+          child: Text(
+            "LoadMore".tr(),
+            style: const TextStyle(color: Colors.green),
           ),
-        );
-      },
-    );
+        ),
+      );
+    }
+  },
+);
+
   }
 
-  Widget _buildHistoryItem(BuildContext context, OrderHistory order, bool isDarkMode, String truncatedOrderId) {
+  Widget _buildHistoryItem(BuildContext context, OrderHistory order,
+      bool isDarkMode, String truncatedOrderId) {
     return Container(
       decoration: BoxDecoration(
         color: isDarkMode ? Colors.black : Colors.white,
@@ -95,7 +108,6 @@ class _HistoryTabState extends State<HistoryTab> {
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
-
                 SizedBox(height: responsiveHeight(context, 8)),
                 Text(
                   "\$${order.items.first.product.price.toStringAsFixed(2)}",
@@ -195,7 +207,8 @@ class _HistoryTabState extends State<HistoryTab> {
             'History Empty'.tr(),
             style: TextStyle(
               fontSize: responsiveWidth(context, 32),
-              color: isDarkMode ? Colors.white : Colors.black, // Change text color
+              color:
+                  isDarkMode ? Colors.white : Colors.black, // Change text color
             ),
           ),
           SizedBox(height: responsiveHeight(context, 16)),
@@ -203,7 +216,9 @@ class _HistoryTabState extends State<HistoryTab> {
             'You don’t have order any foods before'.tr(),
             style: TextStyle(
               fontSize: responsiveWidth(context, 16),
-              color: isDarkMode ? Colors.white70 : Colors.black54, // Change text color
+              color: isDarkMode
+                  ? Colors.white70
+                  : Colors.black54, // Change text color
             ),
           ),
         ],
