@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/home_cubit.dart';
 import 'package:foodtek/view/screens/widgets/category_bar.dart';
+import 'package:foodtek/view/screens/widgets/location_title_in_appbar_widget.dart';
 import 'package:foodtek/view/screens/widgets/notification_icon.dart';
 import 'package:foodtek/view/screens/widgets/recommended_products.dart';
 import 'package:foodtek/view/screens/widgets/search_widget.dart';
@@ -31,7 +32,7 @@ class MainScreen extends StatelessWidget {
           backgroundColor: theme.colorScheme.background,
           elevation: 0,
           leading: _buildLocationIcon(theme),
-          title: _buildLocationTitle(theme),
+          title: LocationTitleWidget(theme: theme),
           actions: [NotificationIcon()],
         ),
         body: Column(
@@ -104,27 +105,5 @@ class MainScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildLocationTitle(ThemeData theme) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Current location".tr(),
-          style: TextStyle(
-            fontSize: 12,
-            color: theme.textTheme.bodySmall!.color,
-          ),
-        ),
-        SizedBox(height: 4),
-        Text(
-          "Jl. Soekarno Hatta 15A...",
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-            color: theme.textTheme.bodyLarge!.color,
-          ),
-        ),
-      ],
-    );
-  }
+
 }

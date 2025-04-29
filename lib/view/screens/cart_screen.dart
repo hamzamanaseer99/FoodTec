@@ -1305,6 +1305,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:foodtek/cubit/cart_cubit.dart';
 import 'package:foodtek/responsive.dart';
+import 'package:foodtek/view/screens/widgets/location_title_in_appbar_widget.dart';
 import 'package:foodtek/view/screens/widgets/notification_icon.dart';
 import 'package:foodtek/view/screens/widgets/section_price_widget.dart';
 import 'package:foodtek/view/screens/widgets/selector_widget.dart';
@@ -1329,6 +1330,7 @@ class _CartScreenState extends State<CartScreen> {
     final subTotal = cartItems.fold(0.0, (sum, item) => sum + (item.product.price * item.quantity));
     final deliveryCharge = 3.0; // Example value, you can customize
     final discount = 2.0;
+    final theme = Theme.of(context);
 
 
 
@@ -1341,7 +1343,7 @@ class _CartScreenState extends State<CartScreen> {
           backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
           elevation: 0,
           leading: _buildLocationIcon(),
-          title: _buildLocationTitle(context),
+          title: LocationTitleWidget(theme: theme),
           actions:  [NotificationIcon()],
           bottom:  TabBar(
             labelColor: Theme.of(context).brightness == Brightness.dark
@@ -1550,13 +1552,3 @@ Widget _buildLocationIcon() {
   );
 }
 
-Widget _buildLocationTitle(context) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text("Current location".tr(), style: TextStyle(fontSize: 12,color: Theme.of(context).textTheme.bodyLarge?.color,)),
-      SizedBox(height: 4),
-      Text("Jl. Soekarno Hatta 15A...", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
-    ],
-  );
-}

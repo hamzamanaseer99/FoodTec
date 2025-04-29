@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foodtek/responsive.dart';
+import 'package:foodtek/view/screens/widgets/location_title_in_appbar_widget.dart';
 import 'package:foodtek/view/screens/widgets/min_max_container_widget.dart';
 import 'package:foodtek/view/screens/widgets/notification_icon.dart';
 import 'package:foodtek/view/screens/widgets/select_table_card_widget.dart';
@@ -23,13 +24,15 @@ class _FilterScreenState extends State<FilterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         leading: _buildLocationIcon(),
-        title: _buildLocationTitle(context),
+        title: LocationTitleWidget(theme: theme),
         actions: [NotificationIcon()],
       ),
       body: Padding(
@@ -123,29 +126,6 @@ class _FilterScreenState extends State<FilterScreen> {
     );
   }
 
-  Widget _buildLocationTitle(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Current location".tr(),
-          style: TextStyle(
-            fontSize: 12,
-            color: Theme.of(context).textTheme.bodySmall?.color?.withOpacity(0.6),
-          ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          "Jl. Soekarno Hatta 15A...",
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-            color: Theme.of(context).textTheme.bodyLarge?.color,
-          ),
-        ),
-      ],
-    );
-  }
 
   Widget _buildCategoryRow(BuildContext context) {
     return Row(
