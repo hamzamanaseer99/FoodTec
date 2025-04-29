@@ -63,6 +63,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => HistoryCubit()),
 
 
+
       ],
       child: BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, themeMode) {

@@ -244,12 +244,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     if (location != null) {
       try {
         // استخدم مكتبة geocoding لتحويل الإحداثيات إلى عنوان
-        List<Placemark> placemarks = await placemarkFromCoordinates(location.latitude, location.longitude);
+        List<Placemark> placemarks = await placemarkFromCoordinates(
+            location.latitude, location.longitude);
         if (placemarks.isNotEmpty) {
           // اختر أول عنوان
           final placemark = placemarks.first;
           setState(() {
-            selectedAddressTitle = "${placemark.street}, ${placemark.locality}, ${placemark.country}";
+            selectedAddressTitle =
+                "${placemark.street}, ${placemark.locality}, ${placemark.country}";
           });
         }
       } catch (e) {
@@ -261,19 +263,25 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   Widget build(BuildContext context) {
     final cartItems = context.watch<CartCubit>().state;
-    final subTotal = cartItems.fold(0.0, (sum, item) => sum + (item.product.price * item.quantity));
+    final subTotal = cartItems.fold(
+        0.0, (sum, item) => sum + (item.product.price * item.quantity));
     final deliveryCharge = 3.0;
     final discount = 2.0;
-    final total = context.watch<CartCubit>().totalWithCharges(deliveryCharge: deliveryCharge, discount: discount); // إجمالي السعر بعد الخصم والشحن
+    final total = context.watch<CartCubit>().totalWithCharges(
+        deliveryCharge: deliveryCharge,
+        discount: discount); // إجمالي السعر بعد الخصم والشحن
 
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark; // التحقق من الوضع الداكن
+    final isDarkMode = Theme.of(context).brightness ==
+        Brightness.dark; // التحقق من الوضع الداكن
 
     return Scaffold(
-      backgroundColor: isDarkMode ? Colors.black : Colors.white, // تغيير الخلفية بناءً على الوضع
+      backgroundColor: isDarkMode ? Colors.black : Colors.white,
+      // تغيير الخلفية بناءً على الوضع
       appBar: AppBar(
         backgroundColor: isDarkMode ? Colors.black26 : Colors.white,
         elevation: 0,
-        automaticallyImplyLeading: false, // نوقف الزر التلقائي
+        automaticallyImplyLeading: false,
+        // نوقف الزر التلقائي
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
@@ -304,7 +312,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 20),
                       fontWeight: FontWeight.w600,
-                      color: isDarkMode ? Colors.white : Colors.black, // تغيير اللون حسب الوضع
+                      color: isDarkMode
+                          ? Colors.white
+                          : Colors.black, // تغيير اللون حسب الوضع
                     ),
                   ),
                   SizedBox(height: responsiveHeight(context, 18)),
@@ -313,20 +323,28 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 18),
                       fontWeight: FontWeight.w600,
-                      color: isDarkMode ? Colors.white : Colors.black, // تغيير اللون
+                      color: isDarkMode
+                          ? Colors.white
+                          : Colors.black, // تغيير اللون
                     ),
                   ),
 
                   // عرض الموقع المحدد باستخدام العنوان النصي
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: responsiveHeight(context, 6)),
+                    padding: EdgeInsets.symmetric(
+                        vertical: responsiveHeight(context, 6)),
                     child: ListTile(
-                      leading: Icon(Icons.location_on, color: isDarkMode ? Colors.greenAccent : Color(0xff4FAF5A)),
+                      leading: Icon(Icons.location_on,
+                          color: isDarkMode
+                              ? Colors.greenAccent
+                              : Color(0xff4FAF5A)),
                       title: Text(
                         selectedAddressTitle,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: isDarkMode ? Colors.white : Colors.black, // تغيير اللون
+                          color: isDarkMode
+                              ? Colors.white
+                              : Colors.black, // تغيير اللون
                         ),
                       ),
                     ),
@@ -339,7 +357,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 18),
                       fontWeight: FontWeight.w600,
-                      color: isDarkMode ? Colors.white : Colors.black, // تغيير اللون
+                      color: isDarkMode
+                          ? Colors.white
+                          : Colors.black, // تغيير اللون
                     ),
                   ),
                   SizedBox(height: responsiveHeight(context, 16)),
@@ -352,11 +372,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           decoration: BoxDecoration(
                             color: isDarkMode ? Colors.grey[850] : Colors.white,
                             borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              bottomLeft: Radius.circular(10)
-                            ),
+                                topLeft: Radius.circular(10),
+                                bottomLeft: Radius.circular(10)),
                             border: Border.all(
-                              color: isDarkMode ? Colors.white54 : Color(0xffD6D6D6),
+                              color: isDarkMode
+                                  ? Colors.white54
+                                  : Color(0xffD6D6D6),
                             ),
                           ),
                           child: TextField(
@@ -368,7 +389,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             decoration: InputDecoration(
                               hintText: 'Enter Your Promo'.tr(),
                               hintStyle: TextStyle(
-                                color: isDarkMode ? Colors.white54 : Color(0xff878787),
+                                color: isDarkMode
+                                    ? Colors.white54
+                                    : Color(0xff878787),
                                 fontSize: responsiveWidth(context, 14),
                               ),
                               contentPadding: EdgeInsets.symmetric(
@@ -391,21 +414,20 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             style: TextButton.styleFrom(
                               backgroundColor: isDarkMode
                                   ? Colors.green.withOpacity(0.2)
-                                  :  Color(0xff25AE4B),
-                              foregroundColor:
-                              isDarkMode ? Colors.greenAccent : const Color(0xff25AE4B),
-                              padding: const EdgeInsets.symmetric(horizontal: 12),
+                                  : Color(0xff25AE4B),
+                              foregroundColor: isDarkMode
+                                  ? Colors.greenAccent
+                                  : const Color(0xff25AE4B),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 12),
                               shape: RoundedRectangleBorder(
-
                                 borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(10),
-                                  bottomRight: Radius.circular(10)
-
-
-
-                                ),
+                                    topRight: Radius.circular(10),
+                                    bottomRight: Radius.circular(10)),
                                 side: BorderSide(
-                                  color: isDarkMode ? Color(0xff25AE4B) : const Color(0xff25AE4B),
+                                  color: isDarkMode
+                                      ? Color(0xff25AE4B)
+                                      : const Color(0xff25AE4B),
                                   width: 1,
                                 ),
                               ),
@@ -413,7 +435,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             child: Text(
                               'Add'.tr(),
                               style: TextStyle(
-                                color: isDarkMode ?  Colors.white:  Colors.white,
+                                color: isDarkMode ? Colors.white : Colors.white,
                                 fontSize: responsiveWidth(context, 14),
                                 fontWeight: FontWeight.w600,
                               ),
@@ -430,7 +452,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     style: TextStyle(
                       fontSize: responsiveWidth(context, 18),
                       fontWeight: FontWeight.w600,
-                      color: isDarkMode ? Colors.white : Colors.black, // تغيير اللون
+                      color: isDarkMode
+                          ? Colors.white
+                          : Colors.black, // تغيير اللون
                     ),
                   ),
                   RadioWidget(),
@@ -440,27 +464,25 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             SizedBox(height: responsiveHeight(context, 16)),
             Column(
               children: [
-    buildCheckoutSection(
-    context,
-    subTotal,
-    deliveryCharge,
-    discount,
-    onPlaceOrderTap: () {
-    Navigator.pushNamed(context, '/payment', arguments: {
-    'subTotal': subTotal,
-    'total': total,
-    'address': selectedAddressTitle,
-    'paymentOption': selectedPaymentOption,
-    });
-    },
-    ),
-    ],
-            ),
+                buildCheckoutSection(
+                  context,
+                  subTotal,
+                  deliveryCharge,
+                  discount,
+                  onPlaceOrderTap: () {
+                    Navigator.pushNamed(context, '/payment', arguments: {
+                      'subTotal': subTotal,
+                      'total': total,
+                      'address': selectedAddressTitle,
+                      'paymentOption': selectedPaymentOption,
+                    });
+                  },
+                ),
               ],
             ),
-
+          ],
         ),
-
+      ),
     );
   }
 }
