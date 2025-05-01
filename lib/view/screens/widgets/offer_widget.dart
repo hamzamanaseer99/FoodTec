@@ -1,76 +1,104 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:foodtek/responsive.dart';
 
 class OfferWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width; // عرض الشاشة
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Container(
-      width: screenWidth * 0.9, // عرض متجاوب (90% من الشاشة)
-      height: screenWidth * 0.35,
-      decoration: BoxDecoration(
-        color: Color(0xFF2BAE4A), // اللون الأخضر الرئيسي
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-
-            color: Color(0xffD7D7D7),
-            spreadRadius: 0,
-            blurRadius: 4,
-            offset: Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Row(
+      width: double.infinity,
+      height: responsiveHeight(context, 120),
+      child: Stack(
         children: [
-          // ✅ القسم الخاص بالنص
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Experience our delicious new dish".tr(),
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: screenWidth * 0.035,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    "30% OFF".tr(),
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: screenWidth * 0.055,
-                      fontWeight: FontWeight.w700,
-                    fontFamily: "League Spartan",
-                    //  fontFamily: "League Spartan",
-                    ),
-                  ),
-                ],
+          Container(
+            decoration: BoxDecoration(
+              color: Color(0xFF2BAE4A),
+              borderRadius: BorderRadius.circular(8),
+             
+            ),
+          ),
+
+
+          Positioned(
+            top: -20,
+            right: screenWidth * 0.48,
+            child: Container(
+              width: responsiveWidth(context, 40),
+              height: responsiveHeight(context, 40),
+              decoration: BoxDecoration(
+                border: Border.all(color: Color(0xFFFEDC5A), width: 10),
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.transparent,
               ),
             ),
           ),
 
-          // ✅ القسم الخاص بالصورة
-          Expanded(
-            flex: 2,
-            child: ClipRRect(
-              borderRadius: BorderRadius.horizontal(
-                  right: Radius.circular(15)
-              ),
-
-              child: Image.asset(
-                width: 370,
-                height: 141,
-                "assets/images/pizza1.png", // تأكد من وضع الصورة في مجلد assets
-                fit: BoxFit.fitHeight,
+          // Yellow circle bottom left
+          Positioned(
+            bottom: -20,
+            left: -10,
+            child: Container(
+              width: responsiveWidth(context, 40),
+              height: responsiveHeight(context, 40),
+              decoration: BoxDecoration(
+                border: Border.all(color: Color(0xFFFEDC5A), width: 10),
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.transparent,
               ),
             ),
+          ),
+
+          Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: responsiveWidth(context, 20),),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Experience our delicious new dish".tr(),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: responsiveWidth(context, 16),
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      SizedBox(height: responsiveHeight(context, 8)),
+                      Text(
+                        "30% OFF".tr(),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: responsiveWidth(context, 32),
+                          fontWeight: FontWeight.w700,
+                          fontFamily: "League Spartan",
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              // Right image section
+              Expanded(
+                flex: 2,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(8),
+                    bottomRight: Radius.circular(8),
+                  ),
+                  child: Image.asset(
+                    "assets/images/pizza1.png",
+                    fit: BoxFit.cover,
+                    height: double.infinity,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
