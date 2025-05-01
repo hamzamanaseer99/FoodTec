@@ -19,6 +19,7 @@ import 'cubit/login_cubit.dart';
 import 'cubit/reset_password_cubit.dart';
 import 'cubit/signup_cubit.dart';
 import 'cubit/theme_cubit.dart';
+import 'intro_screen.dart';
 import 'model/location_repository.dart';
 import 'view/screens/splash_screen.dart';
 
@@ -50,7 +51,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => ThemeCubit()),
-        BlocProvider(create: (context) => LocationCubit(LocationRepository())),
+        BlocProvider(create: (_) => LocationCubit(LocationRepository()),
+    child: IntroScreen(),),
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => SignupCubit()),
         BlocProvider(create: (context) => BottomNavCubit()),
@@ -61,6 +63,7 @@ class MyApp extends StatelessWidget {
        // BlocProvider(create: (context) => CartCubit()),
         BlocProvider(create: (_) => CartCubit()),
         BlocProvider(create: (context) => HistoryCubit()),
+
 
 
 

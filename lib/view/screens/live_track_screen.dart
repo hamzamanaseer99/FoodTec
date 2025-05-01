@@ -7,6 +7,7 @@ import 'package:foodtek/view/screens/order_details_screen.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../cubit/cart_cubit.dart';
+import '../../cubit/location_cubit.dart';
 import '../../homescreen.dart';
 
 class LiveTrackScreen extends StatefulWidget {
@@ -174,7 +175,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
             SizedBox(height: responsiveHeight(context, 12)),
             _buildDeliveryPersonInfo(isDarkMode),
             const Divider(thickness: 0.5),
-            _buildLocationSection(isDarkMode),
+            _buildLocationSection(context, isDarkMode),
             if (delivered) ...[
               SizedBox(height: responsiveHeight(context, 16)),
               _buildConfirmButton(context),
@@ -335,7 +336,30 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
     );
   }
 
-  Widget _buildLocationSection(bool isDarkMode) {
+  // Widget _buildLocationSection(bool isDarkMode) {
+  //   return Padding(
+  //     padding: EdgeInsets.only(top: responsiveHeight(context, 10)),
+  //     child: Row(
+  //       children: [
+  //         const Icon(Icons.location_on, color: Colors.green, size: 20),
+  //         SizedBox(width: responsiveWidth(context, 12)),
+  //         Expanded(
+  //           child: Text(
+  //             '123 Al-Madina Street, Abdali, Amman, Jordan'.tr(),
+  //             style: TextStyle(
+  //               fontSize: responsiveWidth(context, 12),
+  //               color: Theme.of(context).brightness == Brightness.dark
+  //                   ? Colors.white70
+  //                   : Color(0xff878787),
+  //             ),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
+
+  Widget _buildLocationSection(BuildContext context, bool isDarkMode) {
     return Padding(
       padding: EdgeInsets.only(top: responsiveHeight(context, 10)),
       child: Row(
@@ -343,41 +367,66 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
           const Icon(Icons.location_on, color: Colors.green, size: 20),
           SizedBox(width: responsiveWidth(context, 12)),
           Expanded(
-            child: Text(
-              '123 Al-Madina Street, Abdali, Amman, Jordan'.tr(),
-              style: TextStyle(
-                fontSize: responsiveWidth(context, 12),
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.white70
-                    : Color(0xff878787),
-              ),
+            child: BlocBuilder<LocationCubit, LocationState>(
+              builder: (context, state) {
+                String locationText = 'Loading location...'.tr();
+
+                if (state is LocationLoading) {
+                  locationText = 'Loading location...'.tr();
+                } else if (state is LocationLoaded) {
+                  return FutureBuilder<List<Placemark>>(
+                    future: placemarkFromCoordinates(
+                      state.location.latitude,
+                      state.location.longitude,
+                    ),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Text(
+                          'Loading address...'.tr(),
+                          style: TextStyle(
+                            fontSize: responsiveWidth(context, 12),
+                            color: isDarkMode ? Colors.white70 : Color(0xff878787),
+                          ),
+                        );
+                      } else if (snapshot.hasError || !snapshot.hasData || snapshot.data!.isEmpty) {
+                        return Text(
+                          'Unable to fetch address'.tr(),
+                          style: TextStyle(
+                            fontSize: responsiveWidth(context, 12),
+                            color: isDarkMode ? Colors.white70 : Color(0xff878787),
+                          ),
+                        );
+                      } else {
+                        final place = snapshot.data!.first;
+                        final address = '${place.street}, ${place.locality}';
+                        return Text(
+                          address,
+                          style: TextStyle(
+                            fontSize: responsiveWidth(context, 12),
+                            color: isDarkMode ? Colors.white70 : Color(0xff878787),
+                          ),
+                        );
+                      }
+                    },
+                  );
+                } else if (state is LocationError) {
+                  locationText = 'Location not available'.tr();
+                }
+
+                return Text(
+                  locationText,
+                  style: TextStyle(
+                    fontSize: responsiveWidth(context, 12),
+                    color: isDarkMode ? Colors.white70 : Color(0xff878787),
+                  ),
+                );
+              },
             ),
           ),
         ],
       ),
     );
   }
-
-  // Widget _buildConfirmButton(BuildContext context) {
-  //   return ElevatedButton(
-  //     style: ElevatedButton.styleFrom(
-  //       backgroundColor: const Color(0xff25AE4B),
-  //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-  //       padding: EdgeInsets.symmetric(vertical: responsiveHeight(context, 12)),
-  //     ),
-  //     onPressed: () => _showConfirmationDialog(context),
-  //     child: Center(
-  //       child: Text(
-  //         "Confirm Receipt".tr(),
-  //         style: TextStyle(
-  //           fontSize: responsiveWidth(context, 20),
-  //           color: Colors.white,
-  //           fontWeight: FontWeight.bold,
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
   Widget _buildConfirmButton(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(

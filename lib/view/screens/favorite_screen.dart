@@ -2,6 +2,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodtek/view/screens/widgets/location_title_in_appbar_widget.dart';
 import 'package:foodtek/view/screens/widgets/menu_widget.dart';
 import 'package:foodtek/view/screens/widgets/notification_icon.dart';
 import 'package:foodtek/view/screens/widgets/search_widget.dart';
@@ -15,11 +16,12 @@ class FavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final backgroundColor = isDark ? Colors.black : Colors.white;
     final textColor = isDark ? Colors.white : Colors.black;
     final appBarColor = isDark ? Colors.black : Colors.white;
-    final appBarIconColor = isDark ? Colors.white : Colors.black;
+    final appBarIconColor = isDark ? Colors.white : Colors.green;
     final favoritesTitleColor = isDark ? Colors.white : Colors.black;
 
     return Scaffold(
@@ -28,7 +30,7 @@ class FavoriteScreen extends StatelessWidget {
         backgroundColor: appBarColor,
         elevation: 0,
         leading: _buildLocationIcon(appBarIconColor),
-        title: _buildLocationTitle(favoritesTitleColor),
+        title: LocationTitleWidget(theme: theme),
         actions: [NotificationIcon()],
       ),
       body: Padding(

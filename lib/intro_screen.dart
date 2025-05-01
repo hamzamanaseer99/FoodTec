@@ -437,9 +437,12 @@
 // }
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/homescreen.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'cubit/location_cubit.dart';
 
 
 class IntroScreen extends StatefulWidget {
@@ -645,85 +648,194 @@ class _IntroScreenState extends State<IntroScreen> {
     );
   }
 
+  //
+  // Widget _buildLocationPermissionPage() {
+  //   return Scaffold(
+  //
+  //     body: Stack(
+  //
+  //       children: [
+  //
+  //
+  //         Center(
+  //           child: Column(
+  //             mainAxisAlignment: MainAxisAlignment.center,
+  //             crossAxisAlignment: CrossAxisAlignment.center,
+  //             children: [
+  //
+  //               Image.asset(
+  //                 'assets/images/TakeAway2.png',
+  //                 width: 328,
+  //                 height: 328,
+  //               ),
+  //               SizedBox(height: 20),
+  //               Text(
+  //                 'Enable Location'.tr(),
+  //                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500, color: Color(0xFF455A64)),
+  //                 textAlign: TextAlign.center,
+  //               ),
+  //               SizedBox(height: 20),
+  //               SizedBox(
+  //                 width: 335,
+  //                 child: Text(
+  //                   'To provide better service, we need access to your location. Please enable location services.'.tr(),
+  //                   style: TextStyle(fontSize: 16, color: Color(0xFF455A64)),
+  //                   textAlign: TextAlign.center,
+  //                 ),
+  //               ),
+  //               SizedBox(height: 40),
+  //
+  //               ElevatedButton(
+  //                 onPressed: () async {
+  //                   await _enableLocation();
+  //                 },
+  //                 style: ElevatedButton.styleFrom(
+  //                   backgroundColor: Color(0xff25AE4B),
+  //                   foregroundColor: Colors.white,
+  //                   minimumSize: Size(307, 48),
+  //                   shape: RoundedRectangleBorder(
+  //                     borderRadius: BorderRadius.circular(25),
+  //                   ),
+  //                 ),
+  //                 child: Text(
+  //                   'Enable Location'.tr(),
+  //                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+  //                 ),
+  //               ),
+  //
+  //               SizedBox(height: 20),
+  //
+  //               // زر إلغاء (Cancel)
+  //               TextButton(
+  //                 onPressed: () {
+  //                   Navigator.pushReplacementNamed(context, '/home');
+  //                 },
+  //                 child: Text(
+  //                   'Cancel'.tr(),
+  //                   style: TextStyle(
+  //                     fontSize: 16,
+  //                     color: Colors.white,
+  //                     fontWeight: FontWeight.w600,
+  //                   ),
+  //                 ),
+  //                 style: ElevatedButton.styleFrom(
+  //                   backgroundColor: Colors.grey,
+  //                   foregroundColor: Colors.white,
+  //                   minimumSize: Size(307, 48),
+  //                   shape: RoundedRectangleBorder(
+  //                     borderRadius: BorderRadius.circular(25),
+  //                   ),
+  //                 ),
+  //               ),
+  //             ],
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
   Widget _buildLocationPermissionPage() {
     return Scaffold(
-
       body: Stack(
-
         children: [
-
-
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-
-                Image.asset(
-                  'assets/images/TakeAway2.png',
-                  width: 328,
-                  height: 328,
-                ),
-                SizedBox(height: 20),
-                Text(
-                  'Enable Location'.tr(),
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500, color: Color(0xFF455A64)),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 20),
-                SizedBox(
-                  width: 335,
-                  child: Text(
-                    'To provide better service, we need access to your location. Please enable location services.'.tr(),
-                    style: TextStyle(fontSize: 16, color: Color(0xFF455A64)),
+          BlocListener<LocationCubit, LocationState>(
+            listener: (context, state) {
+              if (state is LocationLoaded) {
+                // إعادة التوجيه إلى الصفحة الرئيسية إذا نجح تحديد الموقع
+                Navigator.pushReplacementNamed(context, '/home');
+              } else if (state is LocationError) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Failed to get location'.tr())),
+                );
+              }
+            },
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/TakeAway2.png',
+                    width: 328,
+                    height: 328,
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    'Enable Location'.tr(),
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFF455A64),
+                    ),
                     textAlign: TextAlign.center,
                   ),
-                ),
-                SizedBox(height: 40),
-
-                ElevatedButton(
-                  onPressed: () async {
-                    await _enableLocation();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xff25AE4B),
-                    foregroundColor: Colors.white,
-                    minimumSize: Size(307, 48),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
+                  SizedBox(height: 20),
+                  SizedBox(
+                    width: 335,
+                    child: Text(
+                      'To provide better service, we need access to your location. Please enable location services.'.tr(),
+                      style: TextStyle(fontSize: 16, color: Color(0xFF455A64)),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                  child: Text(
-                    'Enable Location'.tr(),
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  SizedBox(height: 40),
+                  BlocBuilder<LocationCubit, LocationState>(
+                    builder: (context, state) {
+                      final isLoading = state is LocationLoading;
+
+                      return ElevatedButton(
+                        onPressed: isLoading
+                            ? null
+                            : () async {
+                          context.read<LocationCubit>().getCurrentLocation();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff25AE4B),
+                          foregroundColor: Colors.white,
+                          minimumSize: Size(307, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                        ),
+                        child: isLoading
+                            ? SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: Colors.white,
+                          ),
+                        )
+                            : Text(
+                          'Enable Location'.tr(),
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                        ),
+                      );
+                    },
                   ),
-                ),
-
-                SizedBox(height: 20),
-
-                // زر إلغاء (Cancel)
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/home');
-                  },
-                  child: Text(
-                    'Cancel'.tr(),
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
+                  SizedBox(height: 20),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/home');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey,
+                      foregroundColor: Colors.white,
+                      minimumSize: Size(307, 48),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                    ),
+                    child: Text(
+                      'Cancel'.tr(),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey,
-                    foregroundColor: Colors.white,
-                    minimumSize: Size(307, 48),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
