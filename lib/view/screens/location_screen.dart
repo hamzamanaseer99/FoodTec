@@ -206,35 +206,7 @@ class LocationScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: screenHeight * 0.05),
-                  // ElevatedButton(
-                  //   onPressed: () async {
-                  //     final locationCubit = context.read<LocationCubit>();
-                  //     await locationCubit.getCurrentLocation();
-                  //     final currentState = locationCubit.state;
-                  //
-                  //
-                  //     if (currentState is LocationLoaded) {
-                  //       // طباعة الإحداثيات للتأكد
-                  //       print('الإحداثيات المرسلة:');
-                  //       print('Lat: ${currentState.location.latitude}');
-                  //       print('Lng: ${currentState.location.longitude}');
-                  //
-                  //       // الانتقال للصفحة الرئيسية مع إرسال الإحداثيات
-                  //       Navigator.of(context).push(
-                  //         MaterialPageRoute(
-                  //           builder: (context) => LoginScreen(
-                  //           ),
-                  //         ),
-                  //       );
-                  //     } else if (currentState is LocationError) {
-                  //       ScaffoldMessenger.of(context).showSnackBar(
-                  //         SnackBar(
-                  //           content: Text('فشل في الحصول على الموقع. يرجى التأكد من تفعيل GPS'),
-                  //           duration: Duration(seconds: 3),
-                  //         ),
-                  //       );
-                  //     }
-                  //   },
+
                   ElevatedButton(
                     onPressed: () async {
                       final locationCubit = context.read<LocationCubit>();
