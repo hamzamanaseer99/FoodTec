@@ -29,7 +29,7 @@ class AllScreen extends StatelessWidget {
               'Top Rated'.tr(),
               style: TextStyle(
                 fontWeight: FontWeight.w600,
-                fontSize: 16,
+                fontSize: responsiveWidth(context, 16),
                 color: isDark ? Colors.white : Colors.black, // تغيير لون النص حسب الثيم
               ),
             ),

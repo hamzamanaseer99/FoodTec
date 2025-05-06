@@ -255,7 +255,10 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
                     child: TextField(
                       controller: searchController,
                       decoration: InputDecoration(
-                        hintText: "Find your location".tr(),
+                        hintText: "Find your location".tr(),hintStyle: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xff878787)
+                      ),
                         prefixIcon: Icon(Icons.search, color: Color(0xff25AE4B)),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(40),
@@ -281,57 +284,70 @@ class _SetLocationScreenState extends State<SetLocationScreen> {
             bottom: 100,
             left: 20,
             right: 20,
-            child: Column(
-              children: [
-                // عنوان الموقع
-                Card(
-                  elevation: 4,
-                  margin: EdgeInsets.only(bottom: 16),
-                  color: isDark ? Colors.grey[850] : Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+            child: Container(
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: isDark ? Colors.grey[900] : Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 10,
+                    offset: Offset(0, 4),
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.all(16),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Location Title
+                  Text('Your Location'.tr(),
+                    style: TextStyle(
+                    fontSize: responsiveWidth(context, 12),
+                    color: Color(0xff878787)
+                  ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(12),
                     child: Text(
                       selectedAddressTitle,
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: responsiveWidth(context, 12),
                         fontWeight: FontWeight.bold,
                         color: isDark ? Colors.white : Colors.black,
                       ),
                       textAlign: TextAlign.center,
                     ),
                   ),
-                ),
 
-                // زر تأكيد
-                ElevatedButton(
-                  onPressed: currentLocation == null
-                      ? null
-                      : () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CheckoutScreen(
-                          userLocation: currentLocation!,
+                  // Confirm Button
+                  ElevatedButton(
+                    onPressed: currentLocation == null
+                        ? null
+                        : () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CheckoutScreen(
+                            userLocation: currentLocation!,
+                          ),
                         ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.infinity, 50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      backgroundColor: Color(0xff25AE4B),
                     ),
-                    backgroundColor: Color(0xff25AE4B),
+                    child: Text(
+                      'Set Location'.tr(),
+                      style: TextStyle(fontSize: responsiveWidth(context, 14), color: Colors.white),
+                    ),
                   ),
-                  child: Text(
-                    'Confirm Location'.tr(),
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],

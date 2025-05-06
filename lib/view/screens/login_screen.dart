@@ -145,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 'Login'.tr(),
                                 style: TextStyle(
                                   color: isDarkMode ? Colors.white : Colors.black,
-                                  fontSize: 32,
+                                  fontSize: responsiveWidth(context, 28),
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
@@ -158,43 +158,45 @@ class _LoginScreenState extends State<LoginScreen> {
                               PasswordWidget(passwordEditingController: passwordController),
                               SizedBox(height: responsiveHeight(context, 16)),
                               Row(
-                                mainAxisAlignment:MainAxisAlignment.spaceAround ,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Row(
-                                    children: [
-                                      Checkbox(
-                                        value: rememberMe,
-                                        onChanged: (bool? value) {
-                                          setState(() {
-                                            rememberMe = value ?? false;
-                                          });
-                                        },
-                                        activeColor:  Color(0xff25AE4B),
-                                      ),
-                                      Text(
-                                        "Remember Me".tr(),
-                                        style: TextStyle(
-                                          fontSize: responsiveWidth(context, 12), // ضبط الحجم حسب الشاشة
-                                          fontWeight: FontWeight.w600,
-                                          color: isDarkMode ? Colors.grey[300] : Colors.grey,
+                                  Flexible(
+                                    child: Row(
+                                      children: [
+                                        Checkbox(
+                                          value: rememberMe,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              rememberMe = value ?? false;
+                                            });
+                                          },
+                                          activeColor: Color(0xff25AE4B),
                                         ),
-                                      ),
-
-                                    ],
+                                        Flexible(
+                                          child: Text(
+                                            "Remember Me".tr(),
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              fontSize: responsiveWidth(context, 12),
+                                              fontWeight: FontWeight.w600,
+                                              color: isDarkMode ? Colors.grey[300] : Colors.grey,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   TextButton(
                                     onPressed: () {
                                       Navigator.push(
                                         context,
-                                        MaterialPageRoute(
-                                          builder: (context) => ResetPasswordScreen(),
-                                        ),
+                                        MaterialPageRoute(builder: (context) => ResetPasswordScreen()),
                                       );
                                     },
                                     child: Text(
                                       'Forgot password?'.tr(),
                                       style: TextStyle(
-                                        fontSize: responsiveWidth(context, 12), // ضبط الحجم حسب الشاشة
+                                        fontSize: responsiveWidth(context, 12),
                                         fontWeight: FontWeight.w600,
                                         color: Color(0xff25AE4B),
                                       ),

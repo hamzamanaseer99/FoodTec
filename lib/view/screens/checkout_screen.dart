@@ -218,16 +218,7 @@ class CheckoutScreen extends StatefulWidget {
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
   final TextEditingController promoController = TextEditingController();
-  final List<Map<String, String>> addresses = [
-    {
-      "title": "88 Zurab Gorgiladze St",
-      "subtitle": "Georgia, Batumi",
-    },
-    {
-      "title": "5 Noe Zhordania St",
-      "subtitle": "Georgia, Batumi",
-    },
-  ];
+
 
   int? selectedPaymentOption = 0; // For radio buttons
   String selectedAddressTitle = "No location selected";
@@ -344,7 +335,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           fontWeight: FontWeight.bold,
                           color: isDarkMode
                               ? Colors.white
-                              : Colors.black, // تغيير اللون
+                              : Colors.black,
+                          fontSize: responsiveWidth(context, 12)
                         ),
                       ),
                     ),

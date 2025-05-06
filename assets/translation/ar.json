@@ -18,7 +18,9 @@
   "Turn On Your Location": "قم بتشغيل موقعك",
   "To Continues, Let Your Device Turn On Location, Which Uses Google’s Location Service": "للمتابعة، اسمح لجهازك بتشغيل الموقع، الذي يستخدم خدمة الموقع من Google",
   "Yes, Turn It On": "نعم، قم بتشغيله",
-
+"Your Location": "موقعك",
+  "Show Less": "عرض اقل",
+  "Load More": "تحميل المزيد",
   "Remember Me": "تذكرني",
   "Fields cannot be empty": "لا يمكن أن تكون الحقول فارغة",
   "Invalid email format":"تنسيق البريد الإلكتروني غير صالح",
@@ -38,7 +40,7 @@
   "Signup Successful!":"تم السجيل بنجاح",
   "Already have an account?": "هل لديك حساب بالفعل؟",
   "Register": "تسجيل",
-
+  "Set Location": "تعيين الموقع",
 "Reorder": "اعادة الطلب",
   "Birth of date": "تاريخ الميلاد",
   "YYYY-MM-DD": "السنة-الشهر-اليوم",

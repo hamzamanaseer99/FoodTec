@@ -56,6 +56,10 @@
   "A 4-digit code has been sent to your email. Please enter it to verify.": "A 4-digit code has been sent to your email. Please enter it to verify.",
   "Verify": "Verify",
   "Reorder": "Reorder",
+  "Set Location": "Set Location",
+  "Your Location": "Your Location",
+  "Show Less": "Show Less",
+  "Load More": "Load More",
 
   "Passwords do not match!": "Passwords do not match!",
   "Password must contain uppercase, lowercase, number, special character, and be at least 8 characters long.": "Password must contain uppercase, lowercase, number, special character, and be at least 8 characters long.",

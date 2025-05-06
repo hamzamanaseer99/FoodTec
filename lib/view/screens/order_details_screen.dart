@@ -490,7 +490,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
     ];
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      padding: EdgeInsets.symmetric(horizontal: responsiveWidth(context, 16)),
       child: Column(
         children: List.generate(steps.length, (index) {
           final step = steps[index];
@@ -534,7 +534,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                   step['label'] as String,
 
           style: TextStyle(
-                    fontSize: responsiveWidth(context, 16),
+                    fontSize: responsiveWidth(context, 14),
                     fontWeight: FontWeight.w500,
                     color: (step['done'] as bool)
                         ? isDarkMode ? Colors.white : Colors.black
@@ -562,8 +562,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
               child: Image.asset(
                 "assets/images/deleviry_hero.png",
                 fit: BoxFit.cover,
-                width: 56, // double the radius
-                height: 56,
+                width: responsiveWidth(context, 56), // double the radius
+                height: responsiveHeight(context, 56),
               ),
             ),
           ),
@@ -574,23 +574,23 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
               children: [
                 Text('Your Delivery Hero'.tr(),
                     style: TextStyle(
-                        fontSize: responsiveWidth(context, 12),
+                        fontSize: responsiveWidth(context, 10),
                         fontWeight: FontWeight.bold,
                         color: isDarkMode ? Colors.white : Color(0xff878787))),
-                SizedBox(height: 4),
+                SizedBox(height: responsiveHeight(context, 4)),
                 Row(
                   children: [
                     Text('Aleksandr V. ',
                         style: TextStyle(
-                            fontSize: 14,
+                            fontSize: responsiveWidth(context, 12),
                             color:
                                 isDarkMode ? Colors.white : Color(0xff2F2E36))),
-                    SizedBox(width: responsiveWidth(context, 8)),
-                    Icon(Icons.star, color: Colors.amber, size: 16),
+                    SizedBox(width: responsiveWidth(context, responsiveWidth(context, 4))),
+                    Icon(Icons.star, color: Colors.amber, size: responsiveWidth(context, 16)),
                     SizedBox(width: responsiveWidth(context, 4)),
                     Text('4,9',
                         style: TextStyle(
-                            fontSize: responsiveWidth(context, 12),
+                            fontSize: responsiveWidth(context, 10),
                             color:
                                 isDarkMode ? Colors.white : Color(0xffB8B8B8),
                             fontWeight: FontWeight.w400)),
@@ -613,7 +613,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
               ),
             ],
           ),
-          SizedBox(width: responsiveWidth(context, 12)),
+          SizedBox(width: responsiveWidth(context, 8)),
           Stack(
             children: [
               Container(
@@ -655,15 +655,22 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                       fontWeight: FontWeight.w500)),
             ],
           ),
-          SizedBox(height: responsiveHeight(context, 12)),
+          SizedBox(height: responsiveHeight(context, 10)),
           Row(
             children: [
-              Icon(Icons.location_on, color: Colors.green, size: 20),
-              SizedBox(width: responsiveWidth(context, 12)),
-              Text('123 Al-Madina Street, Abdali, Amman, Jordan'.tr(),
-                  style: TextStyle(
-                      fontSize: responsiveWidth(context, 12),
-                      color: isDarkMode ? Colors.white : Color(0xff6C7278))),
+              Icon(Icons.location_on, color: Colors.green, size: responsiveWidth(context, 20)),
+              SizedBox(width: responsiveWidth(context, 8)),
+              Expanded(
+
+                child: Text('123 Al-Madina Street, Abdali, Amman, Jordan'.tr(),
+                    style: TextStyle(
+                        fontSize: responsiveWidth(context, 10),
+                        color: isDarkMode ? Colors.white : Color(0xff6C7278),
+                    ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                ),
+              ),
             ],
           ),
         ],
@@ -688,11 +695,10 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(width: 8),
           Text(
             'Live Track'.tr(),
             style: TextStyle(
-              fontSize: 16,
+              fontSize: responsiveWidth(context, 16),
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),

@@ -8,7 +8,7 @@ class CreditCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      height: responsiveHeight(context, 230),
+      height: responsiveHeight(context, 240),
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -30,13 +30,13 @@ class CreditCardWidget extends StatelessWidget {
                 'Finaci',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: responsiveWidth(context, 20),
+                  fontSize: responsiveWidth(context, 16),
                   fontWeight: FontWeight.w600,
                 ),
               ),
               Image.asset(
                 'assets/images/visa-logo.png',
-                height: responsiveHeight(context, 40),
+                height: responsiveHeight(context, 46),
                 width: responsiveWidth(context, 70),
                 color: Colors.white,
               ),
@@ -50,7 +50,7 @@ class CreditCardWidget extends StatelessWidget {
             '**** **** **** 2345',
             style: TextStyle(
               color: Colors.white,
-              fontSize: responsiveWidth(context, 20),
+              fontSize: responsiveWidth(context, 14),
               letterSpacing: 2,
             ),
           ),
@@ -78,17 +78,17 @@ class CreditCardWidget extends StatelessWidget {
                   Text(
                     'Card Holder name'.tr(),
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: responsiveWidth(context, 10),
+                      color: Colors.white70,
+                      fontSize: responsiveWidth(context, 7),
                     ),
                   ),
-                  SizedBox(height: responsiveHeight(context, 8)),
+                  SizedBox(height: responsiveHeight(context, 4)),
                   Text(
                     'Noman Manzoor',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: responsiveWidth(context, 13),
+                      fontSize: responsiveWidth(context, 10),
                     ),
                   ),
                 ],
@@ -100,16 +100,16 @@ class CreditCardWidget extends StatelessWidget {
                     'Expiry Date'.tr(),
                     style: TextStyle(
                       color: Colors.white70,
-                      fontSize: responsiveWidth(context, 10),
+                      fontSize: responsiveWidth(context, 7),
                     ),
                   ),
-                  SizedBox(height: responsiveHeight(context, 8)),
+                  SizedBox(height: responsiveHeight(context, 4)),
                   Text(
                     '02/30',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: responsiveWidth(context, 13),
+                      fontSize: responsiveWidth(context, 10),
                     ),
                   ),
                 ],
