@@ -243,7 +243,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           final placemark = placemarks.first;
           setState(() {
             selectedAddressTitle =
-                "${placemark.street}, ${placemark.locality}, ${placemark.country}";
+            "${placemark.street}, ${placemark.locality}, ${placemark.country}";
           });
         }
       } catch (e) {
@@ -354,6 +354,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         selectedAddressTitle,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
+
                           color: isDarkMode ? Colors.white : Colors.black,
                         ),
                       ),
@@ -369,7 +370,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             color: isDarkMode ? Colors.greenAccent : Color(0xff4FAF5A),
                             fontWeight: FontWeight.bold,
                           ),
-
                         ),
                       ),
                     ),
@@ -444,7 +444,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                   ? Colors.greenAccent
                                   : const Color(0xff25AE4B),
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 12),
+                              const EdgeInsets.symmetric(horizontal: 12),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
                                     topRight: Radius.circular(10),
