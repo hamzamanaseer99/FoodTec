@@ -201,6 +201,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/cart_cubit.dart';
 import 'package:foodtek/responsive.dart';
+import 'package:foodtek/view/screens/setlocationscreen.dart';
 import 'package:foodtek/view/screens/widgets/notification_icon.dart';
 import 'package:foodtek/view/screens/widgets/radio_widget.dart';
 import 'package:foodtek/view/screens/widgets/section_price_widget.dart';
@@ -273,15 +274,15 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         elevation: 0,
         automaticallyImplyLeading: false,
         // نوقف الزر التلقائي
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: isDarkMode ? Colors.white : Colors.black,
-          ),
-          onPressed: () {
-            Navigator.of(context).pop(); // العودة للشاشة السابقة
-          },
-        ),
+        // leading: IconButton(
+        //   icon: Icon(
+        //     Icons.arrow_back,
+        //     color: isDarkMode ? Colors.white : Colors.black,
+        //   ),
+        //   onPressed: () {
+        //     Navigator.of(context).pop(); // العودة للشاشة السابقة
+        //   },
+        // ),
         actions: [
           NotificationIcon(),
         ],
@@ -321,22 +322,54 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   ),
 
                   // عرض الموقع المحدد باستخدام العنوان النصي
+                  // Padding(
+                  //   padding: EdgeInsets.symmetric(
+                  //       vertical: responsiveHeight(context, 6)),
+                  //   child: ListTile(
+                  //     leading: Icon(Icons.location_on,
+                  //         color: isDarkMode
+                  //             ? Colors.greenAccent
+                  //             : Color(0xff4FAF5A)),
+                  //     title: Text(
+                  //       selectedAddressTitle,
+                  //       style: TextStyle(
+                  //         fontWeight: FontWeight.bold,
+                  //         color: isDarkMode
+                  //             ? Colors.white
+                  //             : Colors.black, // تغيير اللون
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        vertical: responsiveHeight(context, 6)),
+                      vertical: responsiveHeight(context, 6),
+                    ),
                     child: ListTile(
-                      leading: Icon(Icons.location_on,
-                          color: isDarkMode
-                              ? Colors.greenAccent
-                              : Color(0xff4FAF5A)),
+                      leading: Icon(
+                        Icons.location_on,
+                        color: isDarkMode ? Colors.greenAccent : Color(0xff4FAF5A),
+                      ),
                       title: Text(
                         selectedAddressTitle,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: isDarkMode
-                              ? Colors.white
-                              : Colors.black,
-                          fontSize: responsiveWidth(context, 12)
+                          color: isDarkMode ? Colors.white : Colors.black,
+                        ),
+                      ),
+                      trailing: TextButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => SetLocationScreen()),
+                          );
+                        },
+                        child: Text(
+                          'Change'.tr(),
+                          style: TextStyle(
+                            color: isDarkMode ? Colors.greenAccent : Color(0xff4FAF5A),
+                            fontWeight: FontWeight.bold,
+                          ),
+
                         ),
                       ),
                     ),
