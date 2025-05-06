@@ -112,7 +112,10 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
                           child: TextField(
                             controller: searchController,
                             decoration: InputDecoration(
-                              hintText: "Find your location".tr(),
+                              hintText: "Find your location".tr(),hintStyle: TextStyle(
+                              color: Color(0xff878787),
+                              fontSize: responsiveWidth(context, 12)
+                            ),
                               prefixIcon: const Icon(Icons.search, color: Color(0xff25AE4B)),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(40),
@@ -193,7 +196,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
         Text(
           "${"On the way".tr()}!",
           style: TextStyle(
-            fontSize: responsiveWidth(context, 22),
+            fontSize: responsiveWidth(context, 16),
             fontWeight: FontWeight.w600,
             color: isDarkMode ? Colors.white : Colors.black,
           ),
@@ -206,7 +209,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
           child: Text(
             'All details'.tr(),
             style: TextStyle(
-              fontSize: responsiveWidth(context, 16),
+              fontSize: responsiveWidth(context, 12),
               fontWeight: FontWeight.bold,
               color: const Color(0xff25AE4B),
             ),
@@ -238,7 +241,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
                 steps[index],
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: responsiveWidth(context, 12),
+                  fontSize: responsiveWidth(context, 10),
                   fontWeight: FontWeight.w600,
                   color: textColor,
                 ),
@@ -282,7 +285,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
             children: [
               Text('Your Delivery Hero'.tr(),
                   style: TextStyle(
-                      fontSize: responsiveWidth(context, 12),
+                      fontSize: responsiveWidth(context, 10),
                       fontWeight: FontWeight.bold,
                       color: const Color(0xff878787))),
               const SizedBox(height: 4),
@@ -291,7 +294,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
                   Text(
                     'Aleksandr V.',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: responsiveWidth(context, 12),
                       color: Theme.of(context).brightness == Brightness.dark
                           ? Colors.white70
                           : Color(0xff878787),
@@ -336,28 +339,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
     );
   }
 
-  // Widget _buildLocationSection(bool isDarkMode) {
-  //   return Padding(
-  //     padding: EdgeInsets.only(top: responsiveHeight(context, 10)),
-  //     child: Row(
-  //       children: [
-  //         const Icon(Icons.location_on, color: Colors.green, size: 20),
-  //         SizedBox(width: responsiveWidth(context, 12)),
-  //         Expanded(
-  //           child: Text(
-  //             '123 Al-Madina Street, Abdali, Amman, Jordan'.tr(),
-  //             style: TextStyle(
-  //               fontSize: responsiveWidth(context, 12),
-  //               color: Theme.of(context).brightness == Brightness.dark
-  //                   ? Colors.white70
-  //                   : Color(0xff878787),
-  //             ),
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
+
 
   Widget _buildLocationSection(BuildContext context, bool isDarkMode) {
     return Padding(
@@ -384,7 +366,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
                         return Text(
                           'Loading address...'.tr(),
                           style: TextStyle(
-                            fontSize: responsiveWidth(context, 12),
+                            fontSize: responsiveWidth(context, 10),
                             color: isDarkMode ? Colors.white70 : Color(0xff878787),
                           ),
                         );
@@ -392,7 +374,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
                         return Text(
                           'Unable to fetch address'.tr(),
                           style: TextStyle(
-                            fontSize: responsiveWidth(context, 12),
+                            fontSize: responsiveWidth(context, 10),
                             color: isDarkMode ? Colors.white70 : Color(0xff878787),
                           ),
                         );
@@ -402,7 +384,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
                         return Text(
                           address,
                           style: TextStyle(
-                            fontSize: responsiveWidth(context, 12),
+                            fontSize: responsiveWidth(context, 10),
                             color: isDarkMode ? Colors.white70 : Color(0xff878787),
                           ),
                         );
@@ -439,7 +421,7 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
         child: Text(
           "Confirm Receipt".tr(),
           style: TextStyle(
-            fontSize: responsiveWidth(context, 20),
+            fontSize: responsiveWidth(context, 16),
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
@@ -454,8 +436,14 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
       context: context,
       builder: (_) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: Text("Confirm Receipt".tr(), style: const TextStyle(fontWeight: FontWeight.bold)),
-        content: Text("Are you sure you received your order?".tr()),
+        title: Text("Confirm Receipt".tr(),
+            style:  TextStyle(
+                fontWeight: FontWeight.bold,
+            fontSize: responsiveWidth(context, 16)
+            ),
+        ),
+        content: Text("Are you sure you received your order?".tr(),
+        style: TextStyle(fontSize:responsiveWidth(context, 12) ),),
         actions: [
           TextButton(
             style: TextButton.styleFrom(
@@ -473,11 +461,14 @@ class _LiveTrackScreenState extends State<LiveTrackScreen> {
               );
             },
             child: Text("received confirmation".tr(),
-                style: const TextStyle(color: Colors.white)),
+                style:  TextStyle(color: Colors.white,
+                    fontSize: responsiveWidth(context, 12))
+            ),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text("Cancel".tr(), style: const TextStyle(color: Colors.red)),
+            child: Text("Cancel".tr(), style:  TextStyle(color: Colors.red,
+                fontSize: responsiveWidth(context, 12))),
           ),
         ],
       ),

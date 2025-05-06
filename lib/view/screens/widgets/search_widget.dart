@@ -82,17 +82,19 @@ class SearchWidget extends StatelessWidget {
             vertical: responsiveHeight(context, 4),
           ),
           decoration: BoxDecoration(
-            color: theme.colorScheme.surface, // خلفية متوافقة مع الثيم
+            color: isDark
+                ? theme.colorScheme.surface.withOpacity(0.9)
+                : theme.colorScheme.surface,
             borderRadius: BorderRadius.circular(responsiveWidth(context, 40)),
             border: Border.all(
-              color: theme.dividerColor, // لون الحدود من الثيم
+              color: theme.dividerColor,
               width: 1,
             ),
           ),
           child: TextField(
             style: TextStyle(
               fontSize: responsiveWidth(context, 14),
-              color: theme.textTheme.bodyMedium?.color, // لون النص ديناميكي
+              color: theme.textTheme.bodyMedium?.color,
             ),
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(
@@ -100,12 +102,12 @@ class SearchWidget extends StatelessWidget {
               ),
               hintText: "Search menu, restaurant or etc".tr(),
               hintStyle: TextStyle(
-                color: theme.hintColor, // لون التلميح من الثيم
+                color: theme.hintColor ?? Colors.grey[600],
                 fontSize: responsiveWidth(context, 14),
               ),
               prefixIcon: Icon(
                 Icons.search,
-                color: theme.iconTheme.color, // لون الأيقونة من الثيم
+                color: theme.iconTheme.color,
                 size: responsiveWidth(context, 24),
               ),
               suffixIcon: IconButton(
