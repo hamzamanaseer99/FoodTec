@@ -26,8 +26,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   int quantity = 1;
 
   @override
-
-  @override
   Widget build(BuildContext context) {
     final product = widget.product;
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -35,61 +33,62 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
     return Scaffold(
       backgroundColor: isDark ? const Color(0xff1B1B1B) : Colors.white,
-
       appBar: AppBar(
         automaticallyImplyLeading: true,
-
         backgroundColor: isDark ? const Color(0xff1B1B1B) : Colors.white,
         elevation: 0,
         leading: _buildLocationIcon(isDark),
         title: LocationTitleWidget(theme: theme),
         actions: [NotificationIcon()],
-
       ),
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: responsiveWidth(context, 30),
-        vertical: responsiveHeight(context, 20)),
+        padding: EdgeInsets.symmetric(
+          horizontal: responsiveWidth(context, 30),
+          vertical: responsiveHeight(context, 20),
+        ),
         child: Column(
           children: [
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                Row(
-                children: [
-                BackButton(color: isDark ? Colors.white : Colors.black),
-                SizedBox(width: 8),
-                Expanded(child: SearchWidget()),
-                ],
-              ),
-              SizedBox(height: responsiveHeight(context, 30)),
-
-              Container(
-                height: 203,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    image: AssetImage(product.image),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                clipBehavior: Clip.antiAlias,
-
+                  children: [
+                    // Back Button and Search Widget Row
+                    Row(
+                      children: [
+                        BackButton(color: isDark ? Colors.white : Colors.black),
+                        SizedBox(width: responsiveWidth(context, 4)),
+                        Expanded(child: SearchWidget()),
+                      ],
                     ),
+                    SizedBox(height: responsiveHeight(context, 30)),
 
+                    // Product Image
+                    Container(
+                      height: responsiveHeight(context, 203),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                          image: AssetImage(product.images),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                    ),
                     SizedBox(height: responsiveHeight(context, 24)),
 
+                    // Product Name
                     Text(
                       product.name.tr(),
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: responsiveWidth(context, 24),
                         fontWeight: FontWeight.bold,
                         color: isDark ? Colors.white : Colors.black,
                       ),
                     ),
                     SizedBox(height: responsiveHeight(context, 8)),
 
+                    // Rating Row
                     Row(
                       children: [
                         ...List.generate(4, (_) => Icon(Icons.star, color: Colors.amber, size: responsiveWidth(context, 16))),
@@ -104,9 +103,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         ),
                       ],
                     ),
-
                     SizedBox(height: responsiveHeight(context, 8)),
 
+                    // Price Row
                     Row(
                       children: [
                         Text(
@@ -128,9 +127,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         ),
                       ],
                     ),
-
                     SizedBox(height: responsiveHeight(context, 12)),
 
+                    // Product Description
                     Text(
                       product.description.tr(),
                       style: TextStyle(
@@ -138,9 +137,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         color: isDark ? Colors.white70 : Colors.black87,
                       ),
                     ),
-
                     SizedBox(height: responsiveHeight(context, 24)),
 
+                    // Spicy and Quantity Controls
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -162,9 +161,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         ),
                       ],
                     ),
-
                     SizedBox(height: responsiveHeight(context, 12)),
 
+                    // Spicy Slider and Quantity Selector
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -200,6 +199,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ),
             ),
 
+            // Add to Cart Button
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: responsiveWidth(context, 30),
@@ -242,7 +242,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child:  Text(
+                child: Text(
                   "Add To Cart".tr(),
                   style: TextStyle(
                     color: Colors.white,
@@ -258,7 +258,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 
-
   Widget _buildLocationIcon(bool isDark) {
     return Container(
       margin: const EdgeInsets.only(left: 15, top: 8, bottom: 8),
@@ -269,8 +268,4 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       child: Icon(Icons.location_on, color: isDark ? Colors.green[300] : const Color(0xff4FAF5A)),
     );
   }
-
-
-
-
 }

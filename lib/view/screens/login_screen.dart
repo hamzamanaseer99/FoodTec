@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (email.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-         SnackBar(content: Text("Fields cannot be empty".tr())),
+        SnackBar(content: Text("Fields cannot be empty".tr())),
       );
       return;
     }
@@ -71,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (!RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
         .hasMatch(email)) {
       ScaffoldMessenger.of(context).showSnackBar(
-         SnackBar(content: Text("Invalid email format".tr())),
+        SnackBar(content: Text("Invalid email format".tr())),
       );
       return;
     }
@@ -150,15 +150,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
 
-                              const SizedBox(height: 12),
+                              SizedBox(height: responsiveHeight(context, 12)),
                               _SignUpText(screenWidth: screenWidth),
-                              const SizedBox(height: 24),
+                              SizedBox(height: responsiveHeight(context, 24)),
                               EmailWidget(emailEditingController: emailController),
-                              const SizedBox(height: 16),
+                              SizedBox(height: responsiveHeight(context, 16)),
                               PasswordWidget(passwordEditingController: passwordController),
-                              const SizedBox(height: 16),
+                              SizedBox(height: responsiveHeight(context, 16)),
                               Row(
-                              mainAxisAlignment:MainAxisAlignment.spaceAround ,
+                                mainAxisAlignment:MainAxisAlignment.spaceAround ,
                                 children: [
                                   Row(
                                     children: [
@@ -208,8 +208,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               state is LoginLoading
                                   ?  Center(
                                 child: SizedBox(
-                                  width: 30,
-                                  height: 30,
+                                  width: responsiveWidth(context, 30),
+                                  height: responsiveHeight(context, 30),
                                   child: CircularProgressIndicator(
                                     strokeWidth: 3,
                                     color: Color(0xff25AE4B),
@@ -226,7 +226,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    
+
                                     elevation: 3,
                                   ),
                                   child: Text(
@@ -250,7 +250,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       color: isDarkMode ? Colors.grey[700] : Colors.grey.shade400,
                                     ),
                                   ),
-                                   Padding(
+                                  Padding(
                                     padding: EdgeInsets.symmetric(horizontal: 12), // تصغير المسافة قليلاً
                                     child: Text(
                                       "OR".tr(),
@@ -306,9 +306,9 @@ class _SignUpText extends StatelessWidget {
             child: Text(
               "Don’t have an account?".tr(),
               style: TextStyle(
-                color: Colors.grey,
-                fontSize: responsiveWidth(context, 14),
-                fontWeight: FontWeight.w700
+                  color: Colors.grey,
+                  fontSize: responsiveWidth(context, 14),
+                  fontWeight: FontWeight.w700
 
               ),
             ),

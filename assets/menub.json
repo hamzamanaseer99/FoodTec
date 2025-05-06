@@ -3,24 +3,28 @@
     "name": "Classic Beef Burger",
     "description": "Grilled beef patty with lettuce, tomato, and cheese.",
     "price": 20.0,
-    "image": "assets/images/Chese burger.png"
+    "image": "assets/images/Chese burger.png",
+    "images": "assets/images/detailse_product_image.jpg"
   },
   {
     "name": "Chicken Burger",
     "description": "Crispy chicken fillet with mayo and pickles.",
     "price": 18.5,
-    "image": "assets/images/Chese burger.png"
+    "image": "assets/images/Chese burger.png",
+    "images": "assets/images/burgers.jpg"
   },
   {
     "name": "Veggie Burger",
     "description": "Vegetarian patty with fresh veggies and sauce.",
     "price": 16.0,
-    "image": "assets/images/Chese burger.png"
+    "image": "assets/images/Chese burger.png",
+    "images": "assets/images/detailse_product_image.jpg"
   },
   {
     "name": "Veggie Burger",
     "description": "Vegetarian patty with fresh veggies and sauce.",
     "price": 16.0,
-    "image": "assets/images/Chese burger.png"
+    "image": "assets/images/Chese burger.png",
+    "images": "assets/images/burgers.jpg"
   }
 ]

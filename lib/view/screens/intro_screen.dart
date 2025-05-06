@@ -1,75 +1,9 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:foodtek/cubit/location_cubit.dart';
-//
-// import 'location_screen.dart';
-//
-// class IntroScreen extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Stack(
-//         children: [
-//           Image.asset(
-//             'assets/images/Pattern.png',
-//             fit: BoxFit.cover,
-//             width: double.infinity,
-//             height: double.infinity,
-//           ),
-//           PageView(
-//             children: [
-//               _buildPage('assets/images/Orderfood1.png', 'Welcome To Sahlah',
-//                   'Enjoy A Fast And Smooth Food Delivery At Your Doorstep'),
-//               _buildPage(
-//                   'assets/images/TakeAway.png',
-//                   'Get Delivery On Time',
-//                   'Order Your Favorite Food Within The Palm Of Your Hand And The Zone Of Your Comfort'),
-//               _buildPage(
-//                   'assets/images/TakeAway2.png',
-//                   'Choose Your Food',
-//                   'Order Your Favorite Food Within The Palm Of Your Hand And The Zone Of Your Comfort'),
-//               LocationScreen(), // شاشة تحديد الموقع
-//             ],
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-//
-//   Widget _buildPage(String imagePath, String title, String subtitle) {
-//     return Column(
-//       mainAxisAlignment: MainAxisAlignment.center,
-//       children: [
-//         Image.asset(
-//           imagePath,
-//           width: 328,
-//           height: 328,
-//         ),
-//         SizedBox(height: 20),
-//         Text(
-//           title,
-//           style: TextStyle(
-//               fontSize: 32, fontWeight: FontWeight.w500, color: Color(0xFF455A64)),
-//           textAlign: TextAlign.center,
-//         ),
-//         SizedBox(height: 20),
-//         SizedBox(
-//           width: 335,
-//           child: Text(
-//             subtitle,
-//             style: TextStyle(fontSize: 16, color: Color(0xFF455A64)),
-//             textAlign: TextAlign.center,
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodtek/cubit/intro_cubit.dart';
 import 'package:foodtek/homescreen.dart';
+import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/location_screen.dart';
 import 'package:foodtek/view/screens/widgets/intro_navigation_buttons.dart';
 
@@ -140,10 +74,13 @@ class IntroScreen extends StatelessWidget {
                 );
               },
             ),
+            /* SizedBox(
+              height: responsiveHeight(context, 36),
+            ),*/
             Positioned(
-              bottom: 40,
-              left: 20,
-              right: 20,
+              bottom: responsiveHeight(context, 10),
+              left: responsiveWidth(context, 20),
+              right: responsiveWidth(context, 20),
               child: BlocBuilder<IntroCubit, int>(
                 builder: (context, currentPage) {
                   return IntroNavigationButtons(
@@ -163,11 +100,10 @@ class IntroScreen extends StatelessWidget {
       String subtitle, double imageWidth, double imageHeight) {
     final Size screenSize = MediaQuery.of(context).size;
     final double screenWidth = screenSize.width;
-    final double screenHeight = screenSize.height;
 
     return Container(
       width: double.infinity,
-      height: screenHeight * 0.5,
+      //height: responsiveHeight(context, 328),
       decoration: BoxDecoration(
         color: Colors.transparent,
         image: DecorationImage(
@@ -182,25 +118,25 @@ class IntroScreen extends StatelessWidget {
         children: [
           Image.asset(
             imagePath,
-            width: screenWidth * 0.7,
-            height: screenHeight * 0.3,
+            width: double.infinity,
+            height: responsiveHeight(context, 328),
           ),
-          SizedBox(height: screenHeight * 0.001),
+          SizedBox(height:responsiveHeight(context, 40)),
           Text(
             title,
             style: TextStyle(
-                fontSize: screenWidth * 0.09, // حجم النص 8% من عرض الشاشة
+                fontSize: responsiveWidth(context, 30), // حجم النص 8% من عرض الشاشة
                 fontWeight: FontWeight.w500,
                 color: Color(0xFF455A64)),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: screenHeight * 0.001,),
+          SizedBox(height: responsiveHeight(context, 8)),
           SizedBox(
             width: screenWidth * 0.8, // عرض النص بنسبة 80% من العرض
             child: Text(
               subtitle,
               style: TextStyle(
-                  fontSize: 16, // حجم النص 4.5% من عرض الشاشة
+                  fontSize: responsiveWidth(context, 14), // حجم النص 4.5% من عرض الشاشة
                   color: Color(0xFF455A64)),
               textAlign: TextAlign.center,
             ),

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodtek/responsive.dart';
 import 'package:foodtek/view/screens/location_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -30,7 +31,7 @@ class IntroNavigationButtons extends StatelessWidget {
             backgroundColor: Colors.transparent,
             minimumSize: Size(double.infinity, 48),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(10),
             ),
             shadowColor: Colors.transparent,
             elevation: 0,
@@ -38,26 +39,23 @@ class IntroNavigationButtons extends StatelessWidget {
           child: Ink(
 
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-
-                colors: [Color(0xFF25AE4B), Color(0xFF0F481F)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(25),
+              color: Color(0xff25AE4B),
+              borderRadius: BorderRadius.circular(10),
             ),
             child: Container(
 
               alignment: Alignment.center,
-              padding: EdgeInsets.symmetric(vertical: 14),
-    child: Text('Continue'.tr(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white)),
+              padding: EdgeInsets.symmetric(vertical: responsiveHeight(context, 10)),
+              child: Text('Continue'.tr(), style: TextStyle(fontSize: responsiveWidth(context, 16),
+                  fontWeight: FontWeight.w600, color: Colors.white)),
 
             ),
           ),
 
         ),
 
-        SizedBox(height:  MediaQuery.of(context).size.height * 0.04),
+        SizedBox(
+            height: responsiveHeight(context, 30)),
 
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,7 +65,7 @@ class IntroNavigationButtons extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => LocationScreen()));              },
               child: Text(
                 'Skip'.tr(),
-                style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                style: TextStyle(fontSize: responsiveWidth(context, 16), color: Colors.grey[700]),
               ),
             ),
 
@@ -96,8 +94,8 @@ class IntroNavigationButtons extends StatelessWidget {
                       duration: Duration(milliseconds: 500),
                       curve: Curves.ease);
                 },
-                icon: Icon(Icons.arrow_forward, color: Colors.green),
-                iconSize: 30,
+                icon: Icon(Icons.arrow_forward, color: Color(0xff25AE4B)),
+                iconSize: responsiveWidth(context, 24),
               ),
           ],
         ),

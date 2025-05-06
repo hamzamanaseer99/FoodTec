@@ -215,39 +215,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // Widget _buildSwitchTile(String title, IconData icon, bool value, Function(bool) onChanged) {
-  //   return Padding(
-  //     padding: const EdgeInsets.symmetric(vertical: 12.0),
-  //     child: Row(
-  //       children: [
-  //         Icon(icon),
-  //         const SizedBox(width: 10),
-  //         Expanded(
-  //           child: Text(
-  //             title,
-  //             style: TextStyle(
-  //               fontSize: 16,
-  //               fontWeight: FontWeight.w500,
-  //             ),
-  //           ),
-  //         ),
-  //         Switch(
-  //           value: value,
-  //           onChanged: onChanged,
-  //           activeColor: Color(0xff09CA67),
-  //           inactiveTrackColor: Color(0xffAFAFAF),
-  //           inactiveThumbColor: Colors.white,
-  //           thumbColor: MaterialStateProperty.resolveWith<Color>(
-  //                 (Set<MaterialState> states) {
-  //               return Colors.white;
-  //             },
-  //           ),
-  //         ),
-  //
-  //       ],
-  //     ),
-  //   );
-  // }
+
   Widget _buildSwitchTile(
       String title, IconData icon, bool value, Function(bool) onChanged) {
     return Padding(

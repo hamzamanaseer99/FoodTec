@@ -147,6 +147,8 @@ class TopRatedProducts extends StatelessWidget {
               name: product["name"],
               price: product["price"],
               image: product["image"],
+              images: product["images"],
+
               description: product["description"],
             );
 
