@@ -97,7 +97,7 @@ class _ExpiryWidgetState extends State<ExpiryWidget> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final textColor = isDark ? Colors.white : Colors.black;
     final labelColor = isDark ? Colors.grey[300] : Colors.grey[700];
-    final fillColor = Theme.of(context).colorScheme.surface;
+    final fillColor = isDark ? const Color(0xFF1E1E1E) : Colors.white;
 
     double screenWidth = MediaQuery.of(context).size.width;
 

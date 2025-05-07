@@ -78,7 +78,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     Text(
                       product.name.tr(),
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: responsiveWidth(context, 24),
                         fontWeight: FontWeight.bold,
                         color: isDark ? Colors.white : Colors.black,
                       ),
@@ -238,6 +238,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
+                child: Text(
                 child: Text(
                   "Add To Cart".tr(),
                   style: TextStyle(

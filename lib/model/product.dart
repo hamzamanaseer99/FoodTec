@@ -3,6 +3,7 @@ class Product {
   final String description;
   final double price;
   final String image;
+  final String images;
   bool isFavorite;
 
   Product({
@@ -10,6 +11,8 @@ class Product {
     required this.description,
     required this.price,
     required this.image,
+    required this.images,
+
     this.isFavorite = false,
   });
 
@@ -19,6 +22,8 @@ class Product {
       description: json['description'] ?? '',
       price: (json['price'] ?? 0).toDouble(),
       image: json['image'] ?? '',
+      images: json['images'] ?? '',
+
       isFavorite: json['isFavorite'] ?? false,
     );
   }

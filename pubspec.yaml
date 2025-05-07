@@ -93,6 +93,15 @@ flutter:
     - assets/images/visa.png
     - assets/images/mastercard.png
     - assets/translation/
+    - assets/images/pizza4.jpeg
+    - assets/images/pizza5.jpeg
+    - assets/images/pizza6.jpeg
+    - assets/images/pizza7.jpeg
+    - assets/images/detailse_product_image.jpg
+    - assets/images/burgers.jpg
+    - assets/images/tuna.jpg
+    - assets/images/grilld.jpg
+    - assets/images/club.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
