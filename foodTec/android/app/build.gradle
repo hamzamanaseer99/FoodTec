@@ -1,0 +1,55 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    ndkVersion = "27.0.12077973"  // تأكد من أن هذا الإصدار يتماشى مع متطلبات الـ plugins.
+    namespace = "com.example.foodtek"
+    compileSdk = flutter.compileSdkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId = "com.example.foodtek"
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'my-key-alias'  // تأكد من استبداله بالـ alias الخاص بك
+            keyPassword '123456'  // استبدلها بكلمة المرور الخاصة بالمفتاح
+            storeFile file('C:/Users/Hamza/StudioProjects/foodtek/android/keystore/my-release-key.keystore')  // المسار الصحيح للـ keystore
+            storePassword '123456'  // استبدلها بكلمة المرور الخاصة بالـ keystore
+        }
+    }
+
+    buildTypes {
+        release {
+            shrinkResources false
+            minifyEnabled false  // تعطيل R8
+            signingConfig signingConfigs.release  // إضافة التوقيع هنا
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+}
+
+flutter {
+    source = "../.."
+}
